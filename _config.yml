@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ""
+title: Coding Hot Pot
+subtitle: "keep learning"
 description: ""
-keywords:
-author: John Doe
-language: en
+keywords: "frontend"
+author: Joe Chang
+language: zh
 timezone: ""
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://changchiao.github.io/project
+url: https://changchiao.github.io/blog
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -102,4 +102,7 @@ theme: landscape
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ""
+  type: git
+  repo: https://github.com/changchiao/blog
+  # example, https://github.com/hexojs/hexojs.github.io
+  branch: gh-pages
