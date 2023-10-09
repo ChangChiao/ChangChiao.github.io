@@ -1,24 +1,22 @@
 ---
 title: React Higher-Order Components (HOC)
-description: >-
-  想必我們都曾經遇過一種情境，兩個component功能幾乎一模一樣，只是差在輸入的資料不同而已，那麼這時候就是HOC登場的時候了，HOC為一個可以傳入component當參數的function，其目的在於可以將重複的邏輯抽離出來，讓傳入的component可以套用這個邏輯，並且輸…
 date: "2020-09-21T00:50:43.990Z"
 categories: []
 keywords: []
-slug: /@joe-chang/react-higher-order-components-hoc-ec51ec0e2759
+tag: react
 ---
 
 想必我們都曾經遇過一種情境，兩個 component 功能幾乎一模一樣，只是差在輸入的資料不同而已，那麼這時候就是 HOC 登場的時候了，HOC 為一個可以傳入 component 當參數的 function，其目的在於可以將重複的邏輯抽離出來，讓傳入的 component 可以套用這個邏輯，並且輸出一個全新的 component
 
 當初看到 redux 的 connect 還想說這是什麼神秘的寫法，原來就是 HOC 啊!
 
+```javascript
 const Counter = connect(
+  mapStateToProps,
 
-mapStateToProps,
-
-mapDispatchToProps
-
+  mapDispatchToProps
 )(Counters);
+```
 
 > 被作為參數的 component 稱之為**Wrapped Component**
 

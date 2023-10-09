@@ -1,12 +1,9 @@
 ---
 title: React hook(下)-useMemo&useRef
-description: >-
-  在搜尋useMemo的時候，就一直看到React.memo的相關資料 ，雖然React memo不屬於React
-  hook的一部分，但還是簡單介紹一下，我們都知道class…
 date: "2020-11-23T00:37:31.785Z"
 categories: []
 keywords: []
-slug: /@joe-chang/react-hook-%E4%B8%8B-usememo-useref-3c8bcedf39eb
+tag: react
 ---
 
 ![](/img/1__KCSa7ZwXlerkkbyXRfr2og.jpeg)
@@ -19,9 +16,11 @@ slug: /@joe-chang/react-hook-%E4%B8%8B-usememo-useref-3c8bcedf39eb
 
 第一個參數是把 component 傳入 React.memo 裡面，假設需要控制比對過程就可以傳入第二個參數`areEqual function，來自定義比較prop的function與shouldComponentUpdate()不同的是，如果props沒變，則是return true就不會重新re-render`
 
+```javascript
 const banner = React.memo(component, `areEqual`);
 
 const banner = React.memo(({title }) => <div>{title}</div>, (prevProps, nextProps =>{return false});
+```
 
 #### useMemo
 
@@ -29,7 +28,9 @@ const banner = React.memo(({title }) => <div>{title}</div>, (prevProps, nextProp
 
 usememo 的使用需要傳入兩個參數
 
-const test = useMemo(callbalck, array)
+```javascript
+const test = useMemo(callbalck, array);
+```
 
 - callback:做計算處理的函式
 - array :當陣列改變時才會做重新計算， 如果沒有寫這個陣列，那麼每次渲染都會重新計算 ，如果放入空陣列 ，那麼效果就會跟 useEffect 類似 ，只會在初始渲染一次。
@@ -44,9 +45,11 @@ const test = useMemo(callbalck, array)
 
 useCallback 乍看之下跟 useMemo 差不多
 
-const test = useCallback(callbalck,array)  
-也等於  
-const test = useMemo(()=> callback, array)
+```javascript
+const test = useCallback(callbalck, array);
+//也等於
+const test = useMemo(() => callback, array);
+```
 
 但 useCallback 回傳的是 callback function 本身
 

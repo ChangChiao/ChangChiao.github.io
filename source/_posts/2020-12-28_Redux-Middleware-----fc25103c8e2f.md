@@ -1,9 +1,7 @@
 ---
 title: Redux Middleware 中繼站
-description: Redux Middleware翻成中介軟體，在dispatch
-  action之後到執行reducer之間，可以執行多個middleware，就像接力賽一樣將action交棒給middleware，再交棒給下一個middleware，最後才觸發reducer
 date: "2020-12-28T03:26:25.742Z"
-tags: ""
+tags: "react"
 ---
 
 ![](/img/1__2NpcgH9dWVbYWX0GJO____fQ.jpeg)
@@ -14,7 +12,9 @@ Redux Middleware 翻成中介軟體，在 dispatch action 之後到執行 reduce
 
 首先要先引入 applyMiddleware
 
-import { applyMiddleware } from 'redux'
+```javascript
+import { applyMiddleware } from "redux";
+```
 
 第一次看到這樣寫覺得很神奇，其實就是呼叫一個函式會再回傳一個函式 ES6 Arrow Function 的寫法
 

@@ -1,13 +1,9 @@
 ---
 title: 利用React Suspense & React Lazy來優化載入速度
-description: >-
-  在build專案的時候，我們會透過webpack將不同模組的component打包成同一支js，但是當專案的規模越來越大，
-  程式碼的size就會逐漸肥大，好幾mb都有可能，載入的時間也會拉長， 影響使用者體驗，而且並非所有的程式碼的功能會在一開始就使用到， 所以透過…
 date: "2020-11-30T01:11:16.322Z"
 categories: []
 keywords: []
-slug: >-
-  /@joe-chang/%E5%88%A9%E7%94%A8react-suspense-react-lazy%E4%BE%86%E5%84%AA%E5%8C%96%E8%BC%89%E5%85%A5%E9%80%9F%E5%BA%A6-befe89c1454f
+tag: react
 ---
 
 ![](/img/1__T1PGjFWTpsullBw1Y8lInw.jpeg)
@@ -44,7 +40,9 @@ _React Suspense & React Lazy 為 16.6 的版本才有的功能_
 
 但如果延遲載入的 js 很多，這樣的命名方式就不太好辨識哪個 js 檔案對應的是哪一個模組，可以再加上註解 webpackChunkName，這樣切割出來 bundle 的檔名就會依照註解的名稱命名
 
+```javascript
 const TodoList = lazy(() => import(/\* webpackChunkName: "toDoList" \*/'./TodoList'));
+```
 
 可以看到原本的 1.chunk.js 變成 toDoList.chunk.js
 

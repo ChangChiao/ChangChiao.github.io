@@ -1,12 +1,9 @@
 ---
 title: React vitural DOM
-description: >-
-  會特別寫這篇的原因是以前學習框架的時候只學語法而不懂原理，如果被問到使用框架有什麼好處可能也回答不太出來，由於React是透過Virtual
-  DOM來提升網頁渲染的效率，所以今天要來探討Virtual DOM的運作原理
 date: "2020-08-03T12:08:07.537Z"
 categories: []
 keywords: []
-slug: /@joe-chang/react-vitural-dom-134fa79e0d4f
+tag: react
 ---
 
 會特別寫這篇的原因是以前學習框架的時候只學語法而不懂原理，如果被問到使用框架有什麼好處可能也回答不太出來，由於 React 是透過 Virtual DOM 來提升網頁渲染的效率，所以今天要來探討 Virtual DOM 的運作原理，在了解 Virtual DOM 之前先來了解什麼是 DOM 吧！
@@ -41,30 +38,35 @@ slug: /@joe-chang/react-vitural-dom-134fa79e0d4f
 
 這是一般的 html 結構
 
-<div id="header">    
-    <h1 class="title">Apple</h1>  
-    <p class="content">lemon</p>   
+```html
+<div id="header">
+  <h1 class="title">Apple</h1>
+  <p class="content">lemon</p>
 </div>
+```
 
 這是 Virtual DOM 的結構，是 JavaScript 模擬出來的物件， 會以以下的格式儲存起來
 
-{  
- tag: "div",  
- props: {  
- id: "header"  
- },  
- children: \[  
- {  
- tag: "h1",  
- props: { className: "title" },  
- children: \["Apple"\]  
- }, {  
- tag: "p",  
- props: { className: "content" },  
- children: \["lemon"\]  
- }  
- \]  
+```javascript
+{
+    tag: "div",
+    props: {
+        id: "header"
+    },
+    children: [
+        {
+            tag: "h1",
+            props: { className: "title" },
+            children: ["Apple"]
+        }, {
+            tag: "p",
+            props: { className: "content" },
+            children: ["lemon"]
+        }
+    ]
 }
+type
+```
 
 - type: DOM 標籤名稱
 - props:DOM 屬性
@@ -74,18 +76,22 @@ slug: /@joe-chang/react-vitural-dom-134fa79e0d4f
 
 1.  createELement :先使用 Virtual DOM 提供的 createELement 方法來生成真實的 DOM
 
-```
-var count = 0;    var tree = render(count);               var rootNode = createElement(tree);     document.body.appendChild(rootNode);
+```javascript
+var count = 0;
+var tree = render(count);
+var rootNode = createElement(tree);
+document.body.appendChild(rootNode);
 ```
 
 2.當 count 變動時 Virtual DOM 進行比對 再將差異 patch 到實際的 DOM
 
-```
-count++
-```
+```javascript
+count++;
 
-```
-var newTree = render(count);var patches = diff(tree, newTree);rootNode = patch(rootNode, patches);tree = newTree;
+var newTree = render(count);
+var patches = diff(tree, newTree);
+rootNode = patch(rootNode, patches);
+tree = newTree;
 ```
 
 > 什麼是 patch？patch 指的是在原有的 DOM 結構上做異動

@@ -1,12 +1,9 @@
 ---
 title: React State & props
-description: >-
-  state 為自身component 存放資料的地方，管理內部狀態，格式為一個物件，以class component來說，在建立自身的component
-  state之前記得在constructor要先呼叫super()，不然會取不到this
 date: "2020-08-24T02:47:15.285Z"
 categories: []
 keywords: []
-slug: /@joe-chang/react-state-props-d855807eb3e9
+tag: react
 ---
 
 ![](/img/1__difOmaUKyEZrmlq4HliN1w.jpeg)
@@ -21,14 +18,13 @@ state 為自身 component 存放資料的地方，管理內部狀態，格式為
 
 這是省去 constructor 的寫法
 
-class StateExample extends Component{
-
-state = {
-
-    count:0 //初始值
-
-}  
+```javascript
+class StateExample extends Component {
+  state = {
+    count: 0, //初始值
+  };
 }
+```
 
 利用 this.state.count 就可以取到值，用 setState 可以改變 state
 
@@ -40,11 +36,11 @@ state = {
 
 如果我不用 setState ， 直接改 state 的值呢？你就會發現畫面一動也不動，因為 React 並不知道 state 已經被修改了，所以一定要用 setState
 
+```javascript
 addCount = () => {
-
-this.state.count++
-
-}
+  this.state.count++;
+};
+```
 
 另外，我在官網看到一個蠻有趣的例子，試著實作一下，點了按鈕後會連續觸發三次+1 的 function，預期應該會在畫面上看到 3 這個數字，結果，居然數字只有 1，原來會造成這樣的原因是 setState 是非同步的，如果要解決這樣的問題該怎麼做？
 

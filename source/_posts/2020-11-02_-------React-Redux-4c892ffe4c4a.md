@@ -1,13 +1,9 @@
 ---
 title: 像是迷霧森林的React Redux
-description: >-
-  寫過vue就知道有vue有提供vuex來做資料(state)的集中管理，那麼React呢?就是藉由Redux來達成，不過讓我有點訝異的應該是React 跟
-  Redux沒有關係，我以為Redux和React的關係就像vue和vuex一樣(殊不知完全不是)!
 date: "2020-11-02T01:20:45.555Z"
 categories: []
 keywords: []
-slug: >-
-  /@joe-chang/%E5%83%8F%E6%98%AF%E8%BF%B7%E9%9C%A7%E6%A3%AE%E6%9E%97%E7%9A%84react-redux-4c892ffe4c4a
+tag: react
 ---
 
 ![](/img/1__r39WdqeIKNCB3zpgB5__PCA.jpeg)
@@ -29,7 +25,7 @@ slug: >-
 
 首先，先安裝 Redux 和 React-Redux
 
-```
+```bash
 npm install redux react-redux
 ```
 
@@ -43,7 +39,7 @@ reducer 會有兩個參數， 第一個為初始狀態的 state ，即 initalSta
 
 React 透過 provider 接收傳入的 store ，可以讓所有的子組件透過 props 都拿到 state，每個專案都應該只有一個 store
 
-在 index.js 建立一個 provider ，並且包住<App/>
+在 index.js 建立一個 provider ，並且包住`<App/>`
 
 ![](/img/1__9M2IbbimRsj5CBxxd6GHZQ.png)
 
@@ -57,7 +53,9 @@ connect 的概念是將 Redux 與 UI 組件結合，Redux 負責資料處理，U
 
 connect 共有 4 個參數，但我看大部分的情境只會用到前面兩個，所以後面兩個參數就不介紹了
 
-**function** **connect**(mapStateToProps?, mapDispatchToProps?, mergeProps?, options?)
+```javascript
+function connect(mapStateToProps?, mapDispatchToProps?, mergeProps?, options?))
+```
 
 #### mapStateToProps
 

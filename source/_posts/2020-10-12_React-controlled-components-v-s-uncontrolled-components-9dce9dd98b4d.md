@@ -1,13 +1,9 @@
 ---
 title: React controlled components v.s uncontrolled components
-description: >-
-  在練習表單處理這塊，如果在不依賴套件的狀況下，可以有兩種方式來控制表單欄位，那麼今天就來介紹一下controlled component
-  和uncontrolled component
 date: "2020-10-12T11:56:56.192Z"
 categories: []
 keywords: []
-slug: >-
-  /@joe-chang/react-controlled-components-v-s-uncontrolled-components-9dce9dd98b4d
+tag: react
 ---
 
 ![](/img/1__dzwxjIEd8TgNeYS2ABE7DQ.jpeg)

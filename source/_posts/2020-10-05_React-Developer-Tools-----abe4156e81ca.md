@@ -1,13 +1,9 @@
 ---
 title: React Developer Tools除錯工具
-description: >-
-  在沒有用過框架的chrome的除錯工具前，我其實不知道類似這樣的工具在開發上能夠有什麼幫助？不過經過實際使用一陣子之後， 才發現dev
-  tools真的太好用了(雖然我用的是vue tools， Debug的時候很好用 ，可以看state當前的狀況是如何，…
 date: "2020-10-05T12:38:06.253Z"
 categories: []
 keywords: []
-slug: >-
-  /@joe-chang/react-developer-tools%E9%99%A4%E9%8C%AF%E5%B7%A5%E5%85%B7-abe4156e81ca
+tag: react
 ---
 
 在沒有用過框架的 chrome 的除錯工具前，我其實不知道類似這樣的工具在開發上能夠有什麼幫助？不過經過實際使用一陣子之後， 才發現 dev tools 真的太好用了(雖然我用的是 vue tools， Debug 的時候很好用 ，可以看 state 當前的狀況是如何， 以最快的速度找到畫面上的物件對應是哪個 component 等等
@@ -34,8 +30,10 @@ slug: >-
 
 大意是說要用 production 模式才能使用擴充功能，所以我先執行了 yarn build 之後再執行
 
-yarn global add serve  
+```bash
+yarn global add serve
 serve -s build
+```
 
 終於成功...
 
@@ -81,7 +79,9 @@ profiler 可以查看所有 component 的渲染時間， 結果一打開就說 p
 
 本來以為是 React 版本過舊 ，但升級之後還是不行， 點選面板上的網址依照指示執行
 
+```bash
 yarn build --profile
+```
 
 就可以了！ 點選左上角的藍色圓點 (Start profiling)進行錄製，這邊的操作跟 chrome performance 其實蠻類似的
 

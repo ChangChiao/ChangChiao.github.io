@@ -1,10 +1,9 @@
 ---
 title: "一磚一瓦\b-React Component"
-description: Component的概念就很像一塊塊積木，可以拼湊組成城堡或是飛船之類的，Component裡頭會回傳React…
 date: "2020-08-10T13:16:47.971Z"
 categories: []
 keywords: []
-slug: /@joe-chang/%E4%B8%80%E7%A3%9A%E4%B8%80%E7%93%A6-react-component-c75f0005af84
+tag: react
 ---
 
 ![](/img/1__wxwMoqK8HLJRM6i6H6lrqw.jpeg)
@@ -27,93 +26,97 @@ React Component 的有兩種寫法 Class Component 以及 Functional Component�
 
 在 Class 物件被建立時會呼叫一次，物件的屬性會在這裡做定義，這裡也可以帶入不同的參數來建立不同的類別，那可以不寫嗎？答案是可以的，沒寫也會預設幫你創建 constructor
 
-class Bird{  
- constructor(name){  
- this.name = name  
- }  
+```javascript
+class Bird {
+  constructor(name) {
+    this.name = name;
+  }
 }
 
-const bird1 = new Bird('kerry')  
-const bird2 = new Bird('bay')
+const bird1 = new Bird("kerry");
+const bird2 = new Bird("bay");
+```
 
 **extends 繼承**
 
 先宣告一個父類別(鳥類），並且一定義一個飛行的函式，接者子類別（老鷹）繼承父類別，就可以使用父類別定義的方法。
 
-class Bird{  
- fly(){  
- console.log('fly')
-
-}  
+```javascript
+class Bird {
+  fly() {
+    console.log("fly");
+  }
 }
 
-class Eagle{
+class Eagle {}
 
-}
-
-const eagle = new Eagle()  
-eagle.fly() // 印出 fly
+const eagle = new Eagle();
+eagle.fly(); // 印出 fly
+```
 
 假如子類別定義了與父類別相同的函式名稱，那麼子類別的函式就會取代父類別的函式
 
-class Bird{  
- fly(){  
- console.log('Birdfly')
-
-}  
+```javascript
+class Bird {
+  fly() {
+    console.log("Birdfly");
+  }
 }
 
-class Eagle{  
- fly(){  
- console.log('Eaglefly')
-
-}  
+class Eagle {
+  fly() {
+    console.log("Eaglefly");
+  }
 }
 
-const eagle = new Eagle()  
-eagle.fly() // Eaglefly
+const eagle = new Eagle();
+eagle.fly(); // Eaglefly
+```
 
 那假設我想要在子類別的呼叫父類別的方法可以嗎？就是 super()登場的時候了，為了可以取得父類別的屬性或是方法會在 constructor 呼叫 super()方法，這麼一來子類別不需要重寫一遍 this.name = name，只要 super(name)即可，利用 super.函式名稱就可以呼叫父類別的方法。
 
-class Bird{  
- constructor(name){  
- this.name = name  
- }  
- fly(){  
- console.log('Birdfly')  
- }  
+```javascript
+class Bird {
+  constructor(name) {
+    this.name = name;
+  }
+  fly() {
+    console.log("Birdfly");
+  }
 }
 
-class Eagle{  
- constructor(name){  
- super(name)  
- }
+class Eagle {
+  constructor(name) {
+    super(name);
+  }
 
-fly(){  
- super.fly()  
- console.log('Eaglefly')
-
-}  
+  fly() {
+    super.fly();
+    console.log("Eaglefly");
+  }
 }
 
-const eagle = new Eagle()  
-eagle.fly() // 輸出 Birdfly Eaglefly
+const eagle = new Eagle();
+eagle.fly(); // 輸出 Birdfly Eaglefly
+```
 
 **靜態方法 static**
 
 屬於 class 的屬性或方法，不需要實例化，就能以 class 名稱.方法來呼叫
 
-class Bird(){  
- static diss(name){  
- console.log('diss ' + name )
-
-}  
+```javascript
+class Bird(){
+  static diss(name){
+   console.log('diss ' + name )
+ }
 }
+
 
 Bird.diss('mel') //輸出 diss mel
 
-const bird = new Bird()  
+const bird = new Bird()
 bird.diss('mel) //bird.diss is not a function
+```
 
 了解了 Class 類別之後就可以來創建 React Component
 
@@ -127,16 +130,34 @@ constructor() 方法，必須先執行 super()，才能取得 this，會在這�
 
 什麼都沒寫的
 
-constructor() {  
- `super()    console.log(this.props)//undefined    console.log(props)//error   }`
+```javascript
+constructor() {
+ super()
+ console.log(this.props)//undefined
+ console.log(props)//error
+}
+```
 
 無法取得 `this.props`
 
-constructor(props) { `super()    console.log(this.props)//undefined    console.log(props)//{}   }`
+```javascript
+constructor(props) {
+ super()
+ console.log(this.props)//undefined
+ console.log(props)//{}
+}
+
+```
 
 成功取得`this.props`！
 
-constructor(props) { `super(props)    console.log(this.props)//{}    console.log(props)//{}   }`
+```javascript
+constructor(props) {
+ super(props)
+ console.log(this.props)//{}
+ console.log(props)//{}
+}
+```
 
 這樣看起來如果要在 constructor 階段取得 this.props 還是乖乖寫上 super(props)吧！
 

@@ -1,24 +1,27 @@
 ---
 title: React JSX — html 和JavaScript的完美結合
-description: >-
-  React利用JSX語法來開發，類似XML的寫法，可以將UI介面跟程式邏輯跟緊密的結合（在html中使用JavaScript語法），一般的瀏覽器是看不懂JSX的，就需要babel來轉化成一般的JavaScript，如果經過babel編譯就會發現JSX被轉為React.create…
 date: "2020-08-17T11:58:40.535Z"
 categories: []
 keywords: []
-slug: >-
-  /@joe-chang/react-jsx-html-%E5%92%8Cjavascript%E7%9A%84%E5%AE%8C%E7%BE%8E%E7%B5%90%E5%90%88-6994ac94fa2d
+tag: react
 ---
 
 ![](/img/1__A0Vfq5KRGuqlq70dLNujuw.jpeg)
 
 React 利用 JSX 語法來開發，類似 XML 的寫法，可以將 UI 介面跟程式邏輯跟緊密的結合（在 html 中使用 JavaScript 語法），一般的瀏覽器是看不懂 JSX 的，就需要 babel 來轉化成一般的 JavaScript，如果經過 babel 編譯就會發現 JSX 被轉為 React.createElement，所以 JSX 比較像是語法糖的概念。
 
-//JSX 的寫法
+`JSX 的寫法`
 
-<h1>Hello World</h1>;
+```html
+<h1>Hello World</h1>
+;
+```
 
-//React.createElement 的寫法  
+`React.createElement 的寫法 `
+
+```javascript
 React.createElement(“h1”, null, “Hello World”);
+```
 
 JSX 看起來是不是簡單多了！？
 
@@ -34,19 +37,13 @@ JSX 看起來是不是簡單多了！？
 
 用 Fragment 的好處就是不會額外增加不必要的 dom 節點
 
-import React, {Component, Fragment} from 'react';
+```javascript
+import React, { Component, Fragment } from "react";
 
-return (
+return <Fragment>{this.state.order}</Fragment>;
+```
 
-   <Fragment>
-
-     {this.state.order}
-
-   </Fragment>
-
-)
-
-<Fragment> </Fragment>也可以縮寫寫成<> </>
+`<Fragment> </Fragment>`也可以縮寫寫成<> </>
 
 html tag 需要有開始標籤和結束標籤，如果沒有結束標籤就要以 />結尾，JSX 習慣用（）包起來。
 
@@ -88,7 +85,9 @@ style 的話可以傳入物件，不過 css 屬性都要變成駝峰式，個人
 
 **requre 的方式**
 
+```html
 <img src={require('../public/su.jpeg')} />
+```
 
 不過這時候我把圖片丟在 public，結果就報錯了
 
@@ -98,10 +97,14 @@ style 的話可以傳入物件，不過 css 屬性都要變成駝峰式，個人
 
 **import 的方式**
 
-import img from ‘./assets/su.jpeg’
+```javascript
+import img from "./assets/su.jpeg";
+```
 
 然後在 JSX 的部分賦予 img 這個變數即可
 
-<img src={img} />
+```html
+<img src="{img}" />
+```
 
 以上就是針對 JSX 的簡單介紹！

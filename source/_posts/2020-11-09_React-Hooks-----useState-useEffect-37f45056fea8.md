@@ -1,13 +1,9 @@
 ---
 title: React Hooks (上)-useState&useEffect
-description: >-
-  當functional component 遇上React
-  Hooks，就好像白雪公主遇到她的王子…（我想不到更好的比喻了）有了Hooks，讓functional component也能擁有自己的state
-  、lifecycle，而且寫法也比原本的class…
 date: "2020-11-09T13:28:01.543Z"
 categories: []
 keywords: []
-slug: /@joe-chang/react-hooks-%E4%B8%8A-usestate-useeffect-37f45056fea8
+tag: react
 ---
 
 ![](/img/1__ZlQRKw8P3OGk9zM6HIi7uQ.jpeg)
@@ -22,7 +18,9 @@ slug: /@joe-chang/react-hooks-%E4%B8%8A-usestate-useeffect-37f45056fea8
 
 useState 也可以傳入函式，但必須回傳值
 
-const \[count, setCount\] = useState(()=> return 0})
+```javascript
+const [count, setCount] = useState(()=> return 0})
+```
 
 點擊按鈕數字就會自動加 1
 
@@ -34,7 +32,9 @@ const \[count, setCount\] = useState(()=> return 0})
 
 反覆看了程式碼真的一頭霧水，只好求救 google 大神，才發現我的 React 不小心包在大括號裡面， 因為 React 預設為 export default，所以一定要放在大括號外面，明明已經寫過很多遍，但是恍神的時候還是有可能寫錯，而且一時半刻找不出問題在哪裡 orz
 
-import React, {useState, Fragment} from 'react';
+```javascript
+import React, { useState, Fragment } from "react";
+```
 
 ### useEffect
 
@@ -52,9 +52,11 @@ _什麼是副作用（Side Effect）？_
 
 第二個參數為一個陣列，是給 useEffect 判斷要不要執行函式的變數，如果這個參數有更動才會執行 function，第二個參數如果放一個空陣列，等同於是 componentDidMount，如果放的不是空陣列，初始渲染會執行一次，陣列裡面的資料有異動會在執行一次(componentDidUpdate)。
 
-userEffect(()=>{  
-//初始渲染執行一次，資料有變化再更新一次等於 componentDidUpdate  
-},\[data\])
+```javascript
+userEffect(() => {
+  //初始渲染執行一次，資料有變化再更新一次等於componentDidUpdate
+}, [data]);
+```
 
 下面的例子是在 componentDidMount 階段呼叫 api 取得資料，然後再渲染到頁面上
 
