@@ -14,7 +14,8 @@ timezone: ""
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://blog-changchiao.vercel.app
-permalink: :year/:month/:day/:title/
+# permalink: :year/:month/:day/:title/
+permalink: /post/:title.html
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -44,11 +45,13 @@ post_asset_folder: true
 marked:
   prependRoot: true
   postAsset: true
-
+auto_excerpt:
+  enable: true
+  length: 150
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace: ""
@@ -101,7 +104,9 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+# theme: landscape
+theme: aurora
+# theme: obsidian
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
