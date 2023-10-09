@@ -1,6 +1,6 @@
 ---
 title: export 跟module exports 有什麼差異？
-date: "2020-04-20T15:24:30.625Z",
+date: "2020-04-20T15:24:30.625Z"
 description: >-
   不得不承認剛開始接觸的時候，我會把export 跟module exports
   搞混(都有個export嘛)，其實他們兩個是完全不相干的，搞不懂為甚麼不能在vue.config.js使用import，後來查資料才發現兩者遵循的規範是不一樣的，既然要比較差異，就先個別介紹一下。
