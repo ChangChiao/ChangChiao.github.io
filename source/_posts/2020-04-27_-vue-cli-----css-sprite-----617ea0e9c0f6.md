@@ -1,13 +1,9 @@
 ---
 title: 在vue cli 裡使用 css sprite 雪碧圖
-description: >-
-  剛踏進前端領域時，前輩建議我可以試試看雪碧圖，恩？雪碧圖？那是什麼東西，簡單來說就是將多張圖片合成一張大圖，減少http
-  request次數，本來30張小圖片要請求30次，現在只要請求一次就大功告成了。
 date: "2020-04-27T12:13:12.394Z"
 categories: []
 keywords: []
-slug: >-
-  /@joe-chang/%E5%9C%A8vue-cli-%E8%A3%A1%E4%BD%BF%E7%94%A8-css-sprite-%E9%9B%AA%E7%A2%A7%E5%9C%96-617ea0e9c0f6
+tag: vue
 ---
 
 ![](/img/1__Jfg5lfwcVVIgX9GUgEposg.jpeg)
@@ -24,44 +20,45 @@ slug: >-
 
 然後在 vue.config.js 設定
 
+```javascript
+var path = require("path");
+var SpritesmithPlugin = require("webpack-spritesmith");
+
+configureWebpack: (config) => {
+  config.resolve.modules = ["node_modules", "./src/assets/"];
+  const Plugins = [
+    new SpritesmithPlugin({
+      src: {
+        cwd: path.resolve(__dirname, "./src/assets/sprite/"),
+        glob: "*.png",
+      },
+      target: {
+        image: path.resolve(__dirname, "./src/assets/sprite.png"),
+        css: path.resolve(__dirname, "./src/assets/_sprite.scss"),
+      },
+      apiOptions: {
+        cssImageRef: "~sprite.png",
+      },
+      spritesmithOptions: {
+        padding: 10,
+      },
+    }),
+  ];
+  config.plugins = [...config.plugins, ...Plugins];
+};
 ```
-var path = require('path');var SpritesmithPlugin = require('webpack-spritesmith');
-```
 
-configureWebpack: config => {  
- config.resolve.modules = \['node_modules', './src/assets/'\]  
- const Plugins = \[  
- new SpritesmithPlugin({  
- src: {  
- cwd: path.resolve(\_\_dirname, './src/assets/sprite/'),  
- glob: '\*.png'  
- },  
- target: {  
- image: path.resolve(\_\_dirname, './src/assets/sprite.png'),  
- css: path.resolve(\_\_dirname, './src/assets/\_sprite.scss')  
- },  
- apiOptions: {  
- cssImageRef: '~sprite.png'  
- },  
- spritesmithOptions: {  
- padding: 10  
- }  
- })  
- \]  
- config.plugins = \[...config.plugins, ...Plugins\]  
- }
+- cwd:為圖片素材存放的資料夾
 
-cwd:為圖片素材存放的資料夾
+- glob:指定來源圖片類型(png、jpg 等等)，如果不限定可以寫成＊
 
-glob:指定來源圖片類型(png、jpg 等等)，如果不限定可以寫成＊
+- target image :輸出大圖到指定的資料夾
 
-target image :輸出大圖到指定的資料夾
+- target css: 輸出 scss（css）到指定的資料夾
 
-target css: 輸出 scss（css）到指定的資料夾
+- padding:設定圖片的間隔
 
-padding:設定圖片的間隔
-
-apiOptions cssImageRef： scss 參考圖片的位置
+- apiOptions cssImageRef： scss 參考圖片的位置
 
 下方為輸出的 scss，可以看到用變數的方式來設定圖片的定位
 

@@ -1,13 +1,9 @@
 ---
 title: 檢測效能的好幫手Chrome Devtool Performance
-description: >-
-  初次使用這個功能 是因為寫了一個動態效果很多的網頁但非常吃效能，年輕不懂事，每秒create好幾百個DOM在畫面上飛來飛去(好孩子不要學
-  ，頁面放一陣子就開始卡了，後來比較資深的前輩教我可以用chrome performance功能查看。
 date: "2020-04-06T15:38:53.337Z"
 categories: []
 keywords: []
-slug: >-
-  /@joe-chang/%E6%AA%A2%E6%B8%AC%E6%95%88%E8%83%BD%E7%9A%84%E5%A5%BD%E5%B9%AB%E6%89%8Bchrome-devtool-performance-2ae96e7c4f69
+tag: other
 ---
 
 ![](/img/1__wtKKpP0tOxOi1____rHdxp2A.jpeg)
