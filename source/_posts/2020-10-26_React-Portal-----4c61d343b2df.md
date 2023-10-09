@@ -1,5 +1,7 @@
 ---
 title: React Portal 任意門
+description: >-
+  Portal為插槽功能，可以將子元件渲染到父元件以外的地方，聽起來很炫，概念感覺有點像任意門？render一個component時，其實改變的是另一個地方的DOM，通常會用到的情境是要跳脫父元件的限制，像是z-index、overflow:hidden等等。
 date: "2020-10-26T14:11:29.503Z"
 categories: []
 keywords: []

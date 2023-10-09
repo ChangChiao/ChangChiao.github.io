@@ -1,6 +1,8 @@
 ---
 title: Redux Middleware 中繼站
 date: "2020-12-28T03:26:25.742Z"
+description: "Redux Middleware 翻成中介軟體，在 dispatch action 之後到執行 reducer 之間，可以執行多個 middleware，就像接力賽一樣將 action 交棒給 middleware，再交棒給下一個 middleware，最後才觸發 reducer
+"
 tags: "react"
 ---
 

@@ -1,6 +1,9 @@
 ---
 title: 認識 css 屬性 background-clip
 date: "2020-06-08T13:30:54.399Z"
+description: >-
+  第一次認識這個css屬性是在某一年的apple發表會，看到了文字居然有漸層效果！
+  覺得很酷，看了一下程式碼發現是用了background-clip：text屬性，查了一下資料，發現除了text還有其他值可以設定，下面就來簡單介紹background-clip設定不同值的差異。
 categories: []
 keywords: []
 tag: css

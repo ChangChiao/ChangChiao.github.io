@@ -1,5 +1,6 @@
 ---
 title: "一磚一瓦\b-React Component"
+description: Component的概念就很像一塊塊積木，可以拼湊組成城堡或是飛船之類的，Component裡頭會回傳React…
 date: "2020-08-10T13:16:47.971Z"
 categories: []
 keywords: []

@@ -1,5 +1,7 @@
 ---
 title: React JSX — html 和JavaScript的完美結合
+description: >-
+  React利用JSX語法來開發，類似XML的寫法，可以將UI介面跟程式邏輯跟緊密的結合（在html中使用JavaScript語法），一般的瀏覽器是看不懂JSX的，就需要babel來轉化成一般的JavaScript，如果經過babel編譯就會發現JSX被轉為React.create…
 date: "2020-08-17T11:58:40.535Z"
 categories: []
 keywords: []

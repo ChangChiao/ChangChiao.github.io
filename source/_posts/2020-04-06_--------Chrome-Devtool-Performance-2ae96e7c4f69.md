@@ -1,6 +1,9 @@
 ---
 title: 檢測效能的好幫手Chrome Devtool Performance
-date: "2020-04-06T15:38:53.337Z"
+date: "2020-04-06T15:38:53.337Z",
+description: >-
+  初次使用這個功能 是因為寫了一個動態效果很多的網頁但非常吃效能，年輕不懂事，每秒create好幾百個DOM在畫面上飛來飛去(好孩子不要學
+  ，頁面放一陣子就開始卡了，後來比較資深的前輩教我可以用chrome performance功能查看。
 categories: []
 keywords: []
 tag: other

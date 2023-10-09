@@ -1,5 +1,6 @@
 ---
 title: 了解window Location 物件
+description: 假設今天我們需要獲取網址列的資訊，可以怎麼做？想必大家location.href並不陌生吧？
 date: "2020-02-24T13:24:08.664Z"
 tags: javascript
 categories: []
@@ -8,7 +9,7 @@ keywords: []
 
 ![](/img/1__cOvGChemcFOVFZmRk5__KmA.jpeg)
 
-假設今天我們需要獲取網址列的資訊，可以怎麼做？想必大家 location.href 並不陌生吧？
+假設今天我們需要獲取網址列的資訊，可以怎麼做？想必大家對 location.href 並不陌生吧？
 
 假設今天我們有一個網址
 
@@ -141,11 +142,11 @@ window.addEventListener(
 
 ```javascript
 //獲得先前的 state 狀態
-window.addEventListener("popstate", function(event) {
-var state = event.state;
-//do something(state.pageInfo);
-})
+window.addEventListener("popstate", function (event) {
+  var state = event.state;
+  //do something(state.pageInfo);
+});
+```
 
 history.back()、history.forward()、history.go()是會觸發 popstate 事件，
 但是 history.pushState()和 history.replaceState()不會觸發 popstate 事件。
-```

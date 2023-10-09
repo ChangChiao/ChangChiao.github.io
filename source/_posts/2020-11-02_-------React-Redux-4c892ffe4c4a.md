@@ -1,5 +1,8 @@
 ---
 title: 像是迷霧森林的React Redux
+description: >-
+  寫過vue就知道有vue有提供vuex來做資料(state)的集中管理，那麼React呢?就是藉由Redux來達成，不過讓我有點訝異的應該是React 跟
+  Redux沒有關係，我以為Redux和React的關係就像vue和vuex一樣(殊不知完全不是)!
 date: "2020-11-02T01:20:45.555Z"
 categories: []
 keywords: []

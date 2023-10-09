@@ -1,5 +1,8 @@
 ---
 title: React State & props
+description: >-
+  state 為自身component 存放資料的地方，管理內部狀態，格式為一個物件，以class component來說，在建立自身的component
+  state之前記得在constructor要先呼叫super()，不然會取不到this
 date: "2020-08-24T02:47:15.285Z"
 categories: []
 keywords: []

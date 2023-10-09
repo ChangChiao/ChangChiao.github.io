@@ -1,6 +1,9 @@
 ---
 title: javascript Date物件
 date: "2020-05-18T12:43:13.630Z"
+description: >-
+  剛開始處理時間這塊的時候都是使用套件 moment.js ，沒仔細去研究Date物件，直到某天才發現自己連new
+  Date都不知道是什麼（汗顏）因此花點時間來了解javascript Date物件。
 categories: []
 keywords: []
 tag: "javascript"

@@ -1,5 +1,8 @@
 ---
 title: React Functional Component v.s Class Component
+description: >-
+  原本以為只有class component的寫法，但在看技術文章的時候發現還有一種寫法是functional component，有了react
+  hook之後，好像functional component就變成主流了（嗎）？
 date: "2020-09-28T11:51:17.080Z"
 categories: []
 keywords: []

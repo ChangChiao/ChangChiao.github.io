@@ -1,6 +1,9 @@
 ---
 title: React hook(下)-useMemo&useRef
 date: "2020-11-23T00:37:31.785Z"
+description: >-
+  在搜尋useMemo的時候，就一直看到React.memo的相關資料 ，雖然React memo不屬於React
+  hook的一部分，但還是簡單介紹一下，我們都知道class…
 categories: []
 keywords: []
 tag: react

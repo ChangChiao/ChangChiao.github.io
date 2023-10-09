@@ -1,5 +1,8 @@
 ---
 title: fetch ＆ axios in React
+description: >-
+  剛開始工作的時候是jQuery 的時代  ，用$.ajax來接api得心應手， 偶爾接觸到不能用jQuery的專案，
+  就用原生的XMLHttpRequest來處理， 隨著時間演變 ，串接api的方式有了更多的選擇， 接下來就會介紹 fetch 和 axios
 date: "2020-12-07T13:40:30.746Z"
 categories: []
 keywords: []
@@ -8,7 +11,7 @@ tag: react
 
 ![](/img/1__hLk1esqWCVEd5tZAqYmj__A.jpeg)
 
-剛開始工作的時候是 jQuery 的時代 ，用$.ajax 來接 api 得心應手， 偶爾接觸到不能用 jQuery 的專案， 就用原生的 XMLHttpRequest 來處理， 隨著時間演變 ，串接 api 的方式有了更多的選擇， 接下來就會介紹 fetch 和 axios
+剛開始工作的時候是 jQuery 的時代，用$.ajax 來接 api 得心應手，偶爾接觸到不能用 jQuery 的專案，就用原生的 XMLHttpRequest 來處理，隨著時間演變，串接 api 的方式有了更多的選擇， 接下來就會介紹 fetch 和 axios
 
 #### fetch
 
