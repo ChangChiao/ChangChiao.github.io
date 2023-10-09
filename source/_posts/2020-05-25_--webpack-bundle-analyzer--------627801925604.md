@@ -1,12 +1,9 @@
 ---
 title: 利用webpack-bundle-analyzer來分析檔案大小
-description: >-
-  開發專案的時候為了求快速達成效果，就安裝了各式各樣套件來使用，正所謂先求有再求好，當專案開發完畢後，就會開始要求優化載入速度，某天老闆問說為甚麼我們build出來的檔案可以這麼巨大?居然有好幾MB？於是就要想辦法幫檔案瘦身了…
 date: "2020-05-25T13:24:34.834Z"
 categories: []
 keywords: []
-slug: >-
-  /@joe-chang/%E5%88%A9%E7%94%A8webpack-bundle-analyzer%E4%BE%86%E5%88%86%E6%9E%90%E6%AA%94%E6%A1%88%E5%A4%A7%E5%B0%8F-627801925604
+tag: other
 ---
 
 ![](/img/1__hwEPGCV0WcCF2UM9qlgVwg.png)
@@ -15,21 +12,24 @@ slug: >-
 
 安裝方式 提供了 yarn or npm 的方法
 
-\# NPM  
+```bash
+# NPM
 npm install --save-dev webpack-bundle-analyzer
 
-\# Yarn  
+# Yarn
 yarn add -D webpack-bundle-analyzer
+```
 
 在 webpack 裡面設定 ，Vue cli 的話就是在 vue.config.js
 
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+```javascript
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
-module.exports = {  
- plugins: \[  
- new BundleAnalyzerPlugin()  
- \]  
-}
+module.exports = {
+  plugins: [new BundleAnalyzerPlugin()],
+};
+```
 
 以 Vue cli 為例，重新 yarn serve 就會看到檔案大小圖表分析了!
 
