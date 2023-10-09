@@ -1,13 +1,9 @@
 ---
 title: 透過JavaScript try catch來做例外處理
-description: >-
-  第一次接觸try catch是在剛學PHP的時候 ，雖然現在都還給老師就是了…我們可以利用try
-  catch來捕捉例外的狀況，也可以因應不同錯誤狀況，拋出不伊樣的錯誤訊息。
 date: "2020-06-29T13:10:42.443Z"
 categories: []
 keywords: []
-slug: >-
-  /@joe-chang/%E9%80%8F%E9%81%8Ejavascript-try-catch%E4%BE%86%E5%81%9A%E4%BE%8B%E5%A4%96%E8%99%95%E7%90%86-57971f82f164
+tag: javascript
 ---
 
 第一次接觸 try catch 是在剛學 PHP 的時候 ，雖然現在都還給老師就是了…我們可以利用 try catch 來捕捉例外的狀況，也可以因應不同錯誤狀況，拋出不一樣的錯誤訊息。
@@ -28,9 +24,14 @@ slug: >-
 
 這時就可以用 try catch 來預防這樣的情況，try 區塊放的程式碼是你預期可能會出錯的地方，可以針對不同的狀況，用 throw 拋出不同的錯誤訊息，如果在執行時發生錯誤就會拋出錯誤給 catch 並且印出錯誤訊息，補充一下無論是否在 try 的部分拋出錯誤， finally 都會執行。
 
-**try(no error) 》finally**
+```javascript
 
-**try(error) 》 catch 》finally**
+//no error
+try => finally
+
+//error
+try => catch  => finally
+```
 
 ![](/img/1__P__M9oDvKfHw6UG1h776xfA.png)
 ![](/img/1__lJzxBtfkNzeJKo35dXuSLw.png)
