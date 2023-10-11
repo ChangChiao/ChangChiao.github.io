@@ -7,7 +7,6 @@ date: "2021-10-12T02:12:28.442Z"
 categories: []
 keywords: []
 tag: Algorithm
-slug: /@joe-chang/binary-tree-traversal-622caed2fad5
 ---
 
 ![](/img/1__H7wB6FPsJcKZN1GAQV2CCw.jpeg)

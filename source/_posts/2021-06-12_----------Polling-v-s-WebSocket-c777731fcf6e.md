@@ -7,8 +7,6 @@ date: "2021-06-12T08:54:15.994Z"
 categories: []
 keywords: []
 tag: web
-slug: >-
-  /@joe-chang/%E7%B6%B2%E9%A0%81%E5%A6%82%E4%BD%95%E5%8F%8A%E6%99%82%E9%80%9A%E8%A8%8A-polling-v-s-websocket-c777731fcf6e
 ---
 
 ![](/img/1__NJ8PcBtOMlTnVNtoEq__Hog.jpeg)

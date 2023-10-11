@@ -6,8 +6,6 @@ date: "2021-11-08T09:55:41.095Z"
 categories: []
 keywords: []
 tag: Algorithm
-slug: >-
-  /@joe-chang/%E6%8E%92%E5%BA%8F%E6%BC%94%E7%AE%97%E6%B3%95-selection-sort-%E9%81%B8%E6%93%87%E6%8E%92%E5%BA%8F%E6%B3%95-2493c9ebb41b
 ---
 
 ![](/img/1__PfiVmotYEyxtz2OKg1RBTQ.jpeg)

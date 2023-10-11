@@ -7,8 +7,6 @@ date: "2021-12-15T07:32:53.104Z"
 categories: []
 keywords: []
 tag: Algorithm
-slug: >-
-  /@joe-chang/greedy-algorithm-%E8%B2%AA%E5%A9%AA%E6%BC%94%E7%AE%97%E6%B3%95-bf62d816b650
 ---
 
 ![](/img/1__KJEn3J7mgqHiu0sVC07__SA.jpeg)

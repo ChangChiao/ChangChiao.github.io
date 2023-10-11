@@ -7,8 +7,6 @@ date: "2021-03-29T01:16:51.917Z"
 tag: vue
 categories: []
 keywords: []
-slug: >-
-  /@joe-chang/%E5%A6%82%E4%BD%95%E7%94%A8vue-cli-%E6%90%AD%E9%85%8Dtailwind-css%E9%96%8B%E7%99%BC-42c0f0dc3d3a
 ---
 
 ![](/img/1__be__1YYiD8cGVJZu81iP7QQ.jpeg)

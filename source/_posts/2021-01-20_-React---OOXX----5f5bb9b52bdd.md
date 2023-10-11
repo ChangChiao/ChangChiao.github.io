@@ -5,8 +5,6 @@ date: "2021-01-20T00:54:49.160Z"
 categories: []
 keywords: []
 tag: react
-slug: >-
-  /@joe-chang/%E7%94%A8react-%E4%BE%86%E5%AF%ABooxx%E5%B0%8F%E9%81%8A%E6%88%B2-5f5bb9b52bdd
 ---
 
 ![](/img/1__DE3ezMkndLTLouwWLMTjOQ.jpeg)

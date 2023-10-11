@@ -5,8 +5,6 @@ date: "2021-10-30T13:26:44.754Z"
 categories: []
 keywords: []
 tag: Algorithm
-slug: >-
-  /@joe-chang/%E6%8E%92%E5%BA%8F%E6%BC%94%E7%AE%97%E6%B3%95-bubble-sort-%E6%B0%A3%E6%B3%A1%E6%8E%92%E5%BA%8F%E6%B3%95-b13ffccd33b9
 ---
 
 ![](/img/1__HR5RaJDwqn4BCtfWpFo9bQ.jpeg)

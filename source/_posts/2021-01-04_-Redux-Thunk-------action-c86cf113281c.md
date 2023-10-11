@@ -8,8 +8,6 @@ date: "2021-01-04T15:01:58.520Z"
 categories: []
 keywords: []
 tag: react
-slug: >-
-  /@joe-chang/%E7%94%A8redux-thunk-%E4%BE%86%E8%99%95%E7%90%86%E9%9D%9E%E5%90%8C%E6%AD%A5action-c86cf113281c
 ---
 
 ![](/img/1__gf4tBJx__PdjmBLS4rRartA.jpeg)
