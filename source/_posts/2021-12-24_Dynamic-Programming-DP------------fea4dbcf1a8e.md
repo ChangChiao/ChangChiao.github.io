@@ -4,7 +4,6 @@ description: 在認識動態規劃之前先來理解Divide and Conquer(分治法
 date: "2021-12-24T13:32:28.290Z"
 categories: Algorithm
 keywords: []
-tag: Algorithm
 ---
 
 ![](/img/1__Ul2zeneW3rRZEn18x41hNA.jpeg)

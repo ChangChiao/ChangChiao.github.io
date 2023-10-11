@@ -4,7 +4,6 @@ description: 簡單來說就是函式自己呼叫自己的狀況，遞迴由兩�
 date: "2021-10-24T01:18:48.307Z"
 categories: Algorithm
 keywords: []
-tag: Algorithm
 ---
 
 ![](/img/1__nimdzHf3xzdIgrbYVKFvNA.jpeg)

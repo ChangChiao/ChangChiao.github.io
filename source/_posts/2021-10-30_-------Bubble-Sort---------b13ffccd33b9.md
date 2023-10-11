@@ -4,7 +4,6 @@ description: bubble sort的概念就是像泡泡一樣 ，越大的數字會漸�
 date: "2021-10-30T13:26:44.754Z"
 categories: Algorithm
 keywords: []
-tag: Algorithm
 ---
 
 ![](/img/1__HR5RaJDwqn4BCtfWpFo9bQ.jpeg)
