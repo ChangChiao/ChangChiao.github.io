@@ -4,7 +4,7 @@ date: "2020-05-04T14:02:13.102Z"
 description: >-
   想必大家都有過一個經驗，多人開發撰寫css時，一個不小心就會發生樣式互蓋的情形，因此在vue裡面scoped可以幫助我們避免掉這樣的狀況，可以限定css的作用範圍，打開f12來看有使用scoped
   的component，可以發現在DOM和css的data屬性會加上data +…
-categories: []
+categories: vue
 keywords: []
 tag: vue
 ---

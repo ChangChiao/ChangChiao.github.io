@@ -2,7 +2,7 @@
 title: Recursive — 遞迴
 description: 簡單來說就是函式自己呼叫自己的狀況，遞迴由兩部分組成
 date: "2021-10-24T01:18:48.307Z"
-categories: []
+categories: Algorithm
 keywords: []
 tag: Algorithm
 ---

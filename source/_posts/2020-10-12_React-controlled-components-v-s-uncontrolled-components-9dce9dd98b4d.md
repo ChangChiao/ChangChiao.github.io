@@ -4,7 +4,7 @@ description: >-
   在練習表單處理這塊，如果在不依賴套件的狀況下，可以有兩種方式來控制表單欄位，那麼今天就來介紹一下controlled component
   和uncontrolled component
 date: "2020-10-12T11:56:56.192Z"
-categories: []
+categories: react
 keywords: []
 tag: react
 ---

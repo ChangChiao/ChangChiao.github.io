@@ -2,7 +2,7 @@
 title: 用React 來寫OOXX小遊戲
 description: OOXX小遊戲也可以說是很熱門的練習題，所以今天就用React 來寫一個OOXX的小遊戲吧！
 date: "2021-01-20T00:54:49.160Z"
-categories: []
+categories: react
 keywords: []
 tag: react
 ---

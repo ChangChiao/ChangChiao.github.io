@@ -5,7 +5,7 @@ description: >-
   Hooks，就好像白雪公主遇到她的王子…（我想不到更好的比喻了）有了Hooks，讓functional component也能擁有自己的state
   、lifecycle，而且寫法也比原本的class…
 date: "2020-11-09T13:28:01.543Z"
-categories: []
+categories: react
 keywords: []
 tag: react
 ---

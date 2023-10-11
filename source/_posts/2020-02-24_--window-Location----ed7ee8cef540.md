@@ -3,7 +3,7 @@ title: 了解window Location 物件
 description: 假設今天我們需要獲取網址列的資訊，可以怎麼做？想必大家location.href並不陌生吧？
 date: "2020-02-24T13:24:08.664Z"
 tags: javascript
-categories: []
+categories: web
 keywords: []
 ---
 

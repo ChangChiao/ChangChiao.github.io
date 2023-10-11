@@ -4,7 +4,7 @@ description: >-
   在沒有用過框架的chrome的除錯工具前，我其實不知道類似這樣的工具在開發上能夠有什麼幫助？不過經過實際使用一陣子之後， 才發現dev
   tools真的太好用了(雖然我用的是vue tools， Debug的時候很好用 ，可以看state當前的狀況是如何，…
 date: "2020-10-05T12:38:06.253Z"
-categories: []
+categories: react
 keywords: []
 tag: react
 ---

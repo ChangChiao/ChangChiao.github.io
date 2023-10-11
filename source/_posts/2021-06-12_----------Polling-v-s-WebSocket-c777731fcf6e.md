@@ -4,7 +4,7 @@ description: >-
   有天我用line pay在某某購物網買東西， 突然想到為甚麼每次我用手機付款成功後，網頁就能夠及時告訴我付款成功呢?
   於是便打開chrome開發者工具觀察了一下， 發現網頁會定期(每秒)打API去要資料， 就能及時更新我的付款狀態。
 date: "2021-06-12T08:54:15.994Z"
-categories: []
+categories: web
 keywords: []
 tag: web
 ---

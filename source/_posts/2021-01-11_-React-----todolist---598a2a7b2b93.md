@@ -2,7 +2,7 @@
 title: 用React 來做一個todolist吧！
 description: 不管是學哪一種框架，todolist可以說是經典練習題，此次練習除了實現基本的功能新增與刪除之外，再加一個拖曳改變排序功能
 date: "2021-01-11T06:20:04.954Z"
-categories: []
+categories: react
 keywords: []
 tag: react
 ---

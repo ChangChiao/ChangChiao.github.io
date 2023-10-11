@@ -3,7 +3,7 @@ title: "[排序演算法]Selection Sort — 選擇排序法"
 description: >-
   何謂排序演算法呢?簡單來說就是經過一連串的步驟將數字由小排到大或是由大排到小的演算法，下圖列出幾種常見的排序演算法，像是插入排序法、氣泡排序法、合併排序法等等。
 date: "2021-11-08T09:55:41.095Z"
-categories: []
+categories: Algorithm
 keywords: []
 tag: Algorithm
 ---

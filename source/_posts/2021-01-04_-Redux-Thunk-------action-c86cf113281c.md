@@ -5,7 +5,7 @@ description: >-
   Thunk的目的就是為了實踐middleware，讓action能做更多的事，想必大家都曾經看過這個錯誤，當action為非同步的時候，就會報錯，Redux
   Thunk就是為了解決這個問題而生
 date: "2021-01-04T15:01:58.520Z"
-categories: []
+categories: react
 keywords: []
 tag: react
 ---

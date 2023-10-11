@@ -4,7 +4,7 @@ description: >-
   會特別寫這篇的原因是以前學習框架的時候只學語法而不懂原理，如果被問到使用框架有什麼好處可能也回答不太出來，由於React是透過Virtual
   DOM來提升網頁渲染的效率，所以今天要來探討Virtual DOM的運作原理
 date: "2020-08-03T12:08:07.537Z"
-categories: []
+categories: react
 keywords: []
 tag: react
 ---

@@ -4,7 +4,7 @@ description: >-
   剛開始工作的時候是jQuery 的時代  ，用$.ajax來接api得心應手， 偶爾接觸到不能用jQuery的專案，
   就用原生的XMLHttpRequest來處理， 隨著時間演變 ，串接api的方式有了更多的選擇， 接下來就會介紹 fetch 和 axios
 date: "2020-12-07T13:40:30.746Z"
-categories: []
+categories: react
 keywords: []
 tag: react
 ---

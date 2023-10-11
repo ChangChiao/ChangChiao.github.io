@@ -4,7 +4,7 @@ date: "2020-06-29T13:10:42.443Z"
 description: >-
   第一次接觸try catch是在剛學PHP的時候 ，雖然現在都還給老師就是了…我們可以利用try
   catch來捕捉例外的狀況，也可以因應不同錯誤狀況，拋出不伊樣的錯誤訊息。
-categories: []
+categories: javascript
 keywords: []
 tag: javascript
 ---

@@ -4,7 +4,7 @@ description: >-
   剛踏進前端領域時，前輩建議我可以試試看雪碧圖，恩？雪碧圖？那是什麼東西，簡單來說就是將多張圖片合成一張大圖，減少http
   request次數，本來30張小圖片要請求30次，現在只要請求一次就大功告成了。
 date: "2020-04-27T12:13:12.394Z"
-categories: []
+categories: vue
 keywords: []
 tag: vue
 ---

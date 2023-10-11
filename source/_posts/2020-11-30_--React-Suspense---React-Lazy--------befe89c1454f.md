@@ -4,7 +4,7 @@ description: >-
   在build專案的時候，我們會透過webpack將不同模組的component打包成同一支js，但是當專案的規模越來越大，
   程式碼的size就會逐漸肥大，好幾mb都有可能，載入的時間也會拉長， 影響使用者體驗，而且並非所有的程式碼的功能會在一開始就使用到， 所以透過…
 date: "2020-11-30T01:11:16.322Z"
-categories: []
+categories: react
 keywords: []
 tag: react
 ---

@@ -3,7 +3,7 @@ title: React Higher-Order Components (HOC)
 description: >-
   想必我們都曾經遇過一種情境，兩個component功能幾乎一模一樣，只是差在輸入的資料不同而已，那麼這時候就是HOC登場的時候了，HOC為一個可以傳入component當參數的function，其目的在於可以將重複的邏輯抽離出來，讓傳入的component可以套用這個邏輯，並且輸…
 date: "2020-09-21T00:50:43.990Z"
-categories: []
+categories: react
 keywords: []
 tag: react
 ---

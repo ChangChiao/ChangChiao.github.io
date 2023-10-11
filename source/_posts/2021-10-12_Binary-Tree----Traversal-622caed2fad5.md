@@ -4,7 +4,7 @@ description: >-
   Traversal翻譯成中文就是遍歷的意思，如果要遍歷tree的每個節點的話，會有兩種方式，Breadth-First Tree
   Traversal和Depth-First Tree Traversal。
 date: "2021-10-12T02:12:28.442Z"
-categories: []
+categories: Algorithm
 keywords: []
 tag: Algorithm
 ---
