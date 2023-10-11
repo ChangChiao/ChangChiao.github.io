@@ -4,6 +4,7 @@ description: 在認識動態規劃之前先來理解Divide and Conquer(分治法
 date: "2021-12-24T13:32:28.290Z"
 categories: []
 keywords: []
+tag: Algorithm
 slug: >-
   /@joe-chang/dynamic-programming-dp-%E5%8B%95%E6%85%8B%E8%A6%8F%E5%8A%83-%E4%B8%8A-fea4dbcf1a8e
 ---
@@ -32,6 +33,15 @@ ex. 89 = 55+34 (n11 = n10 + n9)
 
 用 js 實作如下
 
+```javascript
+const fibonacci = (i) => {
+  if (i === 0 || i === 1) return i;
+  return fibonacci(i - 1) + fibonacci(i - 2);
+};
+
+fibonacci(5);
+```
+
 而下圖是 Dynamic Programming 執行的流程，因為藍色區塊已經計算過，並將計算結果暫存起來，所以黃色的區塊不需要重複計算，時間複雜度為 O(n)。
 
 ![](/img/1__RLXh4U__Xy3JTUWkPvsqM2Q.png)
@@ -48,7 +58,39 @@ Top Down : 使用遞迴，執行順序是由上至下，計算過的結果會�
 
 用 js 實作 Bottom Up
 
+```javascript
+const fibonacci = (n) => {
+  let temp = new Array(n);
+  temp[0] = 0;
+  temp[1] = 1;
+  for (let i = 2; i < n; i++) {
+    temp[i] = temp[i - 1] + temp[i - 2];
+  }
+  return temp[n - 1] + temp[n - 2];
+};
+
+fibonacci(6); //輸出8
+```
+
 用 js 實作 Top Down
+
+```javascript
+//Top-Down
+const fibonacci = (n) => {
+  return helper(n, new Array(n));
+};
+const helper = (i, temp) => {
+  if (i === 0 || i === 1) {
+    return i;
+  }
+  if (!temp[i]) {
+    temp[i] = helper(i - 1, temp) + helper(i - 2, temp);
+  }
+  return temp[i];
+};
+
+fibonacci(6); //輸出8
+```
 
 兩者的差異比較如下
 

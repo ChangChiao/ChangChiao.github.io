@@ -6,6 +6,7 @@ description: >-
 date: "2021-10-12T02:12:28.442Z"
 categories: []
 keywords: []
+tag: Algorithm
 slug: /@joe-chang/binary-tree-traversal-622caed2fad5
 ---
 
@@ -15,7 +16,7 @@ Traversal 翻譯成中文就是遍歷的意思，如果要遍歷 tree 的每個�
 
 #### Breadth-First Tree Traversal
 
-Breadth-First Tree Traversal 也被稱作 Level Order Tree Traversal，利用廣度優先搜尋(Breadth-First Search, BFS)的方式來遍歷每個節點，概念非常容易理解 ，就是將每一層的節點由左至右依序取出。
+Breadth-First Tree Traversal 也被稱作 Level Order Tree Traversal，利用廣度優先搜尋(Breadth-First Search，BFS)的方式來遍歷每個節點，概念非常容易理解，就是將每一層的節點由左至右依序取出。
 
 #### 甚麼是廣度優先搜尋?
 
@@ -36,9 +37,28 @@ Breadth-First Tree Traversal 也被稱作 Level Order Tree Traversal，利用廣
 
 ![](/img/1__UCbUZK6z6ZtX8YHh__8__CwA.png)
 
-最後取得陣列\[10, 8, 11, 5, 9, 15, 2, 13, 19\]
+最後取得陣列 [10, 8, 11, 5, 9, 15, 2, 13, 19]
 
 用 js 實作 Breadth-First Tree Traversal:
+
+```javascript
+    bftt(node) {
+        if (node === null) return;
+        this.queue.push(node);
+        for (let i = 0; i < this.queue.length; i++) {
+            let currentNode = this.queue[i];
+            if (currentNode === null) continue;
+            if (currentNode.left !== null) {
+                this.queue.push(currentNode.left);
+            }
+            if (currentNode.right !== null) {
+                this.queue.push(currentNode.right);
+            }
+        }
+    }
+
+    tree.bftt(tree.root);
+```
 
 #### Depth-First Tree Traversal
 
@@ -66,6 +86,18 @@ Breadth-First Tree Traversal 也被稱作 Level Order Tree Traversal，利用廣
 
 用 js 實作 PreOrder
 
+```javascript
+    preOrder(node) {
+        if (node === null) return;
+        this.queue.push(node.value);
+        //用遞迴來遍歷節點
+        this.preOrder(node.left);
+        this.preOrder(node.right);
+    }
+
+    tree.preOrder(tree.root);
+```
+
 2.InOrder(left, root, right)
 
 順序: 左節點 → 根節點 → 右節點
@@ -77,6 +109,18 @@ Breadth-First Tree Traversal 也被稱作 Level Order Tree Traversal，利用廣
 ![](/img/1__mAN9EwFAeVfy6AcwoyErZQ.png)
 
 用 js 實作 InOrder
+
+```javascript
+    inOrder(node) {
+        if (node === null) return;
+        //用遞迴來遍歷節點
+        this.inOrder(node.left);
+        this.queue.push(node.value);
+        this.inOrder(node.right);
+    }
+
+    tree.inOrder(tree.root);
+```
 
 3\. PostOrder(left, right, root)
 
@@ -90,6 +134,18 @@ Breadth-First Tree Traversal 也被稱作 Level Order Tree Traversal，利用廣
 
 用 js 實作 PostOrder
 
+```javascript
+    postOrder(node) {
+        if (node === null) return;
+        //用遞迴來遍歷節點
+        this.postOrder(node.left);
+        this.postOrder(node.right);
+        this.queue.push(node.value);
+    }
+
+    tree.postOrder(tree.root);
+```
+
 下面這張圖簡易的說明了 BFS 和 DFS 兩者的差異
 
 ![](/img/1__MY__xe85AdcbnSTmsG9uMlA.jpeg)
@@ -98,11 +154,40 @@ Breadth-First Tree Traversal 也被稱作 Level Order Tree Traversal，利用廣
 
 第一種方式使用遞迴，利用 Binary tree 的特性(當前節點的右子節點會比自己大 ，左子節點會比自己小)，如果目標值比當前節點還大的話就把當前節點的右節點作為參數傳入函式，反之就把左節點傳入，不斷呼叫自己，直到找到節點或是找不到就中止遞迴。
 
+```javascript
+const searchRecursively = (node, target) => {
+  if (node === null || target === node.value) return node;
+  if (target < node.value) {
+    return searchRecursively(node.left, target);
+  }
+  if (target > node.value) {
+    return searchRecursively(node.right, target);
+  }
+};
+
+searchRecursively(tree.root, 13);
+```
+
 執行結果如下，找得到就回傳該節點，若找不到就回傳 null
 
 ![](/img/1__meHaK8bFrh37hq__ZKkFmcQ.png)
 
 第二種方式用迴圈，假如目標值比當前節點還大的話，就把當前節點移動到右邊的子節點，反之則移動到左邊的節點，直到找到值或是找不到就跳出迴圈。
+
+```javascript
+const searchIteratively = (node, target) => {
+  while (node !== null && target !== node.value) {
+    if (target < node.value) {
+      node = node.left;
+    } else {
+      node = node.right;
+    }
+  }
+  return node;
+};
+
+searchIteratively(tree.root, 8);
+```
 
 執行結果如下，找得到就回傳該節點，若找不到就回傳 null
 
@@ -110,11 +195,104 @@ Breadth-First Tree Traversal 也被稱作 Level Order Tree Traversal，利用廣
 
 Binary Tree — Traversal 完整的程式碼如下(包含 tree 的建立)
 
+```javascript
+class TreeNode {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+class BinarySearchTree {
+  constructor() {
+    this.root = null;
+    this.queue = [];
+  }
+  insertNode(value) {
+    let current = new TreeNode(value);
+    let target = null;
+    let nowPos = this.root;
+    while (nowPos !== null) {
+      target = nowPos;
+      if (current.value < nowPos.value) {
+        nowPos = nowPos.left;
+      } else {
+        nowPos = nowPos.right;
+      }
+    }
+    if (target === null) {
+      this.root = current;
+    } else if (current.value < target.value) {
+      target.left = current;
+    } else {
+      target.right = current;
+    }
+  }
+  bftt(node) {
+    if (node === null) return;
+    this.queue.push(node);
+    for (let i = 0; i < this.queue.length; i++) {
+      let currentNode = this.queue[i];
+      if (currentNode === null) continue;
+      if (currentNode.left !== null) {
+        this.queue.push(currentNode.left);
+      }
+      if (currentNode.right !== null) {
+        this.queue.push(currentNode.right);
+      }
+    }
+  }
+  preOrder(node) {
+    if (node === null) return;
+    this.queue.push(node.value);
+    //用遞迴來遍歷節點
+    this.preOrder(node.left);
+    this.preOrder(node.right);
+  }
+
+  inOrder(node) {
+    if (node === null) return;
+    //用遞迴來遍歷節點
+    this.inOrder(node.left);
+    this.queue.push(node.value);
+    this.inOrder(node.right);
+  }
+
+  postOrder(node) {
+    if (node === null) return;
+    //用遞迴來遍歷節點
+    this.postOrder(node.left);
+    this.postOrder(node.right);
+    this.queue.push(node.value);
+  }
+}
+
+let tree = new BinarySearchTree();
+tree.insertNode(10);
+tree.insertNode(8);
+tree.insertNode(11);
+tree.insertNode(5);
+tree.insertNode(9);
+tree.insertNode(15);
+tree.insertNode(2);
+tree.insertNode(19);
+tree.insertNode(13);
+
+console.log("BST", tree);
+
+tree.bftt(tree.root);
+tree.preOrder(tree.root);
+tree.inOrder(tree.root);
+tree.postOrder(tree.root);
+console.log(tree.queue);
+```
+
 #### 時間複雜度
 
-👍 在最差的情況下， 時間複雜度是 O(n)
+👍 在最差的情況下，時間複雜度是 O(n)
 
-👎 在最佳的情況下 ， 時間複雜度是 O(1)
+👎 在最佳的情況下，時間複雜度是 O(1)
 
 🤚 在平均情況下，時間複雜度為 O(log n)
 

@@ -6,6 +6,7 @@ description: >-
 date: "2021-12-15T07:32:53.104Z"
 categories: []
 keywords: []
+tag: Algorithm
 slug: >-
   /@joe-chang/greedy-algorithm-%E8%B2%AA%E5%A9%AA%E6%BC%94%E7%AE%97%E6%B3%95-bf62d816b650
 ---
@@ -22,6 +23,26 @@ slug: >-
 - 10 元 X3
 
 用 js 來實作:
+
+```javascript
+const exchange = (num) => {
+  const money = [1000, 500, 100, 50, 10, 5, 1];
+  let point = 0;
+  const record = [0, 0, 0, 0, 0, 0, 0];
+  while (num > 0) {
+    if (num >= money[point]) {
+      num -= money[point];
+      record[point]++;
+    } else {
+      point++;
+    }
+  }
+  return record;
+};
+
+exchange(29580);
+//輸出[29, 1, 0, 1, 3, 0, 0]
+```
 
 情境 2:潛入珠寶店的小偷帶了一個後背包可以負重 20kg，因為空間有限，所以他只能挑選最有價值的寶石裝進背包，讓他可以最大化今晚的獲利，可以看到下表有所有的寶石的價格和庫存，在挑選寶石除了選最貴的之外還要考量到重量的問題，那麼，就開始來選擇要優先帶走那些寶石吧!
 

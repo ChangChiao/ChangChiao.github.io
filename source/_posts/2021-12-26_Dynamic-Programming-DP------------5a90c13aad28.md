@@ -6,6 +6,7 @@ description: >-
 date: "2021-12-26T03:34:23.934Z"
 categories: []
 keywords: []
+tag: Algorithm
 slug: >-
   /@joe-chang/dynamic-programming-dp-%E5%8B%95%E6%85%8B%E8%A6%8F%E5%8A%83-%E4%B8%8B-5a90c13aad28
 ---
@@ -42,6 +43,28 @@ Dynamic Programmin 的經典應用除了斐波那契數之外，還有背包問�
 4.持續的分解問題…
 
 先試著用遞迴解題
+
+```javascript
+const findLCS = (str1, str2) => {
+  if (str1.length === 0 || str2.length === 0) return 0;
+  if (str1[str1.length - 1] === str2[str2.length - 1]) {
+    return (
+      1 +
+      findLCS(
+        str1.substring(0, str1.length - 1),
+        str2.substring(0, str2.length - 1)
+      )
+    );
+  } else {
+    return Math.max(
+      findLCS(str1.substring(0, str1.length - 1), str2),
+      findLCS(str1, str2.substring(0, str2.length - 1))
+    );
+  }
+};
+
+findLCS("ANB", "AKB"); //2
+```
 
 不過這題如果用遞迴解的話，leetcode 執行效率會非常的差，會顯示[Time Limit Exceeded](https://leetcode.com/submissions/detail/553641456/)，如下圖
 
@@ -83,6 +106,71 @@ Dynamic Programmin 的經典應用除了斐波那契數之外，還有背包問�
 ![](/img/1__s6OyOzzcjDs__BwnUpR8Tcw.png)
 
 用 js 實作 Dynamic Programming
+
+```javascript
+let table1 = []; //紀錄數字
+let table2 = []; //紀錄箭頭
+let str1 = "ANB";
+let str2 = "AKB";
+
+const LCS = (str1, str2) => {
+  let m = str1.length;
+  let n = str2.length;
+  //預先建立好格子
+  for (let i = 0; i <= m; i++) {
+    let arr = Array.from({ length: n }).fill(null);
+    table1[i] = [0, ...arr];
+  }
+  table1[0].fill(0);
+
+  for (let i = 0; i <= m; i++) {
+    let arr = Array.from({ length: n + 1 }).fill(null);
+    table2[i] = arr;
+  }
+  //依序將數字和箭頭填入表格
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      //由於是二維陣列的比較起始點是從1開始, 所以對應的的字串index需-1
+      if (str1[i - 1] === str2[j - 1]) {
+        table1[i][j] = 1 + table1[i - 1][j - 1]; //左上角的格子
+        table2[i][j] = "↖";
+      } else if (table1[i - 1][j] >= table1[i][j - 1]) {
+        //上方格子大於等於左方的格子
+        table1[i][j] = table1[i - 1][j];
+        table2[i][j] = "↑";
+      } else {
+        table1[i][j] = table1[i][j - 1];
+        table2[i][j] = "←";
+      }
+    }
+  }
+  console.log("table1", table1);
+  console.log("table2", table2);
+  return table1[m][n]; //回傳LCS長度
+};
+
+let result = ""; //存放LCS字串
+
+//印出LCS字串
+const printLCS = (i, j) => {
+  if (i === 0 || j === 0) {
+    return;
+  }
+  //依照箭頭方向跳格子收集↖的字母
+  if (table2[i][j] === "↖") {
+    printLCS(i - 1, j - 1);
+    result += str1[i - 1];
+  } else if (table2[i][j] === "↑") {
+    printLCS(i - 1, j);
+  } else {
+    printLCS(i, j - 1);
+  }
+};
+
+LCS("ANB", "AKB"); //2
+printLCS(str1.length, str2.length);
+console.log("result", result); //AB
+```
 
 最後成功用 Dynamic Programming 解出 [longest common subsequence](https://leetcode.com/problems/longest-common-subsequence/) !，雖然執行時間和占用記憶體不盡理想…還有待優化
 
