@@ -34,14 +34,14 @@ dependencies:
   hexo-theme-next:
     specifier: 8.18.1
     version: 8.18.1
-  hexo-util:
-    specifier: ^3.1.0
-    version: 3.1.0
 
 devDependencies:
   hexo-deployer-git:
     specifier: ^4.0.0
     version: 4.0.0
+  hexo-util:
+    specifier: ^3.1.0
+    version: 3.1.0
 
 packages:
 
@@ -378,7 +378,6 @@ packages:
       domelementtype: 2.3.0
       domhandler: 5.0.3
       entities: 4.5.0
-    dev: false
 
   /domelementtype@2.3.0:
     resolution: {integrity: sha512-OLETBj6w0OsagBwdXnPdN0cnMfF9opN69co+7ZrbfPGrdpPVNBUj02spi6B1N7wChLQiPn4CSH/zJvXw56gmHw==}
@@ -401,7 +400,6 @@ packages:
     engines: {node: '>= 4'}
     dependencies:
       domelementtype: 2.3.0
-    dev: false
 
   /dompurify@3.0.6:
     resolution: {integrity: sha512-ilkD8YEnnGh1zJ240uJsW7AzE+2qpbOUYjacomn3AvJ6J4JhKGSZ2nh4wUIXPZrEPppaCLx5jFe8T89Rk8tQ7w==}
@@ -420,7 +418,6 @@ packages:
       dom-serializer: 2.0.0
       domelementtype: 2.3.0
       domhandler: 5.0.3
-    dev: false
 
   /ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
@@ -449,7 +446,6 @@ packages:
   /entities@4.5.0:
     resolution: {integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==}
     engines: {node: '>=0.12'}
-    dev: false
 
   /escape-html@1.0.3:
     resolution: {integrity: sha512-NiSupZ4OeuGwr68lGIeym/ksIZMJodUGOSCZ/FSnTxcrekbvqrgdUxlJOMpijaKZVjAJrWrGs/6Jy8OMuyj9ow==}
@@ -766,7 +762,6 @@ packages:
       htmlparser2: 9.0.0
       prismjs: 1.29.0
       strip-indent: 3.0.0
-    dev: false
 
   /hexo@6.3.0:
     resolution: {integrity: sha512-4Jq+rWd8sYvR1YdIQyndN/9WboQ/Mqm6eax8CjrjO+ePFm2oMVafSOx9WEyJ42wcLOHjfyMfnlQhnUuNmJIpPg==}
@@ -827,7 +822,6 @@ packages:
       domhandler: 5.0.3
       domutils: 3.1.0
       entities: 4.5.0
-    dev: false
 
   /http-errors@2.0.0:
     resolution: {integrity: sha512-FtwrG/euBzaEjYeRqOgly7G0qviiXoJWnvEH2Z1plBdXgbyjv34pHTSb9zoeHMyDy33+DWy5Wt9Wo+TURtOYSQ==}
