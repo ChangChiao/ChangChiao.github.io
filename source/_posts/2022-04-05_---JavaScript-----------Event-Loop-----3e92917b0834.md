@@ -1,0 +1,126 @@
+---
+title: 關於 JavaScript中的任務調度者 —  Event Loop事件循環
+description: 為甚麼需要理解Event Loop?
+date: '2022-04-05T06:18:34.988Z'
+categories: []
+keywords: []
+slug: >-
+  /@joe-chang/%E9%97%9C%E6%96%BC-javascript%E4%B8%AD%E7%9A%84%E4%BB%BB%E5%8B%99%E8%AA%BF%E5%BA%A6%E8%80%85-event-loop%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%92%B0-3e92917b0834
+---
+
+![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__4BJS__Lzl3mb__eHfwP__1Vfg.jpeg)
+
+#### 為甚麼需要理解Event Loop?
+
+![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__gDZGt0gkWF03rQjjWhqteg.png)
+
+初學js的時候應該都曾經遇過這樣的問題，上述這段程式碼如果單純用想的來推敲console.log的執行順序，大部分的人會說是a、b、c，但正確答案卻是 a、 c、 b，明明settimeout是設定零秒後執行，照理來說應該要是先印出b怎麼會先印出c呢? 這其中牽涉到的觀念其實就是event loop，在理解event loop之前我們需要先知道一件事
+
+> js是單執行緒（**single-threaded**），也就是一次只能做一件事
+
+假設瀏覽器今天真的是一次只做一件事情，一開始先請求一個api，在等待api 的回傳response的時候，什麼事情也不能做，所有的任務都在排隊，簡直就是一場大災難，使用者體驗會非常差，那麼有什麼方法可以讓瀏覽器可以跳脫 js 單執行緒的限制， 一次執行多個任務呢？就是event loop
+
+> event loop讓js能夠在不同的runtime(ex.node.js、瀏覽器)非同步的處理任務
+
+#### event loop的核心角色
+
+分別為call stack、web Apis、callback queue
+
+![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__2JHhkUYho3YOej9HieOnoA.png)
+
+#### Call stack(執行堆疊)
+
+![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__G__cmdU3EkU3ti0YVPuI1rg.gif)
+
+Stack是一種資料結構，就好比一疊撲克牌一樣，如果要新增資料就從堆疊上面放入資料，如果要移除資料也是要從堆疊上方開始移除，Stack遵循著後進先出的原則，將函式依照執行順序逐一放入 call Stack，最晚放入Stack的函式會被最先取出執行，那如果這個堆疊不斷地被放入函式，都沒有做移除的的話，會發生什麼事呢？想必大家都曾經看過下面這個錯誤訊息
+
+> Maximum call stack size exceeded
+
+原因就是不小心寫了無窮迴圈，導致函式不斷的被放入stack，造成瀏覽器stackoverflow(執行堆疊溢出)而顯示的警告訊息
+
+#### Callback Queue(工作佇列)
+
+![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__C01__vZvpJIusjV3AClGbbA.gif)
+
+Queue是一種資料結構，如果要新增資料會從佇列後面新增，要移除的話會從前面移除資料，Queue遵循著後進先出的原則，當stack裡面沒有執行函式的時候，就會將Queue裡面的任務放進stack執行，運作模式如同上圖
+
+#### Web APIs
+
+瀏覽器提供的各種API ex .DOM(document) 、AJAX(XMLHttpRequest) Timeout (setTimeout)等等，能夠非同步的處理其他任務， Web APIs會將需要執行的callback function放到queue等待執行
+
+#### Heap
+
+分配函式、變數的記憶體空間，不參與event loop
+
+#### event loop 的運作流程
+
+對event loop有了基本的認識之後，我們試著再來理解一次下面這段程式碼的執行順序吧！
+
+![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__gDZGt0gkWF03rQjjWhqteg.png)
+
+步驟一：將console.log(a) 放入 call stack，執行完畢後移除
+
+步驟二： 將setTimeout放入call stack，由於是非同步函式，會先將setTimeout移動到 Web APIs開始倒數
+
+步驟三：將console.log(c) 放入 call stack，執行完畢後移除
+
+步驟四：當setTimeout倒數的時間結束，就會把setTimeout要執行的callback function 放到queue裡面等待
+
+步驟五：當stack裡面的任務都清空了，callback queue就會把排隊的任務拿出來再放到stack裡面執行， 也就是console.log(b)
+
+所以即使setTimeout的秒數的秒數設定為0秒，都會等到stack裡面的任務執行完畢才會將queue裡的setTimeout的callback取出執行，完整的執行流程可以參考下圖
+
+![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__64h__nr8S7ry8f__PAkBRDFg.gif)
+
+> 額外補充：為什麼setTimeout n 秒並不代表一定會在n秒後執行？因為有可能 callback queue前面還排了一些任務，必須等這些任務都執行完畢，才能等到setTimeout的callback執行，因此setTimeout無法保證事件一定能夠準時執行
+
+#### macro-task，micro-task
+
+![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__G0fKDNdofOC5wAM43__AjHw.png)
+
+先前面試被問到這個題目，請我講出執行順序，當場腦袋當機，我知道這些都是非同步的函式，但對於執行的順序真的毫無頭緒，如果你能夠輕鬆地說出答案，那恭喜你對於macro-task，micro-task非常有概念，如果不是的話，可以繼續往下閱讀
+
+其實在非同步任務當中，還有細分為macro-task(宏任務)，micro-task(微任務)，這兩種任務的差異在於執行的優先順序不同，在event loop的設計當中，會優先執行micro-task的任務，再執行macro-task，因為micro-task處理時間比較短，因此這樣的執行順序會更有效率，macro-task和micro-task的處理順序可參考下圖
+
+![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__0xDGBNrA1WtfSfYY3FJOdw.gif)
+
+#### macro-task
+
+*   setTimeout
+*   setInterval
+*   UI rendering
+*   requestAnimationFrame
+
+#### micro-task
+
+*   process.nextTick() ( 僅限node.js ）
+*   Promise
+*   async function
+
+![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__D0kYLOdf75P9Vq__csDGS__Q.png)
+
+當stack清空的時候，micro-task的執行順序會優先於macro-task，一開始會先執行micro-task，所有的micro-task都執行完畢才會執行macro-task，當執行完單個macro-task會檢查micro-task是否為空，若micro-task queue不為空，則會優先執行所有的micro-task，不斷地循環，有了基本概念之後，來試著說出這道題目的執行順序吧！
+
+![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__G0fKDNdofOC5wAM43__AjHw.png)
+
+*   一開始遇到函式宣告可以先跳過，先遇到的是setTimeout，setTimeout為macro-task，因此放入macro-task queue，等待執行
+*   倒數第二行執行了fn2函式，fn2是一個async function，await的作用類似於 .then，await下方的程式碼可以視作是.then之後要做的事情，因此console.log(e)會先放到micro-task queue排隊等待執行
+*   接著執行 fn1， new Promise內部的程式碼為同步執行，.then內部的的程式碼則為非同步執行，因此會先印出a、b，.then裡的console.log(c)則會放入micro-task queue
+*   將fn1.then裡cosole.log(f) 放入micro-task queue
+*   同步的任務都已經執行完了，接著將micro-task queue 裡面的任務依序執行，分別是e 、c、f
+*   最後執行macro-task也就是setTimeout的callback function，印出d
+*   執行順序為a、b、e、c、f、d
+
+![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__laIUFejfHv__06tMr4VrkXQ.png)
+
+不過實際用瀏覽器跑過一次，會發現正確的執行順序會是a、b、c、e、f、d，為什麼執行順序不是我們想的那樣，問題就出在await Promise.resolve那行，必須先將await語法轉換為promise語法，會發現並非如當初所想的只有一個.then，而是有兩個，因此e會比c更晚執行
+
+![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__xfxclBMsahaE2i9zIPyqDw.png)
+
+正確的執行順序如下
+
+![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__OerprrwVtkCBxRMf__4ni7w.png)
+
+一開始在思考這類型的題目時，建議可以將每一行的程式碼細分為同步任務、micro-task，macro-task，如同上圖，先順著跑完同步程式碼，遇到micro-task和macro-task都先分類到一旁，等到同步程式碼都結束了，開始將micro-task依照放入的順序取出，接下來再輪到macro-task，思緒會清晰很多，提供給大家做個參考
+
+最後推薦的Philip Roberts影片，將event loop的觀念解釋得非常清楚
