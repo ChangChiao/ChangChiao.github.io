@@ -4,6 +4,7 @@ description: 假設今天我們需要獲取網址列的資訊，可以怎麼做�
 date: "2020-02-24T13:24:08.664Z"
 tags: javascript
 categories: web
+tags: web 
 keywords: []
 ---
 
