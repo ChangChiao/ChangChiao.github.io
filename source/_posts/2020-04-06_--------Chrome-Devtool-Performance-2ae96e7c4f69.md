@@ -6,7 +6,7 @@ description: >-
   ，頁面放一陣子就開始卡了，後來比較資深的前輩教我可以用chrome performance功能查看。
 categories: web
 keywords: []
-tag: ""
+tags: web performance 工具
 ---
 
 ![](/img/1__wtKKpP0tOxOi1____rHdxp2A.jpeg)

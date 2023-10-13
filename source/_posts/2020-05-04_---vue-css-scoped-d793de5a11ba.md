@@ -6,7 +6,7 @@ description: >-
   的component，可以發現在DOM和css的data屬性會加上data +…
 categories: vue
 keywords: []
-tag: vue
+tags: vue css
 ---
 
 ![](/img/1__QCFDDzRri5TbYnRWefOV9w.jpeg)

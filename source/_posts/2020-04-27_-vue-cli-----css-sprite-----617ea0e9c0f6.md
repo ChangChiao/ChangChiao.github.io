@@ -6,7 +6,7 @@ description: >-
 date: "2020-04-27T12:13:12.394Z"
 categories: vue
 keywords: []
-tag: vue
+tags: vue sprites
 ---
 
 ![](/img/1__Jfg5lfwcVVIgX9GUgEposg.jpeg)
