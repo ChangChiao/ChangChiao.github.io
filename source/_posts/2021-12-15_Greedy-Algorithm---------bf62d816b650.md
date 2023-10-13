@@ -4,7 +4,7 @@ description: >-
   貪婪演算法（英語：greedy
   algorithm），又稱貪心演算法，是一種在每一步選擇中都採取在當前狀態下最好或最佳（即最有利）的選擇，從而希望導致結果是最好或最佳的演算法。(引用自wikipedia)
 date: "2021-12-15T07:32:53.104Z"
-categories: Algorithm
+categories: 演算法
 keywords: []
 ---
 

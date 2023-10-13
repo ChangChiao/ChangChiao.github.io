@@ -2,7 +2,7 @@
 title: Dynamic Programming(DP) — 動態規劃（上）
 description: 在認識動態規劃之前先來理解Divide and Conquer(分治法)吧!Divide and Conquer是一種演算法，執行的步驟如下
 date: "2021-12-24T13:32:28.290Z"
-categories: Algorithm
+categories: 演算法
 keywords: []
 ---
 

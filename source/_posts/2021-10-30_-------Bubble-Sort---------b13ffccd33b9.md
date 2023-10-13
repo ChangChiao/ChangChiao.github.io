@@ -2,7 +2,7 @@
 title: "[排序演算法]Bubble Sort — 氣泡排序法"
 description: bubble sort的概念就是像泡泡一樣 ，越大的數字會漸漸的往右邊浮
 date: "2021-10-30T13:26:44.754Z"
-categories: Algorithm
+categories: 演算法
 keywords: []
 ---
 

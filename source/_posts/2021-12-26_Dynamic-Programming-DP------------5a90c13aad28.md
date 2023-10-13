@@ -4,7 +4,7 @@ description: >-
   Dynamic Programmin的經典應用除了斐波那契數之外，還有背包問題、最短路徑問題、河內塔、LCS等等，那麼我們就試著用Dynamic
   Programming來解 leetcode的1143題  longest common subsequence (LCS)吧!
 date: "2021-12-26T03:34:23.934Z"
-categories: Algorithm
+categories: 演算法
 keywords: []
 ---
 

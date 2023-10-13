@@ -4,7 +4,7 @@ description: >-
   在了解快速排序法的概念之前要先理解partition演算法，不過單用文字敘述還是蠻抽象的，所以搭配示意圖來做說明，假如現在有個陣列[2, 6, 3, 9,
   1, 5]
 date: "2021-11-17T09:24:49.935Z"
-categories: Algorithm
+categories: 演算法
 keywords: []
 ---
 
