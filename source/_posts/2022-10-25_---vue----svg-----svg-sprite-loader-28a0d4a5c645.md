@@ -4,13 +4,11 @@ description: >-
   在開發網站的時候，如果需要用到icon的話我們通常會使用Font
   Awesome這類的工具來滿足我們的需求，但更多時候我們需要使用客制化的icon，因此UIUX設計師會提供svg的檔案給前端工程師來做使用，那麼此時會有幾種方式來使用這些svg
 date: "2022-10-25T01:59:10.719Z"
-categories: []
+categories: vue
 keywords: []
-slug: >-
-  /@joe-chang/%E5%A6%82%E4%BD%95%E5%9C%A8vue%E8%BC%95%E9%AC%86%E4%BD%BF%E7%94%A8svg-svg-sprite-loader-28a0d4a5c645
 ---
 
-![](/img/1__XZRV__clX2gUqNkWozl5MHw.jpeg)
+![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__XZRV__clX2gUqNkWozl5MHw.jpeg)
 
 在開發網站的時候，如果需要用到 icon 的話我們通常會使用 Font Awesome 這類的工具來滿足我們的需求，但更多時候我們需要使用客制化的 icon，因此 UIUX 設計師會提供 svg 的檔案給前端工程師來做使用，那麼此時會有幾種方式來使用這些 svg
 
@@ -22,7 +20,7 @@ slug: >-
 
 這個方式最簡單，直接複製 svg 的 path 然後一股腦的貼上 html 即可，也可自行修改 icon 的顏色，但可讀性實在是非常的差，所以基本上應該沒有人會使用這個方法
 
-![](/img/1__oWIo4ehgUgErm4RPQH9AFQ.png)
+![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__oWIo4ehgUgErm4RPQH9AFQ.png)
 
 - 把 svg 直接當 img 引入
 
@@ -32,11 +30,11 @@ slug: >-
 
 理想的狀況是我們可以將 svg 當作元件使用，只要帶入 svg 的名稱就能夠使用指定的 svg，此時就是 svg-sprite-loader 登場的時候了! svg-sprite-loader 的原理是將 svg 一個一個放進 symbol 拼成雪碧圖，如下圖
 
-![](/img/1__ieqVj__OY83uaUy__vSsyzhA.png)
+![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__ieqVj__OY83uaUy__vSsyzhA.png)
 
 需要用到指定的 svg 時就用 use 標籤引用，並且將連結設為 svg 的 id，指定的 svg 就會顯示在畫面上
 
-![](/img/1__5yOaRxSg4rTEc2aElADDuQ.png)
+![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__5yOaRxSg4rTEc2aElADDuQ.png)
 
 對於 svg-sprite-loader 有了基本概念之後，就可以來實作了，這次使用 vue3 + vue cli 開發
 
@@ -62,4 +60,4 @@ slug: >-
 
 最後就可以隨心所欲的使用 icon 元件了!
 
-![](/img/1__9wnT6TmkxoNiY4hVdo6Qrw.png)
+![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__9wnT6TmkxoNiY4hVdo6Qrw.png)

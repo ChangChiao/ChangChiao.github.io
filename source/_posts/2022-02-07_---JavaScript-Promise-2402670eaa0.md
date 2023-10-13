@@ -4,28 +4,27 @@ description: >-
   以往在處理非同步流程時，如果要確保執行順序並且帶入先前執行的結果會採用callback的方式，但很容易就會變成callback hell
   回調地獄(如下圖)，不易閱讀之外也很難維護，而Promise的出現，可以優雅的解決這個問題
 date: "2022-02-07T10:17:57.107Z"
-categories: []
+categories: javascript
 keywords: []
-slug: /@joe-chang/%E5%84%AA%E9%9B%85%E7%9A%84javascript-promise-2402670eaa0
 ---
 
-![](/img/1__YpWbqiMz5wNQIfM09GRnAA.jpeg)
+![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__YpWbqiMz5wNQIfM09GRnAA.jpeg)
 
 以往在處理非同步流程時，如果要確保執行順序並且帶入先前執行的結果會採用 callback 的方式，但很容易就會變成 callback hell 回調地獄(如下圖)，不易閱讀之外也很難維護，而 Promise 的出現，可以優雅的解決這個問題
 
-![](/img/1__9yiIpaZcU4Dc1Tip6KBvbg.png)
+![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__9yiIpaZcU4Dc1Tip6KBvbg.png)
 
 一個簡單 Promise 結構如下，先用 new 建立一個 Promise 物件，就可以使用 then()來接續之後要做的事情，有點像 jQuery 那樣的鏈式寫法，一個接一個，因此就可以將原本複雜的巢狀結構變成扁平化，Promise 會傳入兩個函式 resolve 和 reject，執行 resolve 會將 Promise 的狀態改為執行成功(fullfilled)，執行 reject 的話 Promise 的狀態則會變成執行失敗(rejected)
 
 #### Promise 的三個狀態
 
-Promise 擁有三個狀態  : 等待中（Pending）、執行成功(Fulfilled)、執行失敗(Rejected)，一但狀態從等待中變成成功或是失敗就不能再異動
+Promise 擁有三個狀態: 等待中（Pending）、執行成功(Fulfilled)、執行失敗(Rejected)，一但狀態從等待中變成成功或是失敗就不能再異動
 
-![](/img/1__eWEqIUtLKDIxEyjhY__F1Sg.png)
+![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__eWEqIUtLKDIxEyjhY__F1Sg.png)
 
-- pending (等待中) — Promise 的初始狀態
-- fullfilled (已完成) —  執行 resolve()，Promise 狀態會變成 fullfilled
-- rejected(已拒絕) —  執行 reject()，Promise 狀態會變成 rejected
+- pending (等待中): Promise 的初始狀態
+- fullfilled (已完成):  執行 resolve()，Promise 狀態會變成 fullfilled
+- rejected(已拒絕):  執行 reject()，Promise 狀態會變成 rejected
 
 #### Promise.then()
 
@@ -35,7 +34,7 @@ then()可以傳入兩個參數，第一個是執行成功(onFulfilled)的函式�
 
 以下圖的例子來說，Promise.then 接收到 resolve 的結果，透過 then()逐一做加工(加上年齡、性別等等)，最後可以得到一個完整的物件
 
-![](/img/1__wV8ug80CFUXrtVL5nUWjnw.png)
+![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__wV8ug80CFUXrtVL5nUWjnw.png)
 
 #### Promise.catch()
 
@@ -47,7 +46,7 @@ then()可以傳入兩個參數，第一個是執行成功(onFulfilled)的函式�
 
 #### Promise.resolve 和 Promise.reject
 
-> Promise.resolve(value) 方法回傳一個以 value 判定結果的 `[Promise](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise)` 物件。若 value 是個 thenable (例如，具有 `["then"方法](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)`)，則回傳的 promise 將依其結果採取其最終狀態；若 value 是 promise，則作為呼叫 Promise.resolve 之結果；其他情形都將回傳以 value 實現的 promise。(引用自 MDN)
+> Promise.resolve(value) 方法回傳一個以 value 判定結果的 [Promise](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise) 物件。若 value 是個 thenable (例如，具有 ["then"方法](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise/then))，則回傳的 promise 將依其結果採取其最終狀態；若 value 是 promise，則作為呼叫 Promise.resolve 之結果；其他情形都將回傳以 value 實現的 promise。(引用自 MDN)
 
 簡單來說使用 Promise.resolve 的語法可以直接產生一個 Fulfilled 的 Promise 物件，只會進入執行成功(onFulfilled)的函式，反過來說 Promise.reject 就只會執行失敗(onRejected)的函式
 
