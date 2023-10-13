@@ -4,6 +4,7 @@ description: >-
   你是否在開發曾經遇過一個情境，在監聽resize、scroll、input的事件上，其實只是想要某一階段的結果或是短時間只希望觸發一次，但通常都會變成頻繁的事件觸發，這時就是debounce和throttle登場的時候了，分別來看看debounce和throttle的使用情境吧……
 date: "2022-03-01T03:40:47.345Z"
 categories: javascript
+tag: javascript
 keywords: []
 ---
 

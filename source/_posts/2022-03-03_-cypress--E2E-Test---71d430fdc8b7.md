@@ -3,7 +3,8 @@ title: 用cypress來寫E2E Test吧!
 description: >-
   當網站開發完之後，我們習慣到處點點看，跑一次使用者的操作行為，檢查頁面的功能是否正常，但很多時候我們的手動測試都是憑感覺，就像戳戳樂一樣，沒有固定的流程和檢查的項目，有戳到bug就是撿到了，沒戳到就當作相安無事，所以難免會有漏網之魚，因此我們需要有一套工具來輔助我們來做有條理測試…
 date: "2022-03-03T03:48:17.408Z"
-categories: e2e_test
+categories: e2eTest
+tag: cypress
 keywords: []
 ---
 

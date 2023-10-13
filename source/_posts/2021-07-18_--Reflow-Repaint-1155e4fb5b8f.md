@@ -5,6 +5,7 @@ description: >-
   就需要來了解瀏覽器的兩個機制 Reflow和Repaint
 date: "2021-07-18T06:06:58.357Z"
 categories: web
+tag: web
 keywords: []
 ---
 

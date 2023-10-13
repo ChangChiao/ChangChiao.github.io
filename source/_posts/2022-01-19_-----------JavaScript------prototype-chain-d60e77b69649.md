@@ -4,6 +4,7 @@ description: >-
   還記得剛開始學習原型和原型鏈的時候常常搞得暈頭轉向的，看了很久還是沒搞懂__proto__跟prototype之間的關聯是甚麼，那時候會看不懂的原因，不外乎我忽略了一件很重要的事，那就是JavaScript是怎麼實現繼承這件事的…
 date: "2022-01-19T06:53:26.205Z"
 categories: javascript
+tag: javascript
 keywords: []
 ---
 

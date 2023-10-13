@@ -6,7 +6,7 @@ description: >-
   Date都不知道是什麼（汗顏）因此花點時間來了解javascript Date物件。
 categories: javascript
 keywords: []
-tag: "javascript"
+tag: "Date"
 ---
 
 ![](/img/1__xXE__mwwSsk9gZ6wtTM2F9g.jpeg)

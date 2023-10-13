@@ -5,6 +5,7 @@ description: >-
   API來模擬真實的API，讓前端可以自給自足，先行一步串接API，除此之外，使用Mock…
 date: "2022-04-17T04:39:55.703Z"
 categories: mock_api
+tag: MockAPI
 keywords: []
 ---
 

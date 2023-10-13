@@ -6,7 +6,7 @@ description: >-
   catch來捕捉例外的狀況，也可以因應不同錯誤狀況，拋出不伊樣的錯誤訊息。
 categories: javascript
 keywords: []
-tag: javascript
+tag: tryCatch
 ---
 
 第一次接觸 try catch 是在剛學 PHP 的時候 ，雖然現在都還給老師就是了…我們可以利用 try catch 來捕捉例外的狀況，也可以因應不同錯誤狀況，拋出不一樣的錯誤訊息。

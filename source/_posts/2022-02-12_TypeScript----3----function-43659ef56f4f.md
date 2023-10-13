@@ -4,6 +4,7 @@ description: 參數類型
 date: "2022-02-12T13:07:24.022Z"
 categories: typescript
 keywords: []
+tag: typescript
 ---
 
 ![](/img/1__nnjL3PzLAl49JV6qCrROuQ.png)

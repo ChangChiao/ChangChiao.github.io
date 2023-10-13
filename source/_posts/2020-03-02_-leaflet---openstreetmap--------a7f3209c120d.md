@@ -4,7 +4,7 @@ date: "2020-03-02T12:47:04.061Z"
 description: "想要快速上手可以參考這篇官方文檔https://leafletjs.com/examples/quick-start/"
 categories: javascript
 keywords: []
-tags: ""
+tags: leaflet
 ---
 
 ![](/img/1__xVH2JhKLHeIeB9Od7VyS9A.png)

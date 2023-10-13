@@ -5,6 +5,7 @@ description: >-
   End)測試工具，大部分的人應該第一個想到的會是Cypress，不過其實除了Cypress，還有一個好用的工具，那就是由微軟開發的後起之秀 — playwright，近期因為工作需求需要寫E2E…
 date: "2023-07-22T10:52:17.110Z"
 categories: e2eTest
+tag: playwright
 keywords: []
 ---
 

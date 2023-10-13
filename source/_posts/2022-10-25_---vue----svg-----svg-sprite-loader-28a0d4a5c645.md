@@ -5,6 +5,7 @@ description: >-
   Awesome這類的工具來滿足我們的需求，但更多時候我們需要使用客制化的icon，因此UIUX設計師會提供svg的檔案給前端工程師來做使用，那麼此時會有幾種方式來使用這些svg
 date: "2022-10-25T01:59:10.719Z"
 categories: vue
+tags: svg vue
 keywords: []
 ---
 
