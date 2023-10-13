@@ -7,7 +7,7 @@ categories: javascript
 keywords: []
 ---
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__8__uN9NeWKSWXC23TdNtqZA.jpeg)
+![](/img/1__8__uN9NeWKSWXC23TdNtqZA.jpeg)
 
 還記得剛開始學習原型和原型鏈的時候常常搞得暈頭轉向的，看了很久還是沒搞懂\_\_proto\_\_跟 prototype 之間的關聯是甚麼，那時候會看不懂的原因，不外乎我忽略了一件很重要的事，那就是**JavaScript 是怎麼實現繼承**這件事的? 也許你腦海裡馬上浮現 ES6 的 class 語法，先宣告一個父類別 class 然後再用子類別 extend 就可以創建出實例，這樣不就實現繼承這件事情了嗎? Java 也是這樣寫的，但其實 JavaScript 中的 class 不過是語法糖， Java 與 JavaScript 實現繼承的原理其實是大不相同的，兩者差異如下
 
@@ -29,7 +29,7 @@ keywords: []
 
 相信大家都看過下面這張圖，第一次看到這張原型鏈圖的感想應該都是有看沒有懂吧  ? 為了更理解原型鏈的流程，接下來會實作一次 JavaScript 的繼承，將這個抽象的概念一一抽絲剝繭
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__nsLXm7WwYGFfsERPtGELpQ.png)
+![](/img/1__nsLXm7WwYGFfsERPtGELpQ.png)
 
 先建立一個建構函式 Person，並且透過 new 來創建實體(instance)，定義 name 和 age 屬性
 
@@ -47,11 +47,11 @@ keywords: []
 
 #### prototype 裡面有甚麼?
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__M3eAJ2RYf0RHZm7LUEWxVw.png)
+![](/img/1__M3eAJ2RYf0RHZm7LUEWxVw.png)
 
 prototype 會是一個物件，裡面會有 constructor 屬性，有趣的是 constructor 是指向 Person 本身
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__R8JvM6b5zRwNPBF0umev7g.png)
+![](/img/1__R8JvM6b5zRwNPBF0umev7g.png)
 
 #### prototype 的實際應用
 
@@ -73,15 +73,15 @@ prototype 會是一個物件，裡面會有 constructor 屬性，有趣的是 co
 
 原型鍊的串聯關係可以參考下面這張流程圖
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__LmzG2VLxHxgqYireP6fyYQ.png)
+![](/img/1__LmzG2VLxHxgqYireP6fyYQ.png)
 
 \_\_proto\_\_ 我會想像成「血緣關係」，物件可以透過\_\_proto\_\_去追溯自己的祖先是誰，而這一連串的\_\_proto\_\_ 就是所謂的原型鍊
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__5lekiQHwaYrBYrdvNxfhow.png)
+![](/img/1__5lekiQHwaYrBYrdvNxfhow.png)
 
 之前在 MDN 查陣列的操作方法都搞不懂為甚麼要寫 Array.prototype.xxx()，現在就知道原因了，其實陣列本身並沒有這些方法，是陣列的原型 prototype 擁有這些操作方法，我們才能夠便利的使用 map、filter 等 function
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__fzmFKA3jWcHlO9i0cqBSuw.png)
+![](/img/1__fzmFKA3jWcHlO9i0cqBSuw.png)
 
 #### 同場加映 👈
 

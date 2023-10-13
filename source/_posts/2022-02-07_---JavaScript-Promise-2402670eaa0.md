@@ -8,11 +8,11 @@ categories: javascript
 keywords: []
 ---
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__YpWbqiMz5wNQIfM09GRnAA.jpeg)
+![](/img/1__YpWbqiMz5wNQIfM09GRnAA.jpeg)
 
 以往在處理非同步流程時，如果要確保執行順序並且帶入先前執行的結果會採用 callback 的方式，但很容易就會變成 callback hell 回調地獄(如下圖)，不易閱讀之外也很難維護，而 Promise 的出現，可以優雅的解決這個問題
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__9yiIpaZcU4Dc1Tip6KBvbg.png)
+![](/img/1__9yiIpaZcU4Dc1Tip6KBvbg.png)
 
 一個簡單 Promise 結構如下，先用 new 建立一個 Promise 物件，就可以使用 then()來接續之後要做的事情，有點像 jQuery 那樣的鏈式寫法，一個接一個，因此就可以將原本複雜的巢狀結構變成扁平化，Promise 會傳入兩個函式 resolve 和 reject，執行 resolve 會將 Promise 的狀態改為執行成功(fullfilled)，執行 reject 的話 Promise 的狀態則會變成執行失敗(rejected)
 
@@ -20,7 +20,7 @@ keywords: []
 
 Promise 擁有三個狀態: 等待中（Pending）、執行成功(Fulfilled)、執行失敗(Rejected)，一但狀態從等待中變成成功或是失敗就不能再異動
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__eWEqIUtLKDIxEyjhY__F1Sg.png)
+![](/img/1__eWEqIUtLKDIxEyjhY__F1Sg.png)
 
 - pending (等待中): Promise 的初始狀態
 - fullfilled (已完成):  執行 resolve()，Promise 狀態會變成 fullfilled
@@ -34,7 +34,7 @@ then()可以傳入兩個參數，第一個是執行成功(onFulfilled)的函式�
 
 以下圖的例子來說，Promise.then 接收到 resolve 的結果，透過 then()逐一做加工(加上年齡、性別等等)，最後可以得到一個完整的物件
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2022/md_1697073583233/img/1__wV8ug80CFUXrtVL5nUWjnw.png)
+![](/img/1__wV8ug80CFUXrtVL5nUWjnw.png)
 
 #### Promise.catch()
 
