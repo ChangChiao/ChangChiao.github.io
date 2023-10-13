@@ -2,9 +2,9 @@
 title: React hook(中)-useContext&useReducer
 description: useContext()
 date: "2020-11-16T15:55:18.489Z"
-categories: []
+categories: react
 keywords: []
-slug: /@joe-chang/react-hook-%E4%B8%AD-usecontext-usereducer-1a0efe78f0a5
+slug: /@joe-chang/
 ---
 
 ![](/img/1__au40ZgVt3x6DrLVe__ptQ9w.jpeg)
@@ -13,17 +13,19 @@ useContext 會和 React Context API 搭配使用，可以讓 component 共享資
 
 #### React Context API
 
-父層 component 的部分：
+`父層 component 的部分：`
 
 利用 createContext 建立 Context component，createContext 可傳入預設值，Context Provider 需要包住整個組件，Context Provider 的 value 記得要傳入需要傳遞的值，只要是被 provider 所包含的 component 都可以取得 Content。
 
-子層 component 的部分：
+`子層 component 的部分：`
 
 呼叫 `useContext` 的 component 會在 context 值更新時重新 render，以前是要用 Context Consumer 來取值，有了 React Hooks 後子組件就可以利用`useContext`來取得資料
 
-const content = useContext(Context)
+```javascript
+const content = useContext(Context);
+```
 
-層級關係＝> ContentExample > SideBar > SideBarButton（爺、父、孫）
+`層級關係＝> ContentExample > SideBar > SideBarButton（爺、父、孫）`
 
 在爺爺身上注入資料，孫子用 useContext 不透過父親也能拿到爺爺的 value
 
@@ -45,11 +47,13 @@ const content = useContext(Context)
 
 但這樣感覺還是沒有很方便，有其他的方法嗎？有的！把 content export 出來 再引入即可
 
-_ContextExample.js_ 將 Content export
+```javascript
+// ContextExample.js 將 Content export
 
-export const Content = createContext(slogan)
+export const Content = createContext(slogan);
+```
 
-_ContextExample2.js_ import Content
+ContextExample2.js import Content
 
 ![](/img/1__beCl9VEpJHwPzu__svUiP0A.png)
 
@@ -59,7 +63,9 @@ _ContextExample2.js_ import Content
 
 再次回想到之前寫 React-Redux 被搞得暈頭轉向，要引入 Redux、React-Redux，然後在寫對應的設定，對於一個 React 新手來說就像迷宮一樣，有種我現在到底在哪裡的錯覺， 還好現在有 useReducer 可以簡化這個流程
 
-const \[count, dispatch\] = useReducer(reducer, initialState, initialAction)
+```javascript
+const [count, dispatch] = useReducer(reducer, initialState, initialAction);
+```
 
 - **reducer :** 跟以往的 reducer 一樣， 先列出有哪些動作指令 ，並且根據不同的動作回傳操作過後的 state
 - **initialState:**定義初始值

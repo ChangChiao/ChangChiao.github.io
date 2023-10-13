@@ -36,7 +36,7 @@ playwright 提供了 ui 介面方便使用者查看每個測試階段，左邊�
 
 #### 小試身手
 
-環境配置：pnpm + svelte + mock server + playwright
+`環境配置：pnpm + svelte + mock server + playwright`
 
 在開始寫測試之前，強烈推薦大家安裝 vscode playwright 套件，因為這個工具真的非常方便，後面會再做介紹
 
@@ -46,7 +46,9 @@ playwright 提供了 ui 介面方便使用者查看每個測試階段，左邊�
 
 在一個既有的專案根目錄底下執行指令，使用 npm 和 yarn 的朋友請看[官網的指令](https://playwright.dev/docs/intro)，和 pnpm 的有些許差異
 
+```bash
 pnpm dlx create-playwright
+```
 
 接下來會詢問你一些問題，可根據自身需求做調整
 
@@ -70,46 +72,54 @@ pnpm dlx create-playwright
 
 接下來介紹一些 playwright config 基本的設定
 
-testDir: "./tests", // 跑測試的目標資料夾  
- timeout: 30 \* 1000, //如果在測試的時候卡住，超過 timeout 時間就 fail
+```json
+testDir: "./tests", // 跑測試的目標資料夾
+  timeout: 30 * 1000, //如果在測試的時候卡住，超過timeout時間就fail
 
-//ex: 預期在畫面上會出現一個 login 的按鈕，但過了 30 秒都偵測不到，就會判定測試失敗
+  //ex: 預期在畫面上會出現一個login的按鈕，但過了30秒都偵測不到，就會判定測試失敗
+```
 
-// 設定好 baseURL 之後 寫測試的時候就可以寫相對路徑囉，不用寫完整路徑  
- use: {  
- /\* Base URL to use in actions like \`await page.goto('/')\`. \*/  
- baseURL: 'http://127.0.0.1:3000',  
- },
+```json
+  // 設定好baseURL之後 寫測試的時候就可以寫相對路徑囉，不用寫完整路徑
+  use: {
+    /* Base URL to use in actions like `await page.goto('/')`. */
+    baseURL: 'http://127.0.0.1:3000',
+  },
+
+```
 
 #### **瀏覽器的版本**
 
 可以自行定義要測試的瀏覽器有哪幾種，最貼心的居然還有手機版的瀏覽器！不過設定的瀏覽器越多也意謂著測試會跑越久，還是看專案的需求來決定要以哪些瀏覽器為主，通常會以 chrome 為主
 
-projects: \[  
- {  
- name: 'chromium',  
- use: { ...devices\['Desktop Chrome'\] },  
- },
+```javascript
+projects: [
+  {
+    name: "chromium",
+    use: { ...devices["Desktop Chrome"] },
+  },
 
-    {
-      name: 'firefox',
-      use: { ...devices\['Desktop Firefox'\] },
-    },
+  {
+    name: "firefox",
+    use: { ...devices["Desktop Firefox"] },
+  },
 
-    {
-      name: 'webkit',
-      use: { ...devices\['Desktop Safari'\] },
-    },
+  {
+    name: "webkit",
+    use: { ...devices["Desktop Safari"] },
+  },
 
-    /\* Test against mobile viewports. \*/
-    {
-       name: 'Mobile Chrome',
-       use: { ...devices\['Pixel 5'\] },
-     },
-    {
-      name: 'Mobile Safari',
-      use: { ...devices\['iPhone 12'\] },
-    },
+  /* Test against mobile viewports. */
+  {
+    name: "Mobile Chrome",
+    use: { ...devices["Pixel 5"] },
+  },
+  {
+    name: "Mobile Safari",
+    use: { ...devices["iPhone 12"] },
+  },
+];
+```
 
 #### webserver
 
@@ -125,12 +135,14 @@ projects: \[
 1.  自己先在 project B 手動起一個 localhost:3000，然後在 project A 的 playwright 的 baseURL 設定為 localhost:3000，讓 playwright 針對這個 localhost:3000 做測試
 2.  我希望每次跑測試之前，playwright 可以先自動幫我起一個 localhost 的網頁，當 localhost 起好了之後，playwright 再去測試這個頁面，所有的動作都在 project A 完成，為了達成這件事，我們就必須設定 webserver
 
-//在跑測試的之前，先啟動一個網頁  
- webServer: {  
- command: 'pnpm run dev',  
- url: 'http://127.0.0.1:3000',  
- reuseExistingServer: !process.env.CI,  
+```javascript
+//在跑測試的之前，先啟動一個網頁
+ webServer: {
+ command: 'pnpm run dev',
+ url: 'http://127.0.0.1:3000',
+ reuseExistingServer: !process.env.CI,
  },
+```
 
 > 因為 ci 的部分我比較不熟，所以相關的設定就不會介紹了，敬請見諒
 
@@ -169,13 +181,15 @@ projects: \[
 
 假如今天我們要測試的網頁，必須是要先登入，才能夠進到的頁面，那是否意謂著測試每個頁面之前都必須要打一次登入呢？流程會像下面這樣
 
-//test.a.spec.ts  
-test(login)...  
+```javascript
+//test.a.spec.ts
+test(login)...
 test(memberCenter)...
 
-//test.b.sepc.ts  
-test(login)...  
+//test.b.sepc.ts
+test(login)...
 test(settings)..
+```
 
 playwright 提供了一個更好的做法，那就是在執行測試之前，先去跑登入的設定，取得 cookie、token 等資訊，然後存放在一個 json 檔裡面，所有的 test case 都去這個 json 裡面拿授權的資訊即可，方便很多
 
@@ -183,80 +197,88 @@ playwright 提供了一個更好的做法，那就是在執行測試之前，先
 
 建立 playwright/.auth 資料夾，並且加入.gitignore
 
-mkdir -p playwright/.auth  
+```bash
+mkdir -p playwright/.auth
 echo "\\nplaywright/.auth" >> .gitignore
+```
 
 #### step 2
 
 建立 auth.setup.ts，撰寫登入的步驟
 
+```javascript
 import { test as setup } from "@playwright/test";
 
-//指定 authFile path  
+//指定 authFile path
 const authFile = "playwright/.auth/user.json";
 
-setup("authenticate", async ({ page }) => {  
- await page.goto("/");  
- await page.locator('input\[name="account"\]').click();  
- await page.locator('input\[name="account"\]').fill("admin");  
- await page.locator('input\[name="account"\]').press("Tab");  
- await page.locator('input\[name="password"\]').fill("123456");  
- await page.getByRole("button", { name: "submit" }).click();
+setup("authenticate", async ({ page }) => {
+  await page.goto("/");
+  await page.locator('input[name="account"]').click();
+  await page.locator('input[name="account"]').fill("admin");
+  await page.locator('input[name="account"]').press("Tab");
+  await page.locator('input[name="password"]').fill("123456");
+  await page.getByRole("button", { name: "submit" }).click();
 
-await page.waitForURL("/member");
+  await page.waitForURL("/member");
 
-//把拿到的 token 存放到 authFile  
- await page.context().storageState({ path: authFile });  
+  //把拿到的 token 存放到 authFile
+  await page.context().storageState({ path: authFile });
 });
+```
 
 #### step 3
 
 打開 playwright.config.ts 建立一個新的 project setup，記得新增 storageState，並且將要測試的瀏覽器 dependencies 設定為 setup，這樣在跑測試之前都會先執行登入授權的動作，登入成功後，所有的 test case 都可以去 playwright/.auth/user.json 拿資料
 
-projects: \[  
- { name: "setup", testMatch: /.\*\\.setup\\.ts/ },  
- {  
- name: "chromium",  
- use: {  
- ...devices\["Desktop Chrome"\],  
- storageState: "playwright/.auth/user.json",  
- },  
- dependencies: \["setup"\],  
- },  
- \]
+```javascript
+projects: [
+  { name: "setup", testMatch: /.*\.setup\.ts/ },
+  {
+    name: "chromium",
+    use: {
+      ...devices["Desktop Chrome"],
+      storageState: "playwright/.auth/user.json",
+    },
+    dependencies: ["setup"],
+  },
+];
+```
 
 一切都準備就緒之後，就開始來跑測試吧！會發現不管是執行哪個測試檔，都會先去跑 auth.setup.ts，假設登入成功，playwright 會自動生成一個 user.json 檔放在 playwright/.auth 底下，內容如下，不論 api 回傳的 cookie 或是 localstorage 裡面的資訊，通通存起來，讓所有的 test case 都能夠共享這 auth 資訊
 
-//playwright/.auth/user.json 的內容  
-{  
- "cookies": \[  
- {  
- "name": "auth-token",  
- "value": "63099c80-773d-4bca-b2ba-bea12c9fb44e",  
- "domain": "localhost",  
- "path": "/",  
- "expires": \-1,  
- "httpOnly": false,  
- "secure": false,  
- "sameSite": "Lax"  
- }  
- \],  
- "origins": \[  
- {  
- "origin": "http://localhost:5176",  
- "localStorage": \[  
- {  
- "name": "MSW_COOKIE_STORE",  
- "value": "\[\[\\"http://localhost:5176\\",\[\[\\"auth-token\\",{\\"name\\":\\"auth-token\\",\\"value\\":\\"63099c80-773d-4bca-b2ba-bea12c9fb44e\\"}\]\]\]\]"  
- },  
- {  
- "name": "user",  
- "value": "admin"  
- }  
- \]  
- }  
- \]  
+```javascript
+//playwright/.auth/user.json 的內容
+{
+  "cookies": [
+    {
+      "name": "auth-token",
+      "value": "63099c80-773d-4bca-b2ba-bea12c9fb44e",
+      "domain": "localhost",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "http://localhost:5176",
+      "localStorage": [
+        {
+          "name": "MSW_COOKIE_STORE",
+          "value": "[[\"http://localhost:5176\",[[\"auth-token\",{\"name\":\"auth-token\",\"value\":\"63099c80-773d-4bca-b2ba-bea12c9fb44e\"}]]]]"
+        },
+        {
+          "name": "user",
+          "value": "admin"
+        }
+      ]
+    }
+  ]
 }
+```
 
 #### 結語
 

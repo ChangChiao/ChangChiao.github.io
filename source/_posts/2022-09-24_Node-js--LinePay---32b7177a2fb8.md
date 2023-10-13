@@ -2,7 +2,7 @@
 title: Node.js串接LinePay筆記
 description: 本次練習使用的技術為 —  前端：React，後端 ：Node.js + MongoDB，串接的LinePay版本為V3
 date: "2022-09-24T02:56:13.898Z"
-categories: node_js
+categories: NodeJs
 keywords: []
 ---
 
@@ -74,7 +74,9 @@ LinePay 要求的訂單資訊如下(request body)
 
 但 crypto-js 的文件是這樣寫的
 
+```javascript
 const hmacDigest = Base64.stringify(hmacSHA512(path + hashDigest, privateKey));
+```
 
 因此正確的順序應該是加密字串放在前面，secretKey 要放在後面
 
@@ -109,11 +111,11 @@ const hmacDigest = Base64.stringify(hmacSHA512(path + hashDigest, privateKey));
 
 ![](/img/1__elR3YPHj5bi__4d7SZkCH9A.png)
 
-2.如果訂單成功，LinePay API 的回應結果如下
+2. 如果訂單成功，LinePay API 的回應結果如下
 
 ![](/img/1__5hNi4cbAGjWt88SFk72QPg.png)
 
-3.後端就可以跳轉到前端付款成功的頁面了(res.direct)
+3. 後端就可以跳轉到前端付款成功的頁面了(res.direct)
 
 ![](/img/1__VUA1Cx0L4Elqp8jQdomP5w.png)
 
