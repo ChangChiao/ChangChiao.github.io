@@ -6,7 +6,7 @@ description: >-
 date: "2022-02-07T10:17:57.107Z"
 categories: javascript
 keywords: []
-tag: javascript
+tag: javascript promise
 ---
 
 ![](/img/1__YpWbqiMz5wNQIfM09GRnAA.jpeg)

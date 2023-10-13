@@ -3,7 +3,7 @@ title: Node.js串接LinePay筆記
 description: 本次練習使用的技術為 —  前端：React，後端 ：Node.js + MongoDB，串接的LinePay版本為V3
 date: "2022-09-24T02:56:13.898Z"
 categories: NodeJs
-tag: LinePay
+tags: LinePay NodeJs
 keywords: []
 ---
 

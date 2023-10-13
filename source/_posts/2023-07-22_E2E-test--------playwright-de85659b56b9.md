@@ -9,7 +9,7 @@ tag: playwright
 keywords: []
 ---
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2023/md_1697073963636/img/1__no__d95uHh8__Vu67iGJ52ug.jpeg)
+![](/img/1__no__d95uHh8__Vu67iGJ52ug.jpeg)
 
 說到 E2E(End to End)測試工具，大部分的人應該第一個想到的會是 Cypress，不過其實除了 Cypress，還有一個好用的工具，那就是由微軟開發的後起之秀  — playwright，近期因為工作需求需要寫 E2E test，便將 cypress 和 playwright 列入考量清單，雖然 cypress 歷史較為悠久但因為跑 ci 時耗費的資源較多，幾經評估之後我們團隊決定選擇 playwright，跟著官方的文件玩過一次，發現還蠻有趣的，接下來會介紹 playwright 有哪些特點
 
@@ -17,23 +17,23 @@ keywords: []
 
 在網頁上的所有操作行為， playwright 都能幫你錄製，當你按下錄製按鈕之後 playwright 會將你在網頁上的每一個操作步驟都寫成程式碼(如下圖)，完全不用自己動手
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2023/md_1697073963636/img/1__pytjxluVwr47OIk8STlrZw.png)
+![](/img/1__pytjxluVwr47OIk8STlrZw.png)
 
 #### ui 介面操作
 
 playwright 提供了 ui 介面方便使用者查看每個測試階段，左邊會列出測試步驟，上方則會有逐格的畫面錄製，可以觀察每個畫面的變化，下方的面板有 console、network 等等的資訊，讓開發者更容易除錯
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2023/md_1697073963636/img/1__LIgaw3PBp6tBD76M68MTig.png)
+![](/img/1__LIgaw3PBp6tBD76M68MTig.png)
 
 #### 測試報告
 
 會依照 test case 和瀏覽器逐一生成測試報告，讓測試結果一目瞭然，後方也會列出執行秒數
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2023/md_1697073963636/img/1__ssnE0aA6z__NhGg__WR__JRdg.png)
+![](/img/1__ssnE0aA6z__NhGg__WR__JRdg.png)
 
 點開標題，內頁會明確地告訴你測試的細節，哪個測試環節沒有 pass 等等
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2023/md_1697073963636/img/1__QzSjmFdSGwda6CrHaySMDA.png)
+![](/img/1__QzSjmFdSGwda6CrHaySMDA.png)
 
 #### 小試身手
 
@@ -41,7 +41,7 @@ playwright 提供了 ui 介面方便使用者查看每個測試階段，左邊�
 
 在開始寫測試之前，強烈推薦大家安裝 vscode playwright 套件，因為這個工具真的非常方便，後面會再做介紹
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2023/md_1697073963636/img/1__ZTaDMLChrhhYj6XWeNX5lw.png)
+![](/img/1__ZTaDMLChrhhYj6XWeNX5lw.png)
 
 #### 如何開始
 
@@ -53,21 +53,21 @@ pnpm dlx create-playwright
 
 接下來會詢問你一些問題，可根據自身需求做調整
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2023/md_1697073963636/img/1__qTkJv1e2YWtUK0QtHA2rYw.png)
+![](/img/1__qTkJv1e2YWtUK0QtHA2rYw.png)
 
 不想用 command line 的話，也可以用另一個方式安裝 playwright
 
 假如先前已經安裝好 playwright vscode 套件，可以按 ctrl(cmd) + shift + p，呼叫執行指令的輸入框，輸入 playwright 後選擇 install playwright
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2023/md_1697073963636/img/1____XSOpdZvq__Vv8W4RKYw__FQ.png)
+![](/img/1____XSOpdZvq__Vv8W4RKYw__FQ.png)
 
 就會出現這些選項，比起剛剛用指令安裝的方式更有彈性
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2023/md_1697073963636/img/1__uftjgRlvgjHUiuAidrlb1A.png)
+![](/img/1__uftjgRlvgjHUiuAidrlb1A.png)
 
 跑完指令之後，就會看到新生成的 test 資料夾和 playwright config
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2023/md_1697073963636/img/1__7iKBOxxwsQp5ns66EaMt6A.png)
+![](/img/1__7iKBOxxwsQp5ns66EaMt6A.png)
 
 #### playwright config 相關設定
 
@@ -131,7 +131,7 @@ projects: [
 
 假如我們想要測試 localhost 的話，可以有兩種做法
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2023/md_1697073963636/img/1__FuXJ__So8HtRC8ZCA2aDlKQ.png)
+![](/img/1__FuXJ__So8HtRC8ZCA2aDlKQ.png)
 
 1.  自己先在 project B 手動起一個 localhost:3000，然後在 project A 的 playwright 的 baseURL 設定為 localhost:3000，讓 playwright 針對這個 localhost:3000 做測試
 2.  我希望每次跑測試之前，playwright 可以先自動幫我起一個 localhost 的網頁，當 localhost 起好了之後，playwright 再去測試這個頁面，所有的動作都在 project A 完成，為了達成這件事，我們就必須設定 webserver
@@ -151,7 +151,7 @@ projects: [
 
 安裝好了之後，左邊會出現ㄧ個燒杯(?)的 icon，按下去就會出現測試的面板
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2023/md_1697073963636/img/1__f6LClFNPJQb2rpOTomO2DQ.png)
+![](/img/1__f6LClFNPJQb2rpOTomO2DQ.png)
 
 上方會列出所有的 test case，資料夾結構一目暸然，只要按下 title 旁邊的播放 icon，就會跑測試了，接下來會介紹下方面板提供的一些好用功能
 
@@ -159,7 +159,7 @@ projects: [
 
 看著網頁上琳瑯滿目的元素，不知道該下什麼語法才能選到目標元素嗎？就讓 pick locator 來處理吧！按下 pick locator 之後會開啟一個空白分頁，輸入網址後，游標指到的元素就會出現選擇語法的提示，是不是很貼心！！
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2023/md_1697073963636/img/1__KrOMTIeHaqO8qvdut41dCw.png)
+![](/img/1__KrOMTIeHaqO8qvdut41dCw.png)
 
 #### Record new
 
@@ -172,11 +172,11 @@ projects: [
 5.  輸入密碼
 6.  按下送出按鈕
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2023/md_1697073963636/img/1__IAZn3l7rWBRLt2yJlg7oXA.png)
+![](/img/1__IAZn3l7rWBRLt2yJlg7oXA.png)
 
 操作完畢後，回到 vscode 看會發現 playwright 已經幫你寫好了所有的步驟，完全不用親自動手，不過實務上還是會做微調，不然就會出現很多不必要的語法，像是 input click 這個動作其實是不需要的，只是因為我們在輸入之前要先選到那個輸入框，因此是可以被移除，只要留下 fill 和 click button 的語法即可
 
-![](/Users/joectchang_mac/Downloads/medium-export-a/post2023/md_1697073963636/img/1__ND6eVizGv__5pxNoYtBVc5g.png)
+![](/img/1__ND6eVizGv__5pxNoYtBVc5g.png)
 
 #### 登入授權處理
 

@@ -5,7 +5,7 @@ description: >-
   function執行，結果callback…
 date: "2022-01-25T05:49:49.020Z"
 categories: javascript
-tag: javascript
+tag: javascript this
 keywords: []
 ---
 

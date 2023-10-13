@@ -3,7 +3,7 @@ title: 關於 JavaScript中的任務調度者 —  Event Loop事件循環
 description: 為甚麼需要理解Event Loop?
 date: "2022-04-05T06:18:34.988Z"
 categories: javascript
-tag: EventLoop
+tag: EventLoop javascript
 keywords: []
 ---
 
