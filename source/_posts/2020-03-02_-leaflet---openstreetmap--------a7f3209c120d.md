@@ -12,17 +12,17 @@ tags: leaflet
 想要快速上手可以參考這篇官方文檔  
 [https://leafletjs.com/examples/quick-start/](https://leafletjs.com/examples/quick-start/)
 
-想要快速開發所以用 codepen 寫 搭配 vue.js，採用 cdn 的方式引入 js&css
+想要快速開發所以用 codepen 寫 搭配 vue.js，採用 cdn 的方式引入 js & css
 
 起手式先在 HTML 裡面新增一個#map，js 的部分先建立 map 容器設置地圖初始的中心點以及縮放倍率
 
 ```javascript
-this.map = L.map(‘map’, {
- center: \[25.033976,121.5623609\],
- zoom: 16
- });
+this.map = L.map("map", {
+  center: [25.033976, 121.5623609],
+  zoom: 16,
+});
 //也可以寫成
-var myMap = L.map(‘map’).setView(\[25.033976,121.5623609\], 16);
+var myMap = L.map("map").setView([25.033976, 121.5623609], 16);
 ```
 
 接下來設置地圖底圖
@@ -70,16 +70,18 @@ fetch(網址)
 
 ```javascript
 getMaskData(){
-//呼叫前先開啟 loading
+//呼叫前先開啟loading
  this.loading = true
  fetch(this.url).then((response)=>{
- `return response.json()     }).then((jsonData)=>{     this.loading = false`
- console.log(‘jsonData’,jsonData)
- //資料存入 vue data
- this.dataList = jsonData
- //繪製圖標
- this.setMark()
- })
+  return response.json()
+  }).then((jsonData)=>{
+  this.loading = false
+  console.log(‘jsonData’,jsonData)
+  //資料存入vue data
+  this.dataList = jsonData
+  //繪製圖標
+  this.setMark()
+  })
  },
 
 
@@ -87,21 +89,21 @@ getMaskData(){
 
 createMark(){
  this.greenMark = new L.Icon({
- iconUrl: ‘[https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png'](https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png%27),
- shadowUrl: ‘[https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png'](https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png%27),
- iconSize: \[25, 41\],
- iconAnchor: \[12, 41\],
- popupAnchor: \[1, -34\],
- shadowSize: \[41, 41\]
+ iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+ shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+ iconSize: [25, 41],
+ iconAnchor: [12, 41],
+ popupAnchor: [1, -34],
+ shadowSize: [41, 41]
  })
 
-this.redMark = new L.Icon({
- iconUrl: ‘[https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png'](https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png%27),
- shadowUrl: ‘[https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png'](https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png%27),
- iconSize: \[25, 41\],
- iconAnchor: \[12, 41\],
- popupAnchor: \[1, -34\],
- shadowSize: \[41, 41\]
+ this.redMark = new L.Icon({
+ iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+ shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+ iconSize: [25, 41],
+ iconAnchor: [12, 41],
+ popupAnchor: [1, -34],
+ shadowSize: [41, 41]
  });
 
 ```
@@ -153,21 +155,25 @@ new Date().toLocaleString()
 ```javascript
 filterData(event){
  let target = event.target.value
- let arr = this.dataList\[‘features’\].filter((item)=>{
- return item.properties.county == target
+ let arr = this.dataList["features"].filter((item)=>{
+  return item.properties.county == target
  })
- this.setMark(arr)
+  this.setMark(arr)
  }
+
+```
 
 為了效能問題 ，每次繪製新的 mark 前都要先清空 mark 圖層
 
+```javascript
 cleanMarker(){
- this.map.eachLayer((layer)=>{
- if(layer instanceof L.Marker){
- this.map.removeLayer(layer)
+   this.map.eachLayer((layer)=>{
+    if(layer instanceof L.Marker){
+        this.map.removeLayer(layer)
+       }
+    })
  }
- })
- }
+
 ```
 
 附上 codepen 網址

@@ -1,6 +1,6 @@
 ---
 title: React hook(中)-useContext&useReducer
-description: useContext()
+description: useContext 會和 React Context API 搭配使用，可以讓 component 共享資料，像是進階版的 props，不用一層一層的傳 props 真的太美好了，可以隔山打牛，可以避免掉 HOC 的波動拳…不得不說這樣真的方便多了。
 date: "2020-11-16T15:55:18.489Z"
 categories: react
 keywords: []
