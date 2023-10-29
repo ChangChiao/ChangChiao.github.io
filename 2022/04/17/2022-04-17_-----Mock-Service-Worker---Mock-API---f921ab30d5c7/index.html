@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"changchiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="一般的前後端分離開發流程通常是由後端開發好API之後交給前端來做串接，不過很常發生的情況是前端早就完成了前置作業，只能望穿秋水等待後端API開發完成，這個時候就可以使用Mock API來模擬真實的API，讓前端可以自給自足，先行一步串接API，除此之外，使用Mock…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="別等了！用Mock Service Worker來產生Mock API吧！">
+<meta property="og:url" content="https://changchiao.github.io/2022/04/17/2022-04-17_-----Mock-Service-Worker---Mock-API---f921ab30d5c7/index.html">
+<meta property="og:site_name" content="Coding Hot Pot">
+<meta property="og:description" content="一般的前後端分離開發流程通常是由後端開發好API之後交給前端來做串接，不過很常發生的情況是前端早就完成了前置作業，只能望穿秋水等待後端API開發完成，這個時候就可以使用Mock API來模擬真實的API，讓前端可以自給自足，先行一步串接API，除此之外，使用Mock…">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://changchiao.github.io/img/1__kalnHosFvOQaoWouz3ZYcA.jpeg">
+<meta property="og:image" content="https://changchiao.github.io/img/1__R8vnAecuP5FhhoSahbCJsw.jpeg">
+<meta property="og:image" content="https://changchiao.github.io/img/1__HXaQYfizT3BmWl4hhyN__kg.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__uKv7PmAE8k3ambVX8iUXFQ.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__fFw5lXRJ__1LFG3bBY1LedQ.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__VbT8rShd__JAXiwsfmR5nhg.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__BJ48i8JxFxGLhTDlHECJVw.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__YjSzyfD7WpycOeavFH3Piw.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__3vwd5dLRUgDdzpR__oY0__lg.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__aOoBsp9ATWVkT0QIApDIaw.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__24qQJ1bXSP70NuQZyTUKEg.png">
+<meta property="article:published_time" content="2022-04-17T04:39:55.703Z">
+<meta property="article:modified_time" content="2023-10-13T09:10:36.543Z">
+<meta property="article:author" content="Joe Chang">
+<meta property="article:tag" content="MockAPI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://changchiao.github.io/img/1__kalnHosFvOQaoWouz3ZYcA.jpeg">
+
+
+<link rel="canonical" href="https://changchiao.github.io/2022/04/17/2022-04-17_-----Mock-Service-Worker---Mock-API---f921ab30d5c7/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://changchiao.github.io/2022/04/17/2022-04-17_-----Mock-Service-Worker---Mock-API---f921ab30d5c7/","path":"2022/04/17/2022-04-17_-----Mock-Service-Worker---Mock-API---f921ab30d5c7/","title":"別等了！用Mock Service Worker來產生Mock API吧！"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>別等了！用Mock Service Worker來產生Mock API吧！ | Coding Hot Pot</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJM3X3RGKD"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-SJM3X3RGKD","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Coding Hot Pot</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">日新月異的前端技術...學不動了</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%9C%E6%96%BC-Service-Worker"><span class="nav-number">1.</span> <span class="nav-text">關於 Service Worker</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mock-Service-Worker-%E5%88%9D%E9%AB%94%E9%A9%97"><span class="nav-number">2.</span> <span class="nav-text">Mock Service Worker  初體驗</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B-handler"><span class="nav-number">3.</span> <span class="nav-text">建立 handler</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B-Service-Worker"><span class="nav-number">4.</span> <span class="nav-text">建立 Service Worker</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#faker-js-%E2%80%94-%E5%81%87%E8%B3%87%E6%96%99%E8%A3%BD%E9%80%A0%E6%A9%9F"><span class="nav-number">5.</span> <span class="nav-text">faker.js —  假資料製造機</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Joe Chang"
+      src="/images/oldman.jpg">
+  <p class="site-author-name" itemprop="name">Joe Chang</p>
+  <div class="site-description" itemprop="description">唯有非常努力，才能看起來毫不費力</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">標籤</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://changchiao.github.io/2022/04/17/2022-04-17_-----Mock-Service-Worker---Mock-API---f921ab30d5c7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/oldman.jpg">
+      <meta itemprop="name" content="Joe Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Hot Pot">
+      <meta itemprop="description" content="唯有非常努力，才能看起來毫不費力">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="別等了！用Mock Service Worker來產生Mock API吧！ | Coding Hot Pot">
+      <meta itemprop="description" content="一般的前後端分離開發流程通常是由後端開發好API之後交給前端來做串接，不過很常發生的情況是前端早就完成了前置作業，只能望穿秋水等待後端API開發完成，這個時候就可以使用Mock API來模擬真實的API，讓前端可以自給自足，先行一步串接API，除此之外，使用Mock…">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          別等了！用Mock Service Worker來產生Mock API吧！
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2022-04-17 12:39:55" itemprop="dateCreated datePublished" datetime="2022-04-17T12:39:55+08:00">2022-04-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2023-10-13 17:10:36" itemprop="dateModified" datetime="2023-10-13T17:10:36+08:00">2023-10-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/mock-api/" itemprop="url" rel="index"><span itemprop="name">mock_api</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">一般的前後端分離開發流程通常是由後端開發好API之後交給前端來做串接，不過很常發生的情況是前端早就完成了前置作業，只能望穿秋水等待後端API開發完成，這個時候就可以使用Mock API來模擬真實的API，讓前端可以自給自足，先行一步串接API，除此之外，使用Mock…</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="/img/1__kalnHosFvOQaoWouz3ZYcA.jpeg"></p>
+<p>一般的前後端分離開發流程通常是由後端開發好 API 之後交給前端來做串接，不過很常發生的情況是前端早就完成了前置作業，只能望穿秋水等待後端 API 開發完成，這個時候就可以使用 Mock API 來模擬真實的 API，讓前端可以自給自足，先行一步串接 API，除此之外，使用 Mock API 還有一項優點，可以模擬如果 API 壞掉了，前端的程式是否會跟著爆掉，進而做一些意外的錯誤處理，畢竟在開發環境 API 串接得好好都沒事，但在正式環境因為 API 錯誤而導致前端頁面跟著壞掉的情況並不少見，因此可以用 Mock API 來模擬那些可能發生的例外情形來做測試。</p>
+<blockquote>
+<p><strong>什麼是 Mock API？ —</strong>  在測試的環境當中，模擬真實環境的 API</p>
+</blockquote>
+<p>Mock API 的選擇其實不少，先前都是使用 json-server 來開發，近期無意間發現有個新崛起的明日之星  — Mock Service Worker，支援 RESTful 和 GraphQL，npm 近期的下載量已經超越 json-server 了！那麼今天就試著來玩玩看 Mock Service Worker 吧！</p>
+<h4 id="關於-Service-Worker"><a href="#關於-Service-Worker" class="headerlink" title="關於 Service Worker"></a>關於 Service Worker</h4><p>Mock Service Worker 在瀏覽器環境的實作原理是使用 service worker 這個 WEB API 來攔截 http request，再將 API response 的內容替換成我們模擬的資料，流程可參考下圖</p>
+<p><img src="/img/1__R8vnAecuP5FhhoSahbCJsw.jpeg"></p>
+<p>因此讓我們先來認識這個神奇的 service worker 吧！</p>
+<p>service worker 可以理解是 client(瀏覽器)和 server 端之間的一個 Proxy(代理伺服器)，這個 Proxy 可以做的事情有：攔截 client 端的 API 請求、主動的發起 API 請求給 server，推送消息給 client 等等， 而 service worker 最大的優勢是可以長時間的 cache 資料，因此最常被使用在 PWA 上面，讓網頁也能像 APP 那樣離線使用</p>
+<p><strong>Service Worker 特點</strong></p>
+<ul>
+<li>因為安全考量，只能在 https 和 localhost(本機測試環境)使用 service worker</li>
+<li>會在瀏覽器背景執行，不影響瀏覽器的主執行緒</li>
+<li>Service Worker 不能操作 DOM</li>
+</ul>
+<p>如果有啟動 Service Worker 的話，可以在開發者工具中的 application&#x2F;Service Worker 看到相關的資訊</p>
+<p><img src="/img/1__HXaQYfizT3BmWl4hhyN__kg.png"></p>
+<p>因為文章篇幅有限，關於 Service Worker 的生命週期和事件監聽就不多做介紹，有興趣的讀者可以閱讀這篇<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10216819">文章</a></p>
+<h4 id="Mock-Service-Worker-初體驗"><a href="#Mock-Service-Worker-初體驗" class="headerlink" title="Mock Service Worker  初體驗"></a>Mock Service Worker  初體驗</h4><p>這次測試的專案我是使用 vite + React，大家可以選擇自己熟悉的打包工具和框架來測試，我要衷心的讚嘆一下官方文件寫的清楚明暸，非常好上手，以下都會以 msw 來簡稱 Mock Service Worker</p>
+<p>第一步先安裝 msw</p>
+<p>在 src 資料夾底下建立一個 mocks 的資料夾，之後會將相關的程式碼都放在這個資料夾底下</p>
+<p><img src="/img/1__uKv7PmAE8k3ambVX8iUXFQ.png"></p>
+<h4 id="建立-handler"><a href="#建立-handler" class="headerlink" title="建立 handler"></a>建立 handler</h4><p>接下來要定義 Mock API 內容，新增一隻 handler.js，並且引入 rest，我們可以在 handlers 陣列裡面定義多個 rest handler</p>
+<p>rest 擁有 RESTful API 對應的 METHOD 方法，像是 rest.post()、rest.get()、rest.delete()等等，用法也很簡單傳入的第一個參數是 API 的 url，第二個參數則是一個 callback function，而這個 callback function 有三個參數可以使用，介紹如下</p>
+<ul>
+<li>req: 接收 API request 資訊</li>
+<li>res: 回應 API 的請求</li>
+<li>ctx : 可以設定 status code、header、body 內容等等</li>
+</ul>
+<p><strong>題外話</strong></p>
+<blockquote>
+<p>如果有寫過 node.js 的朋友對於 msw 的用法應該會覺得十分親切，語法雖然有點差異，但概念還蠻相似的，都是透過 req 拿到請求的資訊，並且用 res 回應 API 請求</p>
+</blockquote>
+<p>接下來直接複製官網的範例來使用，下面的 handler 模擬了登入和獲取使用者資訊的流程，如果在未登入的情形下請求 user API，API 會回應 403(使用者沒被授權），如果有登入的話 status code 則會回應 200</p>
+<h4 id="建立-Service-Worker"><a href="#建立-Service-Worker" class="headerlink" title="建立 Service Worker"></a>建立 Service Worker</h4><p>執行以下指令讓 msw 幫你在 public 底下建立 Service Worker，請將 PUBLIC_DIR 替換成你專案底下的 public 的資料夾路徑</p>
+<p>可是… 我的專案底下沒有 public 資料夾啊，沒關係官網列出了常見的專案 public 路徑，是不是很貼心？</p>
+<p><img src="/img/1__fFw5lXRJ__1LFG3bBY1LedQ.png"></p>
+<p>執行完畢之後，可以看 public 資料夾底下生成了 mockServiceWorker.js，裡面撰寫了和 Service Worker 有關的程式碼</p>
+<p><img src="/img/1__VbT8rShd__JAXiwsfmR5nhg.png"></p>
+<p>下一步，就是如何啟動這個 Service Worker 了！先在 src&#x2F;mocks 資料夾底下新增 browser.js</p>
+<p><img src="/img/1__BJ48i8JxFxGLhTDlHECJVw.png"></p>
+<p>引入 setupWorker 來創建 worker 實例，並且將先前定義好的 handler 做為參數傳入</p>
+<p>畢竟只是要在開發環境測試 Mock API，因此寫了一個簡單的判斷，當開發環境是 dev 才讓 worker run 起來，因為我是用 vite 開發，所以判斷是否為 dev 環境是用 import.meta.env.DEV，用 webpack 的朋友請用 process.env.NODE_ENV 判斷</p>
+<p>msw 的前置作業已經大功告成，接下來將專案 run 起來，如果有在 console.log 看到 [MSW] Mocking enabled.，就代表 msw 已經成功啟動了</p>
+<p><img src="/img/1__YjSzyfD7WpycOeavFH3Piw.png"></p>
+<p>為了模擬登入請求，寫了一個簡單的登入按鈕，點擊之後會呼叫登入 API，如果登入成功，就會接著請求 user 的資料</p>
+<p>當我們點擊了登入按鈕之後打開 f12 觀察，會發現 api 的 status code 後面多了(from service worker)的字眼，提醒你這隻 API 是由 Service worker 攔截請求的</p>
+<p><img src="/img/1__3vwd5dLRUgDdzpR__oY0__lg.png"></p>
+<p>查看 fetch 的結果也的確有拿到我們在 handler 定義的測試內容，登入成功就會回傳 login success 的訊息</p>
+<p><img src="/img/1__aOoBsp9ATWVkT0QIApDIaw.png"></p>
+<p>下一步，我想要改寫一下官網的範例，模擬登入後可以查看自己的購物車清單，假設有二十筆的商品資料好了，要如何快速生成 20 筆假資料？ 土法煉鋼自己一筆一筆 key 也是個方法，但實在是太累了，我們可以讓 faker.js 來代勞</p>
+<h4 id="faker-js-—-假資料製造機"><a href="#faker-js-—-假資料製造機" class="headerlink" title="faker.js —  假資料製造機"></a>faker.js —  假資料製造機</h4><p>先安裝 faker.js</p>
+<p>faker 提供了很多假資料模組，像是個資、商品、公司行號等等，而且官網還強調資料不會太假 XD，因為要模擬購物車的商品資料，所以選擇使用 Commerce 模組，使用 faker.commerce.productName()的語法就可以生成一個商品名稱，price 可以傳入參數，來限制生成的假資料價錢範圍，小數點後幾位等等，以下面的例子來說，限定 price 在 100~1000 之間，並且小數點後為 0，更多的屬性可以參考<a target="_blank" rel="noopener" href="https://fakerjs.dev/api/commerce.html">這裡</a></p>
+<p>在 handler.js 引入 faker.js，並且跑迴圈生成假資料列表</p>
+<p>呼叫 user API 時，就可以成功看到購物車的 20 筆假資料！</p>
+<p><img src="/img/1__24qQJ1bXSP70NuQZyTUKEg.png"></p>
+<p>以上就是關於 Mock Service Worker 的簡單介紹，有錯歡迎指正！謝謝</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ChangChiao/msw_test">完整程式碼</a></p>
+<p>參考資料：<a target="_blank" rel="noopener" href="https://mswjs.io/">Mock Service Worker</a>、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API/Using_Service_Workers">MDN</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/MockAPI/" rel="tag"># MockAPI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/04/05/2022-04-05_---JavaScript-----------Event-Loop-----3e92917b0834/" rel="prev" title="關於 JavaScript中的任務調度者 —  Event Loop事件循環">
+                  <i class="fa fa-angle-left"></i> 關於 JavaScript中的任務調度者 —  Event Loop事件循環
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/06/08/2022-06-08_----Socket-io-----------82a4949d571d/" rel="next" title="如何使用Socket.io實作一對一聊天功能?">
+                  如何使用Socket.io實作一對一聊天功能? <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Joe Chang</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ChangChiao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"changchiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Map是JavaScript ES6中新增的資料結構 ，類似於object ，不過Map還是跟object有著以下的差異:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[資料結構] — Map">
+<meta property="og:url" content="https://changchiao.github.io/2021/09/10/2021-09-10_---------Map-a40c8d4fe7d2/index.html">
+<meta property="og:site_name" content="Coding Hot Pot">
+<meta property="og:description" content="Map是JavaScript ES6中新增的資料結構 ，類似於object ，不過Map還是跟object有著以下的差異:">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://changchiao.github.io/img/1__RuILGc0__5pgivTV51HICPQ.jpeg">
+<meta property="article:published_time" content="2021-09-10T01:10:45.924Z">
+<meta property="article:modified_time" content="2023-10-13T09:05:20.242Z">
+<meta property="article:author" content="Joe Chang">
+<meta property="article:tag" content="演算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://changchiao.github.io/img/1__RuILGc0__5pgivTV51HICPQ.jpeg">
+
+
+<link rel="canonical" href="https://changchiao.github.io/2021/09/10/2021-09-10_---------Map-a40c8d4fe7d2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://changchiao.github.io/2021/09/10/2021-09-10_---------Map-a40c8d4fe7d2/","path":"2021/09/10/2021-09-10_---------Map-a40c8d4fe7d2/","title":"[資料結構] — Map"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[資料結構] — Map | Coding Hot Pot</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJM3X3RGKD"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-SJM3X3RGKD","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Coding Hot Pot</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">日新月異的前端技術...學不動了</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%AE%A3%E5%91%8A%E4%B8%80%E5%80%8B%E6%96%B0%E7%9A%84-Map"><span class="nav-number">1.</span> <span class="nav-text">如何宣告一個新的 Map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map-set-key-value"><span class="nav-number">2.</span> <span class="nav-text">Map.set(key, value)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map-get-key"><span class="nav-number">3.</span> <span class="nav-text">Map.get(key)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map-size"><span class="nav-number">4.</span> <span class="nav-text">Map.size()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map-has-key"><span class="nav-number">5.</span> <span class="nav-text">Map.has(key)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map-delete-key"><span class="nav-number">6.</span> <span class="nav-text">Map.delete(key)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map-clear"><span class="nav-number">7.</span> <span class="nav-text">Map.clear()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map-Iteration-%E8%BF%AD%E4%BB%A3"><span class="nav-number">8.</span> <span class="nav-text">Map Iteration (迭代)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WeakMap"><span class="nav-number"></span> <span class="nav-text">WeakMap</span></a></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Joe Chang"
+      src="/images/oldman.jpg">
+  <p class="site-author-name" itemprop="name">Joe Chang</p>
+  <div class="site-description" itemprop="description">唯有非常努力，才能看起來毫不費力</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">標籤</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://changchiao.github.io/2021/09/10/2021-09-10_---------Map-a40c8d4fe7d2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/oldman.jpg">
+      <meta itemprop="name" content="Joe Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Hot Pot">
+      <meta itemprop="description" content="唯有非常努力，才能看起來毫不費力">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="[資料結構] — Map | Coding Hot Pot">
+      <meta itemprop="description" content="Map是JavaScript ES6中新增的資料結構 ，類似於object ，不過Map還是跟object有著以下的差異:">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [資料結構] — Map
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2021-09-10 09:10:45" itemprop="dateCreated datePublished" datetime="2021-09-10T09:10:45+08:00">2021-09-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2023-10-13 17:05:20" itemprop="dateModified" datetime="2023-10-13T17:05:20+08:00">2023-10-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%BC%94%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">演算法</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">Map是JavaScript ES6中新增的資料結構 ，類似於object ，不過Map還是跟object有著以下的差異:</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="/img/1__RuILGc0__5pgivTV51HICPQ.jpeg"></p>
+<p>Map 是 JavaScript ES6 中新增的資料結構 ，類似於 object ，不過 Map 還是跟 object 有著以下的差異:</p>
+<ol>
+<li><p>Map 的 key 是可以是原始型別、物件、函式，而 object 的 key 限定為 string、 symbol</p>
+</li>
+<li><p>Map 為 array-like (類陣列)所以可以使用 array 的方法，像是 forEach 等等</p>
+</li>
+<li><p>Map 中的 keys 會根據被添加的時間而有順序性，而 Object 則沒有順序性</p>
+</li>
+<li><p>假如需要頻繁的新增刪除屬性時，Map 的效能會比 Object 更好</p>
+</li>
+</ol>
+<h4 id="如何宣告一個新的-Map"><a href="#如何宣告一個新的-Map" class="headerlink" title="如何宣告一個新的 Map"></a>如何宣告一個新的 Map</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="title class_">Map</span>();</span><br><span class="line"><span class="comment">//也可以在宣告的時候就賦值，傳入[key , value]</span></span><br><span class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="title class_">Map</span>([</span><br><span class="line">  [<span class="string">&quot;amber&quot;</span>, <span class="number">18</span>],</span><br><span class="line">  [<span class="string">&quot;shane&quot;</span>, <span class="number">33</span>],</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+
+<h4 id="Map-set-key-value"><a href="#Map-set-key-value" class="headerlink" title="Map.set(key, value)"></a>Map.set(key, value)</h4><p>新增 key-value pairs(鍵值對)，如果 key 已經存在，舊的值會被新的值覆蓋</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一個值傳入 key 第二個值傳入 value</span></span><br><span class="line">map.<span class="title function_">set</span>(<span class="string">&quot;tom&quot;</span>, <span class="number">28</span>);</span><br><span class="line">map.<span class="title function_">set</span>(<span class="string">&quot;jason&quot;</span>, <span class="number">27</span>);</span><br></pre></td></tr></table></figure>
+
+<p>因為 set 會回傳 map 的本身，所以可以使用 chaining(鏈)的寫法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="title class_">Map</span>().<span class="title function_">set</span>(<span class="string">&quot;jay&quot;</span>, <span class="number">13</span>).<span class="title function_">set</span>(<span class="string">&quot;ban&quot;</span>, <span class="number">23</span>).<span class="title function_">set</span>(<span class="string">&quot;luna&quot;</span>, <span class="number">49</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="Map-get-key"><a href="#Map-get-key" class="headerlink" title="Map.get(key)"></a>Map.get(key)</h4><p>用 key 來獲取 value，如果沒有這個 key 會回傳 undefined</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map.<span class="title function_">get</span>(<span class="string">&quot;tom&quot;</span>); <span class="comment">//get 28</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Map-size"><a href="#Map-size" class="headerlink" title="Map.size()"></a>Map.size()</h4><p>獲取 Map 的長度</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map.<span class="property">size</span>; <span class="comment">// get 2</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Map-has-key"><a href="#Map-has-key" class="headerlink" title="Map.has(key)"></a>Map.has(key)</h4><p>檢查 Map 是否擁有該 key，會回傳 boolean 值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map.<span class="title function_">has</span>(<span class="string">&quot;tom&quot;</span>); <span class="comment">// true or false</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Map-delete-key"><a href="#Map-delete-key" class="headerlink" title="Map.delete(key)"></a>Map.delete(key)</h4><p>刪除 Map 的某個 key，如果刪除成功會回傳 true，失敗則是 false</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map.<span class="title function_">delete</span>(<span class="string">&quot;tom&quot;</span>); <span class="comment">// true or false</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Map-clear"><a href="#Map-clear" class="headerlink" title="Map.clear()"></a>Map.clear()</h4><p>清除 Map 所有的鍵值對，不會回傳值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map.<span class="title function_">clear</span>(<span class="string">&quot;tom&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="Map-Iteration-迭代"><a href="#Map-Iteration-迭代" class="headerlink" title="Map Iteration (迭代)"></a>Map Iteration (迭代)</h4><ul>
+<li>**Map.keys() :**回傳 map 所有的 key</li>
+<li>**Map.values():**回傳 map 所有的 value</li>
+<li>**Map.entires():**回傳 map 每個元素的[key, value]的鍵值對</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> map = <span class="keyword">new</span> <span class="title class_">Map</span>([</span><br><span class="line">  [<span class="string">&quot;amber&quot;</span>, <span class="number">18</span>],</span><br><span class="line">  [<span class="string">&quot;shane&quot;</span>, <span class="number">33</span>],</span><br><span class="line">]);</span><br><span class="line">map.<span class="title function_">keys</span>(); <span class="comment">// &#123;&#x27;amber&#x27;, &#x27;shane&#x27;&#125;</span></span><br><span class="line">map.<span class="title function_">values</span>(); <span class="comment">// &#123;18, 33&#125;</span></span><br><span class="line">map.<span class="title function_">entires</span>(); <span class="comment">// &#123;&quot;amber&quot; =&gt; 18, &quot;shane&quot; =&gt; 33&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以搭配 for of 或 forEach 來遍歷 map</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//for of</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> map) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;key&quot;</span>, key, <span class="string">&quot;value&quot;</span>, value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//forEach</span></span><br><span class="line">map.<span class="title function_">forEach</span>(<span class="function">(<span class="params">value, key</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;key&quot;</span>, key, <span class="string">&quot;value&quot;</span>, value);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>將 map 轉成陣列</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//....擴展運算子</span></span><br><span class="line">[...map.<span class="title function_">keys</span>()]; <span class="comment">// [&quot;amber&quot;, &quot;shane&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="WeakMap"><a href="#WeakMap" class="headerlink" title="WeakMap"></a>WeakMap</h3><p>WeakeMap 結構類似於 Map，只接受 object 作為 key ，不接受其它類型的值，不支援迭代的方法 ex. keys()、values()、entries()等等，WeakMap 的 key 為弱引用，當作為 key 的 object 在其它地方沒有被引用的時候，就會被 js 垃圾回收機制自動回收，整個鍵值對都會消失。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> weakMap = <span class="keyword">new</span> <span class="title class_">WeakMap</span>();</span><br><span class="line">weakMap.<span class="title function_">set</span>(<span class="string">&quot;mark&quot;</span>, <span class="number">19</span>);</span><br><span class="line"><span class="comment">//Invalid value used as weak map key</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">name</span>: <span class="string">&quot;mark&quot;</span> &#125;;</span><br><span class="line">weakMap.<span class="title function_">set</span>(obj, <span class="number">5</span>);</span><br></pre></td></tr></table></figure>
+
+<p>參考資料:<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">MDN</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/" rel="tag"># 演算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/09/07/2021-09-07_------Array------c35b2cbf48cf/" rel="prev" title="[資料結構]Array — 陣列">
+                  <i class="fa fa-angle-left"></i> [資料結構]Array — 陣列
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/09/12/2021-09-12_----------Set-7b0413836ed9/" rel="next" title="[資料結構] —  Set">
+                  [資料結構] —  Set <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Joe Chang</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ChangChiao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

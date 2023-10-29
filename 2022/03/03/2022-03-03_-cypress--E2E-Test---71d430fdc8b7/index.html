@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"changchiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="當網站開發完之後，我們習慣到處點點看，跑一次使用者的操作行為，檢查頁面的功能是否正常，但很多時候我們的手動測試都是憑感覺，就像戳戳樂一樣，沒有固定的流程和檢查的項目，有戳到bug就是撿到了，沒戳到就當作相安無事，所以難免會有漏網之魚，因此我們需要有一套工具來輔助我們來做有條理測試…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用cypress來寫E2E Test吧!">
+<meta property="og:url" content="https://changchiao.github.io/2022/03/03/2022-03-03_-cypress--E2E-Test---71d430fdc8b7/index.html">
+<meta property="og:site_name" content="Coding Hot Pot">
+<meta property="og:description" content="當網站開發完之後，我們習慣到處點點看，跑一次使用者的操作行為，檢查頁面的功能是否正常，但很多時候我們的手動測試都是憑感覺，就像戳戳樂一樣，沒有固定的流程和檢查的項目，有戳到bug就是撿到了，沒戳到就當作相安無事，所以難免會有漏網之魚，因此我們需要有一套工具來輔助我們來做有條理測試…">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://changchiao.github.io/img/1__j7ih2zzcCyifrZJ2lOy0FQ.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__ftgoiLnqIeepVOfxLolCYA.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__CZwwS6FozeCZF__pBb9ijDg.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__rrrROOvQCUdv4OneT8AsDQ.gif">
+<meta property="og:image" content="https://changchiao.github.io/img/1__D77MIF__WumCHj9xqZSOCdg.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__xyPcL8gF2nEcqo3Q6eXj__w.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__7Vbm3VAc5Qr06__LOgXjmmQ.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__va65Z1Muv0p8LQ2vpp1NQA.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1____xOYa11X0cUMGhzusCnM7Q.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__F2N0y5QuGrx6dRv97QrS8Q.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__JVKvhcu2dNDC__oP33__asog.gif">
+<meta property="og:image" content="https://changchiao.github.io/img/1__iJzZaEmT0bjQ7AElaxI3ug.gif">
+<meta property="article:published_time" content="2022-03-03T03:48:17.408Z">
+<meta property="article:modified_time" content="2023-10-13T09:09:52.200Z">
+<meta property="article:author" content="Joe Chang">
+<meta property="article:tag" content="cypress">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://changchiao.github.io/img/1__j7ih2zzcCyifrZJ2lOy0FQ.png">
+
+
+<link rel="canonical" href="https://changchiao.github.io/2022/03/03/2022-03-03_-cypress--E2E-Test---71d430fdc8b7/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://changchiao.github.io/2022/03/03/2022-03-03_-cypress--E2E-Test---71d430fdc8b7/","path":"2022/03/03/2022-03-03_-cypress--E2E-Test---71d430fdc8b7/","title":"用cypress來寫E2E Test吧!"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>用cypress來寫E2E Test吧! | Coding Hot Pot</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJM3X3RGKD"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-SJM3X3RGKD","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Coding Hot Pot</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">日新月異的前端技術...學不動了</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D-Cypress"><span class="nav-number">1.</span> <span class="nav-text">安裝 Cypress</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%86%E5%AF%AB%E4%B8%80%E5%80%8B%E6%B8%AC%E8%A9%A6%E5%90%A7"><span class="nav-number">2.</span> <span class="nav-text">來寫一個測試吧!</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B8%AC%E8%A9%A6%E8%AA%9E%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">測試語法</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Joe Chang"
+      src="/images/oldman.jpg">
+  <p class="site-author-name" itemprop="name">Joe Chang</p>
+  <div class="site-description" itemprop="description">唯有非常努力，才能看起來毫不費力</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">標籤</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://changchiao.github.io/2022/03/03/2022-03-03_-cypress--E2E-Test---71d430fdc8b7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/oldman.jpg">
+      <meta itemprop="name" content="Joe Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Hot Pot">
+      <meta itemprop="description" content="唯有非常努力，才能看起來毫不費力">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="用cypress來寫E2E Test吧! | Coding Hot Pot">
+      <meta itemprop="description" content="當網站開發完之後，我們習慣到處點點看，跑一次使用者的操作行為，檢查頁面的功能是否正常，但很多時候我們的手動測試都是憑感覺，就像戳戳樂一樣，沒有固定的流程和檢查的項目，有戳到bug就是撿到了，沒戳到就當作相安無事，所以難免會有漏網之魚，因此我們需要有一套工具來輔助我們來做有條理測試…">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          用cypress來寫E2E Test吧!
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2022-03-03 11:48:17" itemprop="dateCreated datePublished" datetime="2022-03-03T11:48:17+08:00">2022-03-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2023-10-13 17:09:52" itemprop="dateModified" datetime="2023-10-13T17:09:52+08:00">2023-10-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/e2eTest/" itemprop="url" rel="index"><span itemprop="name">e2eTest</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">當網站開發完之後，我們習慣到處點點看，跑一次使用者的操作行為，檢查頁面的功能是否正常，但很多時候我們的手動測試都是憑感覺，就像戳戳樂一樣，沒有固定的流程和檢查的項目，有戳到bug就是撿到了，沒戳到就當作相安無事，所以難免會有漏網之魚，因此我們需要有一套工具來輔助我們來做有條理測試…</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="/img/1__j7ih2zzcCyifrZJ2lOy0FQ.png"></p>
+<p>當網站開發完之後，我們習慣到處點點看，跑一次使用者的操作行為，檢查頁面的功能是否正常，但很多時候我們的手動測試都是憑感覺，就像戳戳樂一樣，沒有固定的流程和檢查的項目，有戳到 bug 就是撿到了，沒戳到就當作相安無事，所以難免會有漏網之魚，因此我們需要有一套工具來輔助我們來做有條理測試，就是 cypress! cypress 會依照我們寫的腳本，幫我們模擬測試行為，cypress 採用了 mocha 的語法，聽說非常的好上手，還可以搭配 GUI(圖形介面)操作，那就來試試看 cypress 是否真的這麼好用吧!</p>
+<p><strong>甚麼是 E2E Test?</strong></p>
+<blockquote>
+<p>所謂的「端對端」(<strong>End-to-end testing</strong>) 是指從使用者的角度出發(一端)，對真實系統(另一端)進行測試。 (引用自<a target="_blank" rel="noopener" href="https://blog.miniasp.com/">保哥部落格</a>)</p>
+</blockquote>
+<h4 id="安裝-Cypress"><a href="#安裝-Cypress" class="headerlink" title="安裝 Cypress"></a>安裝 Cypress</h4><p><strong>npm</strong></p>
+<p>npm install cypress –save-dev</p>
+<p><strong>yarn</strong></p>
+<p>yarn add cypress –dev</p>
+<p>安裝 cypress 之後，可以直接執行 npx cypress open，或是在 package.json 新增指令，看個人習慣</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;test:e2e&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cypress open&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>執行指令之後除了打開一個 cypress 視窗之外，也會在專案底下自動新增 cypress 相關的檔案</p>
+<p><img src="/img/1__ftgoiLnqIeepVOfxLolCYA.png"></p>
+<p>打開 cypress 視窗，會發現 cypress&#x2F;integration 資料夾底下已經放了一些範例用的測試程式碼，可以隨便點一個進去看看</p>
+<p><img src="/img/1__CZwwS6FozeCZF__pBb9ijDg.png"></p>
+<p>點進去後就會自動執行腳本，左邊的區塊會顯示測試流程並且依序的執行，右邊的畫面則會跟著測試步驟跑一次</p>
+<p><img src="/img/1__rrrROOvQCUdv4OneT8AsDQ.gif"></p>
+<h4 id="來寫一個測試吧"><a href="#來寫一個測試吧" class="headerlink" title="來寫一個測試吧!"></a>來寫一個測試吧!</h4><p>在 cypress&#x2F;integration 底下新增<code>login_spec.js</code>，檔案的名稱可以依照自己要測試的功能命名，觀察範例的命名格式為<code>xxx_spec.js</code></p>
+<p><img src="/img/1__D77MIF__WumCHj9xqZSOCdg.png"></p>
+<p>因為登入的介面比較單純，輸入帳號密碼按下登入就結束了，所以很適合新手拿來練習 cypress</p>
+<p><img src="/img/1__xyPcL8gF2nEcqo3Q6eXj__w.png"></p>
+<p><a target="_blank" rel="noopener" href="https://docs.cypress.io/api/commands/get" title="https://docs.cypress.io/api/commands/get"><strong>get | Cypress Documentation</strong><br>_Get one or more DOM elements by selector or alias. The querying behavior of this command is similar to how works in…_docs.cypress.io</a><a target="_blank" rel="noopener" href="https://docs.cypress.io/api/commands/get"></a></p>
+<p>這邊必須讚嘆一下 cypress 的文件寫得很清楚，提供了大量的範例還有教學影片，快速瀏覽一次就會對 cypress 的寫法有個頭緒，在讀完文件後寫了一個簡易的登入測試流程，接下來會針對幾個關鍵字來作說明</p>
+<h4 id="測試語法"><a href="#測試語法" class="headerlink" title="測試語法"></a>測試語法</h4><ul>
+<li>describe: 測試群組，裡面可以寫多個測試</li>
+<li>beforeEach: 測試開始前要做的事情</li>
+<li>visit : 開啟要測試的網址</li>
+<li>get : 獲取目標 DOM 元素，選取器的方式類似 jQuery</li>
+<li>type : 在 DOM 元素輸入內容</li>
+<li>click : 執行點擊動作</li>
+<li>it : 撰寫測試案例(test case)</li>
+<li>should: 斷言，預期的執行結果應該要是甚麼</li>
+</ul>
+<p>寫好之後回到 cypress 的視窗，點擊剛剛新增的 login_spec.js 就會自動執行</p>
+<p><img src="/img/1__7Vbm3VAc5Qr06__LOgXjmmQ.png"></p>
+<p>因為是第一次使用所以一不小心就寫錯語法或是犯了一些很白癡的錯誤，不過 cypress 除了報錯之外，還會很貼心的把錯誤的內容解釋得很清楚，因此可以很快的修正錯誤</p>
+<p><img src="/img/1__va65Z1Muv0p8LQ2vpp1NQA.png"></p>
+<p>上面的錯誤原因是我用 button 標籤來選取登入按鈕(偷懶)，但我的頁面上其實有兩個 button 元素，因此 get(“button”)會選到兩個元素，而 click 函式只能針對一個元素執行，所以就報錯了，cypress 建議如果我們是想要針對多個 button 綁定 click 函式的話，可以傳入 { multiple : true}，不過這邊我只想要針對一個按鈕寫 click 事件，所以調整一下選取器的寫法來修正這個問題</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//錯誤的</span></span><br><span class="line">cy.<span class="title function_">get</span>(<span class="string">&quot;button&quot;</span>).<span class="title function_">click</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//正確的</span></span><br><span class="line">cy.<span class="title function_">get</span>(<span class="string">&quot;button[type=&#x27;submit&#x27;]&quot;</span>).<span class="title function_">click</span>();</span><br></pre></td></tr></table></figure>
+
+<p>test case 要檢核內容很簡單，只是驗證密碼是否等於 123456 而已，如果刻意將輸入的密碼改成 1234568，cypress 就會顯示錯誤</p>
+<p><img src="/img/1____xOYa11X0cUMGhzusCnM7Q.png"></p>
+<p>如果正確填入 123456，就會通過測試</p>
+<p><img src="/img/1__F2N0y5QuGrx6dRv97QrS8Q.png"></p>
+<p>看看這個測試執行速度，手動測試完全看不到 cypress 的車尾燈阿!</p>
+<p><img src="/img/1__JVKvhcu2dNDC__oP33__asog.gif"></p>
+<p>在還沒看清楚發生甚麼事之前，測試腳本已經跑完了，如果想要仔細看每個步驟的測試行為該怎麼辦呢  ? Time Travel 的功能很方便，將游標滑到每個測試步驟上，就像慢動作回放一樣，可以看清楚每個測試步驟做了甚麼操作</p>
+<p><img src="/img/1__iJzZaEmT0bjQ7AElaxI3ug.gif"></p>
+<p>以上就是關於 cypress 的簡單介紹，其實還有蠻多功能沒有講到的，就讓大家自己去探索了，寫測試的過程還蠻有趣的，不知道甚麼時候有機會在工作的專案上寫測試呢  ? 感覺是遙遙無期阿… (看著緊湊的專案工作時程表)</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/cypress/" rel="tag"># cypress</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/03/01/2022-03-01_debounce-throttle----callback-------505a660c1933/" rel="prev" title="debounce與throttle — 讓callback不再那麼忙碌">
+                  <i class="fa fa-angle-left"></i> debounce與throttle — 讓callback不再那麼忙碌
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/04/01/2022-04-01_--------------e9234adfc7e7/" rel="next" title="那些在前端面試上常見的考題">
+                  那些在前端面試上常見的考題 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Joe Chang</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ChangChiao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

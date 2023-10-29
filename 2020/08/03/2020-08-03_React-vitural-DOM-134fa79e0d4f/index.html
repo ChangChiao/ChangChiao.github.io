@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"changchiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="會特別寫這篇的原因是以前學習框架的時候只學語法而不懂原理，如果被問到使用框架有什麼好處可能也回答不太出來，由於React是透過Virtual DOM來提升網頁渲染的效率，所以今天要來探討Virtual DOM的運作原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React vitural DOM">
+<meta property="og:url" content="https://changchiao.github.io/2020/08/03/2020-08-03_React-vitural-DOM-134fa79e0d4f/index.html">
+<meta property="og:site_name" content="Coding Hot Pot">
+<meta property="og:description" content="會特別寫這篇的原因是以前學習框架的時候只學語法而不懂原理，如果被問到使用框架有什麼好處可能也回答不太出來，由於React是透過Virtual DOM來提升網頁渲染的效率，所以今天要來探討Virtual DOM的運作原理">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://changchiao.github.io/img/1__bt6YTfE4GE__xdpaecnyWrg.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__tXvhza50EPKyLg80LxZVzA.png">
+<meta property="article:published_time" content="2020-08-03T12:08:07.537Z">
+<meta property="article:modified_time" content="2023-10-12T01:16:25.901Z">
+<meta property="article:author" content="Joe Chang">
+<meta property="article:tag" content="react">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://changchiao.github.io/img/1__bt6YTfE4GE__xdpaecnyWrg.png">
+
+
+<link rel="canonical" href="https://changchiao.github.io/2020/08/03/2020-08-03_React-vitural-DOM-134fa79e0d4f/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://changchiao.github.io/2020/08/03/2020-08-03_React-vitural-DOM-134fa79e0d4f/","path":"2020/08/03/2020-08-03_React-vitural-DOM-134fa79e0d4f/","title":"React vitural DOM"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>React vitural DOM | Coding Hot Pot</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJM3X3RGKD"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-SJM3X3RGKD","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Coding Hot Pot</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">日新月異的前端技術...學不動了</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#DOM-%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">DOM 是什麼？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#repaint"><span class="nav-number">2.</span> <span class="nav-text">repaint</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#reflow"><span class="nav-number">3.</span> <span class="nav-text">reflow</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Virtual-DOM-%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">Virtual DOM 的流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%9C%E6%96%BC-diff-%E6%BC%94%E7%AE%97%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">關於 diff 演算法</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Joe Chang"
+      src="/images/oldman.jpg">
+  <p class="site-author-name" itemprop="name">Joe Chang</p>
+  <div class="site-description" itemprop="description">唯有非常努力，才能看起來毫不費力</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">標籤</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://changchiao.github.io/2020/08/03/2020-08-03_React-vitural-DOM-134fa79e0d4f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/oldman.jpg">
+      <meta itemprop="name" content="Joe Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Hot Pot">
+      <meta itemprop="description" content="唯有非常努力，才能看起來毫不費力">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="React vitural DOM | Coding Hot Pot">
+      <meta itemprop="description" content="會特別寫這篇的原因是以前學習框架的時候只學語法而不懂原理，如果被問到使用框架有什麼好處可能也回答不太出來，由於React是透過Virtual DOM來提升網頁渲染的效率，所以今天要來探討Virtual DOM的運作原理">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          React vitural DOM
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2020-08-03 20:08:07" itemprop="dateCreated datePublished" datetime="2020-08-03T20:08:07+08:00">2020-08-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2023-10-12 09:16:25" itemprop="dateModified" datetime="2023-10-12T09:16:25+08:00">2023-10-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">會特別寫這篇的原因是以前學習框架的時候只學語法而不懂原理，如果被問到使用框架有什麼好處可能也回答不太出來，由於React是透過Virtual DOM來提升網頁渲染的效率，所以今天要來探討Virtual DOM的運作原理</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>會特別寫這篇的原因是以前學習框架的時候只學語法而不懂原理，如果被問到使用框架有什麼好處可能也回答不太出來，由於 React 是透過 Virtual DOM 來提升網頁渲染的效率，所以今天要來探討 Virtual DOM 的運作原理，在了解 Virtual DOM 之前先來了解什麼是 DOM 吧！</p>
+<h4 id="DOM-是什麼？"><a href="#DOM-是什麼？" class="headerlink" title="DOM 是什麼？"></a>DOM 是什麼？</h4><blockquote>
+<p><strong>文件物件模型（_Document Object Model, DOM_）</strong>是 HTML、XML 和 SVG 文件的程式介面。它提供了一個文件（樹）的結構化表示法，並定義讓程式可以存取並改變文件架構、風格和內容的方法。(擷取 MDN 的部分說明</p>
+</blockquote>
+<p>由下圖可以知道 DOM 是樹狀結構從 document 根結點向下延伸，下面依附了許多子節點</p>
+<p><img src="/img/1__bt6YTfE4GE__xdpaecnyWrg.png"></p>
+<p>我們很常利用 js 來操作 DOM， 當瀏覽器在更新畫面的時候會觸發 replaint（回流） 以及 reflow（重繪）這兩個更新機制</p>
+<h4 id="repaint"><a href="#repaint" class="headerlink" title="repaint"></a>repaint</h4><blockquote>
+<p>畫面元素更換樣式時候就觸發（background-color、color…</p>
+</blockquote>
+<h4 id="reflow"><a href="#reflow" class="headerlink" title="reflow"></a>reflow</h4><blockquote>
+<p>更改畫面的佈局(結構排列)就會觸發（更改視窗大小，操作 css 屬性：position、width、height…</p>
+</blockquote>
+<p>頻繁操作 DOM 其實相當吃瀏覽器資源，導致效能低落，這就是為甚麼我們需要 vitural DOM，要修改一個子節點就要重新繪製整個 DOM 聽起來就很不智慧，所以就要借助 Virtual DOM 的演算法，就可以只更新需要異動的部分。</p>
+<h4 id="Virtual-DOM-的流程"><a href="#Virtual-DOM-的流程" class="headerlink" title="Virtual DOM 的流程"></a>Virtual DOM 的流程</h4><ol>
+<li>初次使用<code>setState()</code>方法的時候，React 會先複製一份 dom 的物件（即為 Virtual DOM</li>
+</ol>
+<p>2. 當 React component 的 state 改變時，會比對先前的 Virtual DOM 和當前的 Virtual DOM 差異，稱之為 diff 運算</p>
+<p>3. Virtual DOM 先用自己的演算法(diff)算出實際需要更新的部分，比對兩者差異之後，再去更動真實的 DOM，有效減少渲染的次數 ，提高效能</p>
+<p>這是一般的 html 結構</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;header&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">&quot;title&quot;</span>&gt;</span>Apple<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;content&quot;</span>&gt;</span>lemon<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>這是 Virtual DOM 的結構，是 JavaScript 模擬出來的物件， 會以以下的格式儲存起來</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">tag</span>: <span class="string">&quot;div&quot;</span>,</span><br><span class="line">    <span class="attr">props</span>: &#123;</span><br><span class="line">        <span class="attr">id</span>: <span class="string">&quot;header&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">children</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">tag</span>: <span class="string">&quot;h1&quot;</span>,</span><br><span class="line">            <span class="attr">props</span>: &#123; <span class="attr">className</span>: <span class="string">&quot;title&quot;</span> &#125;,</span><br><span class="line">            <span class="attr">children</span>: [<span class="string">&quot;Apple&quot;</span>]</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            <span class="attr">tag</span>: <span class="string">&quot;p&quot;</span>,</span><br><span class="line">            <span class="attr">props</span>: &#123; <span class="attr">className</span>: <span class="string">&quot;content&quot;</span> &#125;,</span><br><span class="line">            <span class="attr">children</span>: [<span class="string">&quot;lemon&quot;</span>]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line">type</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>type: DOM 標籤名稱</li>
+<li>props:DOM 屬性</li>
+<li>children:DOM 子元素</li>
+</ul>
+<p>下方就用程式碼來稍微模擬一下 Virtual DOM 的執行過程</p>
+<ol>
+<li>createELement :先使用 Virtual DOM 提供的 createELement 方法來生成真實的 DOM</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> tree = <span class="title function_">render</span>(count);</span><br><span class="line"><span class="keyword">var</span> rootNode = <span class="title function_">createElement</span>(tree);</span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(rootNode);</span><br></pre></td></tr></table></figure>
+
+<p>2.當 count 變動時 Virtual DOM 進行比對 再將差異 patch 到實際的 DOM</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">count++;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newTree = <span class="title function_">render</span>(count);</span><br><span class="line"><span class="keyword">var</span> patches = <span class="title function_">diff</span>(tree, newTree);</span><br><span class="line">rootNode = <span class="title function_">patch</span>(rootNode, patches);</span><br><span class="line">tree = newTree;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>什麼是 patch？patch 指的是在原有的 DOM 結構上做異動</p>
+</blockquote>
+<h4 id="關於-diff-演算法"><a href="#關於-diff-演算法" class="headerlink" title="關於 diff 演算法"></a>關於 diff 演算法</h4><p><img src="/img/1__tXvhza50EPKyLg80LxZVzA.png"></p>
+<p>傳統的 diff 演算法複雜度為 O(n³) 處理 100 個節點就要進行 100 萬次的比對，Virtual DOM 的 diff 演算法為 O(n) 與傳統的差異在於下幾點：</p>
+<p>1.Virtual DOM 只會比較同一層級的節點</p>
+<p>2.同一層的節點為了識別個別具有唯一的 key，為了避免節點只是移動又被重新創建一次</p>
+<p>3.如果發現節點不見了其子節點也會一併刪除，不會做進一步的比對</p>
+<p>以往如果是手動操作，每操作一次就會更新一次 DOM，如果是透過 react setState 就會是將多個操作合併為一次的操作，避免頻繁更新頁面，因此開發者只要專注在資料邏輯上，畫面的更新機制全部交給 React 處理即可。</p>
+<p>參考資料</p>
+<p>diff-algorithm-implemented-reactjs</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/react/" rel="tag"># react</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/07/27/2020-07-27_React-----------46edfdead331/" rel="prev" title="React 學習前言＆環境安裝">
+                  <i class="fa fa-angle-left"></i> React 學習前言＆環境安裝
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/08/10/2020-08-10_------React-Component-c75f0005af84/" rel="next" title="一磚一瓦-React Component">
+                  一磚一瓦-React Component <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Joe Chang</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ChangChiao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"changchiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="這本書在我六年前剛轉職的時候有看過一遍，但那時的我因為經驗不足，其實看完沒有什麼感觸，現在累積了幾年的工作經驗再來二刷這本書，就蠻有共鳴了，開始可以體會何謂程式碼的「壞味道」，因此隨手將書中我覺得不錯的內容摘要下來，並且會結合我先前重構的經驗跟大家分享">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重構-改善既有的程式設計feat.實戰經驗">
+<meta property="og:url" content="https://changchiao.github.io/2023/10/07/2023-10-07_------------feat------c411c6006fa8/index.html">
+<meta property="og:site_name" content="Coding Hot Pot">
+<meta property="og:description" content="這本書在我六年前剛轉職的時候有看過一遍，但那時的我因為經驗不足，其實看完沒有什麼感觸，現在累積了幾年的工作經驗再來二刷這本書，就蠻有共鳴了，開始可以體會何謂程式碼的「壞味道」，因此隨手將書中我覺得不錯的內容摘要下來，並且會結合我先前重構的經驗跟大家分享">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://changchiao.github.io/Users/joectchang_mac/Downloads/medium-export-a/post2023/md_1697073963636/img/1____PwqCRD98ObHT7UIRCyWEA.jpeg">
+<meta property="og:image" content="https://changchiao.github.io/Users/joectchang_mac/Downloads/medium-export-a/post2023/md_1697073963636/img/1__wXv7nAP70sybfVVd3Z3DXA.png">
+<meta property="article:published_time" content="2023-10-07T12:59:55.761Z">
+<meta property="article:modified_time" content="2023-10-13T09:13:12.511Z">
+<meta property="article:author" content="Joe Chang">
+<meta property="article:tag" content="重構">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://changchiao.github.io/Users/joectchang_mac/Downloads/medium-export-a/post2023/md_1697073963636/img/1____PwqCRD98ObHT7UIRCyWEA.jpeg">
+
+
+<link rel="canonical" href="https://changchiao.github.io/2023/10/07/2023-10-07_------------feat------c411c6006fa8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://changchiao.github.io/2023/10/07/2023-10-07_------------feat------c411c6006fa8/","path":"2023/10/07/2023-10-07_------------feat------c411c6006fa8/","title":"重構-改善既有的程式設計feat.實戰經驗"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>重構-改善既有的程式設計feat.實戰經驗 | Coding Hot Pot</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJM3X3RGKD"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-SJM3X3RGKD","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Coding Hot Pot</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">日新月異的前端技術...學不動了</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B5%90%E8%AA%9E"><span class="nav-number">1.</span> <span class="nav-text">結語</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Joe Chang"
+      src="/images/oldman.jpg">
+  <p class="site-author-name" itemprop="name">Joe Chang</p>
+  <div class="site-description" itemprop="description">唯有非常努力，才能看起來毫不費力</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">標籤</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://changchiao.github.io/2023/10/07/2023-10-07_------------feat------c411c6006fa8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/oldman.jpg">
+      <meta itemprop="name" content="Joe Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Hot Pot">
+      <meta itemprop="description" content="唯有非常努力，才能看起來毫不費力">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="重構-改善既有的程式設計feat.實戰經驗 | Coding Hot Pot">
+      <meta itemprop="description" content="這本書在我六年前剛轉職的時候有看過一遍，但那時的我因為經驗不足，其實看完沒有什麼感觸，現在累積了幾年的工作經驗再來二刷這本書，就蠻有共鳴了，開始可以體會何謂程式碼的「壞味道」，因此隨手將書中我覺得不錯的內容摘要下來，並且會結合我先前重構的經驗跟大家分享">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          重構-改善既有的程式設計feat.實戰經驗
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2023-10-07 20:59:55" itemprop="dateCreated datePublished" datetime="2023-10-07T20:59:55+08:00">2023-10-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2023-10-13 17:13:12" itemprop="dateModified" datetime="2023-10-13T17:13:12+08:00">2023-10-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%87%8D%E6%A7%8B/" itemprop="url" rel="index"><span itemprop="name">重構</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">這本書在我六年前剛轉職的時候有看過一遍，但那時的我因為經驗不足，其實看完沒有什麼感觸，現在累積了幾年的工作經驗再來二刷這本書，就蠻有共鳴了，開始可以體會何謂程式碼的「壞味道」，因此隨手將書中我覺得不錯的內容摘要下來，並且會結合我先前重構的經驗跟大家分享</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="/Users/joectchang_mac/Downloads/medium-export-a/post2023/md_1697073963636/img/1____PwqCRD98ObHT7UIRCyWEA.jpeg"></p>
+<p>這本書在我六年前剛轉職的時候有看過一遍，但那時的我因為經驗不足，其實看完沒有什麼感觸，現在累積了幾年的工作經驗再來二刷這本書，就蠻有共鳴了，開始可以體會何謂程式碼的「壞味道」，因此隨手將書中我覺得不錯的內容摘要下來，並且會結合我先前重構的經驗跟大家分享</p>
+<blockquote>
+<p>重構的最終目的就是降低 bug 發生的機率，減少改 a 壞 b 的可能性，讓大家可以輕鬆地維護這包程式碼</p>
+</blockquote>
+<blockquote>
+<p>當你發現你的函式做了太多事情的時候，超過六行的程式碼就會開始有壞味道，是該考慮將部份的功能抽離出來了，這樣一來也會比較好維護和除錯，</p>
+</blockquote>
+<p>👉 我真的看過一個函式快要五百行，每次光是找對應的功能就找超久…</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//====重構前=====</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">buy</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">//計算總價</span></span><br><span class="line">  <span class="comment">//套用折扣碼</span></span><br><span class="line">  <span class="comment">//一大堆...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//====重構後====</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">calcTotal</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">//計算總價</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">handleCupon</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">//套用折扣碼</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">buy</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> amount = <span class="title function_">calcTotal</span>();</span><br><span class="line">  <span class="title function_">handleCupon</span>();</span><br><span class="line">  <span class="comment">//略...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>函式和變數的命名要明確，讓別人可以透過名稱就知道這個函式的目的是什麼，假設有在用 ai 輔助工具(ex. Copilot)寫程式的人，好的命名可以讓 ai 推論出更符合你要的需求的程式碼</p>
+</blockquote>
+<p><img src="/Users/joectchang_mac/Downloads/medium-export-a/post2023/md_1697073963636/img/1__wXv7nAP70sybfVVd3Z3DXA.png"></p>
+<p>👉 a、 b、 x、 y、 z 這類的命名真的是先不要，絕對會讓你的同事抓狂</p>
+<blockquote>
+<p>避免使用全域變數，會很難知道有哪些程式碼接觸它</p>
+</blockquote>
+<p>👉 早期還沒開始用前端框架開發時，真的就是用了一堆全域變數，要追查是哪些地方有修改到這個變數非常非常花時間</p>
+<blockquote>
+<p>將函式參數化，如果兩個函式有非常相似的邏輯，使用不同的常數，可以將 它們改成一個函式，透過傳入不同的參數來做到差異化，增加函式的實用性</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//====重構前=====</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">tenPercentRaise</span>(<span class="params">aPerson</span>) &#123;</span><br><span class="line">  aPerson.<span class="property">salary</span> = aPerson.<span class="property">salary</span>.<span class="title function_">mutiply</span>(<span class="number">1.1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fivePercentRaise</span>(<span class="params">aPerson</span>) &#123;</span><br><span class="line">  aPerson.<span class="property">salary</span> = aPerson.<span class="property">salary</span>.<span class="title function_">mutiply</span>(<span class="number">1.05</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//====重構後====</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">raise</span>(<span class="params">aPerson, factor</span>) &#123;</span><br><span class="line">  aPerson.<span class="property">salary</span> = aPerson.<span class="property">salary</span>.<span class="title function_">mutiply</span>(<span class="number">1</span> + factor);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>👉 早期寫程式的時候都不會發現自己寫了很多相似的函式 😂</p>
+<blockquote>
+<p>移除旗標引數，因為它們會讓我難以理解函式有哪些呼叫方式</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//====重構前=====</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setDimension</span>(<span class="params">name, value</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (name === <span class="string">&quot;height&quot;</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_height</span> = value;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (name === <span class="string">&quot;width&quot;</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_width</span> = value;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//====重構後====</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setHeight</span>(<span class="params">value</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">_height</span> = value;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setWidth</span>(<span class="params">value</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">_width</span> = value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>👉 透過參數(name)來識別 value 要賦值給哪一個變數，但這樣寫反而會增加一堆條件判斷式</p>
+<blockquote>
+<p>將參數換成查詢程式，讓參數可以保持簡單，降低呼叫方的心智負擔</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//====重構前=====</span></span><br><span class="line"><span class="title function_">availableVacation</span>(anEmployee, anEmployee.<span class="property">grade</span>, anEmployee.<span class="property">salary</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">availableVacation</span>(<span class="params">anEmployee, grade, salary</span>) &#123;</span><br><span class="line">  <span class="comment">//計算獎金</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//====重構後====</span></span><br><span class="line"><span class="title function_">availableVacation</span>(anEmployee);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">availableVacation</span>(<span class="params">anEmployee</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; grade, salary &#125; = anEmployee;</span><br><span class="line">  <span class="comment">//計算獎金</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>👉 假設傳入 function 的參數都是某個物件的屬性的話，就直接傳入物件即可</p>
+<blockquote>
+<p>遇到難以閱讀的運算式就提取變數吧！</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//====重構前=====</span></span><br><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  order.<span class="property">quantity</span> * order.<span class="property">itemPrice</span> -</span><br><span class="line">  <span class="title class_">Math</span>.<span class="title function_">max</span>(<span class="number">0</span>, order.<span class="property">quantity</span> - <span class="number">500</span>) * order.<span class="property">itemPrice</span> * <span class="number">0.05</span> +</span><br><span class="line">  <span class="title class_">Math</span>.<span class="title function_">min</span>(order.<span class="property">quantity</span> * order.<span class="property">itemPrice</span> * <span class="number">0.1</span>, <span class="number">100</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">//====重構後====</span></span><br><span class="line"><span class="keyword">const</span> basePrice = order.<span class="property">quantity</span> * order.<span class="property">itemPrice</span>;</span><br><span class="line"><span class="keyword">const</span> quantityDiscount =</span><br><span class="line">  <span class="title class_">Math</span>.<span class="title function_">max</span>(<span class="number">0</span>, order.<span class="property">quantity</span> - <span class="number">500</span>) * order.<span class="property">itemPrice</span> * <span class="number">0.05</span>;</span><br><span class="line"><span class="keyword">const</span> shipping = <span class="title class_">Math</span>.<span class="title function_">min</span>(basePrice * <span class="number">0.1</span>, <span class="number">100</span>);</span><br><span class="line"><span class="keyword">return</span> basePrice - quantityDiscount + shipping;</span><br></pre></td></tr></table></figure>
+
+<p>👉 為了提高程式碼可讀性，複雜的計算或是條件判斷都可以抽成變數</p>
+<blockquote>
+<p>盡可能地使用 early return</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//====重構前=====</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getPayAmount</span> () &#123;</span><br><span class="line">  <span class="keyword">let</span> result;</span><br><span class="line">  <span class="keyword">if</span> (isDead)</span><br><span class="line">    result = deadAmount ();</span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (isSeparated)</span><br><span class="line">        result = separatedAmount () ;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (isRetired)</span><br><span class="line">        result = retiredAmount ();</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        result = normalPayAmount () ;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">   <span class="keyword">return</span> result;</span><br><span class="line">｝</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//====重構後====</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getPayAmount</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">if</span>(isDead) <span class="keyword">return</span> <span class="title function_">deadAmount</span>();</span><br><span class="line">  <span class="keyword">if</span>(isSpearated) <span class="keyword">return</span> <span class="title function_">separatedAmount</span>();</span><br><span class="line">  <span class="keyword">if</span>(isRetired) <span class="keyword">return</span> <span class="title function_">retiredAmount</span>();</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">normalPayAmount</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>👉 以前很容易就寫出巢狀的條件判斷式（波動拳等級），使用 early return 可以降低程式複雜度</p>
+<blockquote>
+<p>重構最害怕的就是將原有的功能改壞，所以一定要有完整的自動化測試 support，才能無後顧之憂</p>
+</blockquote>
+<p>👉 之前的重構給的工時非常短，因此測試什麼就放生了，完全沒寫單元測試，只靠 RD 簡單手動自測，果不其然重構之後衍生了不少的 bug，就變成上線之後讓客戶來幫你測試 😉</p>
+<blockquote>
+<p>將重構的步驟拆解成很多小步驟，在除錯上會更容易</p>
+</blockquote>
+<p>👉 重構就像拆彈作業一樣，小心謹慎一步一步來，確保程式碼可以正常運作</p>
+<blockquote>
+<p>程式碼好壞的關鍵，在於它有多麼容易修改，如果有人想要修改，他們可以輕鬆地找到需要修改的地方</p>
+</blockquote>
+<p>👉 我想大多數的人都會認同這句話，好的程式碼不需要花太多時間 trace code，就能夠找到要改的地方</p>
+<blockquote>
+<p>不良的程式設計常用更多程式碼做同一件事，因此重構有一個很重要的面相是：消除重複的程式碼，才不會發生我明明修改了 A 處程式碼，卻沒有如我預期的運作，就是因為我沒有改到 B 處地方的程式碼</p>
+</blockquote>
+<p>👉 之前曾經有過一個經驗，要調整某個功能的計算公式，但是我發現明明已經改了 A 地方的函式卻沒有套用新的公式，排查後才發現還有 B、Ｃ、Ｄ函式等漏網之魚，如果可以抽成共用函式的話，維護上會輕鬆很多</p>
+<blockquote>
+<p>移除沒有用到的程式碼</p>
+</blockquote>
+<p>👉 在重構的時候很常發現有些函式都沒有地方呼叫，隨著需求的變更，或許這個功能已經不需要了，那麼就毫不留念的拔掉它吧！</p>
+<blockquote>
+<p>重構的挑戰</p>
+</blockquote>
+<p>我個人認為重構向來是一項吃力不討好的工作，當你說要重構的時候，主管或是 pm 可能會問你，好端端的為什麼要重構？對他們而言，現有的架構都能夠正常運作，何必沒事找事做呢？這樣豈不是會影響新功能的開發時程嗎？有的人甚至認為重構根本沒有任何的產出，因此該如何說服對方，讓他們了解重構的好處與價值，是一項非常難的課題</p>
+<h4 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h4><p>書中提到不少的重構手法，有趣的是有些重構手法是相互牴觸的，有點像矛盾大對決那種感覺，沒有所謂的某某作法一定是最好的，因此在重構的時候還是要看自身需求決定採取哪種手法，這本書還列舉非常多物件導向的優化例子，有機會的話強烈大家可以看看這本書！</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%87%8D%E6%A7%8B/" rel="tag"># 重構</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/09/17/2023-09-17_--i18n-------phrase-bea03ec402f7/" rel="prev" title="管理i18n的好幫手 — phrase">
+                  <i class="fa fa-angle-left"></i> 管理i18n的好幫手 — phrase
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Joe Chang</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ChangChiao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

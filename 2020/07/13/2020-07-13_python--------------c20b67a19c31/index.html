@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"changchiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="有鑒於最近周圍的人都在學python 我也來跟風一下好了（誤），不得不說python的語法還蠻好上手的，而且用途也廣泛，爬蟲、自動化等等都會用到，好python，不學嗎？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python 初學筆記-從安裝環境開始">
+<meta property="og:url" content="https://changchiao.github.io/2020/07/13/2020-07-13_python--------------c20b67a19c31/index.html">
+<meta property="og:site_name" content="Coding Hot Pot">
+<meta property="og:description" content="有鑒於最近周圍的人都在學python 我也來跟風一下好了（誤），不得不說python的語法還蠻好上手的，而且用途也廣泛，爬蟲、自動化等等都會用到，好python，不學嗎？">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://changchiao.github.io/img/1__BDlFAuXm__m2XQIjOBP4eDw.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__2bmUBFgSIL808aCijSD7Sg.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__WAFyeX4B__GeqLZOAGO1eRA.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__ljjKKjzy6k0EE7dbGOyhzg.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__zBHzWuXqP__X8GxxPCRyBYA.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__p9bflxSkaxiuEGADt3BBng.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__A__pFXtq7WPW1UXJJEYyonQ.png">
+<meta property="article:published_time" content="2020-07-13T12:26:53.590Z">
+<meta property="article:modified_time" content="2023-10-12T01:16:25.897Z">
+<meta property="article:author" content="Joe Chang">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://changchiao.github.io/img/1__BDlFAuXm__m2XQIjOBP4eDw.png">
+
+
+<link rel="canonical" href="https://changchiao.github.io/2020/07/13/2020-07-13_python--------------c20b67a19c31/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://changchiao.github.io/2020/07/13/2020-07-13_python--------------c20b67a19c31/","path":"2020/07/13/2020-07-13_python--------------c20b67a19c31/","title":"python 初學筆記-從安裝環境開始"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>python 初學筆記-從安裝環境開始 | Coding Hot Pot</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJM3X3RGKD"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-SJM3X3RGKD","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Coding Hot Pot</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">日新月異的前端技術...學不動了</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Joe Chang"
+      src="/images/oldman.jpg">
+  <p class="site-author-name" itemprop="name">Joe Chang</p>
+  <div class="site-description" itemprop="description">唯有非常努力，才能看起來毫不費力</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">標籤</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://changchiao.github.io/2020/07/13/2020-07-13_python--------------c20b67a19c31/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/oldman.jpg">
+      <meta itemprop="name" content="Joe Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Hot Pot">
+      <meta itemprop="description" content="唯有非常努力，才能看起來毫不費力">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="python 初學筆記-從安裝環境開始 | Coding Hot Pot">
+      <meta itemprop="description" content="有鑒於最近周圍的人都在學python 我也來跟風一下好了（誤），不得不說python的語法還蠻好上手的，而且用途也廣泛，爬蟲、自動化等等都會用到，好python，不學嗎？">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python 初學筆記-從安裝環境開始
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2020-07-13 20:26:53" itemprop="dateCreated datePublished" datetime="2020-07-13T20:26:53+08:00">2020-07-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2023-10-12 09:16:25" itemprop="dateModified" datetime="2023-10-12T09:16:25+08:00">2023-10-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">有鑒於最近周圍的人都在學python 我也來跟風一下好了（誤），不得不說python的語法還蠻好上手的，而且用途也廣泛，爬蟲、自動化等等都會用到，好python，不學嗎？</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>有鑒於最近周圍的人都在學 python 我也來跟風一下好了（誤），不得不說 python 的語法還蠻好上手的，而且用途也廣泛，爬蟲、自動化等等都會用到，好 python，不學嗎？</p>
+<p>那麼就從安裝開始，先到 python 官網下載安裝檔，選擇 3 開頭的穩定版本就對了，因為 python3 支援較新的語法，沒理由不選新的！</p>
+<p><img src="/img/1__BDlFAuXm__m2XQIjOBP4eDw.png"></p>
+<p>快樂安裝中..</p>
+<p><img src="/img/1__2bmUBFgSIL808aCijSD7Sg.png"></p>
+<p>然後打開終端機，輸入 python -V 檢查是否安裝成功  <br>mac 某幾代的 OS 都有預先裝好 python 2.x 的版本 (我的 mac 版本為 10.2</p>
+<p><img src="/img/1__WAFyeX4B__GeqLZOAGO1eRA.png"></p>
+<p>恩？好像哪裡怪怪的？我明明安裝的是 3 的版本怎麼變 2 了？後來不管我重新安裝還是想透過 homebrew 下載安裝檔都失敗… orz</p>
+<p>借室友的 windows 筆電來試裝看看</p>
+<p><img src="/img/1__ljjKKjzy6k0EE7dbGOyhzg.png"><br><img src="/img/1__zBHzWuXqP__X8GxxPCRyBYA.png"><br><img src="/img/1__p9bflxSkaxiuEGADt3BBng.png"></p>
+<p>結果 windows 安裝過程五分鐘搞定…mac 搞了老半天依然無解的停在 2 的版本，如果有知道怎麼升級的前輩再麻煩跟我說了…</p>
+<p>因為我比較熟悉 js，所以有些在學習的過程中，就會拿 js 跟 python 作比較</p>
+<p>先新增一個副檔名為 py 的檔案 ，然後在 terminal 執行 python xxx.py 就可以了</p>
+<p><img src="/img/1__A__pFXtq7WPW1UXJJEYyonQ.png"></p>
+<p>宣告變數的方式也很簡單</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">123</span></span><br></pre></td></tr></table></figure>
+
+<p>python 的資料型態一樣有字串、布林值、 數字等等…</p>
+<p>數字有提供這些運算方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">b = <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a + b)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a - b)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a \* b)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a / b)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a % b)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a \*\* b)</span><br><span class="line"></span><br><span class="line"><span class="comment">#輸出</span></span><br><span class="line"><span class="number">13</span></span><br><span class="line"><span class="number">7</span></span><br><span class="line"><span class="number">30</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">1000</span></span><br><span class="line"></span><br><span class="line">字串的組合方法</span><br><span class="line">```python</span><br><span class="line">str1 = <span class="string">&#x27;hey!&#x27;</span> + <span class="string">&#x27;yo&#x27;</span></span><br><span class="line">str2 = <span class="string">&#x27;hey!&#x27;</span> <span class="string">&#x27;yo&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>)</span><br><span class="line"><span class="built_in">print</span>(str2)</span><br><span class="line"></span><br><span class="line"><span class="comment">#輸出</span></span><br><span class="line">hey!yo</span><br><span class="line">hey!yo</span><br></pre></td></tr></table></figure>
+
+<p>不過不像 js ，可以允許數字＋字串這樣的操作，會報錯</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&#x27;520&#x27;</span></span><br><span class="line"></span><br><span class="line">b = <span class="number">5566</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a + b)</span><br><span class="line"></span><br><span class="line"><span class="comment">#會輸出</span></span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line"> File <span class="string">&quot;practice.py&quot;</span>, line <span class="number">42</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"> <span class="built_in">print</span>(a + b)</span><br><span class="line">TypeError: cannot concatenate <span class="string">&#x27;str&#x27;</span> <span class="keyword">and</span> <span class="string">&#x27;int&#x27;</span> objects</span><br></pre></td></tr></table></figure>
+
+<p>所以需要自己轉換型別</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&#x27;520&#x27;</span></span><br><span class="line"></span><br><span class="line">b = <span class="number">5566</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">int</span>(a) + b)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a + <span class="built_in">str</span>(b))</span><br><span class="line">//輸出</span><br><span class="line"></span><br><span class="line"><span class="number">6086</span></span><br><span class="line"><span class="number">5205566</span></span><br></pre></td></tr></table></figure>
+
+<p>支援多行文字，利用三個雙引號就可以達成</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&quot;&quot;&quot;hey!</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">!!!!!</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">yo&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#輸出</span></span><br><span class="line">hey!</span><br><span class="line">!!!!!</span><br><span class="line">yo</span><br><span class="line"></span><br><span class="line">重複字串（不得不說這真的蠻酷的</span><br><span class="line"></span><br><span class="line"><span class="built_in">str</span> = <span class="string">&#x27;song la &#x27;</span>\*<span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#輸出</span></span><br><span class="line">song la song la song la</span><br></pre></td></tr></table></figure>
+
+<p>取得字串，類似 js substring</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&#x27;where&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>\[<span class="number">1</span>:<span class="number">4</span>\])</span><br><span class="line"></span><br><span class="line"><span class="comment">#輸出</span></span><br><span class="line">here</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>\[<span class="number">1</span>:\]) <span class="comment">#從 index1 取到最後一位</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#輸出</span></span><br><span class="line">here</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">str</span>\[:<span class="number">4</span>\]) <span class="comment">#從字首取到 index4 前一位</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#輸出</span></span><br><span class="line">wher</span><br></pre></td></tr></table></figure>
+
+<p><strong>list 列表</strong></p>
+<p>是可以異動的，跟陣列蠻相似的，index 也是從 0 開始</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="string">&#x27;amy&#x27;</span>,<span class="string">&#x27;dabbie&#x27;</span>,<span class="string">&#x27;john&#x27;</span>,<span class="string">&#x27;tom&#x27;</span>,<span class="string">&#x27;tina&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>\[<span class="number">0</span>\])</span><br><span class="line"></span><br><span class="line"><span class="comment">#輸出</span></span><br><span class="line"><span class="string">&#x27;amy&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以利用 index 來異動資料</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="string">&#x27;amy&#x27;</span>,<span class="string">&#x27;dabbie&#x27;</span>,<span class="string">&#x27;john&#x27;</span>,<span class="string">&#x27;tom&#x27;</span>,<span class="string">&#x27;tina&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">list</span>[<span class="number">0</span>] = <span class="string">&#x27;bay&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#輸出</span></span><br><span class="line">[<span class="string">&#x27;bay&#x27;</span>, <span class="string">&#x27;dabbie&#x27;</span>, <span class="string">&#x27;john&#x27;</span>, <span class="string">&#x27;tom&#x27;</span>, <span class="string">&#x27;tina&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>與字串相同 可以用[?:?]來取得元素</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = \[<span class="string">&#x27;amy&#x27;</span>,<span class="string">&#x27;dabbie&#x27;</span>,<span class="string">&#x27;john&#x27;</span>,<span class="string">&#x27;tom&#x27;</span>,<span class="string">&#x27;tina&#x27;</span>\]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>\[<span class="number">2</span>:<span class="number">4</span>\])</span><br><span class="line"></span><br><span class="line"><span class="comment">#輸出</span></span><br><span class="line">\[<span class="string">&#x27;john&#x27;</span>, <span class="string">&#x27;tom&#x27;</span>\]</span><br></pre></td></tr></table></figure>
+
+<p>也可以用來清空資料</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="string">&#x27;amy&#x27;</span>,<span class="string">&#x27;dabbie&#x27;</span>,<span class="string">&#x27;john&#x27;</span>,<span class="string">&#x27;tom&#x27;</span>,<span class="string">&#x27;tina&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">list</span>[<span class="number">2</span>:<span class="number">4</span>] = [] //刪除index2到<span class="number">4</span>(不包含<span class="number">4</span>)的項目</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>)</span><br><span class="line"><span class="comment">#輸出 [&#x27;amy&#x27;, &#x27;dabbie&#x27;, &#x27;tina&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<p>組合 list，類似 js concat，可以將兩個 list 合併為一個</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="string">&#x27;amy&#x27;</span>,<span class="string">&#x27;dabbie&#x27;</span>,<span class="string">&#x27;john&#x27;</span>,<span class="string">&#x27;tom&#x27;</span>,<span class="string">&#x27;tina&#x27;</span>]</span><br><span class="line"><span class="built_in">list</span> = <span class="built_in">list</span> + [<span class="string">&#x27;frank&#x27;</span>,<span class="string">&#x27;vicky&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>)</span><br><span class="line"><span class="comment">#輸出</span></span><br><span class="line">[<span class="string">&#x27;amy&#x27;</span>, <span class="string">&#x27;dabbie&#x27;</span>, <span class="string">&#x27;john&#x27;</span>, <span class="string">&#x27;tom&#x27;</span>, <span class="string">&#x27;tina&#x27;</span>, <span class="string">&#x27;frank&#x27;</span>, <span class="string">&#x27;vicky&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>取得 list 長度</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = [<span class="string">&#x27;amy&#x27;</span>,<span class="string">&#x27;dabbie&#x27;</span>,<span class="string">&#x27;john&#x27;</span>,<span class="string">&#x27;tom&#x27;</span>,<span class="string">&#x27;tina&#x27;</span>]</span><br><span class="line">length = <span class="built_in">len</span>(<span class="built_in">list</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(length)</span><br><span class="line"><span class="comment"># 輸出 5</span></span><br></pre></td></tr></table></figure>
+
+<p>巢狀的 list 二維陣列</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = [[<span class="string">&#x27;amy&#x27;</span>,<span class="string">&#x27;dabbie&#x27;</span>],[<span class="string">&#x27;john&#x27;</span>,<span class="string">&#x27;tom&#x27;</span>,<span class="string">&#x27;tina&#x27;</span>]]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>[<span class="number">0</span>][<span class="number">1</span>])</span><br><span class="line"><span class="comment"># 輸出 dabbie</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">list</span>[<span class="number">1</span>][<span class="number">0</span>:<span class="number">2</span>]= [<span class="string">&#x27;ray&#x27;</span>,<span class="string">&#x27;petter&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>)</span><br><span class="line"><span class="comment"># 輸出 [[&#x27;amy&#x27;, &#x27;dabbie&#x27;], [&#x27;ray&#x27;, &#x27;petter&#x27;, &#x27;tina&#x27;]]</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>tuple 固定列表</strong></p>
+<p>有順序，<strong>不可變動</strong>的資料集合，如果做了異動會報錯</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span> = (<span class="number">9</span>,<span class="number">9</span>,<span class="number">6</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">list</span>[<span class="number">2</span>] = <span class="number">7</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#輸出</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;practice.py&quot;</span>, line <span class="number">94</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="built_in">list</span>[<span class="number">2</span>] = <span class="number">7</span></span><br><span class="line">TypeError: <span class="string">&#x27;tuple&#x27;</span> <span class="built_in">object</span> does <span class="keyword">not</span> support item assignment</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>以上是對於 python 的型別的介紹，希望我可以快點搞定 mac 環境，不然不能用新語法很痛苦啊…</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/07/06/2020-07-06_javaScript----------9493a5153d16/" rel="prev" title="javaScript中的深拷貝與淺拷貝">
+                  <i class="fa fa-angle-left"></i> javaScript中的深拷貝與淺拷貝
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/07/20/2020-07-20_Python------2-------d95b97937004/" rel="next" title="Python 學習筆記-2 集合與字典">
+                  Python 學習筆記-2 集合與字典 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Joe Chang</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ChangChiao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

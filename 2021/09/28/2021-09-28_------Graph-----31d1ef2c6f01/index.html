@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"changchiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="圖是由節點(node)和邊(edge)所組成的，一個節點可能與多個節點相連著，而這些相連的節點又被稱作相鄰節點(neighbor)，圖在生活中應用的例子相當的普遍，像是人際關係的社交網路、尋找地圖最短路徑、通訊網路等等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[資料結構]Graph — 圖">
+<meta property="og:url" content="https://changchiao.github.io/2021/09/28/2021-09-28_------Graph-----31d1ef2c6f01/index.html">
+<meta property="og:site_name" content="Coding Hot Pot">
+<meta property="og:description" content="圖是由節點(node)和邊(edge)所組成的，一個節點可能與多個節點相連著，而這些相連的節點又被稱作相鄰節點(neighbor)，圖在生活中應用的例子相當的普遍，像是人際關係的社交網路、尋找地圖最短路徑、通訊網路等等。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://changchiao.github.io/img/1__kOmvdZJ35agKUYoWtsoq6A.jpeg">
+<meta property="og:image" content="https://changchiao.github.io/img/1__JvRjPbj1SI76AxfQYEuY6Q.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__RKYSeKEHhFnMWOWJqN__aFA.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__8izhklv3EGcozJbbr8fucw.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1____xl6nTRpC8uPk8dcT0yC1A.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__AyF7CwOJs2vHr9SgFrpv__A.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__Mvn__ThtIQs4BMJp3j7hHYQ.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__KX1dbDjx36ltETtj4nezvQ.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__5ZjbFRRFmBeJCZrXkxNSyA.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__CDpI4AI4BTBIraX3hoPfhg.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__XYeLDcbbFJ5fxHjr5IweEA.png">
+<meta property="article:published_time" content="2021-09-28T01:19:44.389Z">
+<meta property="article:modified_time" content="2023-10-13T09:05:44.610Z">
+<meta property="article:author" content="Joe Chang">
+<meta property="article:tag" content="演算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://changchiao.github.io/img/1__kOmvdZJ35agKUYoWtsoq6A.jpeg">
+
+
+<link rel="canonical" href="https://changchiao.github.io/2021/09/28/2021-09-28_------Graph-----31d1ef2c6f01/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://changchiao.github.io/2021/09/28/2021-09-28_------Graph-----31d1ef2c6f01/","path":"2021/09/28/2021-09-28_------Graph-----31d1ef2c6f01/","title":"[資料結構]Graph — 圖"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[資料結構]Graph — 圖 | Coding Hot Pot</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJM3X3RGKD"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-SJM3X3RGKD","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Coding Hot Pot</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">日新月異的前端技術...學不動了</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%84%A1%E5%90%91%E5%9C%96-Undirected-Graph"><span class="nav-number">1.</span> <span class="nav-text">無向圖(Undirected Graph)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%89%E5%90%91%E5%9C%96-Directed-Graph"><span class="nav-number">2.</span> <span class="nav-text">有向圖 ( Directed Graph)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A0%E6%AC%8A%E5%9C%96-Weighted-Graph"><span class="nav-number">3.</span> <span class="nav-text">加權圖( Weighted Graph )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Graph-Traversal"><span class="nav-number">4.</span> <span class="nav-text">Graph Traversal</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Joe Chang"
+      src="/images/oldman.jpg">
+  <p class="site-author-name" itemprop="name">Joe Chang</p>
+  <div class="site-description" itemprop="description">唯有非常努力，才能看起來毫不費力</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">標籤</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://changchiao.github.io/2021/09/28/2021-09-28_------Graph-----31d1ef2c6f01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/oldman.jpg">
+      <meta itemprop="name" content="Joe Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Hot Pot">
+      <meta itemprop="description" content="唯有非常努力，才能看起來毫不費力">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="[資料結構]Graph — 圖 | Coding Hot Pot">
+      <meta itemprop="description" content="圖是由節點(node)和邊(edge)所組成的，一個節點可能與多個節點相連著，而這些相連的節點又被稱作相鄰節點(neighbor)，圖在生活中應用的例子相當的普遍，像是人際關係的社交網路、尋找地圖最短路徑、通訊網路等等。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [資料結構]Graph — 圖
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2021-09-28 09:19:44" itemprop="dateCreated datePublished" datetime="2021-09-28T09:19:44+08:00">2021-09-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2023-10-13 17:05:44" itemprop="dateModified" datetime="2023-10-13T17:05:44+08:00">2023-10-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%BC%94%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">演算法</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">圖是由節點(node)和邊(edge)所組成的，一個節點可能與多個節點相連著，而這些相連的節點又被稱作相鄰節點(neighbor)，圖在生活中應用的例子相當的普遍，像是人際關係的社交網路、尋找地圖最短路徑、通訊網路等等。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="/img/1__kOmvdZJ35agKUYoWtsoq6A.jpeg"></p>
+<p>圖是由節點(node)和邊(edge)所組成的，一個節點可能與多個節點相連著，而這些相連的節點又被稱作相鄰節點(neighbor)，圖在生活中應用的例子相當的普遍，像是人際關係的社交網路、尋找地圖最短路徑、通訊網路等等。</p>
+<p><img src="/img/1__JvRjPbj1SI76AxfQYEuY6Q.png"></p>
+<h4 id="無向圖-Undirected-Graph"><a href="#無向圖-Undirected-Graph" class="headerlink" title="無向圖(Undirected Graph)"></a>無向圖(Undirected Graph)</h4><p>邊沒有方向性，A 可以到 B，B 也可到 A，概念類似雙向道，兩邊都可以通行</p>
+<p><img src="/img/1__RKYSeKEHhFnMWOWJqN__aFA.png"></p>
+<h4 id="有向圖-Directed-Graph"><a href="#有向圖-Directed-Graph" class="headerlink" title="有向圖 ( Directed Graph)"></a>有向圖 ( Directed Graph)</h4><p>邊具有方向性，B 可以到 A 但是 A 不能到 B，概念類似單行道，僅限單邊通行</p>
+<p><img src="/img/1__8izhklv3EGcozJbbr8fucw.png"></p>
+<h4 id="加權圖-Weighted-Graph"><a href="#加權圖-Weighted-Graph" class="headerlink" title="加權圖( Weighted Graph )"></a>加權圖( Weighted Graph )</h4><p><img src="/img/1____xl6nTRpC8uPk8dcT0yC1A.png"></p>
+<p>每條路線都有標記一個數字，稱為權重分數，這邊的權重分數可以是時間、成本、距離等等，加權圖最經典的應用就是處理最短路徑的問題，像是我要搭乘甚麼樣的交通工具才能最快到達目的地，Google map 的交通工具規劃就是採用了這樣的概念。</p>
+<p><img src="/img/1__AyF7CwOJs2vHr9SgFrpv__A.png"></p>
+<h4 id="Graph-Traversal"><a href="#Graph-Traversal" class="headerlink" title="Graph Traversal"></a>Graph Traversal</h4><p>如果想要走遍 Graph 裡面所有的節點可以有兩種做法，第一種方法是廣度優先搜尋 Breadth First Search(BFS)，我們可以先從一個故事來理解廣度優先搜尋的概念，有一天小王、 小李、小林他們三個人要結拜成三兄弟，因此辦了一個派對邀請所有朋友來共襄盛舉，在派對上「<strong>我</strong>」認識了一個很可愛的女生，只可惜當天沒要到連絡方式，也不知道對方的名字，只有一起拍了一張照片，回家後心心念念那個女孩，好想再見她一面，於是我決定動用我的人脈， 來找到那個心儀的女孩!</p>
+<p><img src="/img/1__Mvn__ThtIQs4BMJp3j7hHYQ.png"></p>
+<p>於是我決定拜託我的三個好朋友，問他們認不認識這個女孩，結果三個朋友都說不認識，但很熱心地幫我問了他們的朋友有沒有人認識這個女孩，下圖的藍色節點代表是我認識的朋友，綠色節點則是朋友的朋友，所以我會先問過所有我認識的朋友(first degree 第一層)，而我的朋友會再去問他們的朋友(second degree 第二層)。</p>
+<p><img src="/img/1__KX1dbDjx36ltETtj4nezvQ.png"></p>
+<p>從上面的故事我們可以知道，廣度優先的搜尋順序會是先走訪相鄰節點，都走訪完了，就往下一層繼續走訪，廣度優先搜尋採用 queue 來實作，因為 queue 具有先進後出的特性，可以確保先搜尋到的節點，會優先成為下一個搜尋起點。</p>
+<p>那麼就用 js 來實作 Breadth First Search，在開始之前我們要先建立一個 Graph</p>
+<p><img src="/img/1__5ZjbFRRFmBeJCZrXkxNSyA.png"></p>
+<p>先用 js 實作出這個 Graph</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">val</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">value</span> = val;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">neighbors</span> = [];</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">visited</span> = <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">addNeighbor</span>(<span class="params">n</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">neighbors</span>.<span class="title function_">push</span>(n);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> A = <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="string">&quot;A&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> B = <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="string">&quot;B&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> C = <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="string">&quot;C&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> D = <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="string">&quot;D&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> E = <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="string">&quot;E&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> F = <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="string">&quot;F&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> G = <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="string">&quot;G&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> H = <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="string">&quot;H&quot;</span>);</span><br><span class="line">A.<span class="title function_">addNeighbor</span>(B);</span><br><span class="line">A.<span class="title function_">addNeighbor</span>(C);</span><br><span class="line">A.<span class="title function_">addNeighbor</span>(D);</span><br><span class="line">B.<span class="title function_">addNeighbor</span>(E);</span><br><span class="line">B.<span class="title function_">addNeighbor</span>(F);</span><br><span class="line">D.<span class="title function_">addNeighbor</span>(G);</span><br><span class="line">D.<span class="title function_">addNeighbor</span>(H);</span><br></pre></td></tr></table></figure>
+
+<p>用 js 實作 Breadth First Search</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">BFS</span> = (<span class="params">starter</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> queue = [];</span><br><span class="line">  queue.<span class="title function_">push</span>(starter);</span><br><span class="line">  <span class="keyword">while</span> (queue.<span class="property">length</span> !== <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> firstNode = queue.<span class="title function_">shift</span>();</span><br><span class="line">    <span class="keyword">if</span> (!firstNode.<span class="property">visited</span>) &#123;</span><br><span class="line">      firstNode.<span class="property">visited</span> = <span class="literal">true</span>;</span><br><span class="line">      result.<span class="title function_">push</span>(firstNode.<span class="property">value</span>);</span><br><span class="line">      firstNode.<span class="property">neighbors</span>.<span class="title function_">forEach</span>(<span class="function">(<span class="params">element</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!element.<span class="property">visited</span>) &#123;</span><br><span class="line">          queue.<span class="title function_">push</span>(element);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title function_">BFS</span>(A);</span><br><span class="line"></span><br><span class="line"><span class="comment">//輸出結果 [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;, &quot;G&quot;, &quot;H&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<p>把走訪過程圖像化的話會如下圖</p>
+<p><img src="/img/1__CDpI4AI4BTBIraX3hoPfhg.png"></p>
+<p>除了 Breadth First Search 之外，還有另一種搜尋方式叫深度優先搜尋 Depth First Search (DFS)，會先從一邊開始走訪，概念類似於走迷宮摸著牆走的概念，走到底了就折返，繼續往沒走過的節點探索，步驟如下:</p>
+<ul>
+<li>從 A 出發，沿著上方的牆依序訪問，A, B ,E</li>
+<li>走到 E 的時候發現是死路了，就折返到 B</li>
+<li>發現還有另外一條路再走到 F</li>
+<li>走到 F 發現又是死路，沿路折返到 A</li>
+<li>發現 A 還有其它相鄰節點，再走到 C</li>
+<li>依序走下去…</li>
+</ul>
+<p><img src="/img/1__XYeLDcbbFJ5fxHjr5IweEA.png"></p>
+<p>用 js 實作 Depth First Search</p>
+<p>參考資料: <a target="_blank" rel="noopener" href="https://medium.com/geekculture/breadth-first-search-a-simple-explanation-d7c323960d35">breadth-first-search-a-simple-explanation</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/" rel="tag"># 演算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/09/23/2021-09-23_-------Linked-List--------18f212d20f7a/" rel="prev" title="[資料結構] Linked-List — 鏈結串列">
+                  <i class="fa fa-angle-left"></i> [資料結構] Linked-List — 鏈結串列
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/10/02/2021-10-02_Day11------Binary-Tree-------630a5d92d5a4/" rel="next" title="[資料結構]Binary Tree — 二元樹">
+                  [資料結構]Binary Tree — 二元樹 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Joe Chang</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ChangChiao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

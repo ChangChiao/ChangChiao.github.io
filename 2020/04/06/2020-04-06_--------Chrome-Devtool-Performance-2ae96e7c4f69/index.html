@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"changchiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="初次使用這個功能 是因為寫了一個動態效果很多的網頁但非常吃效能，年輕不懂事，每秒create好幾百個DOM在畫面上飛來飛去(好孩子不要學 ，頁面放一陣子就開始卡了，後來比較資深的前輩教我可以用chrome performance功能查看。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="檢測效能的好幫手Chrome Devtool Performance">
+<meta property="og:url" content="https://changchiao.github.io/2020/04/06/2020-04-06_--------Chrome-Devtool-Performance-2ae96e7c4f69/index.html">
+<meta property="og:site_name" content="Coding Hot Pot">
+<meta property="og:description" content="初次使用這個功能 是因為寫了一個動態效果很多的網頁但非常吃效能，年輕不懂事，每秒create好幾百個DOM在畫面上飛來飛去(好孩子不要學 ，頁面放一陣子就開始卡了，後來比較資深的前輩教我可以用chrome performance功能查看。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://changchiao.github.io/img/1__wtKKpP0tOxOi1____rHdxp2A.jpeg">
+<meta property="og:image" content="https://changchiao.github.io/img/1__sElshdgh__khnqweabjdO1w.jpeg">
+<meta property="og:image" content="https://changchiao.github.io/img/1__0h__aJ4mw__tl83__0lYAupig.jpeg">
+<meta property="og:image" content="https://changchiao.github.io/img/1__6ZimTvOSbF5FHS7hA2gW__Q.jpeg">
+<meta property="og:image" content="https://changchiao.github.io/img/1__gJzpj0JX8BUpkraZLKL__1A.jpeg">
+<meta property="og:image" content="https://changchiao.github.io/img/1__668UIOr2SZbaAhF6HXlGyw.jpeg">
+<meta property="og:image" content="https://changchiao.github.io/img/1__Ox0vGj1Bb5S01flOcPj6OQ.jpeg">
+<meta property="og:image" content="https://changchiao.github.io/img/1__Gdq1XGt__bY6rsbqM9GAVuQ.jpeg">
+<meta property="og:image" content="https://changchiao.github.io/img/1__6AHT8d__omuePqaYW2bCYaA.jpeg">
+<meta property="og:image" content="https://changchiao.github.io/img/1__QHq4xuH2MDzkdQcgf8H5tg.jpeg">
+<meta property="og:image" content="https://changchiao.github.io/img/1__Xdycvhky8jXiONtVe8q5vg.jpeg">
+<meta property="og:image" content="https://changchiao.github.io/img/1__BywxPemvOIBdEfcJpDryCA.jpeg">
+<meta property="article:published_time" content="2020-04-06T15:38:53.337Z">
+<meta property="article:modified_time" content="2023-10-13T08:58:22.377Z">
+<meta property="article:author" content="Joe Chang">
+<meta property="article:tag" content="web performance 工具">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://changchiao.github.io/img/1__wtKKpP0tOxOi1____rHdxp2A.jpeg">
+
+
+<link rel="canonical" href="https://changchiao.github.io/2020/04/06/2020-04-06_--------Chrome-Devtool-Performance-2ae96e7c4f69/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://changchiao.github.io/2020/04/06/2020-04-06_--------Chrome-Devtool-Performance-2ae96e7c4f69/","path":"2020/04/06/2020-04-06_--------Chrome-Devtool-Performance-2ae96e7c4f69/","title":"檢測效能的好幫手Chrome Devtool Performance"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>檢測效能的好幫手Chrome Devtool Performance | Coding Hot Pot</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJM3X3RGKD"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-SJM3X3RGKD","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Coding Hot Pot</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">日新月異的前端技術...學不動了</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Joe Chang"
+      src="/images/oldman.jpg">
+  <p class="site-author-name" itemprop="name">Joe Chang</p>
+  <div class="site-description" itemprop="description">唯有非常努力，才能看起來毫不費力</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">標籤</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://changchiao.github.io/2020/04/06/2020-04-06_--------Chrome-Devtool-Performance-2ae96e7c4f69/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/oldman.jpg">
+      <meta itemprop="name" content="Joe Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Hot Pot">
+      <meta itemprop="description" content="唯有非常努力，才能看起來毫不費力">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="檢測效能的好幫手Chrome Devtool Performance | Coding Hot Pot">
+      <meta itemprop="description" content="初次使用這個功能 是因為寫了一個動態效果很多的網頁但非常吃效能，年輕不懂事，每秒create好幾百個DOM在畫面上飛來飛去(好孩子不要學 ，頁面放一陣子就開始卡了，後來比較資深的前輩教我可以用chrome performance功能查看。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          檢測效能的好幫手Chrome Devtool Performance
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2020-04-06 23:38:53" itemprop="dateCreated datePublished" datetime="2020-04-06T23:38:53+08:00">2020-04-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2023-10-13 16:58:22" itemprop="dateModified" datetime="2023-10-13T16:58:22+08:00">2023-10-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/web/" itemprop="url" rel="index"><span itemprop="name">web</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">初次使用這個功能 是因為寫了一個動態效果很多的網頁但非常吃效能，年輕不懂事，每秒create好幾百個DOM在畫面上飛來飛去(好孩子不要學 ，頁面放一陣子就開始卡了，後來比較資深的前輩教我可以用chrome performance功能查看。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="/img/1__wtKKpP0tOxOi1____rHdxp2A.jpeg"></p>
+<p>初次使用這個功能，是因為寫了一個動態效果很多的網頁但非常吃效能，年輕不懂事，每秒 create 好幾百個 DOM 在畫面上飛來飛去(好孩子不要學 ，頁面放一陣子就開始卡了，後來比較資深的前輩教我可以用 chrome performance 功能查看。</p>
+<p>打開 chrome dev tool 選擇 performance，按下小灰點開始錄製， 按 Stop 停止後，會需要一點時間處理數據後顯示分析圖表。</p>
+<p>另外 選擇右上角的小齒輪 Capture Settings ，可以調整一些測試模擬項目<br>如果要模擬網路慢的情況可以調整 Network，如果要模擬效能較差的裝置可以調整 CPU，選擇 2x slowdown 代表模擬 CPU 速度慢兩倍。</p>
+<p>有時候在電腦上畫面不會卡 ，但是用手機看就非常頓 ，就是因為手機效能不如電腦 ，所以可以靠調整 CPU 這個功能 ，來看看在手機運行上的情形。</p>
+<p><img src="/img/1__sElshdgh__khnqweabjdO1w.jpeg"></p>
+<p><strong>錄製時有幾項建議</strong></p>
+<p>開著無痕分頁去錄製會比較準確 因為有些 google 擴充工具會影響效能，像是 AD block 會去找任何含有疑似廣告的 class ，查找過程中會有點吃效能， 因此錄製出來的結果並不精準。</p>
+<p>錄製的時候不要有其他操作， 像是滾動卷軸等等 ，會導致錄的數據不準，可以打開 trello 看板 ，錄製時邊滾動卡片 ，就會發現滾動時特別吃效能。</p>
+<p><img src="/img/1__0h__aJ4mw__tl83__0lYAupig.jpeg"></p>
+<p>我覺得這邊有個貼心的地方是有提供逐格影像截圖 ，方便開發者查看哪個階段的畫面特別吃效能。</p>
+<p><img src="/img/1__6ZimTvOSbF5FHS7hA2gW__Q.jpeg"></p>
+<p>可以看到畫面上有紫色和黃色的波浪圖，代表著瀏覽器 CPU 的消耗占比，下方會補充紫色， 黃色各代表甚麼意義。</p>
+<p><img src="/img/1__gJzpj0JX8BUpkraZLKL__1A.jpeg"></p>
+<p>FPS（frames per second）可以說是效能的指標 ，理想的狀況是每秒都有 60fps，就像看動畫一樣 影格越多動作越流暢，可以看到最上面有一條紅色長條代表 FPS 非常低， 因為效能低落的原因 ，導致畫面卡頓不流暢，CPU 也接近滿載。</p>
+<p><img src="/img/1__668UIOr2SZbaAhF6HXlGyw.jpeg"></p>
+<p>上圖就是理想的狀況接近 60FPS， 可以看到綠色區塊幾乎是填滿的狀況</p>
+<p>接下來來認識一下面板上的資訊個別代表甚麼意思吧!</p>
+<p><img src="/img/1__Ox0vGj1Bb5S01flOcPj6OQ.jpeg"></p>
+<p>在面板上我們可以看到很多顏色的色塊 ，在下方的 Summary 面板上， 其實有詳解各種顏色的色塊代表甚麼意思。</p>
+<ul>
+<li>Scripting javaSscript(黃色)</li>
+<li>Rendering 渲染 (紫色)</li>
+<li>Painting 繪製 (綠色)</li>
+<li>Loading 加載 (藍色)</li>
+<li>ldle 閒置 (白色)</li>
+<li>other 灰色 (其他)</li>
+</ul>
+<p><img src="/img/1__Gdq1XGt__bY6rsbqM9GAVuQ.jpeg"></p>
+<p>上圖可以看到 main 面板上有許多長條狀的色塊 ，色塊越長代表執行時間越長(x 軸) 每一個長條色塊都代表一個事件，然後會發現色塊會向下延升(y 軸)（call stack） 代表事件堆疊，例如 A 事件觸發 B 事件再觸發 C ，一直接連下去，點選色塊後會跑出對應的 Summary ，就可以點進去看是哪隻 function 觸發的。</p>
+<p><img src="/img/1__6AHT8d__omuePqaYW2bCYaA.jpeg"></p>
+<p>點進來之後可以看到右邊有一排秒數紀錄，這時就可以找出哪段 code 最花時間。</p>
+<p><img src="/img/1__QHq4xuH2MDzkdQcgf8H5tg.jpeg"></p>
+<p>對了 ，Summary 的 tab 旁邊還有 bottom-up 、call tree 、event log 可以依照自己的需求來看察看數據。</p>
+<p>另外也可以開啟即時監測 FPS 面板 ，方便觀察效能。</p>
+<p><img src="/img/1__Xdycvhky8jXiONtVe8q5vg.jpeg"><br><img src="/img/1__BywxPemvOIBdEfcJpDryCA.jpeg"></p>
+<p>在 chrome dev tool 中按下 ctrl+shift+P 輸入 show frames per second 就可以了。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/web-performance-%E5%B7%A5%E5%85%B7/" rel="tag"># web performance 工具</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/03/30/2020-03-30_------------3dd4db758210/" rel="prev" title="有看沒有懂的正規表達式">
+                  <i class="fa fa-angle-left"></i> 有看沒有懂的正規表達式
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/04/13/2020-04-13_--Postman------REST-Client-858566965139/" rel="next" title="除了Postman 還可以試試REST Client">
+                  除了Postman 還可以試試REST Client <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Joe Chang</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ChangChiao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

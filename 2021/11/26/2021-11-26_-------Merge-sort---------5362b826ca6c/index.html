@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"changchiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Merge Sort採用分治法(Divide and Conquer)的方式來處理排序的問題，簡單介紹一下分治法執行的步驟如下:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[排序演算法]Merge sort — 合併排序法">
+<meta property="og:url" content="https://changchiao.github.io/2021/11/26/2021-11-26_-------Merge-sort---------5362b826ca6c/index.html">
+<meta property="og:site_name" content="Coding Hot Pot">
+<meta property="og:description" content="Merge Sort採用分治法(Divide and Conquer)的方式來處理排序的問題，簡單介紹一下分治法執行的步驟如下:">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://changchiao.github.io/img/1__RUmvkz3ba5u9Mj6wbswoMA.jpeg">
+<meta property="og:image" content="https://changchiao.github.io/img/0__2X3nZmdORT7HG4UC.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__5xwtiombcbCmDlW7Emwg__Q.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__DpemawBXX58H1R9MGEriTw.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1____wyFKCzbytfvd1xR2w3sDg.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__HEi5LenFAxaWGxNSI__MFnw.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__qfWFCnnQuQB__XojJrv9__cg.png">
+<meta property="article:published_time" content="2021-11-26T01:07:18.345Z">
+<meta property="article:modified_time" content="2023-10-13T09:06:31.435Z">
+<meta property="article:author" content="Joe Chang">
+<meta property="article:tag" content="演算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://changchiao.github.io/img/1__RUmvkz3ba5u9Mj6wbswoMA.jpeg">
+
+
+<link rel="canonical" href="https://changchiao.github.io/2021/11/26/2021-11-26_-------Merge-sort---------5362b826ca6c/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://changchiao.github.io/2021/11/26/2021-11-26_-------Merge-sort---------5362b826ca6c/","path":"2021/11/26/2021-11-26_-------Merge-sort---------5362b826ca6c/","title":"[排序演算法]Merge sort — 合併排序法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>[排序演算法]Merge sort — 合併排序法 | Coding Hot Pot</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJM3X3RGKD"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-SJM3X3RGKD","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Coding Hot Pot</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">日新月異的前端技術...學不動了</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%99%82%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6"><span class="nav-number">1.</span> <span class="nav-text">時間複雜度</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Joe Chang"
+      src="/images/oldman.jpg">
+  <p class="site-author-name" itemprop="name">Joe Chang</p>
+  <div class="site-description" itemprop="description">唯有非常努力，才能看起來毫不費力</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">標籤</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://changchiao.github.io/2021/11/26/2021-11-26_-------Merge-sort---------5362b826ca6c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/oldman.jpg">
+      <meta itemprop="name" content="Joe Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Hot Pot">
+      <meta itemprop="description" content="唯有非常努力，才能看起來毫不費力">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="[排序演算法]Merge sort — 合併排序法 | Coding Hot Pot">
+      <meta itemprop="description" content="Merge Sort採用分治法(Divide and Conquer)的方式來處理排序的問題，簡單介紹一下分治法執行的步驟如下:">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [排序演算法]Merge sort — 合併排序法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2021-11-26 09:07:18" itemprop="dateCreated datePublished" datetime="2021-11-26T09:07:18+08:00">2021-11-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2023-10-13 17:06:31" itemprop="dateModified" datetime="2023-10-13T17:06:31+08:00">2023-10-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%BC%94%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">演算法</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">Merge Sort採用分治法(Divide and Conquer)的方式來處理排序的問題，簡單介紹一下分治法執行的步驟如下:</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="/img/1__RUmvkz3ba5u9Mj6wbswoMA.jpeg"></p>
+<p>Merge Sort 採用分治法(Divide and Conquer)的方式來處理排序的問題，簡單介紹一下分治法執行的步驟如下:</p>
+<ol>
+<li>Divide:先將大問題不斷切割成小問題</li>
+<li>Conquer:用遞迴的方式處理所有的子問題</li>
+<li>Combine:將所有的結果合併起來就是最終解答</li>
+</ol>
+<p>實作步驟:</p>
+<p>將陣列不斷分割，分割到只有一個元素為止，再依照大小依序組合起來，流程可參考下圖</p>
+<p><img src="/img/0__2X3nZmdORT7HG4UC.png"></p>
+<p>用 js 實作 merge sort</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">merge</span> = (<span class="params">arr1, arr2</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> result = [];</span><br><span class="line">  <span class="comment">//用雙指針來紀錄比較位置</span></span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> j = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//兩個陣列裡的元素逐一比較大小</span></span><br><span class="line">  <span class="keyword">while</span> (i &lt; arr1.<span class="property">length</span> &amp;&amp; j &lt; arr2.<span class="property">length</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (arr1[i] &gt; arr2[j]) &#123;</span><br><span class="line">      result.<span class="title function_">push</span>(arr2[j]);</span><br><span class="line">      j++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      result.<span class="title function_">push</span>(arr1[i]);</span><br><span class="line">      i++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//將剩餘的元素放入result</span></span><br><span class="line">  <span class="keyword">while</span> (i &lt; arr1.<span class="property">length</span>) &#123;</span><br><span class="line">    result.<span class="title function_">push</span>(arr1[i]);</span><br><span class="line">    i++;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> (j &lt; arr2.<span class="property">length</span>) &#123;</span><br><span class="line">    result.<span class="title function_">push</span>(arr2[j]);</span><br><span class="line">    j++;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">mergeSort</span> = (<span class="params">arr</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (arr.<span class="property">length</span> === <span class="number">1</span>) <span class="keyword">return</span> arr;</span><br><span class="line">  <span class="comment">//找中間點</span></span><br><span class="line">  <span class="keyword">let</span> middle = <span class="title class_">Math</span>.<span class="title function_">floor</span>(arr.<span class="property">length</span> / <span class="number">2</span>);</span><br><span class="line">  <span class="comment">//將陣列切為左半邊和右半邊</span></span><br><span class="line">  <span class="keyword">let</span> left = arr.<span class="title function_">slice</span>(<span class="number">0</span>, middle);</span><br><span class="line">  <span class="keyword">let</span> right = arr.<span class="title function_">slice</span>(middle, arr.<span class="property">length</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">merge</span>(<span class="title function_">mergeSort</span>(right), <span class="title function_">mergeSort</span>(left));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title function_">mergeSort</span>([<span class="number">8</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">2</span>]);</span><br></pre></td></tr></table></figure>
+
+<p>這邊畫流程圖來講解 merge 這個函式在做的事情</p>
+<ol>
+<li>假設傳入兩個陣列個別是 arr1 和 arr2 (這兩個必定是已經排序好的陣列)</li>
+</ol>
+<p><img src="/img/1__5xwtiombcbCmDlW7Emwg__Q.png"></p>
+<p>2. 第一個 while 迴圈會搭配雙指針將兩個陣列相互比大小，先取兩個陣列中的第一個來做比較，1 比 2 小所以放入 result 裡面，然後本來指向 1 的 j 指針就要往後移動一格，指向 4</p>
+<p><img src="/img/1__DpemawBXX58H1R9MGEriTw.png"></p>
+<p>3. 2 與 4 做比較，2 比較小所以放入 result 中，本來指向 2 的 i 指針就要往後移動一格，指向 3</p>
+<p><img src="/img/1____wyFKCzbytfvd1xR2w3sDg.png"></p>
+<p>4. 經過不斷的比較會發現 i 指針已經指到最後一個了，但是 j 指針還沒到終點，此時第一個 while 迴圈已經終止，可以發現 arr1 的已經全部被放進 result 裡面了，arr2 還有兩個</p>
+<p><img src="/img/1__HEi5LenFAxaWGxNSI__MFnw.png"></p>
+<p>5.因此會執行第三個 while 迴圈，將 arr2 剩下的元素放進 result，如果今天是 arr1 有剩餘的元素就會執行第二個 while 迴圈，最後可以得到一個合併好的陣列並且排序由小到大</p>
+<p><img src="/img/1__qfWFCnnQuQB__XojJrv9__cg.png"></p>
+<p>空間複雜度相較其它排序演算法會比較高，因為會不斷切割生成新的陣列，需要額外的記憶體空間來存放</p>
+<h4 id="時間複雜度"><a href="#時間複雜度" class="headerlink" title="時間複雜度"></a>時間複雜度</h4><p>👍 在最差的情況下，時間複雜度是 O(<strong>n log n</strong>)</p>
+<p>👎 在最佳的情況下，時間複雜度是 O(<strong>n log n</strong>)</p>
+<p>🤚 在平均情況下，時間複雜度為 O(<strong>n log n</strong>)</p>
+<p>參考資料: <a target="_blank" rel="noopener" href="https://www.geeksforgeeks.org/divide-and-conquer/">divide-and-conquer</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%BC%94%E7%AE%97%E6%B3%95/" rel="tag"># 演算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/11/17/2021-11-17_-------Quick-Sort---------2dee83ce97a7/" rel="prev" title="[排序演算法]Quick Sort — 快速排序法">
+                  <i class="fa fa-angle-left"></i> [排序演算法]Quick Sort — 快速排序法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/12/06/2021-12-06_-------Heap-Sort---------736fbf111182/" rel="next" title="[排序演算法]Heap Sort — 堆積排序法">
+                  [排序演算法]Heap Sort — 堆積排序法 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Joe Chang</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ChangChiao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

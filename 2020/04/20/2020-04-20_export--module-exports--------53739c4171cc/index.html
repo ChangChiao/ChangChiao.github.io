@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"changchiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="不得不承認剛開始接觸的時候，我會把export 跟module exports 搞混(都有個export嘛)，其實他們兩個是完全不相干的，搞不懂為甚麼不能在vue.config.js使用import，後來查資料才發現兩者遵循的規範是不一樣的，既然要比較差異，就先個別介紹一下。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="export 跟module exports 有什麼差異？">
+<meta property="og:url" content="https://changchiao.github.io/2020/04/20/2020-04-20_export--module-exports--------53739c4171cc/index.html">
+<meta property="og:site_name" content="Coding Hot Pot">
+<meta property="og:description" content="不得不承認剛開始接觸的時候，我會把export 跟module exports 搞混(都有個export嘛)，其實他們兩個是完全不相干的，搞不懂為甚麼不能在vue.config.js使用import，後來查資料才發現兩者遵循的規範是不一樣的，既然要比較差異，就先個別介紹一下。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://changchiao.github.io/img/1__eJNVgN8k3a3ydx0J5DLY__g.jpeg">
+<meta property="article:published_time" content="2020-04-20T15:24:30.625Z">
+<meta property="article:modified_time" content="2023-10-12T01:16:25.885Z">
+<meta property="article:author" content="Joe Chang">
+<meta property="article:tag" content="javascript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://changchiao.github.io/img/1__eJNVgN8k3a3ydx0J5DLY__g.jpeg">
+
+
+<link rel="canonical" href="https://changchiao.github.io/2020/04/20/2020-04-20_export--module-exports--------53739c4171cc/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://changchiao.github.io/2020/04/20/2020-04-20_export--module-exports--------53739c4171cc/","path":"2020/04/20/2020-04-20_export--module-exports--------53739c4171cc/","title":"export 跟module exports 有什麼差異？"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>export 跟module exports 有什麼差異？ | Coding Hot Pot</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJM3X3RGKD"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-SJM3X3RGKD","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Coding Hot Pot</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">日新月異的前端技術...學不動了</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#export-default"><span class="nav-number">1.</span> <span class="nav-text">export default</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Joe Chang"
+      src="/images/oldman.jpg">
+  <p class="site-author-name" itemprop="name">Joe Chang</p>
+  <div class="site-description" itemprop="description">唯有非常努力，才能看起來毫不費力</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">標籤</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://changchiao.github.io/2020/04/20/2020-04-20_export--module-exports--------53739c4171cc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/oldman.jpg">
+      <meta itemprop="name" content="Joe Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Hot Pot">
+      <meta itemprop="description" content="唯有非常努力，才能看起來毫不費力">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="export 跟module exports 有什麼差異？ | Coding Hot Pot">
+      <meta itemprop="description" content="不得不承認剛開始接觸的時候，我會把export 跟module exports 搞混(都有個export嘛)，其實他們兩個是完全不相干的，搞不懂為甚麼不能在vue.config.js使用import，後來查資料才發現兩者遵循的規範是不一樣的，既然要比較差異，就先個別介紹一下。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          export 跟module exports 有什麼差異？
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2020-04-20 23:24:30" itemprop="dateCreated datePublished" datetime="2020-04-20T23:24:30+08:00">2020-04-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2023-10-12 09:16:25" itemprop="dateModified" datetime="2023-10-12T09:16:25+08:00">2023-10-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">javascript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">不得不承認剛開始接觸的時候，我會把export 跟module exports 搞混(都有個export嘛)，其實他們兩個是完全不相干的，搞不懂為甚麼不能在vue.config.js使用import，後來查資料才發現兩者遵循的規範是不一樣的，既然要比較差異，就先個別介紹一下。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="/img/1__eJNVgN8k3a3ydx0J5DLY__g.jpeg"></p>
+<p>不得不承認剛開始接觸的時候，我會把 export 跟 module exports 搞混(都有個 export 嘛)，其實他們兩個是完全不相干的，搞不懂為甚麼不能在 vue.config.js 使用 import，後來查資料才發現兩者遵循的規範是不一樣的，既然要比較差異，就先個別介紹一下。</p>
+<p><strong>export(</strong> <strong>ES6)</strong></p>
+<ul>
+<li>export 對外輸出（模組、變數、函式）單個檔案裡可以有多個 export</li>
+<li>import 內部引用（模組、變數、函式）單個檔案裡僅會有一個 export default</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//a.js</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> user =<span class="string">&#x27;andy&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> run = <span class="function">() =&gt;</span> &#123;<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;run!!!&#x27;</span>)&#125;</span><br><span class="line"></span><br><span class="line">可以透過&#123;&#125;來 <span class="keyword">import</span> 想要引用的對象</span><br><span class="line"></span><br><span class="line"><span class="comment">//b.js</span></span><br><span class="line"><span class="keyword">import</span> &#123;user, run&#125; <span class="keyword">from</span> <span class="string">&#x27;/.a&#x27;</span></span><br><span class="line"><span class="title function_">run</span>()</span><br></pre></td></tr></table></figure>
+
+<p>也可另外設定別名</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//b.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; user <span class="keyword">as</span> name, run <span class="keyword">as</span> rush &#125; <span class="keyword">from</span> <span class="string">&quot;/.a&quot;</span>;</span><br><span class="line"><span class="title function_">rush</span>();</span><br></pre></td></tr></table></figure>
+
+<p>有時需要輸出多個對象，直接用*一勞永逸！</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//b.js</span></span><br><span class="line"><span class="string">`export * from &#x27;./a&#x27;;`</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="export-default"><a href="#export-default" class="headerlink" title="export default"></a>export default</h4><p>注意：export default 為模組的預設輸出，所以只會有一個，如果不小心寫了兩個 export default 就會報錯:only one default export allowed per module。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//a.js</span></span><br><span class="line"><span class="keyword">const</span> list = [<span class="string">&quot;olive&quot;</span>, <span class="string">&quot;steelblue&quot;</span>, <span class="string">&quot;lightpink&quot;</span>];</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> list;</span><br></pre></td></tr></table></figure>
+
+<p>因為 export default 的關係，import 的名稱可以任意定義，且不需要用{}</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//b.js</span></span><br><span class="line"><span class="keyword">import</span> data <span class="keyword">from</span> <span class="string">&quot;./a&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>module exports (CommonJS)</strong></p>
+<p>那就要先介紹 node module 了，是遵循 CommonJS 的規範，每個 js 檔案都是獨立的 module，檔案裡的變數、類別，函式都是私有，除非 module.exports 導出給其他模組使用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//a.js</span></span><br><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">  <span class="attr">age</span>: <span class="number">30</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;sherry&quot;</span>,</span><br><span class="line">  <span class="attr">salary</span>: <span class="number">81000</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = data;</span><br></pre></td></tr></table></figure>
+
+<p>透過 require 來引用 module</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// b.js</span></span><br><span class="line"><span class="keyword">var</span> info = <span class="built_in">require</span>(<span class="string">&quot;./a.js&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>歸納一下重點</p>
+<ul>
+<li><code>require</code>: Node.js 和 ES6 都支援的引入</li>
+<li><code>export</code>、 <code>import</code> : 只有 ES6 支援的導出引入</li>
+<li><code>module.exports</code>、 <code>exports</code>: 只有 Node.js 支援的導出</li>
+</ul>
+<p>備註：import 經由 babel 編譯後還是會被轉成 require</p>
+<p>參考資料：<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000010426778">https://segmentfault.com/a/1190000010426778</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/javascript/" rel="tag"># javascript</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/04/13/2020-04-13_--Postman------REST-Client-858566965139/" rel="prev" title="除了Postman 還可以試試REST Client">
+                  <i class="fa fa-angle-left"></i> 除了Postman 還可以試試REST Client
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/04/27/2020-04-27_-vue-cli-----css-sprite-----617ea0e9c0f6/" rel="next" title="在vue cli 裡使用 css sprite 雪碧圖">
+                  在vue cli 裡使用 css sprite 雪碧圖 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Joe Chang</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ChangChiao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
