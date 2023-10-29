@@ -39,6 +39,9 @@ devDependencies:
   hexo-deployer-git:
     specifier: ^4.0.0
     version: 4.0.0
+  hexo-generator-sitemap:
+    specifier: ^3.0.1
+    version: 3.0.1
   hexo-util:
     specifier: ^3.1.0
     version: 3.1.0
@@ -648,6 +651,17 @@ packages:
       hexo-pagination: 3.0.0
     dev: false
 
+  /hexo-generator-sitemap@3.0.1:
+    resolution: {integrity: sha512-n+0KLNmq6TLbiZPTQF6NY5MbEem/O+DFx0lgQZNQcU4tdjXIZRrQJs+KRKeT66NTkdlYTqb4WwCxswLqQz0crA==}
+    engines: {node: '>=12.13.0'}
+    dependencies:
+      hexo-util: 2.7.0
+      micromatch: 4.0.5
+      nunjucks: 3.2.4
+    transitivePeerDependencies:
+      - chokidar
+    dev: true
+
   /hexo-generator-tag@2.0.0:
     resolution: {integrity: sha512-1px/hF3veEohWDN8jjzchQhaiz+uOStUvvMaBJC9vWOlALh30UFcapL8IrvAwwJZjFRVA+WqGgDRqoQ8+yaaFw==}
     engines: {node: '>=14'}
@@ -1023,7 +1037,6 @@ packages:
     dependencies:
       braces: 3.0.2
       picomatch: 2.3.1
-    dev: false
 
   /mime-db@1.52.0:
     resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==}
