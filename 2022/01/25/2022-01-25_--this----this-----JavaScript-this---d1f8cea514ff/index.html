@@ -17,46 +17,46 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"changchiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"codinghotpot.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="相信在大家在學習JavaScript的時候常會踩到一個坑，那就是搞不清楚this的指向到底是誰，以為是物件結果卻是window，或是把物件的方法做為callback function執行，結果callback…">
 <meta property="og:type" content="article">
 <meta property="og:title" content="你的this不是你的this — 關於JavaScript的this指向">
-<meta property="og:url" content="https://changchiao.github.io/2022/01/25/2022-01-25_--this----this-----JavaScript-this---d1f8cea514ff/index.html">
+<meta property="og:url" content="https://codinghotpot.com/2022/01/25/2022-01-25_--this----this-----JavaScript-this---d1f8cea514ff/index.html">
 <meta property="og:site_name" content="Coding Hot Pot">
 <meta property="og:description" content="相信在大家在學習JavaScript的時候常會踩到一個坑，那就是搞不清楚this的指向到底是誰，以為是物件結果卻是window，或是把物件的方法做為callback function執行，結果callback…">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://changchiao.github.io/img/1__IHkXB8NWvfzb3kNtRoca9w.jpeg">
-<meta property="og:image" content="https://changchiao.github.io/img/1__GV6iYD__peUf7NKrGtCThBQ.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__rEkO__GJRgQLYNaXiptLx2Q.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__hal90JOZQsHUxFlAoWKC4w.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__06pPsnXdV87A__DLeE4Zdsw.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__KMpeC__w6LRZfcH7rx3jLBQ.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__dLu3MwTFEdbU582HEzfjDg.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__Gy2T__s8Q4j9XDQwd6EgHVA.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__RStGGuVI7MTyIH6mpGjZ5w.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__Vz3e5FHe2IWlnZLu79MjBA.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__hk74puiRvtZqJPRqM__qcrQ.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__tudlxnSk92JkT__NtF1DSrw.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__GLJ3X29QgzAHiJ__4MTAf1w.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__fsPMpFkJ3tVMAZs____VuFIA.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__fwAMVGJ9__I7THtYdUzrvOg.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__1YM28THIg8deXx3__e1vo__g.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__SYM8JHr77OTpYqsx6HXgRw.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1____lO7zp49BwEHQs6lod1dpg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__IHkXB8NWvfzb3kNtRoca9w.jpeg">
+<meta property="og:image" content="https://codinghotpot.com/img/1__GV6iYD__peUf7NKrGtCThBQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__rEkO__GJRgQLYNaXiptLx2Q.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__hal90JOZQsHUxFlAoWKC4w.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__06pPsnXdV87A__DLeE4Zdsw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__KMpeC__w6LRZfcH7rx3jLBQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__dLu3MwTFEdbU582HEzfjDg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__Gy2T__s8Q4j9XDQwd6EgHVA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__RStGGuVI7MTyIH6mpGjZ5w.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__Vz3e5FHe2IWlnZLu79MjBA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__hk74puiRvtZqJPRqM__qcrQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__tudlxnSk92JkT__NtF1DSrw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__GLJ3X29QgzAHiJ__4MTAf1w.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__fsPMpFkJ3tVMAZs____VuFIA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__fwAMVGJ9__I7THtYdUzrvOg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__1YM28THIg8deXx3__e1vo__g.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__SYM8JHr77OTpYqsx6HXgRw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1____lO7zp49BwEHQs6lod1dpg.png">
 <meta property="article:published_time" content="2022-01-25T05:49:49.020Z">
 <meta property="article:modified_time" content="2023-10-29T04:20:59.723Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="javascript this">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://changchiao.github.io/img/1__IHkXB8NWvfzb3kNtRoca9w.jpeg">
+<meta name="twitter:image" content="https://codinghotpot.com/img/1__IHkXB8NWvfzb3kNtRoca9w.jpeg">
 
 
-<link rel="canonical" href="https://changchiao.github.io/2022/01/25/2022-01-25_--this----this-----JavaScript-this---d1f8cea514ff/">
+<link rel="canonical" href="https://codinghotpot.com/2022/01/25/2022-01-25_--this----this-----JavaScript-this---d1f8cea514ff/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://changchiao.github.io/2022/01/25/2022-01-25_--this----this-----JavaScript-this---d1f8cea514ff/","path":"2022/01/25/2022-01-25_--this----this-----JavaScript-this---d1f8cea514ff/","title":"你的this不是你的this — 關於JavaScript的this指向"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://codinghotpot.com/2022/01/25/2022-01-25_--this----this-----JavaScript-this---d1f8cea514ff/","path":"2022/01/25/2022-01-25_--this----this-----JavaScript-this---d1f8cea514ff/","title":"你的this不是你的this — 關於JavaScript的this指向"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>你的this不是你的this — 關於JavaScript的this指向 | Coding Hot Pot</title>
@@ -188,7 +188,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://changchiao.github.io/2022/01/25/2022-01-25_--this----this-----JavaScript-this---d1f8cea514ff/">
+    <link itemprop="mainEntityOfPage" href="https://codinghotpot.com/2022/01/25/2022-01-25_--this----this-----JavaScript-this---d1f8cea514ff/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/oldman.jpg">

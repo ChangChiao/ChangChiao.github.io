@@ -17,44 +17,44 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"changchiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"codinghotpot.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="參數類型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TypeScript筆記 (3) — function">
-<meta property="og:url" content="https://changchiao.github.io/2022/02/12/2022-02-12_TypeScript----3----function-43659ef56f4f/index.html">
+<meta property="og:url" content="https://codinghotpot.com/2022/02/12/2022-02-12_TypeScript----3----function-43659ef56f4f/index.html">
 <meta property="og:site_name" content="Coding Hot Pot">
 <meta property="og:description" content="參數類型">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://changchiao.github.io/img/1__nnjL3PzLAl49JV6qCrROuQ.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__gokKuEMSjdJYP4xfBLrefQ.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1____tpVdtW8G3__1e1IUt97FKw.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__AJlTfbXIUKj83YdRq9rQdQ.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1____v9cf1F__jqiA9eW44Wz2hA.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__bDofEJ0T7xXxitgL2sBJKw.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__NZaFnVOXiXpr__EX8NJQViw.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__mosKtIqzgLZ5aLE7NvWvrQ.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__dXPNlbBfqMSabRCyFGH4dw.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__JttXFJwbyNA9ldYTREwbKA.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__9PTbQ4x__6v__wTE__xBC2EzQ.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__08AmCLreCtHe__Sm9FLoxCw.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1____rxpM__6__5wYIXffUlcPpyw.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__UZUCxut__Vd3sSISOhwHLrg.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__aVAIhK0Xx0rQsvprtVpPWQ.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__BMuqGR1__82xPJJesdpuRxw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__nnjL3PzLAl49JV6qCrROuQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__gokKuEMSjdJYP4xfBLrefQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1____tpVdtW8G3__1e1IUt97FKw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__AJlTfbXIUKj83YdRq9rQdQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1____v9cf1F__jqiA9eW44Wz2hA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__bDofEJ0T7xXxitgL2sBJKw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__NZaFnVOXiXpr__EX8NJQViw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__mosKtIqzgLZ5aLE7NvWvrQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__dXPNlbBfqMSabRCyFGH4dw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__JttXFJwbyNA9ldYTREwbKA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__9PTbQ4x__6v__wTE__xBC2EzQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__08AmCLreCtHe__Sm9FLoxCw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1____rxpM__6__5wYIXffUlcPpyw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__UZUCxut__Vd3sSISOhwHLrg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__aVAIhK0Xx0rQsvprtVpPWQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__BMuqGR1__82xPJJesdpuRxw.png">
 <meta property="article:published_time" content="2022-02-12T13:07:24.022Z">
 <meta property="article:modified_time" content="2023-10-13T09:09:07.749Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="typescript">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://changchiao.github.io/img/1__nnjL3PzLAl49JV6qCrROuQ.png">
+<meta name="twitter:image" content="https://codinghotpot.com/img/1__nnjL3PzLAl49JV6qCrROuQ.png">
 
 
-<link rel="canonical" href="https://changchiao.github.io/2022/02/12/2022-02-12_TypeScript----3----function-43659ef56f4f/">
+<link rel="canonical" href="https://codinghotpot.com/2022/02/12/2022-02-12_TypeScript----3----function-43659ef56f4f/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://changchiao.github.io/2022/02/12/2022-02-12_TypeScript----3----function-43659ef56f4f/","path":"2022/02/12/2022-02-12_TypeScript----3----function-43659ef56f4f/","title":"TypeScript筆記 (3) — function"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://codinghotpot.com/2022/02/12/2022-02-12_TypeScript----3----function-43659ef56f4f/","path":"2022/02/12/2022-02-12_TypeScript----3----function-43659ef56f4f/","title":"TypeScript筆記 (3) — function"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>TypeScript筆記 (3) — function | Coding Hot Pot</title>
@@ -186,7 +186,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://changchiao.github.io/2022/02/12/2022-02-12_TypeScript----3----function-43659ef56f4f/">
+    <link itemprop="mainEntityOfPage" href="https://codinghotpot.com/2022/02/12/2022-02-12_TypeScript----3----function-43659ef56f4f/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/oldman.jpg">

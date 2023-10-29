@@ -17,53 +17,53 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"changchiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"codinghotpot.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="最近準備用Vue3開發新的專案了，趁這個機會順便整理vue3與vue2有哪些差異， 稍微瀏覽一下新功能和寫法…">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在開始之前，我應該先了解你 - 聊聊vue 3的改動">
-<meta property="og:url" content="https://changchiao.github.io/2021/01/25/2021-01-25_------------------vue-3----31864be9c237/index.html">
+<meta property="og:url" content="https://codinghotpot.com/2021/01/25/2021-01-25_------------------vue-3----31864be9c237/index.html">
 <meta property="og:site_name" content="Coding Hot Pot">
 <meta property="og:description" content="最近準備用Vue3開發新的專案了，趁這個機會順便整理vue3與vue2有哪些差異， 稍微瀏覽一下新功能和寫法…">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://changchiao.github.io/img/1__fT7NUo4h14VwjUyHEb__gjQ.jpeg">
-<meta property="og:image" content="https://changchiao.github.io/img/1__dYXizUL9FRop2qhg3ROmEg.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__gDSyCLWzXOg1CSdv1____J0Q.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__HPRAYCHAEKpE0tJac33gWw.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__Hnl1TrjtrVRLbF2vqVzlCQ.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__h8QOf92Rxzz57sUviSBVng.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1____5bklsuqkRszOcHAPqhPrw.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__myhghDNMCxLw8N3rSSASlw.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__ae2IB0Iisju9Ftegpt9RPA.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__H6xYFXJETLrZ3lCvKs06gw.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__rNC6tVpMcK7wvF2bpkWfcg.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__uyn5f7kgZSuLCII15vVFQw.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__d5edw05AOko1J8n__YB65vg.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__iHS6DrGycWYkfrF__gAFgxw.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__hUxTcoo31nR19ZE1OraahQ.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__nbraprD8VDtwMMEAECj0UQ.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__wgyDZvfNx__NKBQDUaVqhUw.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__cGjHQH7zdfXp__edPTv3HNA.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__dNCTszPcQ6QkT__1SProsRw.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1____tnwxjz99HGPe3rS5tusig.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__cgILB2sfoDqBkyJy__qX2ww.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__b6GIjiUKGKE7cqQCrVzklQ.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__DuXvZ5Nl78cbFyPpVwX14A.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__hApcYQ25lffPS3HDA__bkvg.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__9d__V4JLHqV3__zzXrUxCxJw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__fT7NUo4h14VwjUyHEb__gjQ.jpeg">
+<meta property="og:image" content="https://codinghotpot.com/img/1__dYXizUL9FRop2qhg3ROmEg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__gDSyCLWzXOg1CSdv1____J0Q.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__HPRAYCHAEKpE0tJac33gWw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__Hnl1TrjtrVRLbF2vqVzlCQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__h8QOf92Rxzz57sUviSBVng.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1____5bklsuqkRszOcHAPqhPrw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__myhghDNMCxLw8N3rSSASlw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__ae2IB0Iisju9Ftegpt9RPA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__H6xYFXJETLrZ3lCvKs06gw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__rNC6tVpMcK7wvF2bpkWfcg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__uyn5f7kgZSuLCII15vVFQw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__d5edw05AOko1J8n__YB65vg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__iHS6DrGycWYkfrF__gAFgxw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__hUxTcoo31nR19ZE1OraahQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__nbraprD8VDtwMMEAECj0UQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__wgyDZvfNx__NKBQDUaVqhUw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__cGjHQH7zdfXp__edPTv3HNA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__dNCTszPcQ6QkT__1SProsRw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1____tnwxjz99HGPe3rS5tusig.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__cgILB2sfoDqBkyJy__qX2ww.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__b6GIjiUKGKE7cqQCrVzklQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__DuXvZ5Nl78cbFyPpVwX14A.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__hApcYQ25lffPS3HDA__bkvg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__9d__V4JLHqV3__zzXrUxCxJw.png">
 <meta property="article:published_time" content="2021-01-25T12:34:18.542Z">
 <meta property="article:modified_time" content="2023-10-29T04:20:59.720Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="frontend">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://changchiao.github.io/img/1__fT7NUo4h14VwjUyHEb__gjQ.jpeg">
+<meta name="twitter:image" content="https://codinghotpot.com/img/1__fT7NUo4h14VwjUyHEb__gjQ.jpeg">
 
 
-<link rel="canonical" href="https://changchiao.github.io/2021/01/25/2021-01-25_------------------vue-3----31864be9c237/">
+<link rel="canonical" href="https://codinghotpot.com/2021/01/25/2021-01-25_------------------vue-3----31864be9c237/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://changchiao.github.io/2021/01/25/2021-01-25_------------------vue-3----31864be9c237/","path":"2021/01/25/2021-01-25_------------------vue-3----31864be9c237/","title":"在開始之前，我應該先了解你 - 聊聊vue 3的改動"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://codinghotpot.com/2021/01/25/2021-01-25_------------------vue-3----31864be9c237/","path":"2021/01/25/2021-01-25_------------------vue-3----31864be9c237/","title":"在開始之前，我應該先了解你 - 聊聊vue 3的改動"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>在開始之前，我應該先了解你 - 聊聊vue 3的改動 | Coding Hot Pot</title>
@@ -195,7 +195,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://changchiao.github.io/2021/01/25/2021-01-25_------------------vue-3----31864be9c237/">
+    <link itemprop="mainEntityOfPage" href="https://codinghotpot.com/2021/01/25/2021-01-25_------------------vue-3----31864be9c237/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/oldman.jpg">

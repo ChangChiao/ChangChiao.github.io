@@ -17,34 +17,34 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"changchiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"codinghotpot.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="想必我們都曾經遇過一種情境，兩個component功能幾乎一模一樣，只是差在輸入的資料不同而已，那麼這時候就是HOC登場的時候了，HOC為一個可以傳入component當參數的function，其目的在於可以將重複的邏輯抽離出來，讓傳入的component可以套用這個邏輯，並且輸…">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React Higher-Order Components (HOC)">
-<meta property="og:url" content="https://changchiao.github.io/2020/09/21/2020-09-21_React-Higher-Order-Components--HOC--ec51ec0e2759/index.html">
+<meta property="og:url" content="https://codinghotpot.com/2020/09/21/2020-09-21_React-Higher-Order-Components--HOC--ec51ec0e2759/index.html">
 <meta property="og:site_name" content="Coding Hot Pot">
 <meta property="og:description" content="想必我們都曾經遇過一種情境，兩個component功能幾乎一模一樣，只是差在輸入的資料不同而已，那麼這時候就是HOC登場的時候了，HOC為一個可以傳入component當參數的function，其目的在於可以將重複的邏輯抽離出來，讓傳入的component可以套用這個邏輯，並且輸…">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://changchiao.github.io/img/1__GcC__tU08LCx7h5vKMTxvVg.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__4Z6j5Ef0Dnty7pHG__ioxHg.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__oFrNZbSc5FXbWUClUXzl4g.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__6OPQbez4ha4BXMjsd9ocOg.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__o4F683lSXo7g7Me4JHktAQ.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__HS2P3viVU3ILMFPo__JEeHg.jpeg">
+<meta property="og:image" content="https://codinghotpot.com/img/1__GcC__tU08LCx7h5vKMTxvVg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__4Z6j5Ef0Dnty7pHG__ioxHg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__oFrNZbSc5FXbWUClUXzl4g.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__6OPQbez4ha4BXMjsd9ocOg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__o4F683lSXo7g7Me4JHktAQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__HS2P3viVU3ILMFPo__JEeHg.jpeg">
 <meta property="article:published_time" content="2020-09-21T00:50:43.990Z">
 <meta property="article:modified_time" content="2023-10-12T01:16:25.917Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="react">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://changchiao.github.io/img/1__GcC__tU08LCx7h5vKMTxvVg.png">
+<meta name="twitter:image" content="https://codinghotpot.com/img/1__GcC__tU08LCx7h5vKMTxvVg.png">
 
 
-<link rel="canonical" href="https://changchiao.github.io/2020/09/21/2020-09-21_React-Higher-Order-Components--HOC--ec51ec0e2759/">
+<link rel="canonical" href="https://codinghotpot.com/2020/09/21/2020-09-21_React-Higher-Order-Components--HOC--ec51ec0e2759/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://changchiao.github.io/2020/09/21/2020-09-21_React-Higher-Order-Components--HOC--ec51ec0e2759/","path":"2020/09/21/2020-09-21_React-Higher-Order-Components--HOC--ec51ec0e2759/","title":"React Higher-Order Components (HOC)"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://codinghotpot.com/2020/09/21/2020-09-21_React-Higher-Order-Components--HOC--ec51ec0e2759/","path":"2020/09/21/2020-09-21_React-Higher-Order-Components--HOC--ec51ec0e2759/","title":"React Higher-Order Components (HOC)"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>React Higher-Order Components (HOC) | Coding Hot Pot</title>
@@ -175,7 +175,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://changchiao.github.io/2020/09/21/2020-09-21_React-Higher-Order-Components--HOC--ec51ec0e2759/">
+    <link itemprop="mainEntityOfPage" href="https://codinghotpot.com/2020/09/21/2020-09-21_React-Higher-Order-Components--HOC--ec51ec0e2759/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/oldman.jpg">

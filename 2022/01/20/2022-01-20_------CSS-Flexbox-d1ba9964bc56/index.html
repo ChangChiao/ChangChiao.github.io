@@ -17,48 +17,48 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"changchiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"codinghotpot.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="目前工作上切版大部分都是使用flex語法了，不過我發現我只對基礎的flex語法比較熟，如果要做進階的調整就會卡關了，像是flex: 1 2 200px這類的😭，因此決定寫一篇筆記來幫助自己理解flex">
 <meta property="og:type" content="article">
 <meta property="og:title" content="伸縮自如的 CSS Flexbox">
-<meta property="og:url" content="https://changchiao.github.io/2022/01/20/2022-01-20_------CSS-Flexbox-d1ba9964bc56/index.html">
+<meta property="og:url" content="https://codinghotpot.com/2022/01/20/2022-01-20_------CSS-Flexbox-d1ba9964bc56/index.html">
 <meta property="og:site_name" content="Coding Hot Pot">
 <meta property="og:description" content="目前工作上切版大部分都是使用flex語法了，不過我發現我只對基礎的flex語法比較熟，如果要做進階的調整就會卡關了，像是flex: 1 2 200px這類的😭，因此決定寫一篇筆記來幫助自己理解flex">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://changchiao.github.io/img/1__zo1z1RHoOMEbd6dHRawACw.jpeg">
-<meta property="og:image" content="https://changchiao.github.io/img/1____429Du2Z5x8YhsHMKbqppQ.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1____L2p2bTSPopRI4mTuYxyUA.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__UEorlV____ZUZDmAVLa9WPag.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__xMCnuJ2GcKMk7Z07iqjCOw.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__VXkUkyN842qFTrVLp6SLPg.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__Mx0pRa4aM6G3w__2gEC8Gvg.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__PC__eQU5zjQupx__B__5BpxJA.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__h3fO__HuDx3dcVz4JwoIkGg.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__BS30TQbDtM__tKSPYo0Y5__w.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__PN8C1VlPQECxDqjcYsZOdw.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__owiYZ__mUQ__ytEoUeMUJX0Q.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__6EMrum__B____Zh6ez__EJPCag.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__UOchScFJS8uAxUprcgSNjQ.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__CDUHMyd9Q12acZO9CX6qkA.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__BothEO0W1wvDHoS15B__ofQ.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__1ep4tn1qpbVdd__3uowkj1g.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__2FbQ53MeE8asi4Zg46jbRg.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1__csoNFoU4yTX3dNakvVt__jg.png">
-<meta property="og:image" content="https://changchiao.github.io/img/1____pKmZ__HHHu7V4Y89ac__fAA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__zo1z1RHoOMEbd6dHRawACw.jpeg">
+<meta property="og:image" content="https://codinghotpot.com/img/1____429Du2Z5x8YhsHMKbqppQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1____L2p2bTSPopRI4mTuYxyUA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__UEorlV____ZUZDmAVLa9WPag.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__xMCnuJ2GcKMk7Z07iqjCOw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__VXkUkyN842qFTrVLp6SLPg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__Mx0pRa4aM6G3w__2gEC8Gvg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__PC__eQU5zjQupx__B__5BpxJA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__h3fO__HuDx3dcVz4JwoIkGg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__BS30TQbDtM__tKSPYo0Y5__w.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__PN8C1VlPQECxDqjcYsZOdw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__owiYZ__mUQ__ytEoUeMUJX0Q.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__6EMrum__B____Zh6ez__EJPCag.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__UOchScFJS8uAxUprcgSNjQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__CDUHMyd9Q12acZO9CX6qkA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__BothEO0W1wvDHoS15B__ofQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__1ep4tn1qpbVdd__3uowkj1g.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__2FbQ53MeE8asi4Zg46jbRg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__csoNFoU4yTX3dNakvVt__jg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1____pKmZ__HHHu7V4Y89ac__fAA.png">
 <meta property="article:published_time" content="2022-01-20T09:17:24.058Z">
 <meta property="article:modified_time" content="2023-10-13T09:07:57.585Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="css">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://changchiao.github.io/img/1__zo1z1RHoOMEbd6dHRawACw.jpeg">
+<meta name="twitter:image" content="https://codinghotpot.com/img/1__zo1z1RHoOMEbd6dHRawACw.jpeg">
 
 
-<link rel="canonical" href="https://changchiao.github.io/2022/01/20/2022-01-20_------CSS-Flexbox-d1ba9964bc56/">
+<link rel="canonical" href="https://codinghotpot.com/2022/01/20/2022-01-20_------CSS-Flexbox-d1ba9964bc56/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://changchiao.github.io/2022/01/20/2022-01-20_------CSS-Flexbox-d1ba9964bc56/","path":"2022/01/20/2022-01-20_------CSS-Flexbox-d1ba9964bc56/","title":"伸縮自如的 CSS Flexbox"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://codinghotpot.com/2022/01/20/2022-01-20_------CSS-Flexbox-d1ba9964bc56/","path":"2022/01/20/2022-01-20_------CSS-Flexbox-d1ba9964bc56/","title":"伸縮自如的 CSS Flexbox"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>伸縮自如的 CSS Flexbox | Coding Hot Pot</title>
@@ -190,7 +190,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://changchiao.github.io/2022/01/20/2022-01-20_------CSS-Flexbox-d1ba9964bc56/">
+    <link itemprop="mainEntityOfPage" href="https://codinghotpot.com/2022/01/20/2022-01-20_------CSS-Flexbox-d1ba9964bc56/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/oldman.jpg">
