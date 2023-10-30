@@ -4,430 +4,7 @@
   <url>
     <loc>https://codinghotpot.com/tags/index.html</loc>
     
-    <lastmod>2023-10-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2023/10/07/2023-10-07_------------feat------c411c6006fa8/</loc>
-    
-    <lastmod>2023-10-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2023/07/22/2023-07-22_E2E-test--------playwright-de85659b56b9/</loc>
-    
-    <lastmod>2023-10-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2023/09/17/2023-09-17_--i18n-------phrase-bea03ec402f7/</loc>
-    
-    <lastmod>2023-10-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2023/05/10/2023-05-10_vim------1bed0d18e493/</loc>
-    
-    <lastmod>2023-10-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2023/02/10/2023-02-10_2023----------591c127f735c/</loc>
-    
-    <lastmod>2023-10-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2022/09/30/2022-09-30_-Node-js---------Google-1e6962aafbfc/</loc>
-    
-    <lastmod>2023-10-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2022/04/05/2022-04-05_---JavaScript-----------Event-Loop-----3e92917b0834/</loc>
-    
-    <lastmod>2023-10-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2022/09/24/2022-09-24_Node-js--LinePay---32b7177a2fb8/</loc>
-    
-    <lastmod>2023-10-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2022/04/01/2022-04-01_--------------e9234adfc7e7/</loc>
-    
-    <lastmod>2023-10-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2022/02/07/2022-02-07_---JavaScript-Promise-2402670eaa0/</loc>
-    
-    <lastmod>2023-10-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/12/30/2021-12-30_2021-F2E-------defe8d917955/</loc>
-    
-    <lastmod>2023-10-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2022/01/25/2022-01-25_--this----this-----JavaScript-this---d1f8cea514ff/</loc>
-    
-    <lastmod>2023-10-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/12/13/2021-12-13_-------Linear-Search---------6e2f62959566/</loc>
-    
-    <lastmod>2023-10-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/06/12/2021-06-12_----------Polling-v-s-WebSocket-c777731fcf6e/</loc>
-    
-    <lastmod>2023-10-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/01/25/2021-01-25_------------------vue-3----31864be9c237/</loc>
-    
-    <lastmod>2023-10-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/11/16/2020-11-16_React-hook----useContext-useReducer-1a0efe78f0a5/</loc>
-    
-    <lastmod>2023-10-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/03/09/2020-03-09_---css---c781f80aeceb/</loc>
-    
-    <lastmod>2023-10-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/03/02/2020-03-02_-leaflet---openstreetmap--------a7f3209c120d/</loc>
-    
-    <lastmod>2023-10-29</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/07/06/2020-07-06_javaScript----------9493a5153d16/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/06/29/2020-06-29_--JavaScript-try-catch-------57971f82f164/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/06/22/2020-06-22_-------------8d75d814035a/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/05/18/2020-05-18_javascript-Date---e63d80d8a180/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/03/23/2020-03-23_Array---------328788e5fa84/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/02/10/2020-02-10_-------------7ffd1ac98501/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2022/12/30/2022-12-30_-2022-----------b366bc80cab0/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2022/10/25/2022-10-25_---vue----svg-----svg-sprite-loader-28a0d4a5c645/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2022/07/11/2022-07-11_Ngrok----------https--a9011d78af0e/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2022/06/08/2022-06-08_----Socket-io-----------82a4949d571d/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2022/04/17/2022-04-17_-----Mock-Service-Worker---Mock-API---f921ab30d5c7/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2022/03/03/2022-03-03_-cypress--E2E-Test---71d430fdc8b7/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2022/03/01/2022-03-01_debounce-throttle----callback-------505a660c1933/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2022/02/23/2022-02-23_Pinia---Vuex-----8246450f4c5b/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2022/02/16/2022-02-16_---------git----906cc61a4dea/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2022/02/13/2022-02-13_TypeScript----4----Class-287585191ee7/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2022/02/12/2022-02-12_TypeScript----3----function-43659ef56f4f/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2022/02/11/2022-02-11_TypeScript------181d22c7f692/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2022/02/08/2022-02-08_TypeScript------------f951807c4867/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2022/02/02/2022-02-02_-----vite-3b1915dbecd/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2022/01/20/2022-01-20_------CSS-Flexbox-d1ba9964bc56/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2022/01/19/2022-01-19_-----------JavaScript------prototype-chain-d60e77b69649/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/12/28/2021-12-28_-----leetcode-b8d017960736/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/12/27/2021-12-27_-------8-Queens-Puzzle-889077ee9b5b/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/12/26/2021-12-26_Dynamic-Programming-DP------------5a90c13aad28/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/12/24/2021-12-24_Dynamic-Programming-DP------------fea4dbcf1a8e/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/12/22/2021-12-22_Backtracking-------a2d0b289859c/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/12/20/2021-12-20_Binary-search---------e33252b85f0b/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/12/15/2021-12-15_Greedy-Algorithm---------bf62d816b650/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -436,313 +13,331 @@
   <url>
     <loc>https://codinghotpot.com/2021/12/08/2021-12-08_Enumeration-------a4172643e11f/</loc>
     
-    <lastmod>2023-10-13</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2021/12/06/2021-12-06_-------Heap-Sort---------736fbf111182/</loc>
+    <loc>https://codinghotpot.com/2021/12/13/2021-12-13_-------Linear-Search---------6e2f62959566/</loc>
     
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/11/26/2021-11-26_-------Merge-sort---------5362b826ca6c/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2021/11/17/2021-11-17_-------Quick-Sort---------2dee83ce97a7/</loc>
+    <loc>https://codinghotpot.com/2021/12/15/2021-12-15_Greedy-Algorithm---------bf62d816b650/</loc>
     
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/11/13/2021-11-13_-------Insertion-Sort---------57d319849706/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2021/11/08/2021-11-08_-------Selection-Sort---------2493c9ebb41b/</loc>
+    <loc>https://codinghotpot.com/2021/12/20/2021-12-20_Binary-search---------e33252b85f0b/</loc>
     
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/10/30/2021-10-30_-------Bubble-Sort---------b13ffccd33b9/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2021/10/24/2021-10-24_Recursive------bab8ba3de0e0/</loc>
+    <loc>https://codinghotpot.com/2021/12/22/2021-12-22_Backtracking-------a2d0b289859c/</loc>
     
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/10/15/2021-10-15_Two-pointers--------3ca27f1782b4/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2021/10/12/2021-10-12_Binary-Tree----Traversal-622caed2fad5/</loc>
+    <loc>https://codinghotpot.com/2021/12/24/2021-12-24_Dynamic-Programming-DP------------fea4dbcf1a8e/</loc>
     
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/10/02/2021-10-02_Day11------Binary-Tree-------630a5d92d5a4/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2021/09/28/2021-09-28_------Graph-----31d1ef2c6f01/</loc>
+    <loc>https://codinghotpot.com/2021/12/26/2021-12-26_Dynamic-Programming-DP------------5a90c13aad28/</loc>
     
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/09/23/2021-09-23_-------Linked-List--------18f212d20f7a/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2021/09/18/2021-09-18_------Hash-Table-------ffec829a4116/</loc>
+    <loc>https://codinghotpot.com/2021/12/27/2021-12-27_-------8-Queens-Puzzle-889077ee9b5b/</loc>
     
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/09/16/2021-09-16_------Stack------Queue------e270e5075ae1/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2021/09/12/2021-09-12_----------Set-7b0413836ed9/</loc>
+    <loc>https://codinghotpot.com/2021/12/28/2021-12-28_-----leetcode-b8d017960736/</loc>
     
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/09/10/2021-09-10_---------Map-a40c8d4fe7d2/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2021/09/07/2021-09-07_------Array------c35b2cbf48cf/</loc>
+    <loc>https://codinghotpot.com/2021/12/30/2021-12-30_2021-F2E-------defe8d917955/</loc>
     
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/09/05/2021-09-05_Big-O---------------34bdc6920113/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2021/09/02/2021-09-02_----------Algorithm-6d699c789567/</loc>
+    <loc>https://codinghotpot.com/2022/01/19/2022-01-19_-----------JavaScript------prototype-chain-d60e77b69649/</loc>
     
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/07/18/2021-07-18_--Reflow-Repaint-1155e4fb5b8f/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2021/05/30/2021-05-30_----------377d54af27d8/</loc>
+    <loc>https://codinghotpot.com/2022/01/20/2022-01-20_------CSS-Flexbox-d1ba9964bc56/</loc>
     
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/05/09/2021-05-09_----------------------18de610ff360/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2021/03/08/2021-03-08_-----lazy-loading------d5e005015e79/</loc>
+    <loc>https://codinghotpot.com/2022/01/25/2022-01-25_--this----this-----JavaScript-this---d1f8cea514ff/</loc>
     
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/09/14/2020-09-14_React-css--------a4575385a89/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2020/06/01/2020-06-01_---------------4c6bdfeed3c2/</loc>
+    <loc>https://codinghotpot.com/2022/02/02/2022-02-02_-----vite-3b1915dbecd/</loc>
     
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/05/25/2020-05-25_--webpack-bundle-analyzer--------627801925604/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2020/05/04/2020-05-04_---vue-css-scoped-d793de5a11ba/</loc>
+    <loc>https://codinghotpot.com/2022/02/07/2022-02-07_---JavaScript-Promise-2402670eaa0/</loc>
     
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/04/27/2020-04-27_-vue-cli-----css-sprite-----617ea0e9c0f6/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2020/04/06/2020-04-06_--------Chrome-Devtool-Performance-2ae96e7c4f69/</loc>
+    <loc>https://codinghotpot.com/2022/02/08/2022-02-08_TypeScript------------f951807c4867/</loc>
     
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/04/13/2020-04-13_--Postman------REST-Client-858566965139/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2020/03/30/2020-03-30_------------3dd4db758210/</loc>
+    <loc>https://codinghotpot.com/2022/02/11/2022-02-11_TypeScript------181d22c7f692/</loc>
     
-    <lastmod>2023-10-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/03/16/2020-03-16_TypeScript----8e863062fd9/</loc>
-    
-    <lastmod>2023-10-13</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2020/02/24/2020-02-24_--window-Location----ed7ee8cef540/</loc>
+    <loc>https://codinghotpot.com/2022/02/12/2022-02-12_TypeScript----3----function-43659ef56f4f/</loc>
     
-    <lastmod>2023-10-13</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2020/02/17/2020-02-17_-------------be0bdfcbdc29/</loc>
+    <loc>https://codinghotpot.com/2022/02/13/2022-02-13_TypeScript----4----Class-287585191ee7/</loc>
     
-    <lastmod>2023-10-13</lastmod>
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2022/02/16/2022-02-16_---------git----906cc61a4dea/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2022/02/23/2022-02-23_Pinia---Vuex-----8246450f4c5b/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2022/03/01/2022-03-01_debounce-throttle----callback-------505a660c1933/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2022/03/03/2022-03-03_-cypress--E2E-Test---71d430fdc8b7/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2022/04/01/2022-04-01_--------------e9234adfc7e7/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2022/04/05/2022-04-05_---JavaScript-----------Event-Loop-----3e92917b0834/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2022/04/17/2022-04-17_-----Mock-Service-Worker---Mock-API---f921ab30d5c7/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2022/06/08/2022-06-08_----Socket-io-----------82a4949d571d/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2022/07/11/2022-07-11_Ngrok----------https--a9011d78af0e/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2022/09/24/2022-09-24_Node-js--LinePay---32b7177a2fb8/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2022/09/30/2022-09-30_-Node-js---------Google-1e6962aafbfc/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2022/10/25/2022-10-25_---vue----svg-----svg-sprite-loader-28a0d4a5c645/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2022/12/30/2022-12-30_-2022-----------b366bc80cab0/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2023/02/10/2023-02-10_2023----------591c127f735c/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2023/05/10/2023-05-10_vim------1bed0d18e493/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2023/07/22/2023-07-22_E2E-test--------playwright-de85659b56b9/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2023/09/17/2023-09-17_--i18n-------phrase-bea03ec402f7/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2023/10/07/2023-10-07_------------feat------c411c6006fa8/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -751,286 +346,61 @@
   <url>
     <loc>https://codinghotpot.com/categories/index.html</loc>
     
-    <lastmod>2023-10-13</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2021/03/29/2021-03-29_---vue-cli---Tailwind-CSS---42c0f0dc3d3a/</loc>
+    <loc>https://codinghotpot.com/2020/03/09/2020-03-09_---css---c781f80aeceb/</loc>
     
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/02/08/2021-02-08_----vue-----IE-------7617223ed710/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2021/01/20/2021-01-20_-React---OOXX----5f5bb9b52bdd/</loc>
+    <loc>https://codinghotpot.com/2020/03/16/2020-03-16_TypeScript----8e863062fd9/</loc>
     
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/01/11/2021-01-11_-React-----todolist---598a2a7b2b93/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2020/12/28/2020-12-28_Redux-Middleware-----fc25103c8e2f/</loc>
+    <loc>https://codinghotpot.com/2020/03/23/2020-03-23_Array---------328788e5fa84/</loc>
     
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2021/01/04/2021-01-04_-Redux-Thunk-------action-c86cf113281c/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2020/12/21/2020-12-21_React-Router------2025278a5937/</loc>
+    <loc>https://codinghotpot.com/2020/03/30/2020-03-30_------------3dd4db758210/</loc>
     
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/12/14/2020-12-14_React-memory-leak---------55390c460730/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2020/11/30/2020-11-30_--React-Suspense---React-Lazy--------befe89c1454f/</loc>
+    <loc>https://codinghotpot.com/2020/04/06/2020-04-06_--------Chrome-Devtool-Performance-2ae96e7c4f69/</loc>
     
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/12/07/2020-12-07_fetch---axios-in-React-6edb19eb7e87/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/2020/11/09/2020-11-09_React-Hooks-----useState-useEffect-37f45056fea8/</loc>
+    <loc>https://codinghotpot.com/2020/04/13/2020-04-13_--Postman------REST-Client-858566965139/</loc>
     
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/11/23/2020-11-23_React-hook----useMemo-useRef-3c8bcedf39eb/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/10/19/2020-10-19_-React-Ref----DOM-328b49ba54c0/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/10/26/2020-10-26_React-Portal-----4c61d343b2df/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/11/02/2020-11-02_-------React-Redux-4c892ffe4c4a/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/10/05/2020-10-05_React-Developer-Tools-----abe4156e81ca/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/10/12/2020-10-12_React-controlled-components-v-s-uncontrolled-components-9dce9dd98b4d/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/09/28/2020-09-28_React-Functional-Component-v-s-Class-Component-e46c6dc5a319/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/09/21/2020-09-21_React-Higher-Order-Components--HOC--ec51ec0e2759/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/09/07/2020-09-07_React-event--------5cfd8a7a3524/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/08/31/2020-08-31_React-lifeCycle------a48683ae3922/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/08/24/2020-08-24_React-State---props-d855807eb3e9/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/08/17/2020-08-17_React-JSX---html--JavaScript------6994ac94fa2d/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/08/10/2020-08-10_------React-Component-c75f0005af84/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/08/03/2020-08-03_React-vitural-DOM-134fa79e0d4f/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/07/27/2020-07-27_React-----------46edfdead331/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/07/20/2020-07-20_Python------2-------d95b97937004/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/07/13/2020-07-13_python--------------c20b67a19c31/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/06/08/2020-06-08_---css----background-clip-94592b72a0d0/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/06/15/2020-06-15_-vue-EventBus----------47a2694d33ca/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/2020/05/11/2020-05-11_-css-------45b4a7119aba/</loc>
-    
-    <lastmod>2023-10-12</lastmod>
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1039,7 +409,637 @@
   <url>
     <loc>https://codinghotpot.com/2020/04/20/2020-04-20_export--module-exports--------53739c4171cc/</loc>
     
-    <lastmod>2023-10-12</lastmod>
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/04/27/2020-04-27_-vue-cli-----css-sprite-----617ea0e9c0f6/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/05/04/2020-05-04_---vue-css-scoped-d793de5a11ba/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/05/11/2020-05-11_-css-------45b4a7119aba/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/05/18/2020-05-18_javascript-Date---e63d80d8a180/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/05/25/2020-05-25_--webpack-bundle-analyzer--------627801925604/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/06/01/2020-06-01_---------------4c6bdfeed3c2/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/06/08/2020-06-08_---css----background-clip-94592b72a0d0/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/06/15/2020-06-15_-vue-EventBus----------47a2694d33ca/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/06/22/2020-06-22_-------------8d75d814035a/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/06/29/2020-06-29_--JavaScript-try-catch-------57971f82f164/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/07/06/2020-07-06_javaScript----------9493a5153d16/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/07/13/2020-07-13_python--------------c20b67a19c31/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/07/20/2020-07-20_Python------2-------d95b97937004/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/07/27/2020-07-27_React-----------46edfdead331/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/08/03/2020-08-03_React-vitural-DOM-134fa79e0d4f/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/08/10/2020-08-10_------React-Component-c75f0005af84/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/08/17/2020-08-17_React-JSX---html--JavaScript------6994ac94fa2d/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/08/24/2020-08-24_React-State---props-d855807eb3e9/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/08/31/2020-08-31_React-lifeCycle------a48683ae3922/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/09/07/2020-09-07_React-event--------5cfd8a7a3524/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/09/14/2020-09-14_React-css--------a4575385a89/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/09/21/2020-09-21_React-Higher-Order-Components--HOC--ec51ec0e2759/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/09/28/2020-09-28_React-Functional-Component-v-s-Class-Component-e46c6dc5a319/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/10/05/2020-10-05_React-Developer-Tools-----abe4156e81ca/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/10/12/2020-10-12_React-controlled-components-v-s-uncontrolled-components-9dce9dd98b4d/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/10/19/2020-10-19_-React-Ref----DOM-328b49ba54c0/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/10/26/2020-10-26_React-Portal-----4c61d343b2df/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/11/02/2020-11-02_-------React-Redux-4c892ffe4c4a/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/11/09/2020-11-09_React-Hooks-----useState-useEffect-37f45056fea8/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/11/16/2020-11-16_React-hook----useContext-useReducer-1a0efe78f0a5/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/11/23/2020-11-23_React-hook----useMemo-useRef-3c8bcedf39eb/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/11/30/2020-11-30_--React-Suspense---React-Lazy--------befe89c1454f/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/12/07/2020-12-07_fetch---axios-in-React-6edb19eb7e87/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/12/14/2020-12-14_React-memory-leak---------55390c460730/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/12/21/2020-12-21_React-Router------2025278a5937/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/12/28/2020-12-28_Redux-Middleware-----fc25103c8e2f/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/01/04/2021-01-04_-Redux-Thunk-------action-c86cf113281c/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/01/11/2021-01-11_-React-----todolist---598a2a7b2b93/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/01/20/2021-01-20_-React---OOXX----5f5bb9b52bdd/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/01/25/2021-01-25_------------------vue-3----31864be9c237/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/02/08/2021-02-08_----vue-----IE-------7617223ed710/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/03/08/2021-03-08_-----lazy-loading------d5e005015e79/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/03/29/2021-03-29_---vue-cli---Tailwind-CSS---42c0f0dc3d3a/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/05/09/2021-05-09_----------------------18de610ff360/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/05/30/2021-05-30_----------377d54af27d8/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/06/12/2021-06-12_----------Polling-v-s-WebSocket-c777731fcf6e/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/07/18/2021-07-18_--Reflow-Repaint-1155e4fb5b8f/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/09/02/2021-09-02_----------Algorithm-6d699c789567/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/09/05/2021-09-05_Big-O---------------34bdc6920113/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/09/07/2021-09-07_------Array------c35b2cbf48cf/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/09/10/2021-09-10_---------Map-a40c8d4fe7d2/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/09/12/2021-09-12_----------Set-7b0413836ed9/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/09/16/2021-09-16_------Stack------Queue------e270e5075ae1/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/09/18/2021-09-18_------Hash-Table-------ffec829a4116/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/09/23/2021-09-23_-------Linked-List--------18f212d20f7a/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/09/28/2021-09-28_------Graph-----31d1ef2c6f01/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/10/02/2021-10-02_Day11------Binary-Tree-------630a5d92d5a4/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/10/12/2021-10-12_Binary-Tree----Traversal-622caed2fad5/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/10/15/2021-10-15_Two-pointers--------3ca27f1782b4/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/10/24/2021-10-24_Recursive------bab8ba3de0e0/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/10/30/2021-10-30_-------Bubble-Sort---------b13ffccd33b9/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/11/08/2021-11-08_-------Selection-Sort---------2493c9ebb41b/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/11/13/2021-11-13_-------Insertion-Sort---------57d319849706/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/11/17/2021-11-17_-------Quick-Sort---------2dee83ce97a7/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/11/26/2021-11-26_-------Merge-sort---------5362b826ca6c/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2021/12/06/2021-12-06_-------Heap-Sort---------736fbf111182/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/02/10/2020-02-10_-------------7ffd1ac98501/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/02/17/2020-02-17_-------------be0bdfcbdc29/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/02/24/2020-02-24_--window-Location----ed7ee8cef540/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/2020/03/02/2020-03-02_-leaflet---openstreetmap--------a7f3209c120d/</loc>
+    
+    <lastmod>2023-10-30</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1048,344 +1048,344 @@
 
   <url>
     <loc>https://codinghotpot.com/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>https://codinghotpot.com/tags/web/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <loc>https://codinghotpot.com/tags/%E5%89%8D%E7%AB%AF/</loc>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/%E9%87%8D%E6%A7%8B/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/tags/%E5%89%8D%E7%AB%AF/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <loc>https://codinghotpot.com/tags/web/</loc>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/leaflet/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/css-%E9%87%8D%E6%A7%8B/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/typescript/</loc>
-    <lastmod>2023-10-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/tags/javascript-RegExp/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/Array/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/tags/javascript-RegExp/</loc>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/web-performance-%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2023-10-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/tags/vue-sprites/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/postman-%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2023-10-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/tags/vue-css/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/javascript/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/tags/vue-sprites/</loc>
+    <lastmod>2023-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/tags/vue-css/</loc>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/css/</loc>
-    <lastmod>2023-10-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/tags/debug/</loc>
-    <lastmod>2023-10-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/tags/bundler-webpack/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/Date/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/tags/bundler-webpack/</loc>
+    <lastmod>2023-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/tags/debug/</loc>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/vue/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/%E9%A0%90%E8%A6%BD%E4%B8%8A%E5%82%B3%E5%9C%96%E7%89%87/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/tryCatch/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/%E6%B7%B1%E6%8B%B7%E8%B2%9D/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/python/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/react/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/react-css/</loc>
-    <lastmod>2023-10-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/tags/algorithm/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/web-lazyLoading/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/tags/algorithm/</loc>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/web-websocket/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/%E6%BC%94%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/%E9%90%B5%E4%BA%BA%E8%B3%BD/</loc>
-    <lastmod>2023-10-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/tags/bundler-vite/</loc>
-    <lastmod>2023-10-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/tags/javascript-promise/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/javascript-this/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/tags/bundler-vite/</loc>
+    <lastmod>2023-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/tags/javascript-promise/</loc>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/git/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/vue-pinia/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/cypress/</loc>
-    <lastmod>2023-10-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/tags/EventLoop-javascript/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/%E9%9D%A2%E8%A9%A6-%E5%89%8D%E7%AB%AF/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/tags/EventLoop-javascript/</loc>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/MockAPI/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/socket/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/ngrok/</loc>
-    <lastmod>2023-10-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/tags/svg-vue/</loc>
-    <lastmod>2023-10-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/tags/GoogleAuth-NodeJs/</loc>
-    <lastmod>2023-10-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/tags/%E8%A3%81%E5%93%A1/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/LinePay-NodeJs/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/tags/GoogleAuth-NodeJs/</loc>
+    <lastmod>2023-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/tags/svg-vue/</loc>
+    <lastmod>2023-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/tags/%E8%A3%81%E5%93%A1/</loc>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/%E5%89%8D%E7%AB%AF-%E9%9D%A2%E8%A9%A6/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/vim/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/playwright/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/tags/i18n/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -1393,155 +1393,155 @@
 
   
   <url>
-    <loc>https://codinghotpot.com/categories/web/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <loc>https://codinghotpot.com/categories/story/</loc>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/categories/%E9%87%8D%E6%A7%8B/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://codinghotpot.com/categories/story/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <loc>https://codinghotpot.com/categories/web/</loc>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/categories/javascript/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/categories/css/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/categories/typescript/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/categories/vue/</loc>
-    <lastmod>2023-10-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/categories/debug/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/categories/bundler/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/categories/debug/</loc>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/categories/python/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/categories/react/</loc>
-    <lastmod>2023-10-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://codinghotpot.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/categories/%E5%89%8D%E7%AB%AF/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://codinghotpot.com/categories/%E6%BC%94%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/categories/git/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/categories/e2eTest/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/categories/frontend/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/categories/mock-api/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/categories/socket/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/categories/%E5%B7%A5%E5%85%B7/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/categories/NodeJs/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/categories/vim/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://codinghotpot.com/categories/i18n/</loc>
-    <lastmod>2023-10-29</lastmod>
+    <lastmod>2023-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
