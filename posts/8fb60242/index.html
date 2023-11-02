@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"codinghotpot.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="想必我們都曾經遇過一種情境，兩個component功能幾乎一模一樣，只是差在輸入的資料不同而已，那麼這時候就是HOC登場的時候了，HOC為一個可以傳入component當參數的function，其目的在於可以將重複的邏輯抽離出來，讓傳入的component可以套用這個邏輯，並且輸…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Higher-Order Components (HOC)">
+<meta property="og:url" content="https://codinghotpot.com/posts/8fb60242/index.html">
+<meta property="og:site_name" content="Coding Hot Pot">
+<meta property="og:description" content="想必我們都曾經遇過一種情境，兩個component功能幾乎一模一樣，只是差在輸入的資料不同而已，那麼這時候就是HOC登場的時候了，HOC為一個可以傳入component當參數的function，其目的在於可以將重複的邏輯抽離出來，讓傳入的component可以套用這個邏輯，並且輸…">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://codinghotpot.com/img/1__GcC__tU08LCx7h5vKMTxvVg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__4Z6j5Ef0Dnty7pHG__ioxHg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__oFrNZbSc5FXbWUClUXzl4g.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__6OPQbez4ha4BXMjsd9ocOg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__o4F683lSXo7g7Me4JHktAQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__HS2P3viVU3ILMFPo__JEeHg.jpeg">
+<meta property="article:published_time" content="2020-09-21T00:50:43.990Z">
+<meta property="article:modified_time" content="2023-11-02T00:26:37.288Z">
+<meta property="article:author" content="Joe Chang">
+<meta property="article:tag" content="react">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://codinghotpot.com/img/1__GcC__tU08LCx7h5vKMTxvVg.png">
+
+
+<link rel="canonical" href="https://codinghotpot.com/posts/8fb60242/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://codinghotpot.com/posts/8fb60242/","path":"posts/8fb60242/","title":"React Higher-Order Components (HOC)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>React Higher-Order Components (HOC) | Coding Hot Pot</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJM3X3RGKD"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-SJM3X3RGKD","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Coding Hot Pot</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">日新月異的前端技術...學不動了</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Joe Chang"
+      src="/images/oldman.jpg">
+  <p class="site-author-name" itemprop="name">Joe Chang</p>
+  <div class="site-description" itemprop="description">唯有非常努力，才能看起來毫不費力</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">114</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://codinghotpot.com/posts/8fb60242/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/oldman.jpg">
+      <meta itemprop="name" content="Joe Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Hot Pot">
+      <meta itemprop="description" content="唯有非常努力，才能看起來毫不費力">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="React Higher-Order Components (HOC) | Coding Hot Pot">
+      <meta itemprop="description" content="想必我們都曾經遇過一種情境，兩個component功能幾乎一模一樣，只是差在輸入的資料不同而已，那麼這時候就是HOC登場的時候了，HOC為一個可以傳入component當參數的function，其目的在於可以將重複的邏輯抽離出來，讓傳入的component可以套用這個邏輯，並且輸…">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          React Higher-Order Components (HOC)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2020-09-21 00:50:43" itemprop="dateCreated datePublished" datetime="2020-09-21T00:50:43+00:00">2020-09-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2023-11-02 00:26:37" itemprop="dateModified" datetime="2023-11-02T00:26:37+00:00">2023-11-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">想必我們都曾經遇過一種情境，兩個component功能幾乎一模一樣，只是差在輸入的資料不同而已，那麼這時候就是HOC登場的時候了，HOC為一個可以傳入component當參數的function，其目的在於可以將重複的邏輯抽離出來，讓傳入的component可以套用這個邏輯，並且輸…</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>想必我們都曾經遇過一種情境，兩個 component 功能幾乎一模一樣，只是差在輸入的資料不同而已，那麼這時候就是 HOC 登場的時候了，HOC 為一個可以傳入 component 當參數的 function，其目的在於可以將重複的邏輯抽離出來，讓傳入的 component 可以套用這個邏輯，並且輸出一個全新的 component</p>
+<p>當初看到 redux 的 connect 還想說這是什麼神秘的寫法，原來就是 HOC 啊!</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Counter</span> = <span class="title function_">connect</span>(</span><br><span class="line">  mapStateToProps,</span><br><span class="line"></span><br><span class="line">  mapDispatchToProps</span><br><span class="line">)(<span class="title class_">Counters</span>);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>被作為參數的 component 稱之為<strong>Wrapped Component</strong></p>
+</blockquote>
+<p>以下就來實做一下 HOC，這是 HOC component，實現一個簡單的時鐘功能</p>
+<p><img src="/img/1__GcC__tU08LCx7h5vKMTxvVg.png"></p>
+<p>可以看到 HOC component 接收到一個 component 之後，將計算後的結果（每秒更新當前時間）透過 props 傳遞到 wrapped component 裡面</p>
+<p><img src="/img/1__4Z6j5Ef0Dnty7pHG__ioxHg.png"></p>
+<p>這是要被傳入的 component(僅負責 ui，沒有邏輯處理），透過 props 取得 hoc component 輸入的資料，可以看到最後 export 出去的是 withTime 回傳的新 component</p>
+<p><img src="/img/1__oFrNZbSc5FXbWUClUXzl4g.png"></p>
+<p>恩…又報錯了</p>
+<p><img src="/img/1__6OPQbez4ha4BXMjsd9ocOg.png"></p>
+<p>字面上好像是我傳入了不合法的格式？一開始以為是不能傳時間物件？搞了老半天才發現，其實問題是在 render 的地方直接渲染物件， 將 state 轉換一下格式換成時間字串就可以了。</p>
+<blockquote>
+<p>toLocaleTimeString() 可以直接轉成當地時間字串</p>
+</blockquote>
+<p><img src="/img/1__o4F683lSXo7g7Me4JHktAQ.png"></p>
+<p>在估狗資料的時候一直看到 hoc 波動拳(hoc wrapper hell)，想說那是啥，看到下面那張圖就瞬間明白了什麼，因為 hoc 包 hoc，層層嵌套之下就會衍生這個問題，日後會再介紹 react hook 如何解決這個問題。</p>
+<p><img src="/img/1__HS2P3viVU3ILMFPo__JEeHg.jpeg"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/react/" rel="tag"># react</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/6787a354/" rel="prev" title="React css 最重要的小事">
+                  <i class="fa fa-angle-left"></i> React css 最重要的小事
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/b91bb8d4/" rel="next" title="React Functional Component v.s Class Component">
+                  React Functional Component v.s Class Component <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Joe Chang</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ChangChiao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

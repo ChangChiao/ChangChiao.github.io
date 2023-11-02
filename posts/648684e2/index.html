@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"codinghotpot.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="這系列的學習筆記是跟著彭彭老師的youtube教學影片操作的，個人覺得老師講的很清楚明暸，如果有學習python的需求可以參考老師的教學。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 學習筆記-2 集合與字典">
+<meta property="og:url" content="https://codinghotpot.com/posts/648684e2/index.html">
+<meta property="og:site_name" content="Coding Hot Pot">
+<meta property="og:description" content="這系列的學習筆記是跟著彭彭老師的youtube教學影片操作的，個人覺得老師講的很清楚明暸，如果有學習python的需求可以參考老師的教學。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://codinghotpot.com/img/1__TmOSaHMdBCN6V5be4HpPQg.jpeg">
+<meta property="article:published_time" content="2020-07-20T12:18:40.821Z">
+<meta property="article:modified_time" content="2023-11-02T00:26:37.288Z">
+<meta property="article:author" content="Joe Chang">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://codinghotpot.com/img/1__TmOSaHMdBCN6V5be4HpPQg.jpeg">
+
+
+<link rel="canonical" href="https://codinghotpot.com/posts/648684e2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://codinghotpot.com/posts/648684e2/","path":"posts/648684e2/","title":"Python 學習筆記-2 集合與字典"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Python 學習筆記-2 集合與字典 | Coding Hot Pot</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJM3X3RGKD"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-SJM3X3RGKD","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Coding Hot Pot</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">日新月異的前端技術...學不動了</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Joe Chang"
+      src="/images/oldman.jpg">
+  <p class="site-author-name" itemprop="name">Joe Chang</p>
+  <div class="site-description" itemprop="description">唯有非常努力，才能看起來毫不費力</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">114</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://codinghotpot.com/posts/648684e2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/oldman.jpg">
+      <meta itemprop="name" content="Joe Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Hot Pot">
+      <meta itemprop="description" content="唯有非常努力，才能看起來毫不費力">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Python 學習筆記-2 集合與字典 | Coding Hot Pot">
+      <meta itemprop="description" content="這系列的學習筆記是跟著彭彭老師的youtube教學影片操作的，個人覺得老師講的很清楚明暸，如果有學習python的需求可以參考老師的教學。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python 學習筆記-2 集合與字典
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2020-07-20 12:18:40" itemprop="dateCreated datePublished" datetime="2020-07-20T12:18:40+00:00">2020-07-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2023-11-02 00:26:37" itemprop="dateModified" datetime="2023-11-02T00:26:37+00:00">2023-11-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">這系列的學習筆記是跟著彭彭老師的youtube教學影片操作的，個人覺得老師講的很清楚明暸，如果有學習python的需求可以參考老師的教學。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="/img/1__TmOSaHMdBCN6V5be4HpPQg.jpeg"></p>
+<p>這系列的學習筆記是跟著彭彭老師的 youtube 教學影片操作的，個人覺得老師講的很清楚明暸，如果有學習 python 的需求可以參考老師的教學。</p>
+<p>上週簡單介紹部分的資料型別，本週要來介紹集合與字典</p>
+<p>集合（set）：是一群資料組合， 無順序性，可以用 in, not in 判斷資料是否存在</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">data = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="number">3</span> <span class="keyword">in</span> data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 輸出 true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="number">8</span> <span class="keyword">in</span> data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 輸出 false</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="number">8</span> <span class="keyword">not</span> <span class="keyword">in</span> data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 輸出 true</span></span><br></pre></td></tr></table></figure>
+
+<p>交集：在兩個集合中取出相同的資料</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">data1 = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">data2 = &#123;<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line"></span><br><span class="line">data3 = data1&amp;data2</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(data3)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 輸出 set(\[3\])</span></span><br></pre></td></tr></table></figure>
+
+<p>聯集：取出兩個集合的所有資料，但不重複</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">data1 = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">data2 = &#123;<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line"></span><br><span class="line">data3 = data1|data2</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(data3)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 輸出 set(\[1, 2, 3, 4, 5\])</span></span><br></pre></td></tr></table></figure>
+
+<p>差集:從 data1 減去與 data2 重疊的部分</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">data1 = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">data2 = &#123;<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line"></span><br><span class="line">data3 = data1-data2</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(data3)</span><br><span class="line"></span><br><span class="line"><span class="comment">#輸出</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span>([<span class="number">1</span>, <span class="number">2</span>])</span><br></pre></td></tr></table></figure>
+
+<p>反交集：取兩個集合中，不重疊的地方</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">data1 = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line"></span><br><span class="line">data2 = &#123;<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br><span class="line"></span><br><span class="line">data3 = data1^data2</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(data3)</span><br><span class="line"></span><br><span class="line"><span class="comment">#輸出 set([1, 2, 4, 5])</span></span><br></pre></td></tr></table></figure>
+
+<p>可以將字串拆解為集合 set 但不會按照順序，重複的不會重複放</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">data = <span class="built_in">set</span>(<span class="string">&quot;nobody&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(data)</span><br><span class="line"></span><br><span class="line"><span class="comment">#輸出</span></span><br><span class="line"><span class="built_in">set</span>([<span class="string">&#x27;y&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;d&#x27;</span>, <span class="string">&#x27;o&#x27;</span>, <span class="string">&#x27;n&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<p>字典（dictionary）</p>
+<p>個人覺得比較像 javaScript 物件，鍵值對，一個 key 對一個 value</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">dic=&#123;<span class="string">&#x27;jack&#x27;</span>:<span class="string">&#x27;30&#x27;</span>,<span class="string">&#x27;alice&#x27;</span>:<span class="string">&#x27;28&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(dic[<span class="string">&#x27;jack&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#輸出 30</span></span><br><span class="line"></span><br><span class="line">dic[<span class="string">&#x27;jack&#x27;</span>] = <span class="string">&#x27;99&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(dic[<span class="string">&#x27;jack&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#輸出 99</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>in, not in 可以檢查是否有這個 key</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">dic=&#123;<span class="string">&#x27;jack&#x27;</span>:<span class="string">&#x27;30&#x27;</span>,<span class="string">&#x27;alice&#x27;</span>:<span class="string">&#x27;28&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;jack&#x27;</span> <span class="keyword">in</span> dic)</span><br><span class="line"></span><br><span class="line"><span class="comment">#輸出 true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;mike&#x27;</span> <span class="keyword">in</span> dic)</span><br><span class="line"></span><br><span class="line"><span class="comment">#輸出 false</span></span><br></pre></td></tr></table></figure>
+
+<p>del 刪除鍵值對 (key,value)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dic=&#123;<span class="string">&#x27;jack&#x27;</span>:<span class="string">&#x27;30&#x27;</span>,<span class="string">&#x27;alice&#x27;</span>:<span class="string">&#x27;28&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">del</span> dic[<span class="string">&#x27;jack&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(dic)</span><br><span class="line"></span><br><span class="line"><span class="comment">#輸出</span></span><br><span class="line">&#123;<span class="string">&#x27;alice&#x27;</span>: <span class="string">&#x27;28&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>將列表轉換為字典</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">dic=&#123;i:i*<span class="number">2</span> <span class="keyword">for</span> i <span class="keyword">in</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(dic)</span><br><span class="line"><span class="comment">#輸出</span></span><br><span class="line"></span><br><span class="line">&#123;<span class="number">1</span>: <span class="number">2</span>, <span class="number">2</span>: <span class="number">4</span>, <span class="number">3</span>: <span class="number">6</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>流程判斷式 if 要用縮排，記得條件式後面要記得加冒號（沒加會報錯</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="built_in">input</span>(<span class="string">&#x27;please enter number&#x27;</span>)<span class="comment">#用戶輸入數字 會是字串型式</span></span><br><span class="line"></span><br><span class="line">x = <span class="built_in">int</span>(x) <span class="comment">#先將字串轉為數字</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> x&gt;<span class="number">200</span>:</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;bigger than 200&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">elif</span> x&gt;<span class="number">100</span>:</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;bigger than 200, less than 100&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;less than 100&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#輸入 123 輸出 bigger than 200, less than 100</span></span><br></pre></td></tr></table></figure>
+
+<p>四則運算（加減乘除）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">n1=<span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;please enter number1: &quot;</span>))</span><br><span class="line"></span><br><span class="line">n2=<span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;please enter number2: &quot;</span>))</span><br><span class="line"></span><br><span class="line">cal=<span class="built_in">input</span>(<span class="string">&quot;Calculation: &quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> cal==<span class="string">&quot;+&quot;</span>:</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(n1+n2)</span><br><span class="line"></span><br><span class="line"><span class="keyword">elif</span> cal==<span class="string">&quot;-&quot;</span>:</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(n1-n2)</span><br><span class="line"></span><br><span class="line"><span class="keyword">elif</span> cal==<span class="string">&quot;\*&quot;</span>:</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(n1\*n2)</span><br><span class="line"></span><br><span class="line"><span class="keyword">elif</span> cal==<span class="string">&quot;/&quot;</span>:</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(n1/n2)</span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;oops&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#輸入</span></span><br><span class="line">please enter number1: <span class="number">2</span></span><br><span class="line">please enter number2: <span class="number">3</span></span><br><span class="line">Calculation: ％</span><br><span class="line"></span><br><span class="line"><span class="comment">#輸出</span></span><br><span class="line">oops</span><br></pre></td></tr></table></figure>
+
+<p>while 若不滿足條件，就繼續執行，直到滿足條件為止，要小心無窮迴圈</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">n=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> n&lt;=<span class="number">5</span>:</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(n)</span><br><span class="line"></span><br><span class="line">n+=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#輸出 1,2,3,4,5</span></span><br></pre></td></tr></table></figure>
+
+<p>for 迴圈 for in 將列表或字串中的項目或是單字逐一處理</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]:</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line"><span class="comment">#輸出 1,2,3</span></span><br></pre></td></tr></table></figure>
+
+<p>使用 range 可以自動幫你生成列表（從 0 開始）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line">等於</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>]:</span><br></pre></td></tr></table></figure>
+
+<p>如果傳入兩個值，則第一個參數是起始值，第二個參數是結束值，就會從起始值生成，到結束值的前一個停止</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>, <span class="number">6</span>): <span class="comment">#包含開頭，不包含結束</span></span><br><span class="line"> <span class="built_in">print</span>(x)</span><br><span class="line"><span class="comment">#輸出 3,4,5</span></span><br></pre></td></tr></table></figure>
+
+<p>for in 也可以用在字串上，會逐一印出每個單字</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="string">&#x27;super&#x27;</span>:</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line"><span class="comment">#輸出</span></span><br><span class="line">s</span><br><span class="line">u</span><br><span class="line">p</span><br><span class="line">e</span><br><span class="line">r</span><br></pre></td></tr></table></figure>
+
+<p>不得不說相較於 javascript，python 的語法真的簡潔蠻多的，而且提供了滿多便民的方法（？</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/66ef016/" rel="prev" title="python 初學筆記-從安裝環境開始">
+                  <i class="fa fa-angle-left"></i> python 初學筆記-從安裝環境開始
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/f26daaeb/" rel="next" title="React 學習前言＆環境安裝">
+                  React 學習前言＆環境安裝 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Joe Chang</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ChangChiao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

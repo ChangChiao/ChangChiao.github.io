@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"codinghotpot.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="function越簡單(簡短）越好">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我可以怎麼優化我的程式碼">
+<meta property="og:url" content="https://codinghotpot.com/posts/c7f87944/index.html">
+<meta property="og:site_name" content="Coding Hot Pot">
+<meta property="og:description" content="function越簡單(簡短）越好">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://codinghotpot.com/img/1__lwB__n7DxRX76Ba7Y2kEvkw.jpeg">
+<meta property="article:published_time" content="2020-02-17T13:09:59.036Z">
+<meta property="article:modified_time" content="2023-11-02T00:26:37.284Z">
+<meta property="article:author" content="Joe Chang">
+<meta property="article:tag" content="重構">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://codinghotpot.com/img/1__lwB__n7DxRX76Ba7Y2kEvkw.jpeg">
+
+
+<link rel="canonical" href="https://codinghotpot.com/posts/c7f87944/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://codinghotpot.com/posts/c7f87944/","path":"posts/c7f87944/","title":"我可以怎麼優化我的程式碼"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>我可以怎麼優化我的程式碼 | Coding Hot Pot</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJM3X3RGKD"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-SJM3X3RGKD","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Coding Hot Pot</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">日新月異的前端技術...學不動了</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Joe Chang"
+      src="/images/oldman.jpg">
+  <p class="site-author-name" itemprop="name">Joe Chang</p>
+  <div class="site-description" itemprop="description">唯有非常努力，才能看起來毫不費力</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">114</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://codinghotpot.com/posts/c7f87944/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/oldman.jpg">
+      <meta itemprop="name" content="Joe Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Hot Pot">
+      <meta itemprop="description" content="唯有非常努力，才能看起來毫不費力">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="我可以怎麼優化我的程式碼 | Coding Hot Pot">
+      <meta itemprop="description" content="function越簡單(簡短）越好">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          我可以怎麼優化我的程式碼
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2020-02-17 13:09:59" itemprop="dateCreated datePublished" datetime="2020-02-17T13:09:59+00:00">2020-02-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2023-11-02 00:26:37" itemprop="dateModified" datetime="2023-11-02T00:26:37+00:00">2023-11-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%87%8D%E6%A7%8B/" itemprop="url" rel="index"><span itemprop="name">重構</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">function越簡單(簡短）越好</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="/img/1__lwB__n7DxRX76Ba7Y2kEvkw.jpeg"></p>
+<ul>
+<li><strong>function 越簡單(簡短)越好</strong></li>
+</ul>
+<p>回顧一下自己一年多前寫的程式碼，發現自己真是年輕不懂事，很貪心的想要在一隻 function 裡面寫完一大堆邏輯，當需要修改需求時再回來看這一段簡直是迷宮，必須從頭開始閱讀到最後才能找到要改的地方在哪裡，所以歸納出一個重點”函式應該只要做一件事就好，越單純越簡單越好，一來好維護二來也讓你的同事不會在你的程式碼裡面迷路”。</p>
+<ul>
+<li><strong>變數的命名重要(function 也是)</strong></li>
+</ul>
+<p>剛碰程式的時候很常隨便命名，<code>aaa、bbb、xyz</code> 諸如此類的，自己寫扣完全不覺得變數命名有什麼重要的，直到開始工作的時候，看到<code>x1、x2</code>這種變數，對，完全不知道這些名字代表什麼意義，要邊看 code 順流程跑一遍，才知道這個變數是幹嘛用的，沒錯！我真的看過一些奇耙的單字<code>(Ex.fxxk…)</code>出現在裡面，想必是想到什麼就命名什麼，隨心所欲，但這樣第一時間根本沒辦法知道他的用意是什麼，因此，明確的命名可以讓同事或是日後失憶的你，快速抓到這些變數的重點是什麼。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//bad</span></span><br><span class="line"><span class="keyword">var</span> g = <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line"><span class="keyword">var</span> group = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//good</span></span><br><span class="line"><span class="keyword">var</span> shoppingCartList = [];</span><br><span class="line"><span class="keyword">var</span> memberInformation = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//function 的命名方式 動詞+名詞</span></span><br><span class="line">get 獲取…</span><br><span class="line">set 設定…</span><br><span class="line">is 判定是否為…</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>重複的 code</strong><br>當下開發並不會意識到這一點，當你真的寫完之後，仔細一看，會發現有些重複的邏輯，一樣的東西一直重複讓程式碼變得很冗長，盡可能的將重複的代碼，寫成一隻 function，再各自 call 這支 function。</li>
+<li><strong>參數越少越好</strong><br>理想的函式不需要任何一個參數，偶而出現一兩個還可以接受，三個以上就不太理想了，我這輩子看過最多的參數是 9 個，每個都是必填，<code>number、string、boolean、string…</code>，真的是會傳參數傳到懷疑人生，而且一恍神還會傳錯，所以盡可能的參數越少越理想。</li>
+<li><strong>不要留下被註解的程式碼</strong><br>有時候對程式碼有種神秘的情感，像是有時候在嘗試 a 、b 哪種作法比較適合時，先把 a 作法註解掉，然後保留 b，心想某天可能 a 會用到，然後 a 就這樣被遺忘了，總而言之，用不到的 code 在 commit 的時候直接刪除吧。</li>
+<li><strong>減少程式碼的耦合度(Coupling)</strong><br>耦合就是函式之間的相依性，理想的狀況當然是低耦合，如果今天修改了某個函式連帶會影響到其他函式，那就會很難維護，像是改了 a 函式，結果 b、c 函式也要一併修改，也會變得不好除錯。</li>
+</ul>
+<p>另外 ，分享幾個優化程式碼的例子</p>
+<p>1.當有數個條件的時候，使用 <code>Array.includes</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (page == <span class="string">&quot;A&quot;</span> || page == <span class="string">&quot;B&quot;</span> || page == <span class="string">&quot;C&quot;</span> || page == <span class="string">&quot;D&quot;</span>) &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//可以改成</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> pageList = [<span class="string">&quot;A&quot;</span>, <span class="string">&quot;B&quot;</span>, <span class="string">&quot;C&quot;</span>, <span class="string">&quot;D&quot;</span>];</span><br><span class="line"><span class="keyword">if</span> (pageList.<span class="title function_">includes</span>(page)) &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.使用 <code>map</code> 或 <code>object</code> 取代 <code>switch</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (type) &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">&quot;a&quot;</span>:</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;area&quot;</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">&quot;b&quot;</span>:</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;block&quot;</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">&quot;c&quot;</span>:</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;capsule&quot;</span>;</span><br><span class="line">  <span class="attr">default</span>:</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//可以改成</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> vocabularyObject = &#123;</span><br><span class="line">  <span class="attr">a</span>: <span class="string">&quot;area&quot;</span>,</span><br><span class="line">  <span class="attr">b</span>: <span class="string">&quot;block&quot;</span>,</span><br><span class="line">  <span class="attr">c</span>: <span class="string">&quot;capsule&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> vocabularyObject\[type\] || <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//或是</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> vocabularyObject = <span class="keyword">new</span> <span class="title class_">Map</span>()</span><br><span class="line">.<span class="title function_">set</span>(<span class="string">&quot;a&quot;</span>,<span class="string">&quot;area&quot;</span>)</span><br><span class="line">.<span class="title function_">set</span>(<span class="string">&quot;b&quot;</span>,<span class="string">&quot;block&quot;</span>)</span><br><span class="line">.<span class="title function_">set</span>(<span class="string">&quot;c&quot;</span>,<span class="string">&quot;capsule&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> vocabularyObject.<span class="title function_">get</span>(type) || <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>3.用解構取代 &amp;&amp; 條件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params">obj</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (obj &amp;&amp; obj.<span class="property">key</span>) || <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//可以改成</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params">&#123; key &#125; = &#123;&#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> key || <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.較複雜的條件判斷</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (</span><br><span class="line">  price &lt;= <span class="number">1000</span> &amp;&amp;</span><br><span class="line">  sales &gt; <span class="number">10000</span> &amp;&amp;</span><br><span class="line">  gameName.<span class="title function_">indexOf</span>(<span class="string">&quot;super&quot;</span>) &gt; -<span class="number">1</span> &amp;&amp;</span><br><span class="line">  language.<span class="title function_">hasOwnProperty</span>(<span class="string">&quot;en&quot;</span>)</span><br><span class="line">) &#123;</span><br><span class="line">  <span class="comment">//doNext()</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//可以改成</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> cheap = price &lt;= <span class="number">1000</span>;</span><br><span class="line"><span class="keyword">let</span> bestSeller = sales &gt; <span class="number">10000</span>;</span><br><span class="line"><span class="keyword">let</span> isSuper = gameName.<span class="title function_">indexOf</span>(<span class="string">&quot;super&quot;</span>) &gt; -<span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> supportEnglish = language.<span class="title function_">hasOwnProperty</span>(<span class="string">&quot;en&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> isSpecialPrice = cheap &amp;&amp; bestSeller &amp;&amp; isSuper &amp;&amp; supportEnglish;</span><br><span class="line">isSpecialPrice &amp;&amp; <span class="title function_">doNext</span>();</span><br></pre></td></tr></table></figure>
+
+<p>當然，程式碼可以優化的方式一定還有很多種，推薦大家閱讀 clean code 無瑕的程式碼這本書 ，裡面蠻多觀念都挺不錯的。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%87%8D%E6%A7%8B/" rel="tag"># 重構</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/3ee359da/" rel="prev" title="成為前端工程師的心路歷程">
+                  <i class="fa fa-angle-left"></i> 成為前端工程師的心路歷程
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/6cb351b3/" rel="next" title="了解window Location 物件">
+                  了解window Location 物件 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Joe Chang</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ChangChiao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"codinghotpot.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="在介紹Class之前，必須先認識什麼是物件導向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript筆記 (4) — Class">
+<meta property="og:url" content="https://codinghotpot.com/posts/2f78be04/index.html">
+<meta property="og:site_name" content="Coding Hot Pot">
+<meta property="og:description" content="在介紹Class之前，必須先認識什麼是物件導向">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://codinghotpot.com/img/1__nnjL3PzLAl49JV6qCrROuQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1____ZucMbAjSdh1wHKL__KNmPQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__NaWrVOVoTvfqIBWGrOwFWA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__grevW3S6ujaM8wBaR2uSHA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__w7BdxtGNg6dcBPkew24Vxg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__v9SBxAk__Ns11vNr7w__aK4A.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__2wMD2hVDwdQq7pYh4C1tlQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__sOXjTZMNQS3ISEqGFA0KCQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__EHr2SY2js3pTa4QLFRFfTg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__ntr0TPjrl4HMMojHI5BSkg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__Yqpt8fePlXOsRGagfJFDDQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__HI3A23rTcPExzjFoR0bwTA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__CBoiH8wOzj4__Ez9k1xzJGg.png">
+<meta property="article:published_time" content="2022-02-13T13:26:08.091Z">
+<meta property="article:modified_time" content="2023-11-02T00:26:37.292Z">
+<meta property="article:author" content="Joe Chang">
+<meta property="article:tag" content="typescript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://codinghotpot.com/img/1__nnjL3PzLAl49JV6qCrROuQ.png">
+
+
+<link rel="canonical" href="https://codinghotpot.com/posts/2f78be04/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://codinghotpot.com/posts/2f78be04/","path":"posts/2f78be04/","title":"TypeScript筆記 (4) — Class"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>TypeScript筆記 (4) — Class | Coding Hot Pot</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJM3X3RGKD"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-SJM3X3RGKD","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Coding Hot Pot</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">日新月異的前端技術...學不動了</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Class-%E9%A1%9E%E5%88%A5"><span class="nav-number">1.</span> <span class="nav-text">Class 類別</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Constructor-%E5%BB%BA%E6%A7%8B%E5%AD%90"><span class="nav-number">2.</span> <span class="nav-text">Constructor 建構子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Interface-%E4%BB%8B%E9%9D%A2"><span class="nav-number">3.</span> <span class="nav-text">Interface 介面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#extends-%E7%B9%BC%E6%89%BF"><span class="nav-number">4.</span> <span class="nav-text">extends 繼承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#super"><span class="nav-number">5.</span> <span class="nav-text">super</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Abstract-class-%EF%BC%88%E6%8A%BD%E8%B1%A1%E9%A1%9E%E5%88%A5%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">Abstract class （抽象類別）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#public-%E5%85%AC%E9%96%8B"><span class="nav-number">7.</span> <span class="nav-text">public 公開</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#private-%E7%A7%81%E6%9C%89"><span class="nav-number">8.</span> <span class="nav-text">private 私有</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#protected-%E5%8F%97%E4%BF%9D%E8%AD%B7%E7%9A%84"><span class="nav-number">9.</span> <span class="nav-text">protected 受保護的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#static-%E9%9D%9C%E6%85%8B"><span class="nav-number">10.</span> <span class="nav-text">static 靜態</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Joe Chang"
+      src="/images/oldman.jpg">
+  <p class="site-author-name" itemprop="name">Joe Chang</p>
+  <div class="site-description" itemprop="description">唯有非常努力，才能看起來毫不費力</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">114</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://codinghotpot.com/posts/2f78be04/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/oldman.jpg">
+      <meta itemprop="name" content="Joe Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Hot Pot">
+      <meta itemprop="description" content="唯有非常努力，才能看起來毫不費力">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="TypeScript筆記 (4) — Class | Coding Hot Pot">
+      <meta itemprop="description" content="在介紹Class之前，必須先認識什麼是物件導向">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          TypeScript筆記 (4) — Class
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2022-02-13 13:26:08" itemprop="dateCreated datePublished" datetime="2022-02-13T13:26:08+00:00">2022-02-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2023-11-02 00:26:37" itemprop="dateModified" datetime="2023-11-02T00:26:37+00:00">2023-11-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/typescript/" itemprop="url" rel="index"><span itemprop="name">typescript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">在介紹Class之前，必須先認識什麼是物件導向</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="/img/1__nnjL3PzLAl49JV6qCrROuQ.png"></p>
+<p>在介紹 Class 之前，必須先認識什麼是物件導向</p>
+<blockquote>
+<p><strong>物件導向程式設計</strong>（英語：Object-oriented programming，<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BC%A9%E5%86%99" title="縮寫">縮寫</a>：OOP）是種具有<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%AF%B9%E8%B1%A1_%28%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%29" title="物件 (電腦科學)">物件</a>概念的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BC%96%E7%A8%8B%E8%8C%83%E5%9E%8B" title="程式設計範式">程式設計典範</a>，同時也是一種程式開發的抽象方針。它可能包含<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE" title="資料">資料</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%89%B9%E6%80%A7_%28%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%29" title="特性 (電腦科學)">特性</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%BA%90%E4%BB%A3%E7%A0%81" title="原始碼">程式碼</a>與<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%96%B9%E6%B3%95_%28%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8%29" title="方法 (電腦科學)">方法</a>。物件則指的是<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%B1%BB_%28%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%29" title="類別 (電腦科學)">類別</a>（class）的實例。它將<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%89%A9%E4%BB%B6_%28%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8%29" title="物件 (電腦科學)">物件</a>作為<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F" title="電腦程式">程式</a>的基本單元，將程式和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE" title="資料">資料</a><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%B0%81%E8%A3%9D_%28%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%29" title="封裝 (物件導向程式設計)">封裝</a>其中，以提高軟體的重用性、靈活性和擴充性，物件裡的程式可以存取及經常修改物件相關連的資料。（引用至ＭＤＮ）</p>
+</blockquote>
+<p>簡單來說我們可以透過類別實作出不同的物件(實例)，以生產手機來說，我們可以設計一個手機類別，這個類別擁有打電話、上網、拍照等功能，透過這個類別創建出來的每台手機(物件)都可以擁有這些功能，假設今天要再多新增一個付款功能，只要新增在類別上即可，不需要每部手機逐一新增，在程式的管理上會更加靈活</p>
+<h4 id="Class-類別"><a href="#Class-類別" class="headerlink" title="Class 類別"></a>Class 類別</h4><p>Class 可以比喻做一個設計圖， 讓我們能夠基於 Class 創建出不同的物件，以下面的例子來說 Class User 為設計圖，而 user1 ~ user3 都是透過 User 創建出來的物件</p>
+<p><img src="/img/1____ZucMbAjSdh1wHKL__KNmPQ.png"></p>
+<h4 id="Constructor-建構子"><a href="#Constructor-建構子" class="headerlink" title="Constructor 建構子"></a>Constructor 建構子</h4><p>如果想要基於相同的 Class 創建出不同屬性的物件，可以透過 constructor 傳入不同的參數，就會產生出不同的實例，以上述的例子來說，在 new 新物件的時候傳入的參數就會被 constuctor 接收，讓每個實例(user)擁有不同的屬性</p>
+<h4 id="Interface-介面"><a href="#Interface-介面" class="headerlink" title="Interface 介面"></a>Interface 介面</h4><p>介面可以約束 Class 要實作的屬性和方法有哪些，實作方式由開發者自己決定，好比說公司要求員工要採購雞蛋，不管是網路購物或是去傳統市場購買都可以，方法由員工自行決定，只要買到蛋就好了</p>
+<p><img src="/img/1__NaWrVOVoTvfqIBWGrOwFWA.png"></p>
+<p>如果沒有依照 interface 實作所有的內容就會跳警告</p>
+<p><img src="/img/1__grevW3S6ujaM8wBaR2uSHA.png"></p>
+<h4 id="extends-繼承"><a href="#extends-繼承" class="headerlink" title="extends 繼承"></a><strong>extends 繼承</strong></h4><p>子類別用 extends 繼承父類別，讓子類別可以直接使用父類別的方法或屬性，如果子類別宣告與父類別相同的函式名稱，則會覆寫父類別的方法</p>
+<p><img src="/img/1__w7BdxtGNg6dcBPkew24Vxg.png"></p>
+<h4 id="super"><a href="#super" class="headerlink" title="super"></a>super</h4><p>使用 super.method()就可以讓子類別調用父類別的方法，如果是在 constructor 裡面執行 super()，代表子類別執行父類別的 constructor 方法</p>
+<p><img src="/img/1__v9SBxAk__Ns11vNr7w__aK4A.png"></p>
+<h4 id="Abstract-class-（抽象類別）"><a href="#Abstract-class-（抽象類別）" class="headerlink" title="Abstract class （抽象類別）"></a>Abstract class （抽象類別）</h4><p>抽象類別規定繼承的子類別必須實作抽象方法，抽象類別是不能被 new 的(建立實例)</p>
+<p><img src="/img/1__2wMD2hVDwdQq7pYh4C1tlQ.png"></p>
+<h4 id="public-公開"><a href="#public-公開" class="headerlink" title="public 公開"></a>public 公開</h4><p>如果沒有在屬性前面加上修飾詞預設就會是 public，也可以手動標記修飾詞，public 允許外部存取，new 出來的實例可以取得 public 屬性</p>
+<p><img src="/img/1__sOXjTZMNQS3ISEqGFA0KCQ.png"></p>
+<h4 id="private-私有"><a href="#private-私有" class="headerlink" title="private 私有"></a>private 私有</h4><p>private 代表屬性僅能在 Class 內部取得，new 出來的實例無法取得私有變數，這樣可以必免不小心被外部的程式修改</p>
+<p><img src="/img/1__EHr2SY2js3pTa4QLFRFfTg.png"></p>
+<p>假如外部程式有取得 private 屬性的需求，可以寫一個函式回傳 private 屬性</p>
+<p><img src="/img/1__ntr0TPjrl4HMMojHI5BSkg.png"></p>
+<h4 id="protected-受保護的"><a href="#protected-受保護的" class="headerlink" title="protected 受保護的"></a>protected 受保護的</h4><p>跟 private 一樣無法在外部程式取得，唯有子類別可以讀取</p>
+<p><img src="/img/1__Yqpt8fePlXOsRGagfJFDDQ.png"><br><img src="/img/1__HI3A23rTcPExzjFoR0bwTA.png"></p>
+<h4 id="static-靜態"><a href="#static-靜態" class="headerlink" title="static 靜態"></a>static 靜態</h4><p>修飾詞為 static 的屬性和方法被稱作靜態屬性和靜態方法，不需要 new 出新的物件，可以直接透過 Class 取得或呼叫</p>
+<p><img src="/img/1__CBoiH8wOzj4__Ez9k1xzJGg.png"></p>
+<blockquote>
+<p>static 的方法僅能取得 static 的屬性，public、 private、 protected 都是取不到的</p>
+</blockquote>
+<p>參考資料：</p>
+<p><a target="_blank" rel="noopener" href="https://medium.com/enjoy-life-enjoy-coding/typescript-%E5%BE%9E-ts-%E9%96%8B%E5%A7%8B%E5%AD%B8%E7%BF%92%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-class-%E7%94%A8%E6%B3%95-20ade3ce26b8">TypeScript | 從 TS 開始學習物件導向  — Class 用法</a></p>
+<p><a target="_blank" rel="noopener" href="https://medium.com/enjoy-life-enjoy-coding/typescript-%E5%BE%9E-ts-%E9%96%8B%E5%A7%8B%E5%AD%B8%E7%BF%92%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91-interface-%E7%94%A8%E6%B3%95-77fd0959769f">TypeScript | 從 TS 開始學習物件導向  — Interface 用法</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/typescript/" rel="tag"># typescript</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/d636e3cb/" rel="prev" title="TypeScript筆記 (3) — function">
+                  <i class="fa fa-angle-left"></i> TypeScript筆記 (3) — function
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/ca825e1d/" rel="next" title="喔不！我誤刪了我的git分支！">
+                  喔不！我誤刪了我的git分支！ <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Joe Chang</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ChangChiao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

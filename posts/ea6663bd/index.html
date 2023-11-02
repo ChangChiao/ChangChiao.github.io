@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"codinghotpot.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="說到E2E(End to End)測試工具，大部分的人應該第一個想到的會是Cypress，不過其實除了Cypress，還有一個好用的工具，那就是由微軟開發的後起之秀 — playwright，近期因為工作需求需要寫E2E…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="E2E test的明日之星 — playwright">
+<meta property="og:url" content="https://codinghotpot.com/posts/ea6663bd/index.html">
+<meta property="og:site_name" content="Coding Hot Pot">
+<meta property="og:description" content="說到E2E(End to End)測試工具，大部分的人應該第一個想到的會是Cypress，不過其實除了Cypress，還有一個好用的工具，那就是由微軟開發的後起之秀 — playwright，近期因為工作需求需要寫E2E…">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://codinghotpot.com/img/1__no__d95uHh8__Vu67iGJ52ug.jpeg">
+<meta property="og:image" content="https://codinghotpot.com/img/1__pytjxluVwr47OIk8STlrZw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__LIgaw3PBp6tBD76M68MTig.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__ssnE0aA6z__NhGg__WR__JRdg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__QzSjmFdSGwda6CrHaySMDA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__ZTaDMLChrhhYj6XWeNX5lw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__qTkJv1e2YWtUK0QtHA2rYw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1____XSOpdZvq__Vv8W4RKYw__FQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__uftjgRlvgjHUiuAidrlb1A.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__7iKBOxxwsQp5ns66EaMt6A.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__FuXJ__So8HtRC8ZCA2aDlKQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__f6LClFNPJQb2rpOTomO2DQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__KrOMTIeHaqO8qvdut41dCw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__IAZn3l7rWBRLt2yJlg7oXA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__ND6eVizGv__5pxNoYtBVc5g.png">
+<meta property="article:published_time" content="2023-07-22T10:52:17.110Z">
+<meta property="article:modified_time" content="2023-11-02T00:26:37.292Z">
+<meta property="article:author" content="Joe Chang">
+<meta property="article:tag" content="playwright">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://codinghotpot.com/img/1__no__d95uHh8__Vu67iGJ52ug.jpeg">
+
+
+<link rel="canonical" href="https://codinghotpot.com/posts/ea6663bd/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://codinghotpot.com/posts/ea6663bd/","path":"posts/ea6663bd/","title":"E2E test的明日之星 — playwright"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>E2E test的明日之星 — playwright | Coding Hot Pot</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJM3X3RGKD"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-SJM3X3RGKD","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Coding Hot Pot</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">日新月異的前端技術...學不動了</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Trace-viewer-%E2%80%94-%E5%8B%95%E4%BD%9C%E9%8C%84%E8%A3%BD"><span class="nav-number">1.</span> <span class="nav-text">Trace viewer —  動作錄製</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ui-%E4%BB%8B%E9%9D%A2%E6%93%8D%E4%BD%9C"><span class="nav-number">1.1.</span> <span class="nav-text">ui 介面操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B8%AC%E8%A9%A6%E5%A0%B1%E5%91%8A"><span class="nav-number">1.2.</span> <span class="nav-text">測試報告</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E8%A9%A6%E8%BA%AB%E6%89%8B"><span class="nav-number">1.3.</span> <span class="nav-text">小試身手</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%96%8B%E5%A7%8B"><span class="nav-number">1.4.</span> <span class="nav-text">如何開始</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#playwright-config-%E7%9B%B8%E9%97%9C%E8%A8%AD%E5%AE%9A"><span class="nav-number">1.5.</span> <span class="nav-text">playwright config 相關設定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%80%8F%E8%A6%BD%E5%99%A8%E7%9A%84%E7%89%88%E6%9C%AC"><span class="nav-number">1.6.</span> <span class="nav-text">瀏覽器的版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#webserver"><span class="nav-number">1.7.</span> <span class="nav-text">webserver</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%B7%E5%A4%A7%E7%9A%84-vscode-%E6%93%B4%E5%85%85%E5%A5%97%E4%BB%B6"><span class="nav-number">1.8.</span> <span class="nav-text">強大的 vscode 擴充套件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pick-locator"><span class="nav-number">1.9.</span> <span class="nav-text">Pick locator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Record-new"><span class="nav-number">1.10.</span> <span class="nav-text">Record new</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%99%BB%E5%85%A5%E6%8E%88%E6%AC%8A%E8%99%95%E7%90%86"><span class="nav-number">1.11.</span> <span class="nav-text">登入授權處理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step-1"><span class="nav-number">1.12.</span> <span class="nav-text">step 1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step-2"><span class="nav-number">1.13.</span> <span class="nav-text">step 2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step-3"><span class="nav-number">1.14.</span> <span class="nav-text">step 3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B5%90%E8%AA%9E"><span class="nav-number">1.15.</span> <span class="nav-text">結語</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Joe Chang"
+      src="/images/oldman.jpg">
+  <p class="site-author-name" itemprop="name">Joe Chang</p>
+  <div class="site-description" itemprop="description">唯有非常努力，才能看起來毫不費力</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">114</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://codinghotpot.com/posts/ea6663bd/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/oldman.jpg">
+      <meta itemprop="name" content="Joe Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Hot Pot">
+      <meta itemprop="description" content="唯有非常努力，才能看起來毫不費力">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="E2E test的明日之星 — playwright | Coding Hot Pot">
+      <meta itemprop="description" content="說到E2E(End to End)測試工具，大部分的人應該第一個想到的會是Cypress，不過其實除了Cypress，還有一個好用的工具，那就是由微軟開發的後起之秀 — playwright，近期因為工作需求需要寫E2E…">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          E2E test的明日之星 — playwright
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2023-07-22 10:52:17" itemprop="dateCreated datePublished" datetime="2023-07-22T10:52:17+00:00">2023-07-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2023-11-02 00:26:37" itemprop="dateModified" datetime="2023-11-02T00:26:37+00:00">2023-11-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/e2eTest/" itemprop="url" rel="index"><span itemprop="name">e2eTest</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">說到E2E(End to End)測試工具，大部分的人應該第一個想到的會是Cypress，不過其實除了Cypress，還有一個好用的工具，那就是由微軟開發的後起之秀 — playwright，近期因為工作需求需要寫E2E…</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="/img/1__no__d95uHh8__Vu67iGJ52ug.jpeg"></p>
+<p>說到 E2E(End to End)測試工具，大部分的人應該第一個想到的會是 Cypress，不過其實除了 Cypress，還有一個好用的工具，那就是由微軟開發的後起之秀  — playwright，近期因為工作需求需要寫 E2E test，便將 cypress 和 playwright 列入考量清單，雖然 cypress 歷史較為悠久但因為跑 ci 時耗費的資源較多，幾經評估之後我們團隊決定選擇 playwright，跟著官方的文件玩過一次，發現還蠻有趣的，接下來會介紹 playwright 有哪些特點</p>
+<h3 id="Trace-viewer-—-動作錄製"><a href="#Trace-viewer-—-動作錄製" class="headerlink" title="Trace viewer —  動作錄製"></a>Trace viewer —  動作錄製</h3><p>在網頁上的所有操作行為， playwright 都能幫你錄製，當你按下錄製按鈕之後 playwright 會將你在網頁上的每一個操作步驟都寫成程式碼(如下圖)，完全不用自己動手</p>
+<p><img src="/img/1__pytjxluVwr47OIk8STlrZw.png"></p>
+<h4 id="ui-介面操作"><a href="#ui-介面操作" class="headerlink" title="ui 介面操作"></a>ui 介面操作</h4><p>playwright 提供了 ui 介面方便使用者查看每個測試階段，左邊會列出測試步驟，上方則會有逐格的畫面錄製，可以觀察每個畫面的變化，下方的面板有 console、network 等等的資訊，讓開發者更容易除錯</p>
+<p><img src="/img/1__LIgaw3PBp6tBD76M68MTig.png"></p>
+<h4 id="測試報告"><a href="#測試報告" class="headerlink" title="測試報告"></a>測試報告</h4><p>會依照 test case 和瀏覽器逐一生成測試報告，讓測試結果一目瞭然，後方也會列出執行秒數</p>
+<p><img src="/img/1__ssnE0aA6z__NhGg__WR__JRdg.png"></p>
+<p>點開標題，內頁會明確地告訴你測試的細節，哪個測試環節沒有 pass 等等</p>
+<p><img src="/img/1__QzSjmFdSGwda6CrHaySMDA.png"></p>
+<h4 id="小試身手"><a href="#小試身手" class="headerlink" title="小試身手"></a>小試身手</h4><p><code>環境配置：pnpm + svelte + mock server + playwright</code></p>
+<p>在開始寫測試之前，強烈推薦大家安裝 vscode playwright 套件，因為這個工具真的非常方便，後面會再做介紹</p>
+<p><img src="/img/1__ZTaDMLChrhhYj6XWeNX5lw.png"></p>
+<h4 id="如何開始"><a href="#如何開始" class="headerlink" title="如何開始"></a>如何開始</h4><p>在一個既有的專案根目錄底下執行指令，使用 npm 和 yarn 的朋友請看<a target="_blank" rel="noopener" href="https://playwright.dev/docs/intro">官網的指令</a>，和 pnpm 的有些許差異</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm dlx create-playwright</span><br></pre></td></tr></table></figure>
+
+<p>接下來會詢問你一些問題，可根據自身需求做調整</p>
+<p><img src="/img/1__qTkJv1e2YWtUK0QtHA2rYw.png"></p>
+<p>不想用 command line 的話，也可以用另一個方式安裝 playwright</p>
+<p>假如先前已經安裝好 playwright vscode 套件，可以按 ctrl(cmd) + shift + p，呼叫執行指令的輸入框，輸入 playwright 後選擇 install playwright</p>
+<p><img src="/img/1____XSOpdZvq__Vv8W4RKYw__FQ.png"></p>
+<p>就會出現這些選項，比起剛剛用指令安裝的方式更有彈性</p>
+<p><img src="/img/1__uftjgRlvgjHUiuAidrlb1A.png"></p>
+<p>跑完指令之後，就會看到新生成的 test 資料夾和 playwright config</p>
+<p><img src="/img/1__7iKBOxxwsQp5ns66EaMt6A.png"></p>
+<h4 id="playwright-config-相關設定"><a href="#playwright-config-相關設定" class="headerlink" title="playwright config 相關設定"></a>playwright config 相關設定</h4><p>接下來介紹一些 playwright config 基本的設定</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">testDir<span class="punctuation">:</span> <span class="string">&quot;./tests&quot;</span><span class="punctuation">,</span> <span class="comment">// 跑測試的目標資料夾</span></span><br><span class="line">  timeout<span class="punctuation">:</span> <span class="number">30</span> * <span class="number">1000</span><span class="punctuation">,</span> <span class="comment">//如果在測試的時候卡住，超過timeout時間就fail</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//ex: 預期在畫面上會出現一個login的按鈕，但過了30秒都偵測不到，就會判定測試失敗</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 設定好baseURL之後 寫測試的時候就可以寫相對路徑囉，不用寫完整路徑</span></span><br><span class="line">use<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="comment">/* Base URL to use in actions like `await page.goto(&#x27;/&#x27;)`. */</span></span><br><span class="line">  baseURL<span class="punctuation">:</span> &#x27;http<span class="punctuation">:</span><span class="comment">//127.0.0.1:3000&#x27;,</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="瀏覽器的版本"><a href="#瀏覽器的版本" class="headerlink" title="瀏覽器的版本"></a><strong>瀏覽器的版本</strong></h4><p>可以自行定義要測試的瀏覽器有哪幾種，最貼心的居然還有手機版的瀏覽器！不過設定的瀏覽器越多也意謂著測試會跑越久，還是看專案的需求來決定要以哪些瀏覽器為主，通常會以 chrome 為主</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">projects</span>: [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;chromium&quot;</span>,</span><br><span class="line">    <span class="attr">use</span>: &#123; ...devices[<span class="string">&quot;Desktop Chrome&quot;</span>] &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;firefox&quot;</span>,</span><br><span class="line">    <span class="attr">use</span>: &#123; ...devices[<span class="string">&quot;Desktop Firefox&quot;</span>] &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;webkit&quot;</span>,</span><br><span class="line">    <span class="attr">use</span>: &#123; ...devices[<span class="string">&quot;Desktop Safari&quot;</span>] &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* Test against mobile viewports. */</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;Mobile Chrome&quot;</span>,</span><br><span class="line">    <span class="attr">use</span>: &#123; ...devices[<span class="string">&quot;Pixel 5&quot;</span>] &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;Mobile Safari&quot;</span>,</span><br><span class="line">    <span class="attr">use</span>: &#123; ...devices[<span class="string">&quot;iPhone 12&quot;</span>] &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<h4 id="webserver"><a href="#webserver" class="headerlink" title="webserver"></a>webserver</h4><p>測試可能會有兩個情境</p>
+<ul>
+<li>測試正在開發的網頁 ex. localhost:3000…</li>
+<li>測試已經上線的網頁 ex. <a target="_blank" rel="noopener" href="https://production.com/">https://production.com</a></li>
+</ul>
+<p>假如我們想要測試 localhost 的話，可以有兩種做法</p>
+<p><img src="/img/1__FuXJ__So8HtRC8ZCA2aDlKQ.png"></p>
+<ol>
+<li>自己先在 project B 手動起一個 localhost:3000，然後在 project A 的 playwright 的 baseURL 設定為 localhost:3000，讓 playwright 針對這個 localhost:3000 做測試</li>
+<li>我希望每次跑測試之前，playwright 可以先自動幫我起一個 localhost 的網頁，當 localhost 起好了之後，playwright 再去測試這個頁面，所有的動作都在 project A 完成，為了達成這件事，我們就必須設定 webserver</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在跑測試的之前，先啟動一個網頁</span></span><br><span class="line"> <span class="attr">webServer</span>: &#123;</span><br><span class="line"> <span class="attr">command</span>: <span class="string">&#x27;pnpm run dev&#x27;</span>,</span><br><span class="line"> <span class="attr">url</span>: <span class="string">&#x27;http://127.0.0.1:3000&#x27;</span>,</span><br><span class="line"> <span class="attr">reuseExistingServer</span>: !process.<span class="property">env</span>.<span class="property">CI</span>,</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>因為 ci 的部分我比較不熟，所以相關的設定就不會介紹了，敬請見諒</p>
+</blockquote>
+<h4 id="強大的-vscode-擴充套件"><a href="#強大的-vscode-擴充套件" class="headerlink" title="強大的 vscode 擴充套件"></a>強大的 vscode 擴充套件</h4><p>安裝好了之後，左邊會出現ㄧ個燒杯(?)的 icon，按下去就會出現測試的面板</p>
+<p><img src="/img/1__f6LClFNPJQb2rpOTomO2DQ.png"></p>
+<p>上方會列出所有的 test case，資料夾結構一目暸然，只要按下 title 旁邊的播放 icon，就會跑測試了，接下來會介紹下方面板提供的一些好用功能</p>
+<h4 id="Pick-locator"><a href="#Pick-locator" class="headerlink" title="Pick locator"></a>Pick locator</h4><p>看著網頁上琳瑯滿目的元素，不知道該下什麼語法才能選到目標元素嗎？就讓 pick locator 來處理吧！按下 pick locator 之後會開啟一個空白分頁，輸入網址後，游標指到的元素就會出現選擇語法的提示，是不是很貼心！！</p>
+<p><img src="/img/1__KrOMTIeHaqO8qvdut41dCw.png"></p>
+<h4 id="Record-new"><a href="#Record-new" class="headerlink" title="Record new"></a>Record new</h4><p>和剛剛一樣會開啟一個空白頁面，從輸入網址到後續所有的操作行為，playwright 都會錄製起來，我的操作步驟如下</p>
+<ol>
+<li>輸入網址</li>
+<li>點選帳號輸入框</li>
+<li>輸入帳號</li>
+<li>點選密碼輸入框</li>
+<li>輸入密碼</li>
+<li>按下送出按鈕</li>
+</ol>
+<p><img src="/img/1__IAZn3l7rWBRLt2yJlg7oXA.png"></p>
+<p>操作完畢後，回到 vscode 看會發現 playwright 已經幫你寫好了所有的步驟，完全不用親自動手，不過實務上還是會做微調，不然就會出現很多不必要的語法，像是 input click 這個動作其實是不需要的，只是因為我們在輸入之前要先選到那個輸入框，因此是可以被移除，只要留下 fill 和 click button 的語法即可</p>
+<p><img src="/img/1__ND6eVizGv__5pxNoYtBVc5g.png"></p>
+<h4 id="登入授權處理"><a href="#登入授權處理" class="headerlink" title="登入授權處理"></a>登入授權處理</h4><p>假如今天我們要測試的網頁，必須是要先登入，才能夠進到的頁面，那是否意謂著測試每個頁面之前都必須要打一次登入呢？流程會像下面這樣</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//test.a.spec.ts</span></span><br><span class="line"><span class="title function_">test</span>(login)...</span><br><span class="line"><span class="title function_">test</span>(memberCenter)...</span><br><span class="line"></span><br><span class="line"><span class="comment">//test.b.sepc.ts</span></span><br><span class="line"><span class="title function_">test</span>(login)...</span><br><span class="line"><span class="title function_">test</span>(settings)..</span><br></pre></td></tr></table></figure>
+
+<p>playwright 提供了一個更好的做法，那就是在執行測試之前，先去跑登入的設定，取得 cookie、token 等資訊，然後存放在一個 json 檔裡面，所有的 test case 都去這個 json 裡面拿授權的資訊即可，方便很多</p>
+<h4 id="step-1"><a href="#step-1" class="headerlink" title="step 1"></a>step 1</h4><p>建立 playwright&#x2F;.auth 資料夾，並且加入.gitignore</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p playwright/.auth</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;\\nplaywright/.auth&quot;</span> &gt;&gt; .gitignore</span><br></pre></td></tr></table></figure>
+
+<h4 id="step-2"><a href="#step-2" class="headerlink" title="step 2"></a>step 2</h4><p>建立 auth.setup.ts，撰寫登入的步驟</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; test <span class="keyword">as</span> setup &#125; <span class="keyword">from</span> <span class="string">&quot;@playwright/test&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//指定 authFile path</span></span><br><span class="line"><span class="keyword">const</span> authFile = <span class="string">&quot;playwright/.auth/user.json&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_">setup</span>(<span class="string">&quot;authenticate&quot;</span>, <span class="keyword">async</span> (&#123; page &#125;) =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">goto</span>(<span class="string">&quot;/&quot;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">locator</span>(<span class="string">&#x27;input[name=&quot;account&quot;]&#x27;</span>).<span class="title function_">click</span>();</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">locator</span>(<span class="string">&#x27;input[name=&quot;account&quot;]&#x27;</span>).<span class="title function_">fill</span>(<span class="string">&quot;admin&quot;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">locator</span>(<span class="string">&#x27;input[name=&quot;account&quot;]&#x27;</span>).<span class="title function_">press</span>(<span class="string">&quot;Tab&quot;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">locator</span>(<span class="string">&#x27;input[name=&quot;password&quot;]&#x27;</span>).<span class="title function_">fill</span>(<span class="string">&quot;123456&quot;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">getByRole</span>(<span class="string">&quot;button&quot;</span>, &#123; <span class="attr">name</span>: <span class="string">&quot;submit&quot;</span> &#125;).<span class="title function_">click</span>();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">waitForURL</span>(<span class="string">&quot;/member&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//把拿到的 token 存放到 authFile</span></span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">context</span>().<span class="title function_">storageState</span>(&#123; <span class="attr">path</span>: authFile &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="step-3"><a href="#step-3" class="headerlink" title="step 3"></a>step 3</h4><p>打開 playwright.config.ts 建立一個新的 project setup，記得新增 storageState，並且將要測試的瀏覽器 dependencies 設定為 setup，這樣在跑測試之前都會先執行登入授權的動作，登入成功後，所有的 test case 都可以去 playwright&#x2F;.auth&#x2F;user.json 拿資料</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">projects</span>: [</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;setup&quot;</span>, <span class="attr">testMatch</span>: <span class="regexp">/.*\.setup\.ts/</span> &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;chromium&quot;</span>,</span><br><span class="line">    <span class="attr">use</span>: &#123;</span><br><span class="line">      ...devices[<span class="string">&quot;Desktop Chrome&quot;</span>],</span><br><span class="line">      <span class="attr">storageState</span>: <span class="string">&quot;playwright/.auth/user.json&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">dependencies</span>: [<span class="string">&quot;setup&quot;</span>],</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>一切都準備就緒之後，就開始來跑測試吧！會發現不管是執行哪個測試檔，都會先去跑 auth.setup.ts，假設登入成功，playwright 會自動生成一個 user.json 檔放在 playwright&#x2F;.auth 底下，內容如下，不論 api 回傳的 cookie 或是 localstorage 裡面的資訊，通通存起來，讓所有的 test case 都能夠共享這 auth 資訊</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//playwright/.auth/user.json 的內容</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;cookies&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;auth-token&quot;</span>,</span><br><span class="line">      <span class="string">&quot;value&quot;</span>: <span class="string">&quot;63099c80-773d-4bca-b2ba-bea12c9fb44e&quot;</span>,</span><br><span class="line">      <span class="string">&quot;domain&quot;</span>: <span class="string">&quot;localhost&quot;</span>,</span><br><span class="line">      <span class="string">&quot;path&quot;</span>: <span class="string">&quot;/&quot;</span>,</span><br><span class="line">      <span class="string">&quot;expires&quot;</span>: -<span class="number">1</span>,</span><br><span class="line">      <span class="string">&quot;httpOnly&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="string">&quot;secure&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">      <span class="string">&quot;sameSite&quot;</span>: <span class="string">&quot;Lax&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="string">&quot;origins&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;origin&quot;</span>: <span class="string">&quot;http://localhost:5176&quot;</span>,</span><br><span class="line">      <span class="string">&quot;localStorage&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="string">&quot;name&quot;</span>: <span class="string">&quot;MSW_COOKIE_STORE&quot;</span>,</span><br><span class="line">          <span class="string">&quot;value&quot;</span>: <span class="string">&quot;[[\&quot;http://localhost:5176\&quot;,[[\&quot;auth-token\&quot;,&#123;\&quot;name\&quot;:\&quot;auth-token\&quot;,\&quot;value\&quot;:\&quot;63099c80-773d-4bca-b2ba-bea12c9fb44e\&quot;&#125;]]]]&quot;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="string">&quot;name&quot;</span>: <span class="string">&quot;user&quot;</span>,</span><br><span class="line">          <span class="string">&quot;value&quot;</span>: <span class="string">&quot;admin&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h4><p>不過因為 playwright 比較年輕，所以在使用上確實容易遇到 bug，像是近期在寫測試的時候，一樣的 click 執行程序, chrome、safari 都 pass 唯獨 firefox fail，最後去 github issues 看到別人也遇到同樣的情形(<a target="_blank" rel="noopener" href="https://github.com/microsoft/playwright/issues/21995">issue</a>)，不過還好近期官方也修正了，只是還沒 release，抑或是 vs code 的 playwright plugin 會出現異常的狀況，完全無法執行測試，必須重開才會正常，但整體而言，playwright 帶給我的開發體驗還是相當不錯的，非常推薦大家可以嘗試看看！</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/playwright/" rel="tag"># playwright</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/b7ddcc6d/" rel="prev" title="vim的指令筆記">
+                  <i class="fa fa-angle-left"></i> vim的指令筆記
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/2a4e97ce/" rel="next" title="管理i18n的好幫手 — phrase">
+                  管理i18n的好幫手 — phrase <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Joe Chang</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ChangChiao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
