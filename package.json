@@ -25,6 +25,7 @@
     "hexo-theme-next": "8.18.1"
   },
   "devDependencies": {
+    "hexo-abbrlink": "^2.2.1",
     "hexo-deployer-git": "^4.0.0",
     "hexo-generator-sitemap": "^3.0.1",
     "hexo-util": "^3.1.0"
