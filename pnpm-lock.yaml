@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   hexo:
     specifier: ^6.3.0
@@ -32,8 +36,8 @@ dependencies:
     specifier: ^1.0.0
     version: 1.0.0
   hexo-theme-next:
-    specifier: 8.18.1
-    version: 8.18.1
+    specifier: 8.18.2
+    version: 8.18.2
 
 devDependencies:
   hexo-abbrlink:
@@ -768,8 +772,8 @@ packages:
     resolution: {integrity: sha512-bWQJWMqQI78wWiJPQZq5pJBH20TM442ShCaHGRetuEgMraxH0OKxB3NTupJzNEkzEk8DV2yrdizkXdKN6i501A==}
     dev: false
 
-  /hexo-theme-next@8.18.1:
-    resolution: {integrity: sha512-cfj4FKXJZjFmWQ5hX1yQHYCu+qzRce/hxw3403jCCnQHkfcTSoT0I7OJCWktCydJ2p43JSKiOpL5n6N4yRggZw==}
+  /hexo-theme-next@8.18.2:
+    resolution: {integrity: sha512-gGxi29yKwaWF3lfSLYPrt3UwOWuBIcawjTWgt5z5f06RmBCc41kfAQWBkRnllSrHJeewk+tOku989kKAtfQwpA==}
     dev: false
 
   /hexo-util@2.7.0:
@@ -1633,7 +1637,3 @@ packages:
   /xmlchars@2.2.0:
     resolution: {integrity: sha512-JZnDKK8B0RCDw84FNdDAIpZK+JuJw+s7Lz8nksI7SIuU3UXJJslUthsi+uWBUYOwPFwW7W7PRLRfUKpxjtjFCw==}
     dev: false
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
