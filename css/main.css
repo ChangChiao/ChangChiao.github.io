@@ -2636,3 +2636,6 @@ header.header {
     padding: 10px 12px;
   }
 }
+.utterances {
+  max-width: unset;
+}
