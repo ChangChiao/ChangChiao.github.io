@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"codinghotpot.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="近期在medium上面想閱讀別人的文章，偶爾會跳出彈窗要求你成為付費會員才能觀看完整文章，這讓我不禁在思考，是否別人想看我寫的文章也會遇到一樣的問題？畢竟當初我寫文章的初衷有一部分是希望可以和別人分享技術和開發經驗，因此medium這政策讓我非常的困擾">
+<meta property="og:type" content="article">
+<meta property="og:title" content="從medium到hexo">
+<meta property="og:url" content="https://codinghotpot.com/posts/4e852fe8/index.html">
+<meta property="og:site_name" content="Coding Hot Pot">
+<meta property="og:description" content="近期在medium上面想閱讀別人的文章，偶爾會跳出彈窗要求你成為付費會員才能觀看完整文章，這讓我不禁在思考，是否別人想看我寫的文章也會遇到一樣的問題？畢竟當初我寫文章的初衷有一部分是希望可以和別人分享技術和開發經驗，因此medium這政策讓我非常的困擾">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://codinghotpot.com/img/1__kNdvsRlRMUa0dZtxHNnfFA.jpeg">
+<meta property="og:image" content="https://codinghotpot.com/img/1__FD4vfZvtOW4opAVKQEI2Rg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__YBCF3jyPoazXuebssyVOAA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__zCy60X5TiRXtNCANSS0SUQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__ZJzhmtyFyp4uZgZ__qm82Qg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__YTF__zwe3qytUtdlss1BUWg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__pJv__m4O__9oUEk5ArORAwtQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1____BIaCtqpE62kRgXRyhtQrA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__vF7YKkMPDeXLtMfE8qBolg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__LmPZMWPdn8Vkz__bRgUglIw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__QdtV5vTqUfCPYu6kenRyew.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__ZZj6GcFBSk2yM__RiueAnIQ.png">
+<meta property="article:published_time" content="2024-01-13T12:55:18.760Z">
+<meta property="article:modified_time" content="2024-07-08T12:35:06.333Z">
+<meta property="article:author" content="Joe Chang">
+<meta property="article:tag" content="hexo,">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://codinghotpot.com/img/1__kNdvsRlRMUa0dZtxHNnfFA.jpeg">
+
+
+<link rel="canonical" href="https://codinghotpot.com/posts/4e852fe8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://codinghotpot.com/posts/4e852fe8/","path":"posts/4e852fe8/","title":"從medium到hexo"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>從medium到hexo | Coding Hot Pot</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJM3X3RGKD"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-SJM3X3RGKD","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Coding Hot Pot</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">日新月異的前端技術...學不動了</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%96%8B%E5%A7%8B%E6%90%AC%E9%81%B7%E4%B9%8B%E6%97%85"><span class="nav-number">1.</span> <span class="nav-text">開始搬遷之旅</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E7%B9%BC%E7%BA%8C%E6%9C%83%E5%9C%A8-medium-%E5%AF%AB%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">是否繼續會在 medium 寫作</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Joe Chang"
+      src="/images/oldman.jpg">
+  <p class="site-author-name" itemprop="name">Joe Chang</p>
+  <div class="site-description" itemprop="description">唯有非常努力，才能看起來毫不費力</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">116</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://codinghotpot.com/posts/4e852fe8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/oldman.jpg">
+      <meta itemprop="name" content="Joe Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Hot Pot">
+      <meta itemprop="description" content="唯有非常努力，才能看起來毫不費力">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="從medium到hexo | Coding Hot Pot">
+      <meta itemprop="description" content="近期在medium上面想閱讀別人的文章，偶爾會跳出彈窗要求你成為付費會員才能觀看完整文章，這讓我不禁在思考，是否別人想看我寫的文章也會遇到一樣的問題？畢竟當初我寫文章的初衷有一部分是希望可以和別人分享技術和開發經驗，因此medium這政策讓我非常的困擾">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          從medium到hexo
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2024-01-13 12:55:18" itemprop="dateCreated datePublished" datetime="2024-01-13T12:55:18+00:00">2024-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2024-07-08 12:35:06" itemprop="dateModified" datetime="2024-07-08T12:35:06+00:00">2024-07-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%83%A8%E8%90%BD%E6%A0%BC%E6%90%AC%E9%81%B7/" itemprop="url" rel="index"><span itemprop="name">部落格搬遷</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">近期在medium上面想閱讀別人的文章，偶爾會跳出彈窗要求你成為付費會員才能觀看完整文章，這讓我不禁在思考，是否別人想看我寫的文章也會遇到一樣的問題？畢竟當初我寫文章的初衷有一部分是希望可以和別人分享技術和開發經驗，因此medium這政策讓我非常的困擾</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="/img/1__kNdvsRlRMUa0dZtxHNnfFA.jpeg"></p>
+<p>近期在 medium 上面想閱讀別人的文章，偶爾會跳出彈窗要求你成為付費會員才能觀看完整文章，這讓我不禁在思考，是否別人想看我寫的文章也會遇到一樣的問題？畢竟當初我寫文章的初衷有一部分是希望可以和別人分享技術和開發經驗，因此 medium 這政策讓我非常的困擾</p>
+<p><img src="/img/1__FD4vfZvtOW4opAVKQEI2Rg.png"></p>
+<p>再來就是在 medium 後台查看某些文章的觸及率真的是慘不忍睹但有些又意外的好（？</p>
+<p><img src="/img/1__YBCF3jyPoazXuebssyVOAA.png"></p>
+<p>之前有拜讀過 huli 大大的一篇文章「<a target="_blank" rel="noopener" href="https://hulitw.medium.com/do-you-really-want-to-write-tech-blog-on-medium-3dd25640f26c">在 Medium 上寫技術文章，你確定嗎？</a>」，裡面提到的內容『SEO 的痛點、無法分類、搬家困難等等』確實都是 medium 的缺點</p>
+<p>另外讓我動了想要搬遷的念頭原因之一是搬家困難這點，雖然説 medium 不太可能像無名小站有一天停止營運，但沒有什麼事情是不可能發生的，假設那時的我已經累積了五百多篇文章，要在短時間內 migration 到其他平台絕對會吐血，因此還是要防患於未然，決定把現有的文章都先搬到自架部落格上面</p>
+<p>自架部落格有很多選項，選擇 hexo 的原因有以下</p>
+<ol>
+<li>資源豐富，針對大部分的使用情境都有提供一套解決方案</li>
+<li>遇到問題的話能夠能有比較多的文章作參考</li>
+<li>hexo 已經有不少現成的模板可以拿來套用（我就懶</li>
+</ol>
+<h4 id="開始搬遷之旅"><a href="#開始搬遷之旅" class="headerlink" title="開始搬遷之旅"></a>開始搬遷之旅</h4><blockquote>
+<p>以下的文章內容並不會講解每個設定細節，在文章的結尾會放上我的 hexo repo 供大家做參考</p>
+</blockquote>
+<p>迄今為止要將在 medium 上寫的 114 篇文章搬遷到自架部落格，是一個非常浩大的工程，因為 medium 僅能匯出 html，但 hexo 需要的是 markdown 的格式，手動轉換肯定是不是個好選擇，試了好多轉換工具，最後採用<a target="_blank" rel="noopener" href="https://github.com/gautamdhameja/medium-2-md">medium-2-md</a>這套工具，轉換的過程只能用坎坷兩個字來形容，本來預期三天搞定結果最後搞了兩個禮拜，一開始嘗試轉換一兩個檔案，都沒什麼問題，但一口氣轉十幾個問題就慢慢浮現了</p>
+<ul>
+<li>一次 export 太多檔案，會有零散的幾個檔案 export 失敗</li>
+<li>有些檔案轉換完之後格式跑掉，只能手動修復</li>
+<li>雖然 export 成功了，但是圖片會無法顯示(如下圖)，需要單獨的 export</li>
+</ul>
+<p><img src="/img/1__zCy60X5TiRXtNCANSS0SUQ.png"></p>
+<p>由於批量轉換不是很可靠，只好仰賴人力了！每一篇文章我都要人工做檢查，還要跟 medium 上的文章做格式比對，好不容易才完成這個苦差事</p>
+<p>最痛苦的前置作業結束了，再來就是要安裝 hexo cli</p>
+<p>npm install hexo-cli -g</p>
+<p>這樣就能透過下指令建置 hexo project，然後將所有的 markdown 都放到 source&#x2F;_posts 底下，圖片的話也是放到 source 底下，再用絕對路徑的方式連結即可</p>
+<p>接下來在 github 上面建立 blog 的 repo，repo name 必須設定為 {userName}.github.io</p>
+<p><img src="/img/1__ZJzhmtyFyp4uZgZ__qm82Qg.png"></p>
+<p>並且設定好 ci，這樣每次 push 到 main 分支，就會自動跑相關的建置，方便部署新的文章，新增&#x2F;.github&#x2F;workflows&#x2F;pages.yml</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">name: Pages</span><br><span class="line"></span><br><span class="line">on:</span><br><span class="line">  push:</span><br><span class="line">    branches:</span><br><span class="line">      - main # default branch</span><br><span class="line"></span><br><span class="line">jobs:</span><br><span class="line">  pages:</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line">    permissions:</span><br><span class="line">      contents: write</span><br><span class="line">    steps:</span><br><span class="line">      - uses: actions/checkout@v2</span><br><span class="line">      - name: Use Node.js 18.x</span><br><span class="line">        uses: actions/setup-node@v2</span><br><span class="line">        with:</span><br><span class="line">          node-version: &quot;18&quot;</span><br><span class="line">      - name: Cache NPM dependencies</span><br><span class="line">        uses: actions/cache@v2</span><br><span class="line">        with:</span><br><span class="line">          path: node_modules</span><br><span class="line">          key: $&#123;&#123; runner.OS &#125;&#125;-npm-cache</span><br><span class="line">          restore-keys: |</span><br><span class="line">            $&#123;&#123; runner.OS &#125;&#125;-npm-cache</span><br><span class="line">      - name: Install Dependencies</span><br><span class="line">        run: npm install</span><br><span class="line">      - name: Build</span><br><span class="line">        run: npm run build</span><br><span class="line">      - name: Deploy</span><br><span class="line">        uses: peaceiris/actions-gh-pages@v3</span><br><span class="line">        with:</span><br><span class="line">          github_token: $&#123;&#123; secrets.GITHUB_TOKEN &#125;&#125;</span><br><span class="line">          publish_dir: ./public</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>再來就是挑選主題了，預設的我實在不喜歡，一開始試了幾個比較花俏的主題，看久了眼睛好痛 😆，決定換回樸素的主題  — next theme，在調整主題的時候爬了很多文章發現都是舊版的寫法，不適用於新版的 next theme，所以花了很多時間在研究新版的 next theme 到底該怎麼設定</p>
+<p>👉 hexo next 的設置可以參考<a target="_blank" rel="noopener" href="https://theme-next.js.org/">官方指南</a></p>
+<p><img src="/img/1__YTF__zwe3qytUtdlss1BUWg.png"></p>
+<p>然後為了分類和標籤這個兩個功能，需要手動為每一篇文章加上 tags 和 categories</p>
+<p><img src="/img/1__pJv__m4O__9oUEk5ArORAwtQ.png"></p>
+<p>接下來要在 source 底下新增 categories 和 tags 資料夾，並且放入對應的 index.md</p>
+<p><img src="/img/1____BIaCtqpE62kRgXRyhtQrA.png"></p>
+<p>最後要到＿config.next.yml，next-theme 預設是關閉 tags 和 categories，所以我們需要將 menu 原本註解掉的 tags 和 categories 打開</p>
+<p><img src="/img/1__vF7YKkMPDeXLtMfE8qBolg.png"></p>
+<p>設定完之後，hexo 會生成 tags 和 categories，自己寫過哪些主題就一目瞭然了</p>
+<p><img src="/img/1__LmPZMWPdn8Vkz__bRgUglIw.png"><br><img src="/img/1__QdtV5vTqUfCPYu6kenRyew.png"></p>
+<p>一開始沒打算購買 domain，但自架 blog 感覺還是要有自己的 domain 比較到位（？，最後選擇用 godaddy 購買，操作非常簡單，網頁點一點之後用信用卡付款搞定，買一年期的只花了台幣五百多塊，接下來將買好的網域與 github 做綁定，詳細設定可參考<a target="_blank" rel="noopener" href="https://askie.today/customize-hexo-blog-url-on-github-pages/">這篇</a></p>
+<p>然後就是一些瑣碎的步驟，看個人需求，可做可不做</p>
+<ul>
+<li>設定<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-generator-sitemap">sitemap</a>，以利 google 爬蟲引擎搜索</li>
+<li>設定 google analytics，追蹤瀏覽人次</li>
+<li>新增 hexo-next-<a target="_blank" rel="noopener" href="https://www.google.com/search?sca_esv=595303506&rlz=1C5MACD_enTW1047TW1047&sxsrf=AM9HkKk73VGIXpS_Ssyj2agAcyEIGdadeQ:1704270448989&q=hexo-next-utterance&spell=1&sa=X&ved=2ahUKEwip8NmV5sCDAxWk1zQHHdExDRUQkeECKAB6BAgHEAI">utterance</a>留言評論功能，只要有 github 帳號就能夠留言</li>
+</ul>
+<p><img src="/img/1__ZZj6GcFBSk2yM__RiueAnIQ.png"></p>
+<p>個人本來對於 hexo 的期待是簡單易用，但實際上設定的流程比我想得繁瑣很多，hexo-next theme 官網的文件我覺得不是很友善，常常找不到我要的東西，印象中我只是為了讓我的頭像可以正常顯示就搞超久，怪不得之前看到一篇文章寫說用 hexo 架站需要有強大的「耐心」，然後設定檔沒寫好很容易就 build fail 了，初始設定真的弄的心很累，如果日後有其他更簡單易用的方案，我應該會考慮跳槽吧</p>
+<p>最終產出的成果：<a href="https://codinghotpot.com/">https://codinghotpot.com/</a></p>
+<h4 id="是否繼續會在-medium-寫作"><a href="#是否繼續會在-medium-寫作" class="headerlink" title="是否繼續會在 medium 寫作"></a>是否繼續會在 medium 寫作</h4><p>答案還是肯定的，老實說 medium 在撰寫文章的體驗上還是優於自架部落，目前還是會維持在 medium 上寫文章，然後定期地把文章搬到自架部落格上，也算是算是定期做備份的概念，等之後比較有空再來研究 HexoEditor 要怎麼導入或是讓自己盡快習慣用 markdown 寫作 😆</p>
+<blockquote>
+<p>如果有一天 medium 真的變成會員制才能瀏覽文章，那我就已經有本錢可以說走就走了</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/hexo/" rel="tag"># hexo,</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/10822b69/" rel="prev" title="2023 F2E 鐵人賽心得">
+                  <i class="fa fa-angle-left"></i> 2023 F2E 鐵人賽心得
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  
+  <div class="comments">
+  <script src="https://utteranc.es/client.js" repo="ChangChiao/ChangChiao.github.io" issue-term="pathname" theme="github-dark" crossorigin="anonymous" async></script>
+  </div>
+  
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Joe Chang</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ChangChiao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
