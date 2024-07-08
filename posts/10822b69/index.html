@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"codinghotpot.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="2023因為換工作的緣故，接觸了svelte和angular，為了磨練自己，決定用這兩個我沒那麼熟悉的技術開發，今年的時間比較充裕，一個關卡有10天的開發時間，前幾年都只有一週真的爆肝，因此這次比賽的勞累度我認為會比以往低不少（事後證明我錯了😂">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2023 F2E 鐵人賽心得">
+<meta property="og:url" content="https://codinghotpot.com/posts/10822b69/index.html">
+<meta property="og:site_name" content="Coding Hot Pot">
+<meta property="og:description" content="2023因為換工作的緣故，接觸了svelte和angular，為了磨練自己，決定用這兩個我沒那麼熟悉的技術開發，今年的時間比較充裕，一個關卡有10天的開發時間，前幾年都只有一週真的爆肝，因此這次比賽的勞累度我認為會比以往低不少（事後證明我錯了😂">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://codinghotpot.com/img/1__REo15aTf79DBiRNVkxB1rQ.jpeg">
+<meta property="og:image" content="https://codinghotpot.com/img/1__fIM6W8upAF41ax0fcTLedw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__OBeLHxwWCXX8oc5GeoetBg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__oIJOJR5DAE48xfhMqtdr7w.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__zpt0AzUFwm__c6r9G0tM90w.png">
+<meta property="article:published_time" content="2023-11-30T13:40:25.923Z">
+<meta property="article:modified_time" content="2024-07-08T12:23:14.692Z">
+<meta property="article:author" content="Joe Chang">
+<meta property="article:tag" content="frontend">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://codinghotpot.com/img/1__REo15aTf79DBiRNVkxB1rQ.jpeg">
+
+
+<link rel="canonical" href="https://codinghotpot.com/posts/10822b69/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://codinghotpot.com/posts/10822b69/","path":"posts/10822b69/","title":"2023 F2E 鐵人賽心得"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>2023 F2E 鐵人賽心得 | Coding Hot Pot</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJM3X3RGKD"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-SJM3X3RGKD","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Coding Hot Pot</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">日新月異的前端技術...學不動了</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%97%9C-%E2%80%94-%E7%AB%8B%E6%B3%95%E5%A7%94%E5%93%A1%E7%9A%84%E5%BD%A2%E8%B1%A1%E5%AE%98%E7%B6%B2"><span class="nav-number">1.</span> <span class="nav-text">第一關  —  立法委員的形象官網</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%99%E6%AC%A1%E7%9A%84%E9%96%8B%E7%99%BC%E6%9C%89%E5%85%A9%E5%80%8B%E6%96%B0%E7%9A%84%E5%98%97%E8%A9%A6"><span class="nav-number">2.</span> <span class="nav-text">這次的開發有兩個新的嘗試</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%97%9C-%E2%80%94-%E5%85%A8%E5%8F%B0%E7%B8%BD%E7%B5%B1%E9%96%8B%E7%A5%A8%E5%9C%B0%E5%9C%96"><span class="nav-number">3.</span> <span class="nav-text">第二關  —  全台總統開票地圖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%8C%E8%B3%BD%E5%BF%83%E5%BE%97"><span class="nav-number">4.</span> <span class="nav-text">完賽心得</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QGIS-Reference"><span class="nav-number">5.</span> <span class="nav-text">QGIS Reference</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Joe Chang"
+      src="/images/oldman.jpg">
+  <p class="site-author-name" itemprop="name">Joe Chang</p>
+  <div class="site-description" itemprop="description">唯有非常努力，才能看起來毫不費力</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">115</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">48</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://codinghotpot.com/posts/10822b69/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/oldman.jpg">
+      <meta itemprop="name" content="Joe Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Hot Pot">
+      <meta itemprop="description" content="唯有非常努力，才能看起來毫不費力">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="2023 F2E 鐵人賽心得 | Coding Hot Pot">
+      <meta itemprop="description" content="2023因為換工作的緣故，接觸了svelte和angular，為了磨練自己，決定用這兩個我沒那麼熟悉的技術開發，今年的時間比較充裕，一個關卡有10天的開發時間，前幾年都只有一週真的爆肝，因此這次比賽的勞累度我認為會比以往低不少（事後證明我錯了😂">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2023 F2E 鐵人賽心得
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2023-11-30 13:40:25" itemprop="dateCreated datePublished" datetime="2023-11-30T13:40:25+00:00">2023-11-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2024-07-08 12:23:14" itemprop="dateModified" datetime="2024-07-08T12:23:14+00:00">2024-07-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%90%B5%E4%BA%BA%E8%B3%BD/" itemprop="url" rel="index"><span itemprop="name">鐵人賽</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">2023因為換工作的緣故，接觸了svelte和angular，為了磨練自己，決定用這兩個我沒那麼熟悉的技術開發，今年的時間比較充裕，一個關卡有10天的開發時間，前幾年都只有一週真的爆肝，因此這次比賽的勞累度我認為會比以往低不少（事後證明我錯了😂</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="/img/1__REo15aTf79DBiRNVkxB1rQ.jpeg"></p>
+<p>2023 因為換工作的緣故，接觸了 svelte 和 angular，為了磨練自己，決定用這兩個我沒那麼熟悉的技術開發，今年的時間比較充裕，一個關卡有 10 天的開發時間，前幾年都只有一週真的爆肝，因此這次比賽的勞累度我認為會比以往低不少（事後證明我錯了 😂</p>
+<h4 id="第一關-—-立法委員的形象官網"><a href="#第一關-—-立法委員的形象官網" class="headerlink" title="第一關  —  立法委員的形象官網"></a>第一關  —  立法委員的形象官網</h4><p>使用技術：svelteKit + tailwindcss + GSAP</p>
+<p>這關不難，就是考驗切版功力，好久沒有出現這麼親民的關卡了(?，剛好很久沒有切版可以溫習一下，用 tailwindcss 開發就是舒服，config 設定好，切版咻咻咻一下就完成了，即便我已經快一年都沒碰 tailwindcss，靠 vscode 的 tailwindcss IntelliSense 的語法提示還是很快就找回手感了，tailwindcss 切版真的快，但是如果有程式碼潔癖的人看到那一大串的 css 應該有點焦慮</p>
+<h4 id="這次的開發有兩個新的嘗試"><a href="#這次的開發有兩個新的嘗試" class="headerlink" title="這次的開發有兩個新的嘗試"></a>這次的開發有兩個新的嘗試</h4><ol>
+<li>用 css 寫數字跳動效果，不禁讚嘆 css 真的越來越強大了，連數字跳動的效果都能夠實現，有興趣的可以看看這個<a target="_blank" rel="noopener" href="https://codepen.io/CarterLi/pen/NWNJvPE">codepen</a>的實作細節，感嘆自己已經快追不上 css 的腳步了</li>
+<li>使用原生的 html dialog element 寫彈窗，不得不說還蠻方便的，就不需要自己造輪子，相當省事，雖然彈窗的彈出效果生硬了一點，這部分應該是可以調整，但我就沒有深入研究了</li>
+</ol>
+<p>第一次用 svelte 寫 side project，不得不說 svelte 寫起來真的很簡潔，比 vue 還簡潔，個人覺得學習曲線比 vue 還低，可以說是框架的明日之星，但也因為 svelte 很年輕，所以坑自然也是不少，歡迎大家有空一起來踩坑 😂 然後也嘗試使用 svelte kit 開發（類似 next js 的 SSR framework），但因為 server side rendering 的緣故，遇到不少問題，搞了有點久還好最後都有解決，在 SSR 裡面處理 windows 物件都要特別小心，如果執行環境不是 browser 直接噴錯</p>
+<p>最終成品：<a target="_blank" rel="noopener" href="https://election-official-website.vercel.app/">喵立翰 立委競選官網</a></p>
+<h4 id="第二關-—-全台總統開票地圖"><a href="#第二關-—-全台總統開票地圖" class="headerlink" title="第二關  —  全台總統開票地圖"></a>第二關  —  全台總統開票地圖</h4><p>nrwl nx + angular + material + d3.js</p>
+<p>剛好遇到 angular 出 17 版，就決定用最新最潮的版本，ngIf、ngFor 等語法改版後不得不說真的跟 svelte 的語法好像 😂，但我自己是蠻喜歡的啦，在效能上也有明顯的提升，關於 angular 17 有那些更新可以參考<a target="_blank" rel="noopener" href="https://blog.angular.io/introducing-angular-v17-4d7033312e4b">這篇文章</a></p>
+<p>不得不說專案初始的一些設定就花了我不少的時間，作為一個 angular 初心者， 不知道該怎麼修改 angular material 的 default theme，不知道可以在哪裡初始化資料，真的是一萬個不知道，就只能靠自己慢慢摸索了</p>
+<p>要繪製台灣開票地圖，首先要先有圖資，先到<a target="_blank" rel="noopener" href="https://www.tgos.tw/tgos/Index">內政地理圖資服務中心</a>下載縣市、鄉鎮、村里的圖資，把 shp 檔案下來再丟到<a target="_blank" rel="noopener" href="https://mapshaper.org/">mapshaper</a>上面轉成 TopoJSON 就搞定了，最頭痛的還是開票資料，這部分的資料沒有 json 可以下載只有 csv，異想天開想說能不能用 csv 轉 json 直接拿來用，結果轉換出來的資料格式跟我期望的差非常多，只好採用土炮方式，抓中選會開票 api 的資料，然後寫個 function 把圖資和開票兩邊的資料 merge，縣市還好，鄉鎮還行，村里直接讓我的 macbook pro m1 當機，一個 json 檔案 57 萬行真的不是開玩笑，想不到 json 的殺傷力這麼大（？</p>
+<p>接下來要用 d3 畫出台灣的地圖，不得不說 d3 真的是大魔王，我覺得官方文件沒有寫得很好上手，爬文又會找到很久以前的資料，殊不知用法早就不一樣了，花了點時間看了這本書(<a target="_blank" rel="noopener" href="https://www.books.com.tw/products/0010958120">D3.js 資料視覺化實用攻略</a>)惡補一下，總算有比較理解 d3 的語法了</p>
+<p>先來釐清開票地圖想要基本功能有：</p>
+<ol>
+<li>畫出台灣的各個行政區</li>
+<li>行政區會依照得票率顯示對應顏色的層級，得票率越高，區塊顏色越深</li>
+<li>可以點按行政區，地圖會跟著 zoom in，層級為縣市 -&gt; 鄉鎮 -&gt;村里</li>
+<li>能夠按左上角的返回按鈕返回到上一個層級</li>
+</ol>
+<p>以上需求感覺很簡單，但卻寫得我暈頭轉向，不是不小心清空所有的區域不然就是重複畫線，而且點擊的順序不一樣，會觸發的 bug 也不一樣 😂，但寫著寫的就發現一件事情</p>
+<blockquote>
+<p>現有的圖資存在兩個問題</p>
+</blockquote>
+<ol>
+<li>點到高雄市就會讓地圖的整個視角拉超遠</li>
+</ol>
+<p><img src="/img/1__fIM6W8upAF41ax0fcTLedw.png"></p>
+<p>一開始以為是 zoom function 沒有寫好，但很詭異的是就高雄市有問題，後來發現罪魁禍首是那個離台灣有點遙遠的東沙群島，在畫面上小到幾乎看不到，因為 zoom 會把視角拉近到可以看到完整的縣市區域，就會連帶地把那些小島的顯示範圍也包含進來，因此就會出現一種很詭異的現象，明明我要從全台的視角切換到高雄市的視角反而變得超遠，其實這樣的顯示結果是正確的，只是不符合我們的預期，解決方式就是把那個小島直接刪掉，基隆的右上角也需要處理一下</p>
+<p>2. 金門和馬祖的位置有點尷尬</p>
+<p><img src="/img/1__OBeLHxwWCXX8oc5GeoetBg.png"></p>
+<p>由於金門和馬祖都離台灣本島有點距離，如果想要完整看到離島和本島的話視角一定會拉遠，變成台灣本島特別小，但我的期望是希望本島可以盡可能的放滿整個畫面，先採取暴力一點的作法，scale 設定大一點，縮放到以本島看的清楚為主，金門馬祖看不到就算了（喂，但想想這做法也不是很理想，結果如下</p>
+<p><img src="/img/1__oIJOJR5DAE48xfhMqtdr7w.png"></p>
+<p>觀察一下天下雜誌和關鍵評論的地圖作法，都是把金門和馬祖挪到澎湖的正上方，這樣台灣本島既不會太小也能夠看到金門，真的是一石二鳥之計，本來還期待政府有沒有提供這種特規版本的圖資，但結果是沒有，想不到居然還是逃不過要編輯圖資這一步，爬文看到蠻多人用 QGIS 這個應用程式編輯的，只好乖乖下載 QGIS，開始學習怎麼使用 QGIS，花了一點時間看 youtube 教學，學習要怎麼搬移區域，怎麼刪除不要的區域，怎麼輸出等等（文章最後有影片教學連結，然後再把編輯完的結果 export 成 geojson，再丟到 mapshaper 轉成 TopoJSON，過程當然也是一波三折，轉換出來的圖資跟自己預期的不一樣就只能重做，做完縣市還有鄉鎮等著你，做完鄉鎮還有村里等著你… 果不其然在編輯的村里的時候瘋狂轉彩球，還好我的電腦有扛得住，超怕死當要再來一次</p>
+<p><img src="/img/1__zpt0AzUFwm__c6r9G0tM90w.png"></p>
+<p>最終成品：<a target="_blank" rel="noopener" href="https://president-invoice.vercel.app/">2020 總統大選開票地圖</a></p>
+<h4 id="完賽心得"><a href="#完賽心得" class="headerlink" title="完賽心得"></a>完賽心得</h4><p>比賽期間，我推掉所有飯局，請大家不要約我出去玩，我就是要當個無情的比賽機器 😂，假日和平日下班後的時間全部投入在比賽，有時候寫扣寫到忘我回過神來已經是午夜時分了，不得不說真的很累，但我還蠻享受那個過程的，雖然開發的過程中挫折滿滿，為什麼地圖畫不出來？為什麼視角會大偏移？為什麽我更新資料畫面沒有重新渲染？諸如此類的問題一大堆，但做出來真的很有成就感，也謝謝自己願意堅持到最後，12 月終於可以回歸正常的生活了(?</p>
+<h4 id="QGIS-Reference"><a href="#QGIS-Reference" class="headerlink" title="QGIS Reference"></a>QGIS Reference</h4><ul>
+<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=oUen8qWUzxY">QGIS Part6 - How to move vector features</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=QZvVxPlP9NE">how to Export or Save selected from a vector layer in QGIS
+</a></p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/142f5825/" rel="prev" title="重構-改善既有的程式設計feat.實戰經驗">
+                  <i class="fa fa-angle-left"></i> 重構-改善既有的程式設計feat.實戰經驗
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  
+  <div class="comments">
+  <script src="https://utteranc.es/client.js" repo="ChangChiao/ChangChiao.github.io" issue-term="pathname" theme="github-dark" crossorigin="anonymous" async></script>
+  </div>
+  
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Joe Chang</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ChangChiao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

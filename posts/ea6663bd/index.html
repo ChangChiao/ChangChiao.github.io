@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.0.0">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
@@ -42,7 +42,7 @@
 <meta property="og:image" content="https://codinghotpot.com/img/1__IAZn3l7rWBRLt2yJlg7oXA.png">
 <meta property="og:image" content="https://codinghotpot.com/img/1__ND6eVizGv__5pxNoYtBVc5g.png">
 <meta property="article:published_time" content="2023-07-22T10:52:17.110Z">
-<meta property="article:modified_time" content="2023-12-01T02:15:57.070Z">
+<meta property="article:modified_time" content="2024-07-08T12:23:14.692Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="playwright">
 <meta name="twitter:card" content="summary">
@@ -147,13 +147,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">114</span>
+          <span class="site-state-item-count">115</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -221,7 +221,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2023-12-01 02:15:57" itemprop="dateModified" datetime="2023-12-01T02:15:57+00:00">2023-12-01</time>
+      <time title="修改時間：2024-07-08 12:23:14" itemprop="dateModified" datetime="2024-07-08T12:23:14+00:00">2024-07-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -317,7 +317,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p playwright/.auth</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;\\nplaywright/.auth&quot;</span> &gt;&gt; .gitignore</span><br></pre></td></tr></table></figure>
 
 <h4 id="step-2"><a href="#step-2" class="headerlink" title="step 2"></a>step 2</h4><p>建立 auth.setup.ts，撰寫登入的步驟</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; test <span class="keyword">as</span> setup &#125; <span class="keyword">from</span> <span class="string">&quot;@playwright/test&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//指定 authFile path</span></span><br><span class="line"><span class="keyword">const</span> authFile = <span class="string">&quot;playwright/.auth/user.json&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_">setup</span>(<span class="string">&quot;authenticate&quot;</span>, <span class="keyword">async</span> (&#123; page &#125;) =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">goto</span>(<span class="string">&quot;/&quot;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">locator</span>(<span class="string">&#x27;input[name=&quot;account&quot;]&#x27;</span>).<span class="title function_">click</span>();</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">locator</span>(<span class="string">&#x27;input[name=&quot;account&quot;]&#x27;</span>).<span class="title function_">fill</span>(<span class="string">&quot;admin&quot;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">locator</span>(<span class="string">&#x27;input[name=&quot;account&quot;]&#x27;</span>).<span class="title function_">press</span>(<span class="string">&quot;Tab&quot;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">locator</span>(<span class="string">&#x27;input[name=&quot;password&quot;]&#x27;</span>).<span class="title function_">fill</span>(<span class="string">&quot;123456&quot;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">getByRole</span>(<span class="string">&quot;button&quot;</span>, &#123; <span class="attr">name</span>: <span class="string">&quot;submit&quot;</span> &#125;).<span class="title function_">click</span>();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">waitForURL</span>(<span class="string">&quot;/member&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//把拿到的 token 存放到 authFile</span></span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">context</span>().<span class="title function_">storageState</span>(&#123; <span class="attr">path</span>: authFile &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; test <span class="keyword">as</span> setup &#125; <span class="keyword">from</span> <span class="string">&quot;@playwright/test&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//指定 authFile path</span></span><br><span class="line"><span class="keyword">const</span> authFile = <span class="string">&quot;playwright/.auth/user.json&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_">setup</span>(<span class="string">&quot;authenticate&quot;</span>, <span class="title function_">async</span> (&#123; page &#125;) =&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">goto</span>(<span class="string">&quot;/&quot;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">locator</span>(<span class="string">&#x27;input[name=&quot;account&quot;]&#x27;</span>).<span class="title function_">click</span>();</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">locator</span>(<span class="string">&#x27;input[name=&quot;account&quot;]&#x27;</span>).<span class="title function_">fill</span>(<span class="string">&quot;admin&quot;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">locator</span>(<span class="string">&#x27;input[name=&quot;account&quot;]&#x27;</span>).<span class="title function_">press</span>(<span class="string">&quot;Tab&quot;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">locator</span>(<span class="string">&#x27;input[name=&quot;password&quot;]&#x27;</span>).<span class="title function_">fill</span>(<span class="string">&quot;123456&quot;</span>);</span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">getByRole</span>(<span class="string">&quot;button&quot;</span>, &#123; <span class="attr">name</span>: <span class="string">&quot;submit&quot;</span> &#125;).<span class="title function_">click</span>();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">waitForURL</span>(<span class="string">&quot;/member&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//把拿到的 token 存放到 authFile</span></span><br><span class="line">  <span class="keyword">await</span> page.<span class="title function_">context</span>().<span class="title function_">storageState</span>(&#123; <span class="attr">path</span>: authFile &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <h4 id="step-3"><a href="#step-3" class="headerlink" title="step 3"></a>step 3</h4><p>打開 playwright.config.ts 建立一個新的 project setup，記得新增 storageState，並且將要測試的瀏覽器 dependencies 設定為 setup，這樣在跑測試之前都會先執行登入授權的動作，登入成功後，所有的 test case 都可以去 playwright&#x2F;.auth&#x2F;user.json 拿資料</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">projects</span>: [</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;setup&quot;</span>, <span class="attr">testMatch</span>: <span class="regexp">/.*\.setup\.ts/</span> &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;chromium&quot;</span>,</span><br><span class="line">    <span class="attr">use</span>: &#123;</span><br><span class="line">      ...devices[<span class="string">&quot;Desktop Chrome&quot;</span>],</span><br><span class="line">      <span class="attr">storageState</span>: <span class="string">&quot;playwright/.auth/user.json&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">dependencies</span>: [<span class="string">&quot;setup&quot;</span>],</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
@@ -376,7 +376,7 @@
 
   <div class="copyright">
     &copy; 
-    <span itemprop="copyrightYear">2023</span>
+    <span itemprop="copyrightYear">2024</span>
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>
