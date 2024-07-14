@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"codinghotpot.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="想必大家近期在開發的時候都會搭配chatGPT吧?許多瑣碎的工作都能交給它，可以說是工程師的最佳幫手，今天想要分享我都會使用chatGPT來做哪些事情？以及我認為ChatGPT還有待加強的地方有哪些">
+<meta property="og:type" content="article">
+<meta property="og:title" content="讓ChatGPT來當你的開發助手">
+<meta property="og:url" content="https://codinghotpot.com/posts/2a594c40/index.html">
+<meta property="og:site_name" content="Coding Hot Pot">
+<meta property="og:description" content="想必大家近期在開發的時候都會搭配chatGPT吧?許多瑣碎的工作都能交給它，可以說是工程師的最佳幫手，今天想要分享我都會使用chatGPT來做哪些事情？以及我認為ChatGPT還有待加強的地方有哪些">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://codinghotpot.com/img/1__qtPi6W6Ck0__tOwBXXfTi0g.jpeg">
+<meta property="og:image" content="https://codinghotpot.com/img/1__BHdRvEkvFyR__5sTTclgm__Q.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1____RfsM3u5BBHuZnrkDOq7VA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__aLxxM0US7eOq3tvhlstFAw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__ey0fwj__eOus9QqvJH6EvvQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__GukhZqejlrQQauYtloXFJQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1____kI8lBK6fxLsKBHH7VaU7A.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__yJRsgzOS23U1N0ogmbtnDg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__4SEFMz7JZJvPqIlfDy9XLw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__F11SnztxBqKbV4urhW0ujw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__lB5fVlbe4aYaQ1zpFA1Nsw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__rrZK055QsLJGzpTYORm3__A.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__zUNSmcxjlvWK__JO4__bCd1Q.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__z__JeXtg5J5nd4MynzYp34Q.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__bb1FFClBzu1U7JStnnBhMA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__tgp__F0PqGYe0awWc90BbAw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__d567dACm__AC__VW3mCaUUJA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__z__iumYDAVjsDYEUBWenGiA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__nMKdCrRjktInNqRfZExd8w.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__djlszyFBpp78efjJkeXtAQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__hSiR0gCzxGb5A4AH5vOHiA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__fKkKjrSnp4etd8Yu__Y0CEA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__fbVUOk6cSqDoOxW1WDbx1g.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__G2QifwlG3vdUSN66__NySPA.png">
+<meta property="article:published_time" content="2024-02-03T03:09:31.868Z">
+<meta property="article:modified_time" content="2024-07-14T08:56:44.054Z">
+<meta property="article:author" content="Joe Chang">
+<meta property="article:tag" content="frontend">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://codinghotpot.com/img/1__qtPi6W6Ck0__tOwBXXfTi0g.jpeg">
+
+
+<link rel="canonical" href="https://codinghotpot.com/posts/2a594c40/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://codinghotpot.com/posts/2a594c40/","path":"posts/2a594c40/","title":"讓ChatGPT來當你的開發助手"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>讓ChatGPT來當你的開發助手 | Coding Hot Pot</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJM3X3RGKD"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-SJM3X3RGKD","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Coding Hot Pot</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">日新月異的前端技術...學不動了</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="nav-number">1.</span> <span class="nav-text">使用技巧</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B8%85%E6%A5%9A%E6%98%8E%E6%9A%B8%E7%9A%84%E6%8F%90%E5%95%8F"><span class="nav-number">2.</span> <span class="nav-text">清楚明暸的提問</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%83%B3%E7%9F%A5%E9%81%93%E4%B8%8D%E5%90%8C%E8%A7%80%E9%BB%9E%E7%9A%84%E7%AD%94%E6%A1%88"><span class="nav-number">3.</span> <span class="nav-text">想知道不同觀點的答案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%95%B6-ChatGPT-%E7%9A%84%E5%9B%9E%E7%AD%94%E5%A4%AA%E9%81%8E%E8%89%B1%E6%BE%80%E9%9B%A3%E6%87%82"><span class="nav-number">4.</span> <span class="nav-text">當 ChatGPT 的回答太過艱澀難懂..</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ChatGPT-%E8%83%BD%E5%81%9A%E4%BB%80%E9%BA%BC%E4%BA%8B%EF%BC%9F"><span class="nav-number">5.</span> <span class="nav-text">ChatGPT 能做什麼事？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%BF%BB%E8%AD%AF%E6%A9%9F"><span class="nav-number">6.</span> <span class="nav-text">程式語言翻譯機</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E6%A7%8B"><span class="nav-number">7.</span> <span class="nav-text">重構</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%9F%A5%E8%A9%A2"><span class="nav-number">8.</span> <span class="nav-text">指令查詢</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Debug"><span class="nav-number">9.</span> <span class="nav-text">Debug</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%B8%E7%BF%92%E4%B8%80%E9%96%80%E6%96%B0%E6%8A%80%E8%A1%93%E7%9A%84%E5%A5%BD%E5%B9%AB%E6%89%8B"><span class="nav-number">10.</span> <span class="nav-text">學習一門新技術的好幫手</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E9%87%8B%E7%A8%8B%E5%BC%8F%E7%A2%BC"><span class="nav-number">11.</span> <span class="nav-text">解釋程式碼</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BF%BB%E8%AD%AF%E6%96%87%E7%AB%A0"><span class="nav-number">12.</span> <span class="nav-text">翻譯文章</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B6%AD%E5%9F%BA%E7%99%BE%E7%A7%91"><span class="nav-number">13.</span> <span class="nav-text">維基百科</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9B%9C%E4%BA%8B%E5%B0%8F%E5%B9%AB%E6%89%8B"><span class="nav-number">14.</span> <span class="nav-text">雜事小幫手</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%A2%E8%A9%A6%E5%B0%8F%E5%B9%AB%E6%89%8B"><span class="nav-number">15.</span> <span class="nav-text">面試小幫手</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ChatGPT-%E6%9C%89%E5%93%AA%E4%BA%9B%E7%BC%BA%E9%BB%9E"><span class="nav-number">16.</span> <span class="nav-text">ChatGPT 有哪些缺點</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B5%90%E8%AA%9E"><span class="nav-number">17.</span> <span class="nav-text">結語</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Joe Chang"
+      src="/images/oldman.jpg">
+  <p class="site-author-name" itemprop="name">Joe Chang</p>
+  <div class="site-description" itemprop="description">唯有非常努力，才能看起來毫不費力</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">120</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://codinghotpot.com/posts/2a594c40/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/oldman.jpg">
+      <meta itemprop="name" content="Joe Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Hot Pot">
+      <meta itemprop="description" content="唯有非常努力，才能看起來毫不費力">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="讓ChatGPT來當你的開發助手 | Coding Hot Pot">
+      <meta itemprop="description" content="想必大家近期在開發的時候都會搭配chatGPT吧?許多瑣碎的工作都能交給它，可以說是工程師的最佳幫手，今天想要分享我都會使用chatGPT來做哪些事情？以及我認為ChatGPT還有待加強的地方有哪些">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          讓ChatGPT來當你的開發助手
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2024-02-03 03:09:31" itemprop="dateCreated datePublished" datetime="2024-02-03T03:09:31+00:00">2024-02-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2024-07-14 08:56:44" itemprop="dateModified" datetime="2024-07-14T08:56:44+00:00">2024-07-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">想必大家近期在開發的時候都會搭配chatGPT吧?許多瑣碎的工作都能交給它，可以說是工程師的最佳幫手，今天想要分享我都會使用chatGPT來做哪些事情？以及我認為ChatGPT還有待加強的地方有哪些</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="/img/1__qtPi6W6Ck0__tOwBXXfTi0g.jpeg"></p>
+<p>想必大家近期在開發的時候都會搭配 chatGPT 吧?許多瑣碎的工作都能交給它，可以說是工程師的最佳幫手，今天想要分享我都會使用 chatGPT 來做哪些事情？以及我認為 ChatGPT 還有待加強的地方有哪些</p>
+<h4 id="使用技巧"><a href="#使用技巧" class="headerlink" title="使用技巧"></a>使用技巧</h4><p>先註冊一個帳號，註冊成功後點選畫面左下角的大頭貼，選擇自訂指令</p>
+<p><img src="/img/1__BHdRvEkvFyR__5sTTclgm__Q.png"></p>
+<p>這邊有點像是告訴 ChatGPT 你的偏好是什麼，像是我詢問程式類的問題，ChatGPT 預設都會用 python 回應我（暗示 python 正夯？），這時我就必須要多下一個指令  — 「請用 javaScript 實作…」，假設有設定自定指令，ChatGPT 就能預設使用 javaScript 回答了，再來就是很常看到答案裡夾雜的簡體中文，如果希望 ChatGPT 能以繁體中文回答也能在這邊一併做設定</p>
+<p><img src="/img/1____RfsM3u5BBHuZnrkDOq7VA.png"></p>
+<h4 id="清楚明暸的提問"><a href="#清楚明暸的提問" class="headerlink" title="清楚明暸的提問"></a>清楚明暸的提問</h4><p>描述的越清晰，生成的回答就會更加精準</p>
+<p>👎 不好的提問：請幫我寫一個生成隨機亂數的 function</p>
+<p>👍 好的提問：請用 python 幫我寫一個生成隨機亂數的 function，範圍是 1–100</p>
+<h4 id="想知道不同觀點的答案"><a href="#想知道不同觀點的答案" class="headerlink" title="想知道不同觀點的答案"></a>想知道不同觀點的答案</h4><p>可以請 chatGPT 角色扮演，回答的內容會根據角色的背景不同有所差異，下面是一般的提問</p>
+<p><img src="/img/1__aLxxM0US7eOq3tvhlstFAw.png"></p>
+<p>請 chatGPT 扮演十年經驗的前端，會發現回答的內容比較偏向「長期的發展目標」，還蠻有趣的</p>
+<p><img src="/img/1__ey0fwj__eOus9QqvJH6EvvQ.png"></p>
+<h4 id="當-ChatGPT-的回答太過艱澀難懂"><a href="#當-ChatGPT-的回答太過艱澀難懂" class="headerlink" title="當 ChatGPT 的回答太過艱澀難懂.."></a>當 ChatGPT 的回答太過艱澀難懂..</h4><p>請 ChatGPT 來解釋 javaScript 中比較抽象的閉包是什麼？如果是 javaScript 的初學者肯定會對以下的說明一知半解</p>
+<p><img src="/img/1__GukhZqejlrQQauYtloXFJQ.png"></p>
+<p>覺得 ChatGPT 回答的問題過於艱澀，可以改用以下的問法</p>
+<p>「如果我是五歲小孩，你會怎麼跟我解釋 xxx」</p>
+<p><img src="/img/1____kI8lBK6fxLsKBHH7VaU7A.png"></p>
+<p>五歲小孩的版本 ChatGPT 幾乎都會用玩具來做舉例，雖然有人可能覺得更加抽象 😂</p>
+<h4 id="ChatGPT-能做什麼事？"><a href="#ChatGPT-能做什麼事？" class="headerlink" title="ChatGPT 能做什麼事？"></a>ChatGPT 能做什麼事？</h4><h4 id="程式語言翻譯機"><a href="#程式語言翻譯機" class="headerlink" title="程式語言翻譯機"></a>程式語言翻譯機</h4><p>請 ChatGPT 重構程式碼，像是把以前用 jQuery 的 code 翻成 Javascript，一下子就寫好了，如果想把原本是 Javascript 寫的程式碼轉換成其他語言 ex. PHP、Java 也沒問題，當然本身也必須對轉換後的語言有一定的基礎，才有辦法識別出這段轉換過的程式碼是不是有問題</p>
+<p><img src="/img/1__yJRsgzOS23U1N0ogmbtnDg.png"></p>
+<p>假設在做框架升級，要把 React class component 翻成 functional component 也是綽綽有餘的，還會貼心的提醒你 component 命名的問題</p>
+<p><img src="/img/1__4SEFMz7JZJvPqIlfDy9XLw.png"></p>
+<h4 id="重構"><a href="#重構" class="headerlink" title="重構"></a>重構</h4><p>以經典的 Fizz Buzz 面試題來舉例，題目的敘述如下</p>
+<p>有一個 function 會跑迴圈判斷 1~100 的數字，並按照以下規則進行輸出：</p>
+<ol>
+<li>如果數字是 3 的倍數，輸出”Fizz”。</li>
+<li>如果數字是 5 的倍數，輸出”Buzz”。</li>
+<li>如果數字同時是 3 和 5 的倍數，輸出”FizzBuzz”。</li>
+<li>如果以上條件都不滿足，則輸出該數字本身。</li>
+</ol>
+<p>相信很多人一開始都是這樣寫</p>
+<p><img src="/img/1__F11SnztxBqKbV4urhW0ujw.png"></p>
+<p>我們可以請 ChatGPT 幫我們重構成可讀性更高的版本</p>
+<p><img src="/img/1__lB5fVlbe4aYaQ1zpFA1Nsw.png"></p>
+<p>不過，在工作實務上想要全部靠 chatGPT 重構是不可行的，它沒辦法知道整個 codebase，所以重構出來 code 無法滿足我們的需求，請它重構單一個 function 是比較合適的，像是有些 utils function 我覺得自己寫的不夠漂亮，就會想看看 chatGPT 會怎麼寫</p>
+<h4 id="指令查詢"><a href="#指令查詢" class="headerlink" title="指令查詢"></a>指令查詢</h4><p>年紀大了記性就變得越來越差了，很多指令都記不住，像是我想要砍掉 8080 port 的 process，這時候就可以問 chatGPT 了</p>
+<p><img src="/img/1__rrZK055QsLJGzpTYORm3__A.png"></p>
+<h4 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h4><p>相信大多數人會使用 ChatGPT 來除錯，像是餵 dev tools 的錯誤訊息給它，詢問原因，或是 function 的 output 不如預期，請 ChatGPT debug</p>
+<p>而我個人最常使用 ChatGPT 的場景是，這個 bug 是我從來沒遇過的，而且所有的除錯方式都試過了，但依然無法定位問題才會詢問 ChatGPT(走投無路的概念</p>
+<p><img src="/img/1__zUNSmcxjlvWK__JO4__bCd1Q.png"></p>
+<p>最後 ChatGPT 一共列了四個可能的原因給我，但有趣的是我最後找到的 bug 原因並不在這四個其中，其實像這樣的情況其實佔了一半左右，ChatGPT 給的 bug 成因都沒有命中，但確實有給我一些靈感，讓我知道能往哪幾個方向去除錯，也是有所幫助</p>
+<h4 id="學習一門新技術的好幫手"><a href="#學習一門新技術的好幫手" class="headerlink" title="學習一門新技術的好幫手"></a>學習一門新技術的好幫手</h4><p>像是最近我想學習 CI CD，ChatGPT 可以很快的幫我生成一段 CI CD yml，並且詳細的解釋給我聽，讓我能夠快速掌握部分知識點，雖然說這個 yml 直接貼到 Github Action 的話根本不能運作 😂，接下來就是我自己的課題了，俗話說的好：『師父領進門，修行在個人』，ChatGPT 僅能提供脈絡，剩下的得靠自己鑽研</p>
+<p><img src="/img/1__z__JeXtg5J5nd4MynzYp34Q.png"></p>
+<h4 id="解釋程式碼"><a href="#解釋程式碼" class="headerlink" title="解釋程式碼"></a>解釋程式碼</h4><p>假設有一段 code 抽象到你完全看不懂，也可以試著餵給 ChatGPT 試試 ，請他解釋給你聽</p>
+<p><img src="/img/1__bb1FFClBzu1U7JStnnBhMA.png"></p>
+<h4 id="翻譯文章"><a href="#翻譯文章" class="headerlink" title="翻譯文章"></a>翻譯文章</h4><p>雖然說 ChatGPT 的英文翻譯已經比 google 好了，但還是覺得翻成中文，辭不達意，期望之後 ChatGPT 的翻譯能夠更加的口語化</p>
+<p><img src="/img/1__tgp__F0PqGYe0awWc90BbAw.png"></p>
+<h4 id="維基百科"><a href="#維基百科" class="headerlink" title="維基百科"></a>維基百科</h4><p>我很少會用 ChatGPT 查專有名詞，除非我能找到的資料太少或是這個名詞相當艱澀難懂，才會求助於 ChatGPT</p>
+<p><img src="/img/1__d567dACm__AC__VW3mCaUUJA.png"></p>
+<h4 id="雜事小幫手"><a href="#雜事小幫手" class="headerlink" title="雜事小幫手"></a>雜事小幫手</h4><ul>
+<li>翻譯 i18n，如果翻譯內容沒有專有名詞的話，翻得還算 ok</li>
+</ul>
+<p><img src="/img/1__z__iumYDAVjsDYEUBWenGiA.png"></p>
+<ul>
+<li>亂數生成假資料</li>
+</ul>
+<p><img src="/img/1__nMKdCrRjktInNqRfZExd8w.png"></p>
+<ul>
+<li>生成正規表達式</li>
+</ul>
+<p><img src="/img/1__djlszyFBpp78efjJkeXtAQ.png"></p>
+<ul>
+<li>寫一些轉換資料格式的 help function</li>
+</ul>
+<p><img src="/img/1__hSiR0gCzxGb5A4AH5vOHiA.png"></p>
+<p>(族繁不及備載…</p>
+<h4 id="面試小幫手"><a href="#面試小幫手" class="headerlink" title="面試小幫手"></a>面試小幫手</h4><p>先描述你要面試的職位，ChatGPT 就能協助出題，這些問題我在面試當中還真的有被問過！</p>
+<p><img src="/img/1__fKkKjrSnp4etd8Yu__Y0CEA.png"></p>
+<p>如果覺得自己的弱項是行為問題的話，也可以這麼問</p>
+<p><img src="/img/1__fbVUOk6cSqDoOxW1WDbx1g.png"></p>
+<h4 id="ChatGPT-有哪些缺點"><a href="#ChatGPT-有哪些缺點" class="headerlink" title="ChatGPT 有哪些缺點"></a>ChatGPT 有哪些缺點</h4><ol>
+<li>正確率不是百分之百，ChatGPT 給的答案務必要親自驗證過，我自己曾經測試請 ChatGPT 寫幾個 helper function，看起來寫得有聲有色，但實際 output 出來的結果根本就是錯誤的</li>
+<li>ChatGPT3.5 的資料庫只到 2021 9 月，因此給的回覆有時候已經是過時的了，像是有些框架或工具迭代的速度很快，api 每年都有變動，這時候單仰賴 ChatGPT 給的資料就行不通了，不過這也有解法，只要付費升級到 ChatGPT4 就可以了，4 支援瀏覽器查詢功能，應該能給予最新版本的答案，但因為我也沒用過 ChatGPT4，不確定查詢到的結果正確率為何，若有朋友有使用過的經驗，也歡迎留言分享</li>
+<li>範例程式碼有瑕疵，像是先前有請 ChatGPT 寫一個 factory design patten 的範例，但實際上發現有一個 a 變數宣告了卻從頭沒用，詢問它 a 變數的用途為何？它還很誠懇的道歉 😆，馬上修正一個新的版本給我</li>
+</ol>
+<blockquote>
+<p>因此對於 chatGPT 的答案別全盤接受，ㄧ定要抱有存疑</p>
+</blockquote>
+<p><img src="/img/1__G2QifwlG3vdUSN66__NySPA.png"></p>
+<h4 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h4><p>對於初階工程師來說，當自己沒有前輩或是同儕可以求救的狀況下，ChatGPT 可以說是一根救命稻草，大大小小的問題，都能求助於 ChatGPT，但也會發現一個殘酷的事實，ChatGPT 只能解決你部分的問題，有些問題還是必須要仰賴自己，但 ChatGPT 確實可以讓你速成的有一些結果的產出</p>
+<p>對於中高階的工程師來說，ChatGPT 就是你的助理，可以請他做一些雜事，能夠提升工作效率，當然有人可能會有疑慮說，這樣會不會過度仰賴 ChatGPT，而造成自身能力下降？我覺得是不會，好比說工程師是水電師傅的角色好了，ChatGPT 就是工具箱的角色，會提供各式各樣的工具，水電師傅必須判斷哪個場景會用到的工具是哪些，也必須判斷出工具本身有沒有沒問題，因此對於 ChatGPT 的使用，我個人是開放的心態，擁抱 AI，讓自己的程式開發擁有更多的可能性</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/4e852fe8/" rel="prev" title="從medium到hexo">
+                  <i class="fa fa-angle-left"></i> 從medium到hexo
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/c3129066/" rel="next" title="websocket ping pong機制">
+                  websocket ping pong機制 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  
+  <div class="comments">
+  <script src="https://utteranc.es/client.js" repo="ChangChiao/ChangChiao.github.io" issue-term="pathname" theme="github-dark" crossorigin="anonymous" async></script>
+  </div>
+  
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Joe Chang</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ChangChiao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

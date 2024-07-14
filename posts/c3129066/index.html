@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"codinghotpot.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="近期在工作上碰到一個產品需求是前後端必須保持長時間的連線，且當前端斷線的時候，後端也必須馬上知道前端斷線並且清除當前的連線，看了許多篇技術文章，發現不少人採用了websocket ping pong的方式來實作，websocket ping pong又被稱為websocket…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="websocket ping pong機制">
+<meta property="og:url" content="https://codinghotpot.com/posts/c3129066/index.html">
+<meta property="og:site_name" content="Coding Hot Pot">
+<meta property="og:description" content="近期在工作上碰到一個產品需求是前後端必須保持長時間的連線，且當前端斷線的時候，後端也必須馬上知道前端斷線並且清除當前的連線，看了許多篇技術文章，發現不少人採用了websocket ping pong的方式來實作，websocket ping pong又被稱為websocket…">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://codinghotpot.com/img/1__L9wTpqQkEQ0OFd__U6U6cUQ.jpeg">
+<meta property="article:published_time" content="2024-03-03T04:00:49.204Z">
+<meta property="article:modified_time" content="2024-07-14T08:56:44.054Z">
+<meta property="article:author" content="Joe Chang">
+<meta property="article:tag" content="frontend">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://codinghotpot.com/img/1__L9wTpqQkEQ0OFd__U6U6cUQ.jpeg">
+
+
+<link rel="canonical" href="https://codinghotpot.com/posts/c3129066/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://codinghotpot.com/posts/c3129066/","path":"posts/c3129066/","title":"websocket ping pong機制"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>websocket ping pong機制 | Coding Hot Pot</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJM3X3RGKD"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-SJM3X3RGKD","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Coding Hot Pot</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">日新月異的前端技術...學不動了</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E9%BA%BC%E6%99%82%E5%80%99%E7%80%8F%E8%A6%BD%E5%99%A8%E6%9C%83%E8%87%AA%E5%8B%95%E6%96%B7%E9%96%8B-websocket"><span class="nav-number">1.</span> <span class="nav-text">什麼時候瀏覽器會自動斷開 websocket</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%A6%E4%BD%9C-ping-pong"><span class="nav-number">2.</span> <span class="nav-text">實作 ping pong</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Joe Chang"
+      src="/images/oldman.jpg">
+  <p class="site-author-name" itemprop="name">Joe Chang</p>
+  <div class="site-description" itemprop="description">唯有非常努力，才能看起來毫不費力</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">120</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://codinghotpot.com/posts/c3129066/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/oldman.jpg">
+      <meta itemprop="name" content="Joe Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Hot Pot">
+      <meta itemprop="description" content="唯有非常努力，才能看起來毫不費力">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="websocket ping pong機制 | Coding Hot Pot">
+      <meta itemprop="description" content="近期在工作上碰到一個產品需求是前後端必須保持長時間的連線，且當前端斷線的時候，後端也必須馬上知道前端斷線並且清除當前的連線，看了許多篇技術文章，發現不少人採用了websocket ping pong的方式來實作，websocket ping pong又被稱為websocket…">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          websocket ping pong機制
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2024-03-03 04:00:49" itemprop="dateCreated datePublished" datetime="2024-03-03T04:00:49+00:00">2024-03-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2024-07-14 08:56:44" itemprop="dateModified" datetime="2024-07-14T08:56:44+00:00">2024-07-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/websocket/" itemprop="url" rel="index"><span itemprop="name">websocket</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">近期在工作上碰到一個產品需求是前後端必須保持長時間的連線，且當前端斷線的時候，後端也必須馬上知道前端斷線並且清除當前的連線，看了許多篇技術文章，發現不少人採用了websocket ping pong的方式來實作，websocket ping pong又被稱為websocket…</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="/img/1__L9wTpqQkEQ0OFd__U6U6cUQ.jpeg"></p>
+<p>近期在工作上碰到一個產品需求是前後端必須保持長時間的連線，且當前端斷線的時候，後端也必須馬上知道前端斷線並且清除當前的連線，看了許多篇技術文章，發現不少人採用了 websocket ping pong 的方式來實作，websocket ping pong 又被稱為 websocket heart beat，目的是要讓前後端保持長時間的連線，確保前後端在連接 websocket 時，任一方關閉連線或是因為異常斷開連線，另一方都能即時知道，並且做出對應的處理（ex.重新連線）</p>
+<blockquote>
+<p>如果前後端都是使用 socket io 開發，那基本上就不需要自己實作 ping pong，socket io 底層都幫你搞定了，不過假設前後端都是用原生的 websocket 開發，還是只能自己實作 ping pong</p>
+</blockquote>
+<h4 id="什麼時候瀏覽器會自動斷開-websocket"><a href="#什麼時候瀏覽器會自動斷開-websocket" class="headerlink" title="什麼時候瀏覽器會自動斷開 websocket"></a>什麼時候瀏覽器會自動斷開 websocket</h4><p>當電腦休眠或是瀏覽器失焦超過一定的時間時， websocket 會斷開連線，因而觸發 websocket close 的事件，當偵測到 close 事件的時候，可以寫個 reconnect 的機制去重新連線，不過有個比較棘手的情況是當瀏覽器已經連上 websocket 之後，過沒多久網路斷線，此時前端的 websocket 並不會觸發 close 和 error 事件，因此前端無法嘗試重連、後端也不會知道前端已經斷線</p>
+<p>這時就必須實作 ping pong 機制，就像是打乒乓球一樣，每隔幾秒後端就往前端送出 ping 訊息，前端也往後端送出 pong 的訊息，雖然比較耗網路資源，但能夠有效地確保當前的連線是否正常，當有其中一方過了一定的時間卻收不到對方傳來的訊息，基本上就能夠判斷對方已經斷線，可以做後續的斷線處理，以前端來說，超過 30 秒都還沒收到後端的 pong，就會嘗試重新連線</p>
+<h4 id="實作-ping-pong"><a href="#實作-ping-pong" class="headerlink" title="實作 ping pong"></a>實作 ping pong</h4><p>前端的程式碼如下，在建立 websocket 之後會監聽連線成功、收到訊息、關閉連線、錯誤發生等事件，一般來說遇到伺服器端關閉連線(觸發 close 事件)或是 websocket 錯誤(觸發 error 事件)都會嘗試重新連線</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const connectWebSocket = () =&gt; &#123;</span><br><span class="line">  socket = new WebSocket(&quot;ws://localhost:8082&quot;);</span><br><span class="line"></span><br><span class="line">  socket.addEventListener(&quot;open&quot;, (event) =&gt; &#123;</span><br><span class="line">    console.log(&quot;Connected to WebSocket server&quot;);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  socket.addEventListener(&quot;message&quot;, (event) =&gt; &#123;</span><br><span class="line">    console.log(&quot;Message from server:&quot;, event.data);</span><br><span class="line">    const msg = JSON.parse(event.data);</span><br><span class="line">    if (msg.message === &quot;ping&quot;) &#123;</span><br><span class="line">      socket.send(JSON.stringify(&#123;message: &quot;pong&quot;&#125;));</span><br><span class="line">      handleWsCountDown();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  socket.addEventListener(&quot;error&quot;, (event) =&gt; &#123;</span><br><span class="line">    console.log(&quot;error&quot;, event);</span><br><span class="line">    reconnect();</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  socket.addEventListener(&quot;close&quot;, () =&gt; &#123;</span><br><span class="line">    console.log(&quot;close connect&quot;);</span><br><span class="line">    reconnect();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>並且在收到 ping 的訊息時的同時會設定一個 setTimeout，如果 30 秒內沒有再次收到 ping 訊息，意謂伺服器可能發生什麼問題，就會主動關閉 websocket 連線，然後觸發重新連線機制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let serverTimeoutId = null;</span><br><span class="line">const handleWsCountDown = () =&gt; &#123;</span><br><span class="line"> clearTimeout(serverTimeoutId);</span><br><span class="line"> serverTimeoutId = setTimeout(() =&gt; &#123;</span><br><span class="line"> socket.close();</span><br><span class="line"> &#125;, 30000);</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>為了避免太過頻繁的 retry，一般來說會間隔幾秒才發出下一個連線請求</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let retryTimeoutId = null;</span><br><span class="line"></span><br><span class="line">const reconnect = () =&gt; &#123;</span><br><span class="line">  clearTimeout(retryTimeoutId);</span><br><span class="line">  retryTimeoutId = setTimeout(() =&gt; &#123;</span><br><span class="line">    connectWebSocket();</span><br><span class="line">  &#125;, 3000);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>至於 ping pong，我看網路上有兩種做法</p>
+<ul>
+<li>前端定期每 n 秒往後端送出 pong 的訊息</li>
+<li>前端收到後端發來的 ping 訊息才回傳 pong 的訊息給後端</li>
+</ul>
+<p>這邊採取第二種做法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">socket.addEventListener(&quot;message&quot;, (event) =&gt; &#123;</span><br><span class="line">  console.log(&quot;Message from server:&quot;, event.data);</span><br><span class="line">  const msg = JSON.parse(event.data);</span><br><span class="line">  if (msg.message === &quot;ping&quot;) &#123;</span><br><span class="line">    socket.send(JSON.stringify(&#123;message: &quot;pong&quot;&#125;));</span><br><span class="line">    handleWsCountDown();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>前端完整程式碼如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">let serverTimeoutId = null;</span><br><span class="line">let retryTimeoutId = null;</span><br><span class="line">let socket = null;</span><br><span class="line"></span><br><span class="line">const connectWebSocket = () =&gt; &#123;</span><br><span class="line">  socket = new WebSocket(&quot;ws://localhost:8082&quot;);</span><br><span class="line"></span><br><span class="line">  socket.addEventListener(&quot;open&quot;, (event) =&gt; &#123;</span><br><span class="line">    console.log(&quot;Connected to WebSocket server&quot;);</span><br><span class="line">    handlePong();</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  socket.addEventListener(&quot;message&quot;, (event) =&gt; &#123;</span><br><span class="line">    console.log(&quot;Message from server:&quot;, event.data);</span><br><span class="line">    const msg = JSON.parse(event.data);</span><br><span class="line">    if (msg.message === &quot;ping&quot;) &#123;</span><br><span class="line">      socket.send(JSON.stringify(&#123;message: &quot;pong&quot;&#125;));</span><br><span class="line">      handleWsCountDown();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  socket.addEventListener(&quot;error&quot;, (event) =&gt; &#123;</span><br><span class="line">    console.log(&quot;error&quot;, event);</span><br><span class="line">    reconnect();</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  socket.addEventListener(&quot;close&quot;, () =&gt; &#123;</span><br><span class="line">    console.log(&quot;close connect&quot;);</span><br><span class="line">    reconnect();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const reconnect = () =&gt; &#123;</span><br><span class="line">  console.log(&quot;reconnect&quot;);</span><br><span class="line">  clearTimeout(retryTimeoutId);</span><br><span class="line">  retryTimeoutId = setTimeout(() =&gt; &#123;</span><br><span class="line">    connectWebSocket();</span><br><span class="line">  &#125;, 3000);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const handleWsCountDown = () =&gt; &#123;</span><br><span class="line">  clearTimeout(serverTimeoutId);</span><br><span class="line">  serverTimeoutId = setTimeout(() =&gt; &#123;</span><br><span class="line">    socket.close();</span><br><span class="line">  &#125;, 10000);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">connectWebSocket();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>後端的部分則是使用 node.js，需要定時往前端送出 ping 的訊息，並且當超過一定時間沒收到前端發來的 pong，則視作前端已斷線，做後續的處理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">const WebSocket = require(&quot;ws&quot;);</span><br><span class="line"></span><br><span class="line">const wss = new WebSocket.Server(&#123; port: 8082 &#125;);</span><br><span class="line"></span><br><span class="line">wss.on(&quot;connection&quot;, function connection(ws) &#123;</span><br><span class="line">  console.log(&quot;connection&quot;);</span><br><span class="line"></span><br><span class="line">  ws.on(&quot;message&quot;, function message(data) &#123;</span><br><span class="line">    console.log(&quot;server-received==&quot;, data);</span><br><span class="line">    // 若超過一定時間沒收到pong則視作前端已斷線，做後續處理...</span><br><span class="line">  &#125;);</span><br><span class="line">  const pingInterval = setInterval(() =&gt; &#123;</span><br><span class="line">    ws.send(JSON.stringify(&#123; message: &quot;ping&quot; &#125;));</span><br><span class="line">  &#125;, 3000);</span><br><span class="line"></span><br><span class="line">  ws.on(&quot;close&quot;, function close() &#123;</span><br><span class="line">    clearInterval(pingInterval);</span><br><span class="line">    console.log(&quot;disconnected&quot;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>以上就是 websocket ping pong 的簡單介紹，如果看完有任何的想法都歡迎留言</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/2a594c40/" rel="prev" title="讓ChatGPT來當你的開發助手">
+                  <i class="fa fa-angle-left"></i> 讓ChatGPT來當你的開發助手
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/dcca629e/" rel="next" title="讓Angular reactive起來 — Signal">
+                  讓Angular reactive起來 — Signal <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  
+  <div class="comments">
+  <script src="https://utteranc.es/client.js" repo="ChangChiao/ChangChiao.github.io" issue-term="pathname" theme="github-dark" crossorigin="anonymous" async></script>
+  </div>
+  
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Joe Chang</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ChangChiao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
