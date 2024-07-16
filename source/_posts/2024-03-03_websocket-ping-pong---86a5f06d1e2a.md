@@ -24,61 +24,58 @@ keywords: websocket
 
 前端的程式碼如下，在建立 websocket 之後會監聽連線成功、收到訊息、關閉連線、錯誤發生等事件，一般來說遇到伺服器端關閉連線(觸發 close 事件)或是 websocket 錯誤(觸發 error 事件)都會嘗試重新連線
 
-```
+```javascript
+const connectWebSocket = () => {
+  socket = new WebSocket("ws://localhost:8082");
 
-    const connectWebSocket = () => {
-      socket = new WebSocket("ws://localhost:8082");
+  socket.addEventListener("open", (event) => {
+    console.log("Connected to WebSocket server");
+  });
 
-      socket.addEventListener("open", (event) => {
-        console.log("Connected to WebSocket server");
-      });
+  socket.addEventListener("message", (event) => {
+    console.log("Message from server:", event.data);
+    const msg = JSON.parse(event.data);
+    if (msg.message === "ping") {
+      socket.send(JSON.stringify({ message: "pong" }));
+      handleWsCountDown();
+    }
+  });
 
-      socket.addEventListener("message", (event) => {
-        console.log("Message from server:", event.data);
-        const msg = JSON.parse(event.data);
-        if (msg.message === "ping") {
-          socket.send(JSON.stringify({message: "pong"}));
-          handleWsCountDown();
-        }
-      });
+  socket.addEventListener("error", (event) => {
+    console.log("error", event);
+    reconnect();
+  });
 
-      socket.addEventListener("error", (event) => {
-        console.log("error", event);
-        reconnect();
-      });
-
-      socket.addEventListener("close", () => {
-        console.log("close connect");
-        reconnect();
-      });
-    };
-
+  socket.addEventListener("close", () => {
+    console.log("close connect");
+    reconnect();
+  });
+};
 ```
 
 並且在收到 ping 的訊息時的同時會設定一個 setTimeout，如果 30 秒內沒有再次收到 ping 訊息，意謂伺服器可能發生什麼問題，就會主動關閉 websocket 連線，然後觸發重新連線機制
 
-```
+```javascript
 let serverTimeoutId = null;
 const handleWsCountDown = () => {
- clearTimeout(serverTimeoutId);
- serverTimeoutId = setTimeout(() => {
- socket.close();
- }, 30000);
- };
+  clearTimeout(serverTimeoutId);
+  serverTimeoutId = setTimeout(() => {
+    socket.close();
+  }, 30000);
+};
 ```
 
 為了避免太過頻繁的 retry，一般來說會間隔幾秒才發出下一個連線請求
 
-```
-    let retryTimeoutId = null;
+```javascript
+let retryTimeoutId = null;
 
-    const reconnect = () => {
-      clearTimeout(retryTimeoutId);
-      retryTimeoutId = setTimeout(() => {
-        connectWebSocket();
-      }, 3000);
-    };
-
+const reconnect = () => {
+  clearTimeout(retryTimeoutId);
+  retryTimeoutId = setTimeout(() => {
+    connectWebSocket();
+  }, 3000);
+};
 ```
 
 至於 ping pong，我看網路上有兩種做法
@@ -88,76 +85,73 @@ const handleWsCountDown = () => {
 
 這邊採取第二種做法
 
-```
-
-      socket.addEventListener("message", (event) => {
-        console.log("Message from server:", event.data);
-        const msg = JSON.parse(event.data);
-        if (msg.message === "ping") {
-          socket.send(JSON.stringify({message: "pong"}));
-          handleWsCountDown();
-        }
-      });
-
+```javascript
+socket.addEventListener("message", (event) => {
+  console.log("Message from server:", event.data);
+  const msg = JSON.parse(event.data);
+  if (msg.message === "ping") {
+    socket.send(JSON.stringify({ message: "pong" }));
+    handleWsCountDown();
+  }
+});
 ```
 
 前端完整程式碼如下
 
-```
-    let serverTimeoutId = null;
-    let retryTimeoutId = null;
-    let socket = null;
+```javascript
+let serverTimeoutId = null;
+let retryTimeoutId = null;
+let socket = null;
 
-    const connectWebSocket = () => {
-      socket = new WebSocket("ws://localhost:8082");
+const connectWebSocket = () => {
+  socket = new WebSocket("ws://localhost:8082");
 
-      socket.addEventListener("open", (event) => {
-        console.log("Connected to WebSocket server");
-        handlePong();
-      });
+  socket.addEventListener("open", (event) => {
+    console.log("Connected to WebSocket server");
+    handlePong();
+  });
 
-      socket.addEventListener("message", (event) => {
-        console.log("Message from server:", event.data);
-        const msg = JSON.parse(event.data);
-        if (msg.message === "ping") {
-          socket.send(JSON.stringify({message: "pong"}));
-          handleWsCountDown();
-        }
-      });
+  socket.addEventListener("message", (event) => {
+    console.log("Message from server:", event.data);
+    const msg = JSON.parse(event.data);
+    if (msg.message === "ping") {
+      socket.send(JSON.stringify({ message: "pong" }));
+      handleWsCountDown();
+    }
+  });
 
-      socket.addEventListener("error", (event) => {
-        console.log("error", event);
-        reconnect();
-      });
+  socket.addEventListener("error", (event) => {
+    console.log("error", event);
+    reconnect();
+  });
 
-      socket.addEventListener("close", () => {
-        console.log("close connect");
-        reconnect();
-      });
-    };
+  socket.addEventListener("close", () => {
+    console.log("close connect");
+    reconnect();
+  });
+};
 
-    const reconnect = () => {
-      console.log("reconnect");
-      clearTimeout(retryTimeoutId);
-      retryTimeoutId = setTimeout(() => {
-        connectWebSocket();
-      }, 3000);
-    };
-
-    const handleWsCountDown = () => {
-      clearTimeout(serverTimeoutId);
-      serverTimeoutId = setTimeout(() => {
-        socket.close();
-      }, 10000);
-    };
-
+const reconnect = () => {
+  console.log("reconnect");
+  clearTimeout(retryTimeoutId);
+  retryTimeoutId = setTimeout(() => {
     connectWebSocket();
+  }, 3000);
+};
 
+const handleWsCountDown = () => {
+  clearTimeout(serverTimeoutId);
+  serverTimeoutId = setTimeout(() => {
+    socket.close();
+  }, 10000);
+};
+
+connectWebSocket();
 ```
 
 後端的部分則是使用 node.js，需要定時往前端送出 ping 的訊息，並且當超過一定時間沒收到前端發來的 pong，則視作前端已斷線，做後續的處理
 
-```
+```javascript
 const WebSocket = require("ws");
 
 const wss = new WebSocket.Server({ port: 8082 });
@@ -178,7 +172,6 @@ wss.on("connection", function connection(ws) {
     console.log("disconnected");
   });
 });
-
 ```
 
 以上就是 websocket ping pong 的簡單介紹，如果看完有任何的想法都歡迎留言
