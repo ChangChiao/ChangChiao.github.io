@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://codinghotpot.com/img/1__LIP9SVBWffX__alJbCuESXA.jpeg">
 <meta property="article:published_time" content="2020-03-09T12:23:47.529Z">
-<meta property="article:modified_time" content="2024-07-19T00:51:33.679Z">
+<meta property="article:modified_time" content="2024-07-20T10:33:55.665Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="css 重構">
 <meta name="twitter:card" content="summary">
@@ -207,7 +207,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-07-19 00:51:33" itemprop="dateModified" datetime="2024-07-19T00:51:33+00:00">2024-07-19</time>
+      <time title="修改時間：2024-07-20 10:33:55" itemprop="dateModified" datetime="2024-07-20T10:33:55+00:00">2024-07-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -256,7 +256,7 @@
 <p>另外，也有工具可以協助你移除 code 裡面用不到的 css</p>
 <p><strong>ex. purifycss、purgecss</strong></p>
 <p>原理是比對 css 的 class、id，是否有出現在 html 結構裡面，沒有的話視作沒有用到的 css，在 webpack 打包的時候，一併刪除，聽起來很美好，但實際用起來卻遇到一些問題，如果是 js 動態生成的 class 就不會被比對到，聽起來很抽象。舉個實際例子，假設用了某個彈窗套件跳出彈窗</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">popUpPluging.<span class="title function_">showModal</span>(<span class="string">&quot;hello~~~~&quot;</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">popUpPlugin.<span class="title function_">showModal</span>(<span class="string">&quot;hello~~~~&quot;</span>);</span><br></pre></td></tr></table></figure>
 
 <p>最後會在 html 上生成 class 是 popUp_model 的 div，然後我們寫了一段 popUp_model 的 css，來修改預設的樣式，在打包階段的時候，對這些套件而言，逐一比對在 html 裡面卻沒發現 popUp_model 這個 class，就會刪掉 popUp_model 的 css，因此，在使用類似套件上，還是要斟酌看看自己的專案是否適用。</p>
 
