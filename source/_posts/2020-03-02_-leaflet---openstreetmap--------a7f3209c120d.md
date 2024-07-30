@@ -112,7 +112,7 @@ createMark(){
 
 [https://github.com/pointhi/leaflet-color-markers](https://github.com/pointhi/leaflet-color-markers)
 
-如果一次在畫面上繪製數千筆資料，對瀏覽器肯定是一大負擔，因此採用了 MarkerClusterGroup 的套件，在地圖可視範圍內才繪製 mark，也是需要引用對應的 css& js
+如果一次在畫面上繪製數千筆資料，對瀏覽器肯定是一大負擔，因此採用了 `MarkerClusterGroup` 的套件，在地圖可視範圍內才繪製 mark，也是需要引用對應的 css& js
 
 ```javascript
 this.markLayer = new L.MarkerClusterGroup().addTo(this.map);
@@ -148,7 +148,7 @@ setMark(arr = []) {
 
 抓今日時間的方式為了快速用了
 
-new Date().toLocaleString()
+`new Date().toLocaleString()`
 
 篩選資料的方式 目前只用縣市來做比對
 

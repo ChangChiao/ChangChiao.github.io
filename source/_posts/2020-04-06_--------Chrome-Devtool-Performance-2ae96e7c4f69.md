@@ -11,20 +11,20 @@ tags: web performance 工具
 
 ![](/img/1__wtKKpP0tOxOi1____rHdxp2A.jpeg)
 
-初次使用這個功能，是因為寫了一個動態效果很多的網頁但非常吃效能，年輕不懂事，每秒 create 好幾百個 DOM 在畫面上飛來飛去(好孩子不要學 ，頁面放一陣子就開始卡了，後來比較資深的前輩教我可以用 chrome performance 功能查看。
+初次使用這個功能，是因為寫了一個動態效果很多的網頁但非常吃效能，年輕不懂事，每秒 create 好幾百個 DOM 在畫面上飛來飛去(好孩子不要學 ，頁面放一陣子就開始卡了，後來比較資深的前輩教我可以用 `chrome performance` 功能查看。
 
-打開 chrome dev tool 選擇 performance，按下小灰點開始錄製， 按 Stop 停止後，會需要一點時間處理數據後顯示分析圖表。
+打開 chrome dev tool 選擇 `performance`，按下小灰點開始錄製， 按 Stop 停止後，會需要一點時間處理數據後顯示分析圖表。
 
-另外 選擇右上角的小齒輪 Capture Settings ，可以調整一些測試模擬項目  
-如果要模擬網路慢的情況可以調整 Network，如果要模擬效能較差的裝置可以調整 CPU，選擇 2x slowdown 代表模擬 CPU 速度慢兩倍。
+另外 選擇右上角的小齒輪`Capture Settings` ，可以調整一些測試模擬項目  
+如果要模擬網路慢的情況可以調整 Network，如果要模擬效能較差的裝置可以調整 CPU，選擇 `2x slowdown` 代表模擬 `CPU` 速度慢兩倍。
 
-有時候在電腦上畫面不會卡 ，但是用手機看就非常頓 ，就是因為手機效能不如電腦 ，所以可以靠調整 CPU 這個功能 ，來看看在手機運行上的情形。
+有時候在電腦上畫面不會卡 ，但是用手機看就非常頓 ，就是因為手機效能不如電腦 ，所以可以靠調整 `CPU` 這個功能 ，來看看在手機運行上的情形。
 
 ![](/img/1__sElshdgh__khnqweabjdO1w.jpeg)
 
 **錄製時有幾項建議**
 
-開著無痕分頁去錄製會比較準確 因為有些 google 擴充工具會影響效能，像是 AD block 會去找任何含有疑似廣告的 class ，查找過程中會有點吃效能， 因此錄製出來的結果並不精準。
+開著無痕分頁去錄製會比較準確 因為有些 google 擴充工具會影響效能，像是` AD block`會去找任何含有疑似廣告的 class ，查找過程中會有點吃效能， 因此錄製出來的結果並不精準。
 
 錄製的時候不要有其他操作， 像是滾動卷軸等等 ，會導致錄的數據不準，可以打開 trello 看板 ，錄製時邊滾動卡片 ，就會發現滾動時特別吃效能。
 
@@ -38,7 +38,7 @@ tags: web performance 工具
 
 ![](/img/1__gJzpj0JX8BUpkraZLKL__1A.jpeg)
 
-FPS（frames per second）可以說是效能的指標 ，理想的狀況是每秒都有 60fps，就像看動畫一樣 影格越多動作越流暢，可以看到最上面有一條紅色長條代表 FPS 非常低， 因為效能低落的原因 ，導致畫面卡頓不流暢，CPU 也接近滿載。
+`FPS（frames per second）`可以說是效能的指標 ，理想的狀況是每秒都有 60fps，就像看動畫一樣 影格越多動作越流暢，可以看到最上面有一條紅色長條代表 FPS 非常低， 因為效能低落的原因 ，導致畫面卡頓不流暢，CPU 也接近滿載。
 
 ![](/img/1__668UIOr2SZbaAhF6HXlGyw.jpeg)
 
@@ -67,11 +67,11 @@ FPS（frames per second）可以說是效能的指標 ，理想的狀況是每�
 
 ![](/img/1__QHq4xuH2MDzkdQcgf8H5tg.jpeg)
 
-對了 ，Summary 的 tab 旁邊還有 bottom-up 、call tree 、event log 可以依照自己的需求來看察看數據。
+對了 ，Summary 的 tab 旁邊還有` bottom-up 、call tree 、event log` 可以依照自己的需求來看察看數據。
 
 另外也可以開啟即時監測 FPS 面板 ，方便觀察效能。
 
 ![](/img/1__Xdycvhky8jXiONtVe8q5vg.jpeg)
 ![](/img/1__BywxPemvOIBdEfcJpDryCA.jpeg)
 
-在 chrome dev tool 中按下 ctrl+shift+P 輸入 show frames per second 就可以了。
+在 chrome dev tool 中按下 `ctrl+shift+P` 輸入 show frames per second 就可以了。

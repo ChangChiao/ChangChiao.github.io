@@ -50,7 +50,7 @@ rush();
 
 #### export default
 
-注意：export default 為模組的預設輸出，所以只會有一個，如果不小心寫了兩個 export default 就會報錯:only one default export allowed per module。
+注意：export default 為模組的預設輸出，所以只會有一個，如果不小心寫了兩個 export default 就會報錯:`only one default export allowed per module`。
 
 ```javascript
 //a.js
