@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://codinghotpot.com/img/1__SiXShRc77qlmXE2xAv4bEw.jpeg">
 <meta property="article:published_time" content="2020-03-16T13:12:12.547Z">
-<meta property="article:modified_time" content="2024-07-20T10:33:55.665Z">
+<meta property="article:modified_time" content="2024-07-30T12:08:18.322Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="typescript">
 <meta name="twitter:card" content="summary">
@@ -207,7 +207,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-07-20 10:33:55" itemprop="dateModified" datetime="2024-07-20T10:33:55+00:00">2024-07-20</time>
+      <time title="修改時間：2024-07-30 12:08:18" itemprop="dateModified" datetime="2024-07-30T12:08:18+00:00">2024-07-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -241,8 +241,8 @@
 <p>其實一開始宣告變數時，沒有賦值預設就是 any（任意型別）</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> content = <span class="string">&quot;&quot;</span>;</span><br><span class="line"><span class="comment">//等同於</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">content</span>: any = <span class="string">&quot;&quot;</span>;</span><br></pre></td></tr></table></figure>
 
-<p>這樣就會跟原本的 javascipt 一樣 想怎麼塞就怎麼塞<br>也可以乖乖的寫成 let myFavoriteNumber: string | number;</p>
-<h4 id="class-類別"><a href="#class-類別" class="headerlink" title="class 類別"></a><strong>class 類別</strong></h4><p>有接觸過 es6 的人應該對 class 不陌生，以前如果要實作繼承的話，必須透過 function ＋ prototype 來達成，但 es6 提供了 class 這個一種語法糖，並不是真的是以類別為基礎(class-based)的物件導向，實際上仍然是以原型為基礎(prototype-based)的物件導向，另外，class 的名稱須採用大駝峰(ClassName)的寫法，但實測全部小寫也不會編譯不過，但還是要遵循規範，乖乖用駝峰式囉。</p>
+<p>這樣就會跟原本的 javascipt 一樣 想怎麼塞就怎麼塞<br>也可以乖乖的寫成 <code>let myFavoriteNumber: string | number</code>;</p>
+<h4 id="class-類別"><a href="#class-類別" class="headerlink" title="class 類別"></a><strong>class 類別</strong></h4><p>有接觸過 es6 的人應該對 class 不陌生，以前如果要實作繼承的話，必須透過 <code>function ＋ prototype </code>來達成，但 es6 提供了 class 這個一種語法糖，並不是真的是以類別為基礎(class-based)的物件導向，實際上仍然是以原型為基礎(prototype-based)的物件導向，另外，class 的名稱須採用大駝峰(ClassName)的寫法，但實測全部小寫也不會編譯不過，但還是要遵循規範，乖乖用駝峰式囉。</p>
 <p>先宣告一個 computer 的 class， 定義了一個 name 的屬性和 rebooting 的方法，我會把他想像成是張設計圖，new 一個新的 instance(透過設計圖施工)才會真正的創建出實例物件。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Computer</span>&#123;</span><br><span class="line"> public <span class="attr">name</span>: string=<span class="string">&quot;&quot;</span></span><br><span class="line"> <span class="title function_">constructor</span>(<span class="params">name</span>)&#123;</span><br><span class="line"> <span class="variable language_">this</span>.<span class="property">name</span>=name</span><br><span class="line"> &#125;</span><br><span class="line"> public <span class="title function_">rebooting</span>(<span class="params"></span>)&#123;</span><br><span class="line"> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`your <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span> will rebooting in a minute`</span>);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
