@@ -39,7 +39,7 @@
 <meta property="og:image" content="https://codinghotpot.com/img/1__gsQBE6JSfcmAi3m4ySmOtg.png">
 <meta property="og:image" content="https://codinghotpot.com/img/1__wLBObkl3dqo__2TBBygQ18w.png">
 <meta property="article:published_time" content="2020-06-15T12:54:48.931Z">
-<meta property="article:modified_time" content="2024-07-30T12:08:18.322Z">
+<meta property="article:modified_time" content="2024-08-01T13:17:40.188Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary">
@@ -217,7 +217,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-07-30 12:08:18" itemprop="dateModified" datetime="2024-07-30T12:08:18+00:00">2024-07-30</time>
+      <time title="修改時間：2024-08-01 13:17:40" itemprop="dateModified" datetime="2024-08-01T13:17:40+00:00">2024-08-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -240,8 +240,8 @@
     
     
     <div class="post-body" itemprop="articleBody"><p><img src="/img/1__OUawfdv5VtESR4wMJ0L__0A.jpeg"></p>
-<p>在 vue 組件中想必大家已經很習慣用 props、emit 來進行組件之間的溝通， 但遇到層級比較深的狀況就會比較困擾，用家族關係來比喻，如果想要傳遞訊息給某個表妹的話，要先傳給父親再傳給阿嬤，阿嬤再傳給姑姑，姑姑再傳給表妹，光聽就累了…有沒有什麼方法可以繞過這些重重關卡直接溝通？就可以利用 vue 的 EventBus 來達成。</p>
-<p>範例的結構如下圖，為 index 內各有兩個子 component，並且各自擁有自己的子 component，利用 eventBus 來實作 memberCenterItem 與 customerServiceItem 的組件溝通。</p>
+<p>在 vue 組件中想必大家已經很習慣用 <code>props、emit</code> 來進行組件之間的溝通， 但遇到層級比較深的狀況就會比較困擾，用家族關係來比喻，如果想要傳遞訊息給某個表妹的話，要先傳給父親再傳給阿嬤，阿嬤再傳給姑姑，姑姑再傳給表妹，光聽就累了…有沒有什麼方法可以繞過這些重重關卡直接溝通？就可以利用 vue 的 EventBus 來達成。</p>
+<p>範例的結構如下圖，為 index 內各有兩個子 component，並且各自擁有自己的子 component，利用 <code>eventBus</code> 來實作 memberCenterItem 與 customerServiceItem 的組件溝通。</p>
 <p><img src="/img/1__3bvAOxBFb34kJSUujqQ2gg.png"></p>
 <p>這是 index.vue 的結構</p>
 <p><img src="/img/1__YdJwiQTfQFfn2MTOyf3__Zg.png"></p>
@@ -249,7 +249,7 @@
 <p><img src="/img/1__RyRd4rIMmpawpuIqBHEFjA.png"></p>
 <p>記得要在 main.js 引用 bus.js</p>
 <p><img src="/img/1__jwMKlBgLO8TwcqmACfiOog.png"></p>
-<p>在 memberCenterItem component 裡點擊標題會發送事件，寫法跟原本的 $emit 幾乎一模一樣</p>
+<p>在 memberCenterItem component 裡點擊標題會發送事件，寫法跟原本的 <code>$emit</code> 幾乎一模一樣</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">$bus</span>.$emit(<span class="string">&quot;事件&quot;</span>, data);</span><br><span class="line"><span class="comment">//如一般$emit 一樣 可夾帶 data</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="/img/1__ftAMk71szeHQAyWxXldXoQ.png"></p>
@@ -266,7 +266,7 @@
 <p><img src="/img/1__pQz__WK2eDf4U2i25Cg7wvQ.png"></p>
 <p>也可以做到一樣的功能</p>
 <p><img src="/img/1__TVPC49umZM7FSsOpwloj1A.png"><br><img src="/img/1__gsQBE6JSfcmAi3m4ySmOtg.png"></p>
-<p>不過我天真的以為監聽事件組件在沒被渲染的情況下，也可以觸發監聽事件，（如同下面的情形）實際測試沒被渲染的組件根本不會經過 created 階段啊..無法綁定監聽事，自然會溝通失敗。</p>
+<p>不過我天真的以為監聽事件組件在沒被渲染的情況下，也可以觸發監聽事件，（如同下面的情形）實際測試沒被渲染的組件根本不會經過 <code>created</code> 階段啊..無法綁定監聽事，自然會溝通失敗。</p>
 <p><img src="/img/1__wLBObkl3dqo__2TBBygQ18w.png"></p>
 
     </div>

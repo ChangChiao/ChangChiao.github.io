@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://codinghotpot.com/img/1__NH4maRj6gD9iWQkl4as57A.png">
 <meta property="og:image" content="https://codinghotpot.com/img/1__oz__mEA34pTeUjnTyybj1TQ.png">
 <meta property="article:published_time" content="2020-05-25T13:24:34.834Z">
-<meta property="article:modified_time" content="2024-07-30T12:08:18.322Z">
+<meta property="article:modified_time" content="2024-08-01T13:17:40.188Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="bundler webpack">
 <meta name="twitter:card" content="summary">
@@ -209,7 +209,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-07-30 12:08:18" itemprop="dateModified" datetime="2024-07-30T12:08:18+00:00">2024-07-30</time>
+      <time title="修改時間：2024-08-01 13:17:40" itemprop="dateModified" datetime="2024-08-01T13:17:40+00:00">2024-08-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -232,16 +232,16 @@
     
     
     <div class="post-body" itemprop="articleBody"><p><img src="/img/1__hwEPGCV0WcCF2UM9qlgVwg.png"></p>
-<p>開發專案的時候為了求快速達成效果，就安裝了各式各樣套件來使用，正所謂先求有再求好，當專案開發完畢後，就會開始要求優化載入速度，某天老闆問說為甚麼我們 build 出來的檔案可以這麼巨大?居然有好幾 MB？於是就要想辦法幫檔案瘦身了 ，上網查到 webpack-bundle-analyzer 可以用來分析整個專案裡面的套件、組件大小， 進而抓出到底誰是造成檔案肥大的元凶。(以下的套件用法以 vue cli 3 為例子）</p>
+<p>開發專案的時候為了求快速達成效果，就安裝了各式各樣套件來使用，正所謂先求有再求好，當專案開發完畢後，就會開始要求優化載入速度，某天老闆問說為甚麼我們 build 出來的檔案可以這麼巨大?居然有好幾 MB？於是就要想辦法幫檔案瘦身了，上網查到 <code>webpack-bundle-analyzer</code> 可以用來分析整個專案裡面的套件、組件大小， 進而抓出到底誰是造成檔案肥大的元凶。(以下的套件用法以 vue cli 3 為例子）</p>
 <p>安裝方式 提供了 yarn or npm 的方法</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># NPM</span></span><br><span class="line">npm install --save-dev webpack-bundle-analyzer</span><br><span class="line"></span><br><span class="line"><span class="comment"># Yarn</span></span><br><span class="line">yarn add -D webpack-bundle-analyzer</span><br></pre></td></tr></table></figure>
 
-<p>在 webpack 裡面設定 ，Vue cli 的話就是在 vue.config.js</p>
+<p>在 webpack 裡面設定 ，Vue cli 的話就是在 <code>vue.config.js</code></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">BundleAnalyzerPlugin</span> =</span><br><span class="line">  <span class="built_in">require</span>(<span class="string">&quot;webpack-bundle-analyzer&quot;</span>).<span class="property">BundleAnalyzerPlugin</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="keyword">new</span> <span class="title class_">BundleAnalyzerPlugin</span>()],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <p>以 Vue cli 為例，重新 yarn serve 就會看到檔案大小圖表分析了!</p>
 <p><img src="/img/1__hwEPGCV0WcCF2UM9qlgVwg.png"></p>
-<p>因為專案的 component 和套件數量龐大，所以就會看到密密麻麻的小方格， 排在越上方的代表檔案越大，這才發現 loadsh 真的是….超級肥！</p>
+<p>因為專案的 component 和套件數量龐大，所以就會看到密密麻麻的小方格， 排在越上方的代表檔案越大，這才發現 <code>loadsh</code> 真的是….超級肥！</p>
 <p><img src="/img/1__NH4maRj6gD9iWQkl4as57A.png"></p>
 <p>大大小小的套件累積起來也是很可觀的，如果為了要減少檔案大小勢必得拔除某些套件或檢查哪些套件根本沒用到，又是另一個痛苦的開始 。</p>
 <p><img src="/img/1__oz__mEA34pTeUjnTyybj1TQ.png"></p>
