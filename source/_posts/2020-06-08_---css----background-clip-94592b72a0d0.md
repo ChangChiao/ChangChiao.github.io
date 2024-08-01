@@ -11,7 +11,7 @@ tag: css
 
 ![](/img/1__bQNaffh5wNRVH1sBRfKA8A.png)
 
-第一次認識這個 css 屬性是在某一年的 apple 發表會，看到了文字居然有漸層效果！ 覺得很酷，看了一下程式碼發現是用了 background-clip：text 屬性，查了一下資料，發現除了 text 還有其他值可以設定，下面就來簡單介紹 background-clip 設定不同值的差異。
+第一次認識這個 css 屬性是在某一年的 apple 發表會，看到了文字居然有漸層效果！ 覺得很酷，看了一下程式碼發現是用了 `background-clip：text` 屬性，查了一下資料，發現除了 text 還有其他值可以設定，下面就來簡單介紹 background-clip 設定不同值的差異。
 
 - background-clip: border-box;
 - background-clip: padding-box;
@@ -42,10 +42,10 @@ tag: css
 
 ![](/img/1__QsNAuOCo54dRYR__jqmpT3w.png)
 
-用了 background-clip: text 之後
+用了 `background-clip: text` 之後
 
 ![](/img/1__JxZFyRMeHgMqLUK1IDwDAw.png)
 
 可以看得出來文字吃了圖片的背景
 
-要注意的是，比較舊的 ie 和 firefox 是不支援此屬性的 ，如果要支援這些版本的瀏覽器，就要斟酌使用。
+要注意的是，比較舊的 `ie` 和 `firefox` 是不支援此屬性的 ，如果要支援這些版本的瀏覽器，就要斟酌使用。

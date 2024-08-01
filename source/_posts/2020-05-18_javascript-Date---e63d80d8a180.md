@@ -11,7 +11,7 @@ tag: "Date"
 
 ![](/img/1__xXE__mwwSsk9gZ6wtTM2F9g.jpeg)
 
-剛開始處理時間這塊的時候都是使用套件 moment.js ，沒仔細去研究 Date 物件，直到某天才發現自己連 new Date 都不知道是什麼（汗顏）因此花點時間來了解 javascript Date 物件。
+剛開始處理時間這塊的時候都是使用套件 moment.js ，沒仔細去研究 Date 物件，直到某天才發現自己連 new Date 都不知道是什麼（汗顏）因此花點時間來了解 `javascript Date` 物件。
 
 如果要取的當前的時間可以用（這邊是取用戶端的電腦時間）
 
@@ -57,7 +57,7 @@ console.log(time) //92 兩者間隔 92 天
 
 ```
 
-下方這個取的是世界協調時間（Coordinated Universal Time）（時區為 0)
+下方這個取的是世界協調時間`（Coordinated Universal Time）`（時區為 0)
 
 ```javascript
 -getUTCFullYear() - //利用全球定位時間（UTC）取得年份(yyyy)
@@ -81,11 +81,11 @@ console.log(time) //92 兩者間隔 92 天
 - [setMilliseconds()](https://www.fooish.com/javascript/date/setMilliseconds.html)設定毫秒 (0–999)
 - [setTime()](https://www.fooish.com/javascript/date/setTime.html)用 timestamp milliseconds 設定日期時間
 
-toString(): 將 Date 轉換為年月日時分秒的字串
+`toString()`: 將 Date 轉換為年月日時分秒的字串
 
-toISOString(): 將 Date 轉換成 ISO 8601 格式的字串回傳。
+`toISOString()`: 將 Date 轉換成 ISO 8601 格式的字串回傳。
 
-toLocaleString(): 將 Date 轉換為年月日時分秒的本地時區的字串
+`toLocaleString()`: 將 Date 轉換為年月日時分秒的本地時區的字串
 
 ```javascript
 var now = new Date()
