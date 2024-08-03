@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://codinghotpot.com/img/1__JnTfQJm0UD7Gr5HU87CpKQ.jpeg">
 <meta property="og:image" content="https://codinghotpot.com/img/1__amSFzqus8Ph2rHE0nk__6Gw.png">
 <meta property="article:published_time" content="2020-04-27T12:13:12.394Z">
-<meta property="article:modified_time" content="2024-08-01T13:17:40.188Z">
+<meta property="article:modified_time" content="2024-08-03T12:35:05.619Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="vue sprites">
 <meta name="twitter:card" content="summary">
@@ -209,7 +209,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-08-01 13:17:40" itemprop="dateModified" datetime="2024-08-01T13:17:40+00:00">2024-08-01</time>
+      <time title="修改時間：2024-08-03 12:35:05" itemprop="dateModified" datetime="2024-08-03T12:35:05+00:00">2024-08-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -234,8 +234,8 @@
     <div class="post-body" itemprop="articleBody"><p><img src="/img/1__Jfg5lfwcVVIgX9GUgEposg.jpeg"></p>
 <p>剛踏進前端領域時，前輩建議我可以試試看雪碧圖，恩？雪碧圖？那是什麼東西，簡單來說就是將多張圖片合成一張大圖，減少 http request 次數，本來 30 張小圖片要請求 30 次，現在只要請求一次就大功告成了。</p>
 <p><strong>css sprite 原理</strong></p>
-<p>將多張圖片合併成一張大圖片，再利用 css 的 background-position 定位，就可以指定要顯示哪張小圖（顯示大圖的局部）</p>
-<p>在很古早的時期，通常是先用 photoshop 來處理圖片的部分，再用人工的方式來撰寫對應的 css(土法煉鋼），不過如果圖片一直不斷增加，真的會吐血，還好近幾年來多了輔助的工具可以幫助我們處理雪碧圖，compass 或是 gulp 等等都是不錯的選擇，也有線上的網頁可以使用，像是<a target="_blank" rel="noopener" href="https://spritegen.website-performance.org/">css sprite generator</a>。</p>
+<p>將多張圖片合併成一張大圖片，再利用 css 的 <code>background-position</code> 定位，就可以指定要顯示哪張小圖（顯示大圖的局部）</p>
+<p>在很古早的時期，通常是先用 photoshop 來處理圖片的部分，再用人工的方式來撰寫對應的 css(土法煉鋼），不過如果圖片一直不斷增加，真的會吐血，還好近幾年來多了輔助的工具可以幫助我們處理雪碧圖，<code>compass</code> 或是 <code>gulp</code> 等等都是不錯的選擇，也有線上的網頁可以使用，像是<a target="_blank" rel="noopener" href="https://spritegen.website-performance.org/">css sprite generator</a>。</p>
 <p>近期都是用 vue cli + webpack 開發，所以就來介紹如何用 webpack 的套件來製作雪碧圖，首先要先安裝<code>webpack-spritesmith</code></p>
 <p>然後在 vue.config.js 設定</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> <span class="title class_">SpritesmithPlugin</span> = <span class="built_in">require</span>(<span class="string">&quot;webpack-spritesmith&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="attr">configureWebpack</span>: <span class="function">(<span class="params">config</span>) =&gt;</span> &#123;</span><br><span class="line">  config.<span class="property">resolve</span>.<span class="property">modules</span> = [<span class="string">&quot;node_modules&quot;</span>, <span class="string">&quot;./src/assets/&quot;</span>];</span><br><span class="line">  <span class="keyword">const</span> <span class="title class_">Plugins</span> = [</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">SpritesmithPlugin</span>(&#123;</span><br><span class="line">      <span class="attr">src</span>: &#123;</span><br><span class="line">        <span class="attr">cwd</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&quot;./src/assets/sprite/&quot;</span>),</span><br><span class="line">        <span class="attr">glob</span>: <span class="string">&quot;*.png&quot;</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">target</span>: &#123;</span><br><span class="line">        <span class="attr">image</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&quot;./src/assets/sprite.png&quot;</span>),</span><br><span class="line">        <span class="attr">css</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&quot;./src/assets/_sprite.scss&quot;</span>),</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">apiOptions</span>: &#123;</span><br><span class="line">        <span class="attr">cssImageRef</span>: <span class="string">&quot;~sprite.png&quot;</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">spritesmithOptions</span>: &#123;</span><br><span class="line">        <span class="attr">padding</span>: <span class="number">10</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;),</span><br><span class="line">  ];</span><br><span class="line">  config.<span class="property">plugins</span> = [...config.<span class="property">plugins</span>, ...<span class="title class_">Plugins</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -260,8 +260,8 @@
 <p>先在 component <code>@import &quot;@/assets/\_sprite.scss&quot;</code>，然後在對應的 class 底下 include sprite 的 mixin 並帶入圖片名稱（即為變數名稱）就可以了，如果有用過比較古老的 css sprite 都知道還需要設定寬高（設定顯示範圍） ，不然大圖的其他圖片會露出來 ，但 <code>webpack-spritesmith</code> 會自動幫你帶入圖片的 width 和 height ，省下了不少麻煩。</p>
 <p><img src="/img/1__amSFzqus8Ph2rHE0nk__6Gw.png"></p>
 <p>另外要注意， 如果檔案名稱有重複的話 ，生成的變數就會後蓋前。</p>
-<p>webpack-spritesmith 也提供了模板的設定 有興趣的人可以閱讀官方文件</p>
-<p>雖然 css sprite 的優點不少，但相對的也有他的缺點在，可以看狀況斟酌是否使用。</p>
+<p><code>webpack-spritesmith</code> 也提供了模板的設定 有興趣的人可以閱讀官方文件</p>
+<p>雖然 <code>css sprite</code> 的優點不少，但相對的也有他的缺點在，可以看狀況斟酌是否使用。</p>
 <ol>
 <li>不適合用於需要自適應的場景（圖片隨著螢幕寬度縮放）</li>
 <li>如果圖片需要放大，會有失真問題</li>

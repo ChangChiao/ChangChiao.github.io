@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://codinghotpot.com/img/1__9s7C4lfIX__Ckf6GEBbGzEg.jpeg">
 <meta property="article:published_time" content="2020-07-06T14:18:04.169Z">
-<meta property="article:modified_time" content="2024-08-01T13:17:40.188Z">
+<meta property="article:modified_time" content="2024-08-03T12:35:05.619Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="深拷貝">
 <meta name="twitter:card" content="summary">
@@ -207,7 +207,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-08-01 13:17:40" itemprop="dateModified" datetime="2024-08-01T13:17:40+00:00">2024-08-01</time>
+      <time title="修改時間：2024-08-03 12:35:05" itemprop="dateModified" datetime="2024-08-03T12:35:05+00:00">2024-08-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -236,17 +236,17 @@
 <p>恩？為什麼我修改了 b，a 物件也會跟著變動呢？想必大家都知道物件型別是傳址(reference) ，所以 b 參考指向為 a，如同影分身一般，為了不改變原本的物件，我們就必須使用淺拷貝和深拷貝來避免這個問題。</p>
 <p>那麼，就稍微介紹一下深拷貝與淺拷貝的差異</p>
 <ul>
-<li>淺拷貝：僅能複製淺層（第一層），有較深的資料結構時，還是會參考到原本的物件，因此就會改動到原本的物件。</li>
-<li>深拷貝：能夠建立一模一樣的物件，兩個為獨立個體，不會共用同個記憶體，個別修改並不會交互影響。</li>
+<li><code>淺拷貝</code>：僅能複製淺層（第一層），有較深的資料結構時，還是會參考到原本的物件，因此就會改動到原本的物件。</li>
+<li><code>深拷貝</code>：能夠建立一模一樣的物件，兩個為獨立個體，不會共用同個記憶體，個別修改並不會交互影響。</li>
 </ul>
 <p>淺拷貝有以下的方式</p>
 <ul>
-<li>展開運算子</li>
+<li><code>展開運算子</code></li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123; <span class="attr">name</span>: <span class="string">&quot;tom&quot;</span>, <span class="attr">age</span>: <span class="number">30</span>, <span class="attr">gender</span>: male &#125;;</span><br><span class="line"><span class="keyword">var</span> b = &#123; ...a &#125;;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>object assign</li>
+<li><code>object assign</code></li>
 </ul>
 <p>只處理深度為一層的物件沒問題</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123; <span class="attr">name</span>: <span class="string">&quot;tom&quot;</span>, <span class="attr">age</span>: <span class="number">30</span>, <span class="attr">gender</span>: male &#125;;</span><br><span class="line"><span class="keyword">var</span> b = <span class="title class_">Object</span>.<span class="title function_">assign</span>(&#123;&#125;, a);</span><br></pre></td></tr></table></figure>
