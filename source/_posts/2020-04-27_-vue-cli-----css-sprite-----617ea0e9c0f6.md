@@ -15,9 +15,9 @@ tags: vue sprites
 
 **css sprite 原理**
 
-將多張圖片合併成一張大圖片，再利用 css 的 background-position 定位，就可以指定要顯示哪張小圖（顯示大圖的局部）
+將多張圖片合併成一張大圖片，再利用 css 的 `background-position` 定位，就可以指定要顯示哪張小圖（顯示大圖的局部）
 
-在很古早的時期，通常是先用 photoshop 來處理圖片的部分，再用人工的方式來撰寫對應的 css(土法煉鋼），不過如果圖片一直不斷增加，真的會吐血，還好近幾年來多了輔助的工具可以幫助我們處理雪碧圖，compass 或是 gulp 等等都是不錯的選擇，也有線上的網頁可以使用，像是[css sprite generator](https://spritegen.website-performance.org/)。
+在很古早的時期，通常是先用 photoshop 來處理圖片的部分，再用人工的方式來撰寫對應的 css(土法煉鋼），不過如果圖片一直不斷增加，真的會吐血，還好近幾年來多了輔助的工具可以幫助我們處理雪碧圖，`compass` 或是 `gulp` 等等都是不錯的選擇，也有線上的網頁可以使用，像是[css sprite generator](https://spritegen.website-performance.org/)。
 
 近期都是用 vue cli + webpack 開發，所以就來介紹如何用 webpack 的套件來製作雪碧圖，首先要先安裝`webpack-spritesmith`
 
@@ -76,9 +76,9 @@ configureWebpack: (config) => {
 
 另外要注意， 如果檔案名稱有重複的話 ，生成的變數就會後蓋前。
 
-webpack-spritesmith 也提供了模板的設定 有興趣的人可以閱讀官方文件
+`webpack-spritesmith` 也提供了模板的設定 有興趣的人可以閱讀官方文件
 
-雖然 css sprite 的優點不少，但相對的也有他的缺點在，可以看狀況斟酌是否使用。
+雖然 `css sprite` 的優點不少，但相對的也有他的缺點在，可以看狀況斟酌是否使用。
 
 1.  不適合用於需要自適應的場景（圖片隨著螢幕寬度縮放）
 2.  如果圖片需要放大，會有失真問題

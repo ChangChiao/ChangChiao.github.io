@@ -11,7 +11,7 @@ tag: javascript
 
 ![](/img/1__eJNVgN8k3a3ydx0J5DLY__g.jpeg)
 
-不得不承認剛開始接觸的時候，我會把 export 跟 module exports 搞混(都有個 export 嘛)，其實他們兩個是完全不相干的，搞不懂為甚麼不能在 vue.config.js 使用 import，後來查資料才發現兩者遵循的規範是不一樣的，既然要比較差異，就先個別介紹一下。
+不得不承認剛開始接觸的時候，我會把 `export` 跟 `module exports` 搞混(都有個 export 嘛)，其實他們兩個是完全不相干的，搞不懂為甚麼不能在 vue.config.js 使用 import，後來查資料才發現兩者遵循的規範是不一樣的，既然要比較差異，就先個別介紹一下。
 
 **export(** **ES6)**
 
@@ -67,7 +67,7 @@ import data from "./a";
 
 **module exports (CommonJS)**
 
-那就要先介紹 node module 了，是遵循 CommonJS 的規範，每個 js 檔案都是獨立的 module，檔案裡的變數、類別，函式都是私有，除非 module.exports 導出給其他模組使用。
+那就要先介紹 node module 了，是遵循 `CommonJS` 的規範，每個 js 檔案都是獨立的 `module`，檔案裡的變數、類別，函式都是私有，除非`module.exports` 導出給其他模組使用。
 
 ```javascript
 //a.js
@@ -80,7 +80,7 @@ var data = {
 module.exports = data;
 ```
 
-透過 require 來引用 module
+透過 `require` 來引用 module
 
 ```javascript
 // b.js
@@ -93,6 +93,6 @@ var info = require("./a.js");
 - `export`、 `import` : 只有 ES6 支援的導出引入
 - `module.exports`、 `exports`: 只有 Node.js 支援的導出
 
-備註：import 經由 babel 編譯後還是會被轉成 require
+備註：import 經由 `babel` 編譯後還是會被轉成 `require`
 
 參考資料：[https://segmentfault.com/a/1190000010426778](https://segmentfault.com/a/1190000010426778)

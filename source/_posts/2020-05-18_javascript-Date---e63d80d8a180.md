@@ -22,7 +22,7 @@ new Date()
 建立特定時間點的時間物件，透過傳入不同格式的參數
 
 new Date(1589641033968) //傳入 timestamp 豪秒
-new Date(`'December 15, 1995 03:24:00'`) //傳入字串
+new Date('December 15, 1995 03:24:00') //傳入字串
 new Date(2020,12,25) //傳入年月日
 new Date(2020,12,25,10,20,30) //傳入年月日時分秒
 
@@ -88,17 +88,16 @@ console.log(time) //92 兩者間隔 92 天
 `toLocaleString()`: 將 Date 轉換為年月日時分秒的本地時區的字串
 
 ```javascript
-var now = new Date()
+var now = new Date();
 
-now.toString()
-“Mon May 18 2020 09:36:11 GMT+0800 (台北標準時間)”
+now.toString();
+("Mon May 18 2020 09:36:11 GMT+0800 (台北標準時間)");
 
-now.toISOString()
-“2020–05–18T01:36:11.735Z”
+now.toISOString();
+("2020–05–18T01:36:11.735Z");
 
-now.toLocaleString()
-"2020/5/18 下午 7:38:17"
-
+now.toLocaleString();
+("2020/5/18 下午 7:38:17");
 ```
 
 下面是一些例子的實作
