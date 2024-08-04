@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://codinghotpot.com/img/1__SxloQJO5NvrgiN1uNyvCoQ.png">
 <meta property="og:image" content="https://codinghotpot.com/img/1__o6YbjWNOKta8__qtLp__g7NA.png">
 <meta property="article:published_time" content="2020-08-10T13:16:47.971Z">
-<meta property="article:modified_time" content="2024-08-03T12:35:05.619Z">
+<meta property="article:modified_time" content="2024-08-04T15:21:28.545Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="react">
 <meta name="twitter:card" content="summary">
@@ -212,7 +212,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-08-03 12:35:05" itemprop="dateModified" datetime="2024-08-03T12:35:05+00:00">2024-08-03</time>
+      <time title="修改時間：2024-08-04 15:21:28" itemprop="dateModified" datetime="2024-08-04T15:21:28+00:00">2024-08-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -241,7 +241,7 @@
 <p><strong>情境二</strong></p>
 <p><em>a 頁面、b 頁面、c 頁面都需要這個按鈕，然後功能還一模一樣，重複的東西居然要寫三遍…</em></p>
 <p>Component 會定義這個組件的結構樣式等等，再透過外部傳進的資料，根據資料的變化，來更動 UI 畫面，不需要像傳統那樣手動更新</p>
-<p>React Component 的有兩種寫法 Class Component 以及 Functional Component，今天先來介紹 Class component，利用 <a target="_blank" rel="noopener" href="https://www.fooish.com/javascript/ES6/class.html">ES6 Class</a>的語法來創建 Class Component，既然提到了 Class 就花點時間稍微簡介一下 Class 有哪些方法吧！</p>
+<p>React Component 的有兩種寫法 <code>Class Component</code> 以及<code> Functional Component</code>，今天先來介紹 Class component，利用 <a target="_blank" rel="noopener" href="https://www.fooish.com/javascript/ES6/class.html">ES6 Class</a>的語法來創建 Class Component，既然提到了 Class 就花點時間稍微簡介一下 Class 有哪些方法吧！</p>
 <p><strong>constructor 建構式</strong></p>
 <p>在 Class 物件被建立時會呼叫一次，物件的屬性會在這裡做定義，這裡也可以帶入不同的參數來建立不同的類別，那可以不寫嗎？答案是可以的，沒寫也會預設幫你創建 constructor</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Bird</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> bird1 = <span class="keyword">new</span> <span class="title class_">Bird</span>(<span class="string">&quot;kerry&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> bird2 = <span class="keyword">new</span> <span class="title class_">Bird</span>(<span class="string">&quot;bay&quot;</span>);</span><br></pre></td></tr></table></figure>
@@ -258,7 +258,7 @@
 
 <p><strong>靜態方法 static</strong></p>
 <p>屬於 class 的屬性或方法，不需要實例化，就能以 class 名稱.方法來呼叫</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Bird</span>()&#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">diss</span>(<span class="params">name</span>)&#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;diss &#x27;</span> + name )</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="title class_">Bird</span>.<span class="title function_">diss</span>(<span class="string">&#x27;mel&#x27;</span>) <span class="comment">//輸出 diss mel</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> bird = <span class="keyword">new</span> <span class="title class_">Bird</span>()</span><br><span class="line">bird.<span class="title function_">diss</span>(<span class="string">&#x27;mel) //bird.diss is not a function</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Bird</span>()&#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">diss</span>(<span class="params">name</span>)&#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;diss &#x27;</span> + name )</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="title class_">Bird</span>.<span class="title function_">diss</span>(<span class="string">&#x27;mel&#x27;</span>) <span class="comment">//輸出 diss mel</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> bird = <span class="keyword">new</span> <span class="title class_">Bird</span>()</span><br><span class="line">bird.<span class="title function_">diss</span>(<span class="string">&#x27;mel)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//bird.diss is not a function</span></span><br></pre></td></tr></table></figure>
 
 <p>了解了 Class 類別之後就可以來創建 React Component</p>
 <p>要先 import React Component</p>
@@ -299,7 +299,8 @@
 <p>來試著簡單寫一個 Functional Component，但暫時不用 hooks（這部分後續會再介紹）</p>
 <p><img src="/img/1__ns72GIoOf__hNJE2z5Nx7SQ.png"></p>
 <p>用 arrow function 的話，連 return 都不用寫，看起來真的變得很簡短</p>
-<p>const Functional &#x3D; ({ props }) &#x3D;&gt; (<button>props</button>)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">Functional</span> = (<span class="params">&#123; props &#125;</span>) =&gt; <span class="language-xml"><span class="tag">&lt;<span class="name">button</span>&gt;</span>props<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br></pre></td></tr></table></figure>
+
 <p>而且 Functional Component 跟 Class Component 經過 babel 的編譯，轉換成 ES5 的程式碼的大小差距真的有讓我嚇一跳，查到一個數據是 100bytes v.s 1.2kb</p>
 <p>有了 React Hooks 之後，Functional Component 也能擁有跟 Class Component 一樣的功能，而且更簡短的寫法可以少掉不少程式碼，可讀性也更高，讓 Functional Component 成為當前 React 開發的主流。</p>
 <p>另外還有一種 component 叫做 pure component，範例如下，點擊 click 後數字會＋ 1</p>

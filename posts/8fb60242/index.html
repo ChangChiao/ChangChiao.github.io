@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://codinghotpot.com/img/1__o4F683lSXo7g7Me4JHktAQ.png">
 <meta property="og:image" content="https://codinghotpot.com/img/1__HS2P3viVU3ILMFPo__JEeHg.jpeg">
 <meta property="article:published_time" content="2020-09-21T00:50:43.990Z">
-<meta property="article:modified_time" content="2024-08-03T12:35:05.619Z">
+<meta property="article:modified_time" content="2024-08-04T15:21:28.545Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="react">
 <meta name="twitter:card" content="summary">
@@ -211,7 +211,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-08-03 12:35:05" itemprop="dateModified" datetime="2024-08-03T12:35:05+00:00">2024-08-03</time>
+      <time title="修改時間：2024-08-04 15:21:28" itemprop="dateModified" datetime="2024-08-04T15:21:28+00:00">2024-08-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -235,7 +235,7 @@
     
     <div class="post-body" itemprop="articleBody"><p>想必我們都曾經遇過一種情境，兩個 component 功能幾乎一模一樣，只是差在輸入的資料不同而已，那麼這時候就是 HOC 登場的時候了，HOC 為一個可以傳入 component 當參數的 function，其目的在於可以將重複的邏輯抽離出來，讓傳入的 component 可以套用這個邏輯，並且輸出一個全新的 component</p>
 <p>當初看到 redux 的 connect 還想說這是什麼神秘的寫法，原來就是 HOC 啊!</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Counter</span> = <span class="title function_">connect</span>(</span><br><span class="line">  mapStateToProps,</span><br><span class="line"></span><br><span class="line">  mapDispatchToProps</span><br><span class="line">)(<span class="title class_">Counters</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Counter</span> = <span class="title function_">connect</span>(mapStateToProps, mapDispatchToProps)(<span class="title class_">Counters</span>);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>被作為參數的 component 稱之為<strong>Wrapped Component</strong></p>
