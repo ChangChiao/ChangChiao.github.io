@@ -22,7 +22,7 @@ React 利用 JSX 語法來開發，類似 XML 的寫法，可以將 UI 介面跟
 `React.createElement 的寫法 `
 
 ```javascript
-React.createElement(“h1”, null, “Hello World”);
+React.createElement("h1", null, "Hello World");
 ```
 
 JSX 看起來是不是簡單多了！？
@@ -79,7 +79,7 @@ style 的話可以傳入物件，不過 css 屬性都要變成駝峰式，個人
 
 #### 注入 html
 
-可以利用 dangerouslySetInnerHTML 來帶入 html，相當於 innerHtml，注意這邊為兩個下底線 \_\_html:要傳入的 html
+可以利用 `dangerouslySetInnerHTML` 來帶入 html，相當於 innerHtml，注意這邊為兩個下底線 \_\_html:要傳入的 html
 
 ![](/img/1__kXVW9__j9CmKgJg0oyt89BA.png)
 

@@ -21,7 +21,7 @@ _a 頁面、b 頁面、c 頁面都需要這個按鈕，然後功能還一模一�
 
 Component 會定義這個組件的結構樣式等等，再透過外部傳進的資料，根據資料的變化，來更動 UI 畫面，不需要像傳統那樣手動更新
 
-React Component 的有兩種寫法 Class Component 以及 Functional Component，今天先來介紹 Class component，利用 [ES6 Class](https://www.fooish.com/javascript/ES6/class.html)的語法來創建 Class Component，既然提到了 Class 就花點時間稍微簡介一下 Class 有哪些方法吧！
+React Component 的有兩種寫法 `Class Component` 以及` Functional Component`，今天先來介紹 Class component，利用 [ES6 Class](https://www.fooish.com/javascript/ES6/class.html)的語法來創建 Class Component，既然提到了 Class 就花點時間稍微簡介一下 Class 有哪些方法吧！
 
 **constructor 建構式**
 
@@ -116,7 +116,9 @@ class Bird(){
 Bird.diss('mel') //輸出 diss mel
 
 const bird = new Bird()
-bird.diss('mel) //bird.diss is not a function
+bird.diss('mel)
+
+//bird.diss is not a function
 ```
 
 了解了 Class 類別之後就可以來創建 React Component
@@ -198,7 +200,9 @@ _一個比較冗長一個比較簡單（誤_
 
 用 arrow function 的話，連 return 都不用寫，看起來真的變得很簡短
 
-const Functional = ({ props }) => (<button>props</button>)
+```javascript
+const Functional = ({ props }) => <button>props</button>;
+```
 
 而且 Functional Component 跟 Class Component 經過 babel 的編譯，轉換成 ES5 的程式碼的大小差距真的有讓我嚇一跳，查到一個數據是 100bytes v.s 1.2kb
 

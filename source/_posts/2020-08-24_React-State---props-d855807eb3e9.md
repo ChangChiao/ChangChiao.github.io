@@ -17,7 +17,7 @@ state 為自身 component 存放資料的地方，管理內部狀態，格式為
 
 ![](/img/1__xVj78ZwTzr__1OPUWRDAw9Q.png)
 
-如果是 create react app 的話不需要寫 constructor 了，因為已經引用了@babel/plugin-proposal-class-properties 套件，可以直接寫 state，但因為練習的關係，接下來的範例還是會乖乖寫 constructor
+如果是 create react app 的話不需要寫 constructor 了，因為已經引用了`@babel/plugin-proposal-class-properties`套件，可以直接寫 state，但因為練習的關係，接下來的範例還是會乖乖寫 constructor
 
 這是省去 constructor 的寫法
 

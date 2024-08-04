@@ -28,7 +28,7 @@ tag: react
 
 ![](/img/1__CKXiyl9c__NnpDfa1jO1wDw.png)
 
-以下是用 createRef 來取得 input 本身，再利用 current.value 取的 input 的 value 操作表單 ，跟傳統的 document.getElementsByTagName(“input”)\[0\].value 來取值的概念是一樣的
+以下是用 createRef 來取得 input 本身，再利用 current.value 取的 input 的 value 操作表單 ，跟傳統的 `document.getElementsByTagName("input")[0].value` 來取值的概念是一樣的
 
 ![](/img/1__u__Vw0uzyE__UPmsHuVl5oGw.png)
 

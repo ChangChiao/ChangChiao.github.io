@@ -13,11 +13,7 @@ tag: react
 當初看到 redux 的 connect 還想說這是什麼神秘的寫法，原來就是 HOC 啊!
 
 ```javascript
-const Counter = connect(
-  mapStateToProps,
-
-  mapDispatchToProps
-)(Counters);
+const Counter = connect(mapStateToProps, mapDispatchToProps)(Counters);
 ```
 
 > 被作為參數的 component 稱之為**Wrapped Component**
