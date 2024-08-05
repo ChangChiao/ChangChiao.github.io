@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://codinghotpot.com/img/1__2M__Yj__L__xEH31ECcV54ryg.png">
 <meta property="og:image" content="https://codinghotpot.com/img/1__ekcM1PkJ3fMjDpeOWxRWJw.png">
 <meta property="article:published_time" content="2020-12-28T03:26:25.742Z">
-<meta property="article:modified_time" content="2024-08-04T15:21:28.545Z">
+<meta property="article:modified_time" content="2024-08-05T12:26:10.831Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="react">
 <meta name="twitter:card" content="summary">
@@ -209,7 +209,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-08-04 15:21:28" itemprop="dateModified" datetime="2024-08-04T15:21:28+00:00">2024-08-04</time>
+      <time title="修改時間：2024-08-05 12:26:10" itemprop="dateModified" datetime="2024-08-05T12:26:10+00:00">2024-08-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -232,7 +232,7 @@
     
     
     <div class="post-body" itemprop="articleBody"><p><img src="/img/1__2NpcgH9dWVbYWX0GJO____fQ.jpeg"></p>
-<p>Redux Middleware 翻成中介軟體，在 dispatch action 之後到執行 reducer 之間，可以執行多個 middleware，就像接力賽一樣將 action 交棒給 middleware，再交棒給下一個 middleware，最後才觸發 reducer</p>
+<p><code>Redux Middleware</code> 翻成中介軟體，在 dispatch action 之後到執行 reducer 之間，可以執行多個 middleware，就像接力賽一樣將 action 交棒給 middleware，再交棒給下一個 middleware，最後才觸發 reducer</p>
 <p>在 middleware 階段可以觀察是哪個 action 觸發以及 state 的變化紀錄，也可以在這裡處理非同步的問題，因為 redux 本身無法處理非同步的 action，像是 dispatch 一個 action 是 call api 這類的行為</p>
 <p>首先要先引入 applyMiddleware</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; applyMiddleware &#125; <span class="keyword">from</span> <span class="string">&quot;redux&quot;</span>;</span><br></pre></td></tr></table></figure>

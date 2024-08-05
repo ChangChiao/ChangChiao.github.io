@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://codinghotpot.com/img/1__wPhvW1w__SP1YUxsh0Nww3g.png">
 <meta property="og:image" content="https://codinghotpot.com/img/1__cKeL9Z1gJrP7DaY32d5d9g.png">
 <meta property="article:published_time" content="2020-12-21T01:14:32.699Z">
-<meta property="article:modified_time" content="2024-08-04T15:21:28.545Z">
+<meta property="article:modified_time" content="2024-08-05T12:26:10.831Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="react">
 <meta name="twitter:card" content="summary">
@@ -210,7 +210,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-08-04 15:21:28" itemprop="dateModified" datetime="2024-08-04T15:21:28+00:00">2024-08-04</time>
+      <time title="修改時間：2024-08-05 12:26:10" itemprop="dateModified" datetime="2024-08-05T12:26:10+00:00">2024-08-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -243,7 +243,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-router-dom</span><br></pre></td></tr></table></figure>
 
 <p>在 index.js 引入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#123; BrowserRouter, Switch &#125; from <span class="string">&#x27;react-router-dom&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">BrowserRouter</span>, <span class="title class_">Switch</span> &#125; <span class="keyword">from</span> <span class="string">&quot;react-router-dom&quot;</span>;</span><br></pre></td></tr></table></figure>
 
 <p>BrowserRouter 的用途：讓其底下所有的 component 都能使用 router，可以利用 HTML5 History 來進行操作</p>
 <p>Switch 的用途：讓第一個吻合 url 的 component 被渲染，如果沒有 switch，所有吻合的 component 都會被渲染</p>
@@ -256,12 +256,12 @@
 <p><img src="/img/1__uX98XZ__rIh5OKgngp__GbzA.png"></p>
 <p>Route 有幾個屬性如下:</p>
 <ul>
-<li>exact:路徑需要完全符合才會導到該頁面等，等同於 path&#x3D;&#x3D;&#x3D;pathname，沒加的話點擊就造成 &#x2F;、&#x2F;a、&#x2F;b 均吻合路徑</li>
+<li>exact:路徑需要完全符合才會導到該頁面等，等同於 <code>path === pathname</code>，沒加的話點擊就造成 &#x2F;、&#x2F;a、&#x2F;b 均吻合路徑</li>
 <li>path:路徑，用來比對 URL</li>
 <li>component:路徑吻合後，顯示對應的 component</li>
 </ul>
-<p>假如 Route 沒有寫 path 或是 path&#x3D;’*’， 並且排在前面的 Route 都沒被吻合的話就會被渲染，所以就可以拿來放一個預設頁面（404 not found）</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&quot;\*&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">NoMatch404</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>假如 Route 沒有寫 path 或是 path&#x3D;”*“， 並且排在前面的 Route 都沒被吻合的話就會被渲染，所以就可以拿來放一個預設頁面（404 not found）</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&quot;*&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">NoMatch404</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>路徑的部分抽離出來放在 nav.js 控管</p>
 <p><img src="/img/1__wPhvW1w__SP1YUxsh0Nww3g.png"></p>
@@ -285,7 +285,7 @@
 <blockquote>
 <p>利用 HTML5 history API 提供的 pushState 、popState 方法來控制路徑</p>
 </blockquote>
-<p><strong>HashRouter</strong> 網頁路徑會有＃， ex.<a target="_blank" rel="noopener" href="http://test.com/a">http://test.com/</a>#b</p>
+<p><strong>HashRouter</strong> 網頁路徑會有＃， ex.<a target="_blank" rel="noopener" href="http://test.com/#b">http://test.com/#b</a></p>
 <p>利用 window.location.hash 、hashchange 控制路徑，透過改變#後面的值來切換頁面</p>
 <p>但我是用 BrowserRouter，居然也可以正常運作？那是因為 create-react-app 自動建立了 express server 的緣故，目前看到用 React 製作的網頁大部分都是使用 BrowserRouter 模式，畢竟網址當中多了個#看起來還是不太美觀</p>
 <p><strong>withRouter</strong></p>

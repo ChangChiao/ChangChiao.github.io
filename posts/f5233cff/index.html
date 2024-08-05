@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://codinghotpot.com/img/1__SA__gWjqZpXpsJLGIXNMrjw.png">
 <meta property="og:image" content="https://codinghotpot.com/img/1__B6pRleJ__FxpzySRX6EQFfw.png">
 <meta property="article:published_time" content="2020-11-23T00:37:31.785Z">
-<meta property="article:modified_time" content="2024-08-04T15:21:28.545Z">
+<meta property="article:modified_time" content="2024-08-05T12:26:10.831Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="react">
 <meta name="twitter:card" content="summary">
@@ -210,7 +210,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-08-04 15:21:28" itemprop="dateModified" datetime="2024-08-04T15:21:28+00:00">2024-08-04</time>
+      <time title="修改時間：2024-08-05 12:26:10" itemprop="dateModified" datetime="2024-08-05T12:26:10+00:00">2024-08-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -233,10 +233,10 @@
     
     
     <div class="post-body" itemprop="articleBody"><p><img src="/img/1__KCSa7ZwXlerkkbyXRfr2og.jpeg"></p>
-<p>在搜尋 useMemo 的時候，就一直看到 React.memo 的相關資料 ，雖然 React memo 不屬於 React hook 的一部分，但還是簡單介紹一下，我們都知道 class component 有 shouldComponentUpdate 可以來決定 component 是否要重新渲染，那 functional component 也有類似的功能嗎？有的那就是 React.memo，React.memo 為 react v16.6 引入的新功能，同時他也是個 Higher order component(HOC)。</p>
+<p>在搜尋 useMemo 的時候，就一直看到 React.memo 的相關資料 ，雖然 React memo 不屬於 React hook 的一部分，但還是簡單介紹一下，我們都知道 class component 有 shouldComponentUpdate 可以來決定 component 是否要重新渲染，那 functional component 也有類似的功能嗎？有的那就是 React.memo，React.memo 為 react v16.6 引入的新功能，同時他也是個 <code>Higher order component(HOC)</code>。</p>
 <h4 id="React-memo"><a href="#React-memo" class="headerlink" title="React.memo"></a><strong>React.memo</strong></h4><p>當 functional component 的 state 和 prop state 有變化的時候，React.memo 就會檢查之前的 state 、props 是否與當前的相等，如果 props 沒變動就不會重新渲染</p>
 <p>第一個參數是把 component 傳入 React.memo 裡面，假設需要控制比對過程就可以傳入第二個參數<code>areEqual function，來自定義比較prop的function與shouldComponentUpdate()不同的是，如果props沒變，則是return true就不會重新re-render</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> banner = <span class="title class_">React</span>.<span class="title function_">memo</span>(component, <span class="string">`areEqual`</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> banner = <span class="title class_">React</span>.<span class="title function_">memo</span>(<span class="function">(<span class="params">&#123;title &#125;</span>) =&gt;</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;title&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>, (prevProps, <span class="function"><span class="params">nextProps</span> =&gt;</span>&#123;<span class="keyword">return</span> <span class="literal">false</span>&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> banner = <span class="title class_">React</span>.<span class="title function_">memo</span>(component, <span class="string">&#x27;areEqual&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> banner = <span class="title class_">React</span>.<span class="title function_">memo</span>(<span class="function">(<span class="params">&#123;title &#125;</span>) =&gt;</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;title&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>, (prevProps, <span class="function"><span class="params">nextProps</span> =&gt;</span> &#123;<span class="keyword">return</span> <span class="literal">false</span>&#125;);</span><br></pre></td></tr></table></figure>
 
 <h4 id="useMemo"><a href="#useMemo" class="headerlink" title="useMemo"></a>useMemo</h4><p>當 component 結構變得複雜時，頻繁的 re-render 就會造成效能上的問題，useMemo 適用於減少的重複的複雜計算 ，像是資料量較大的 map、filter 操作等等，但假設是輕量的資料處理就不建議使用，反而浪費效能。</p>
 <p>usememo 的使用需要傳入兩個參數</p>
@@ -256,7 +256,7 @@
 <p>假如這個函式為 props 會往下傳給子 component ，如果 function 頻繁的變動連帶也會造成底下的子 component 無意義的 re-render，但貌似用的機會不多…</p>
 <p>大致而言 useMemo 是暫存計算的值 ，useCallBack 是暫存函式的使用</p>
 <h4 id="useRef"><a href="#useRef" class="headerlink" title="useRef"></a>useRef</h4><p>useRef 可以讓我們取到指定的 DOM，用一個 inputRef 變數將 useRef（）存起來，大部分的例子都會寫 useRef（null）將初始值設定為 null，但實際測試發現沒寫也不會怎樣，useRef 還是有作用的，接下來在要綁定的對象上，透過 ref 屬性，將物件傳入</p>
-<p>利用.currernt 屬性可以取到 DOM 對象，所以透過 inputRef.current.value 就可以成功取得 input 的值 123</p>
+<p>利用.current 屬性可以取到 DOM 對象，所以透過 inputRef.current.value 就可以成功取得 input 的值 123</p>
 <p><img src="/img/1__SA__gWjqZpXpsJLGIXNMrjw.png"></p>
 <h4 id="自定義-Hooks"><a href="#自定義-Hooks" class="headerlink" title="自定義 Hooks"></a>自定義 Hooks</h4><p>利用現有的 React Hooks 封裝成自己設定的 Hooks ，下面是一個更換網頁 document title 的 Hook</p>
 <p><img src="/img/1__B6pRleJ__FxpzySRX6EQFfw.png"></p>
