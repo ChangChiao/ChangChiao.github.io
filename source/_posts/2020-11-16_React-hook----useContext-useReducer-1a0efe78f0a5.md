@@ -67,9 +67,9 @@ ContextExample2.js import Content
 const [count, dispatch] = useReducer(reducer, initialState, initialAction);
 ```
 
-- **reducer :** 跟以往的 reducer 一樣， 先列出有哪些動作指令 ，並且根據不同的動作回傳操作過後的 state
-- **initialState:**定義初始值
-- **initialAction:**為 useReducer 初次執行的 action，但貌似不常用
+- reducer : 跟以往的 reducer 一樣， 先列出有哪些動作指令 ，並且根據不同的動作回傳操作過後的 state
+- initialState:定義初始值
+- initialAction:為 useReducer 初次執行的 action，但貌似不常用
 
 將 reducer 和 initialState 傳入 userReducer 並且以解構的方式回傳
 

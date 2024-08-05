@@ -11,7 +11,7 @@ tag: react
 
 ![](/img/1__KCSa7ZwXlerkkbyXRfr2og.jpeg)
 
-在搜尋 useMemo 的時候，就一直看到 React.memo 的相關資料 ，雖然 React memo 不屬於 React hook 的一部分，但還是簡單介紹一下，我們都知道 class component 有 shouldComponentUpdate 可以來決定 component 是否要重新渲染，那 functional component 也有類似的功能嗎？有的那就是 React.memo，React.memo 為 react v16.6 引入的新功能，同時他也是個 Higher order component(HOC)。
+在搜尋 useMemo 的時候，就一直看到 React.memo 的相關資料 ，雖然 React memo 不屬於 React hook 的一部分，但還是簡單介紹一下，我們都知道 class component 有 shouldComponentUpdate 可以來決定 component 是否要重新渲染，那 functional component 也有類似的功能嗎？有的那就是 React.memo，React.memo 為 react v16.6 引入的新功能，同時他也是個 `Higher order component(HOC)`。
 
 #### **React.memo**
 
@@ -20,9 +20,9 @@ tag: react
 第一個參數是把 component 傳入 React.memo 裡面，假設需要控制比對過程就可以傳入第二個參數`areEqual function，來自定義比較prop的function與shouldComponentUpdate()不同的是，如果props沒變，則是return true就不會重新re-render`
 
 ```javascript
-const banner = React.memo(component, `areEqual`);
+const banner = React.memo(component, 'areEqual');
 
-const banner = React.memo(({title }) => <div>{title}</div>, (prevProps, nextProps =>{return false});
+const banner = React.memo(({title }) => <div>{title}</div>, (prevProps, nextProps => {return false});
 ```
 
 #### useMemo
@@ -64,7 +64,7 @@ const test = useMemo(() => callback, array);
 
 useRef 可以讓我們取到指定的 DOM，用一個 inputRef 變數將 useRef（）存起來，大部分的例子都會寫 useRef（null）將初始值設定為 null，但實際測試發現沒寫也不會怎樣，useRef 還是有作用的，接下來在要綁定的對象上，透過 ref 屬性，將物件傳入
 
-利用.currernt 屬性可以取到 DOM 對象，所以透過 inputRef.current.value 就可以成功取得 input 的值 123
+利用.current 屬性可以取到 DOM 對象，所以透過 inputRef.current.value 就可以成功取得 input 的值 123
 
 ![](/img/1__SA__gWjqZpXpsJLGIXNMrjw.png)
 

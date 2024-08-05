@@ -9,7 +9,7 @@ tags: "react"
 
 ![](/img/1__2NpcgH9dWVbYWX0GJO____fQ.jpeg)
 
-Redux Middleware 翻成中介軟體，在 dispatch action 之後到執行 reducer 之間，可以執行多個 middleware，就像接力賽一樣將 action 交棒給 middleware，再交棒給下一個 middleware，最後才觸發 reducer
+`Redux Middleware` 翻成中介軟體，在 dispatch action 之後到執行 reducer 之間，可以執行多個 middleware，就像接力賽一樣將 action 交棒給 middleware，再交棒給下一個 middleware，最後才觸發 reducer
 
 在 middleware 階段可以觀察是哪個 action 觸發以及 state 的變化紀錄，也可以在這裡處理非同步的問題，因為 redux 本身無法處理非同步的 action，像是 dispatch 一個 action 是 call api 這類的行為
 
