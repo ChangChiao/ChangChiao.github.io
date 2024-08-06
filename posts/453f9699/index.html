@@ -52,7 +52,7 @@
 <meta property="og:image" content="https://codinghotpot.com/img/1__hApcYQ25lffPS3HDA__bkvg.png">
 <meta property="og:image" content="https://codinghotpot.com/img/1__9d__V4JLHqV3__zzXrUxCxJw.png">
 <meta property="article:published_time" content="2021-01-25T12:34:18.542Z">
-<meta property="article:modified_time" content="2024-08-05T12:26:10.831Z">
+<meta property="article:modified_time" content="2024-08-06T11:40:35.000Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="frontend">
 <meta name="twitter:card" content="summary">
@@ -231,7 +231,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-08-05 12:26:10" itemprop="dateModified" datetime="2024-08-05T12:26:10+00:00">2024-08-05</time>
+      <time title="修改時間：2024-08-06 11:40:35" itemprop="dateModified" datetime="2024-08-06T11:40:35+00:00">2024-08-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -268,7 +268,7 @@
 <h4 id="emit-props"><a href="#emit-props" class="headerlink" title="emit&amp;props"></a>emit&amp;props</h4><p>正當我習慣地寫下</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.$emit(<span class="string">&quot;changePage&quot;</span>, <span class="number">5</span>);</span><br></pre></td></tr></table></figure>
 
-<p>發現我熟悉的 this 不見了!？居然變成了 undefined，所以我說那個 this 呢?稍微翻了一下文件，發現在 setup 裡面已經取不到 this 了，取而代之的是 context，setup 可以傳入兩個參數，props 和 context</p>
+<p>發現我熟悉的 this 不見了!？居然變成了 undefined，所以我說<code>那個 this</code> 呢?稍微翻了一下文件，發現在 setup 裡面已經取不到 this 了，取而代之的是 context，setup 可以傳入兩個參數，props 和 context</p>
 <p>直接 console.log context 看看結果</p>
 <p><img src="/img/1__h8QOf92Rxzz57sUviSBVng.png"></p>
 <p>所以我們可以透過 context 取得 attrs、 slots 、emit 等屬性</p>

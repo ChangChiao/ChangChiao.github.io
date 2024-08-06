@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://codinghotpot.com/img/1__DP07gChrE7NtPN__dnmAi6Q.jpeg">
 <meta property="og:image" content="https://codinghotpot.com/img/1__WW23Rtq6DQ__vqyaELKMlzw.png">
 <meta property="article:published_time" content="2021-02-08T01:04:51.594Z">
-<meta property="article:modified_time" content="2024-08-05T12:26:10.831Z">
+<meta property="article:modified_time" content="2024-08-06T11:40:35.000Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary">
@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-08-05 12:26:10" itemprop="dateModified" datetime="2024-08-05T12:26:10+00:00">2024-08-05</time>
+      <time title="修改時間：2024-08-06 11:40:35" itemprop="dateModified" datetime="2024-08-06T11:40:35+00:00">2024-08-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -252,7 +252,7 @@
 
 <p>但…依然無動於衷</p>
 <h4 id="mainFields"><a href="#mainFields" class="headerlink" title="mainFields"></a><strong>mainFields</strong></h4><p>resolve.mainFields 為 webpack 的其中一項設定</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">configureWebpack</span>: &#123;</span><br><span class="line"> <span class="attr">resolve</span>: &#123;</span><br><span class="line"> <span class="attr">mainFields</span>: [<span class="string">&quot;module&quot;</span>,<span class="string">&quot;main&quot;</span>],</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">configureWebpack</span>: &#123;</span><br><span class="line">  <span class="attr">resolve</span>: &#123;</span><br><span class="line">  <span class="attr">mainFields</span>: [<span class="string">&quot;module&quot;</span>,<span class="string">&quot;main&quot;</span>],</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 
 <p>部分第三方的套件會在不同環境下提供兩種版本(ES5&amp;ES6)的 js，而 module 和 main 個別讀取不同的 js，module 使用 ES6 的語法 ，而 main 則是 ES5，並且依照順序決定優先讀取哪一個</p>
 <p>預設為 module ，畢竟未來趨勢是以 ES6 為主流，為了支援比較舊的瀏覽器 ，對調順序後優先讀取 main(ES5)版</p>
@@ -262,7 +262,8 @@
 <p>失敗 N 次之後 ，終於成功了 🎉🎉🎉</p>
 <p>雖然近期 IE 已經被微軟放生了，但就我所知某些低階的安卓手機自有的瀏覽器還是有這個問題 ，<strong>相容性問題</strong>永遠是前端的一大考驗阿…</p>
 <p>參考資料</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/fabiospampinato/cash/issues/268" title="https://github.com/fabiospampinato/cash/issues/268"><strong>Does not work in IE11 · Issue #268 · fabiospampinato&#x2F;cash</strong><br>_Current behavior In IE11, cash does not work bacause of Expected identifier error. This error is caused by remaining…_github.com</a><a target="_blank" rel="noopener" href="https://github.com/fabiospampinato/cash/issues/268"></a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/fabiospampinato/cash/issues/268" title="https://github.com/fabiospampinato/cash/issues/268"><strong>Does not work in IE11 · Issue #268 · fabiospampinato&#x2F;cash</strong>  
+</a><a target="_blank" rel="noopener" href="https://github.com/fabiospampinato/cash/issues/268"></a></p>
 <p>2021&#x2F;03&#x2F;30 更新  — vue cli 4 如果發生一樣的問題</p>
 <p><em>babel.config.js 需調整為</em></p>
 <p><img src="/img/1__WW23Rtq6DQ__vqyaELKMlzw.png"></p>
