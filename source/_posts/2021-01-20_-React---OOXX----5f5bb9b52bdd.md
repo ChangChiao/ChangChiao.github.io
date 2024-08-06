@@ -66,7 +66,7 @@ ex 如果 record 陣列這三個 index (0,1,2)的數字加起來為 3 or -3 就�
 
 ![](/img/1__CuUYMtdRSoJ11X91ioqMQA.png)
 
-一開始用了一個比較蠢的解法是 setTimeout(() => {})的確可以運作，但這是這樣寫用膝蓋想也知道不合理，後來查到比較正確的方式是在 useEffect 階段來取得 useRef，不過也失敗了，為什麼？因為我的 canvas 預設是隱藏，所以 useRef 抓到的就會是 null，問題好像越變越複雜，仔細想想，其實 canvas 也沒必要隱藏，只要可以讓使用者點擊到被 canvas 蓋住的格子就可以了，所以就在 canvas 身上設定 css 穿透屬性：pointer-events: none;就解決了！
+一開始用了一個比較蠢的解法是 `setTimeout(() => {})`的確可以運作，但這是這樣寫用膝蓋想也知道不合理，後來查到比較正確的方式是在 useEffect 階段來取得 useRef，不過也失敗了，為什麼？因為我的 canvas 預設是隱藏，所以 useRef 抓到的就會是 null，問題好像越變越複雜，仔細想想，其實 canvas 也沒必要隱藏，只要可以讓使用者點擊到被 canvas 蓋住的格子就可以了，所以就在 canvas 身上設定 css 穿透屬性：pointer-events: none;就解決了！
 
 完整程式碼
 

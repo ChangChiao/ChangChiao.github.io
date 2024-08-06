@@ -148,5 +148,4 @@ export default ToDoList;
 
 參考資料
 
-[**useReducer Action dispatched twice**  
-\_To first clarify the existing behavior, the STATUS_FETCHING action was actually only being "dispatched" (i.e. if you do…\_stackoverflow.co](https://stackoverflow.com/questions/54892403/usereducer-action-dispatched-twice "https://stackoverflow.com/questions/54892403/usereducer-action-dispatched-twice")[](https://stackoverflow.com/questions/54892403/usereducer-action-dispatched-twice)
+[**useReducer Action dispatched twice**](https://stackoverflow.com/questions/54892403/usereducer-action-dispatched-twice "https://stackoverflow.com/questions/54892403/usereducer-action-dispatched-twice")[](https://stackoverflow.com/questions/54892403/usereducer-action-dispatched-twice)
