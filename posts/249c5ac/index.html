@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://codinghotpot.com/img/1__iBys6d9iL80H__DI7jUXaLA.jpeg">
 <meta property="og:image" content="https://codinghotpot.com/img/0__9DoxhCVs7AolFypN.png">
 <meta property="article:published_time" content="2021-09-05T02:25:54.531Z">
-<meta property="article:modified_time" content="2024-08-06T11:40:35.000Z">
+<meta property="article:modified_time" content="2024-08-09T11:56:01.539Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="演算法">
 <meta name="twitter:card" content="summary">
@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-08-06 11:40:35" itemprop="dateModified" datetime="2024-08-06T11:40:35+00:00">2024-08-06</time>
+      <time title="修改時間：2024-08-09 11:56:01" itemprop="dateModified" datetime="2024-08-09T11:56:01+00:00">2024-08-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -257,8 +257,7 @@
 <li>O(n) —  線性</li>
 </ul>
 <p>跑一次迴圈，所以如果輸入的 n 越長，執行的次數也會等比增加</p>
-<p>&#x2F;&#x2F;ex:找出這個陣列有沒有 debby 這個人,不用 indexOf 和 includes 話，就是土法煉鋼，從頭找到尾，一個一個慢慢找</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="string">&quot;andy&quot;</span>, <span class="string">&quot;peggy&quot;</span>, <span class="string">&quot;debby&quot;</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.<span class="property">length</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (arr[i] === <span class="string">&quot;debby&quot;</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ex:找出這個陣列有沒有 debby 這個人,不用 indexOf 和 includes 話，就是土法煉鋼，從頭找到尾，一個一個慢慢找</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="string">&quot;andy&quot;</span>, <span class="string">&quot;peggy&quot;</span>, <span class="string">&quot;debby&quot;</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.<span class="property">length</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (arr[i] === <span class="string">&quot;debby&quot;</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>O(n*log n) —  線性對數</li>
@@ -267,8 +266,8 @@
 <ul>
 <li>O(n²) —  平方，n 的平方</li>
 </ul>
-<p>ex:用雙迴圈印出一個九九乘法表<br>&#x2F;&#x2F;n*n&#x3D;n²</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= <span class="number">9</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = i; j &lt;= <span class="number">9</span>; j++) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;i&#125;</span>*<span class="subst">$&#123;j&#125;</span> = <span class="subst">$&#123;i * j&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ex:用雙迴圈印出一個九九乘法表</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//n*n=n²</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= <span class="number">9</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = i; j &lt;= <span class="number">9</span>; j++) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;i&#125;</span>*<span class="subst">$&#123;j&#125;</span> = <span class="subst">$&#123;i * j&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>O(n!) —  階乘，像是 n 階乘，ex: n x n-1 x … x 3 x 2 x 1</li>
