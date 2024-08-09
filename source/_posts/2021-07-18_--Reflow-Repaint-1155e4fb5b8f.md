@@ -44,7 +44,7 @@ keywords: []
 - 更改 CSS 的樣式(會影響佈局的): padding、 margin、 border、 width、 font-family、 font-size
 - 新增或移除 DOM 的樣式
 - 修改 input 的內容
-- 獲取元素的特定屬性(scrollTop、scrollLeft、scrollWidth、scrollHeight、 offsetTop、offsetLeft、offsetWidth、offsetHeight、clientTop、clientLeft、clientWidth、clientHeight)
+- 獲取元素的特定屬性`(scrollTop、scrollLeft、scrollWidth、scrollHeight、 offsetTop、offsetLeft、offsetWidth、offsetHeight、clientTop、clientLeft、clientWidth、clientHeight)`
 
 瀏覽器在處理 Reflow 這件事有個優化機制 ，會將多個 Reflow 和 Repaint 放到佇列，然後在每一個 requestAnimationFrame(每 16.6ms)清空佇列，合併為一次的處理然後更新畫面，但如果當你需要獲取 offsetTop 、offsetWidth、 scrollTop、 clientTop…這些屬性或是呼叫 scrollIntoView() 方法的時候 ，瀏覽器為了確保你拿到的是最新的值，就必須馬上觸發 Reflow 。
 
@@ -60,14 +60,14 @@ Render Tree 的樣式改變 ，單純改變外觀顏色，不影響佈局，稱�
 
 簡單來說:
 
-需要重新計算 DOM 節點 → Reflow
+- 需要重新計算 DOM 節點 → Reflow
 
-更改樣式重新繪製畫面，不涉及畫面排版 → Repaint
+- 更改樣式重新繪製畫面，不涉及畫面排版 → Repaint
 
 #### 如何減少 Reflow 的次數?
 
 - 避免用 table 排版
-- 如果要對該 DOM 元素設定動畫，可以先設定 postion 為 absolute 或是 fixed，讓該元素脫離文件流，就不會影響到其他元素的佈局
+- 如果要對該 DOM 元素設定動畫，可以先設定 position 為 absolute 或是 fixed，讓該元素脫離文件流，就不會影響到其他元素的佈局
 - 如果要用 JS 來設定樣式的話，避免逐行修改，改用 ClassName 來修改樣式
 
 ```javascript
@@ -85,6 +85,6 @@ element.className += "newStyle";
 - 避免多次讀取 offsetTop、 clientTop 等屬性 ，可以用一個變數將值存起來
 - 用 visibility 代替 display:none
 
-> 在網路上看到一個很有趣的比喻  : DOM 整形就會觸發 Reflow，DOM 化妝就會觸發 Repaint。
+> 在網路上看到一個很有趣的比喻: DOM 整形就會觸發 Reflow，DOM 化妝就會觸發 Repaint。
 
 參考資料:[DOM Performance](https://gist.github.com/faressoft/36cdd64faae21ed22948b458e6bf04d5)
