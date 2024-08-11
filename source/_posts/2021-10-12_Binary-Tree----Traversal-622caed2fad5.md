@@ -11,11 +11,11 @@ keywords: []
 
 ![](/img/1__H7wB6FPsJcKZN1GAQV2CCw.jpeg)
 
-Traversal 翻譯成中文就是遍歷的意思，如果要遍歷 tree 的每個節點的話，會有兩種方式，Breadth-First Tree Traversal 和 Depth-First Tree Traversal。
+Traversal 翻譯成中文就是遍歷的意思，如果要遍歷 tree 的每個節點的話，會有兩種方式，`Breadth-First Tree Traversal` 和 `Depth-First Tree Traversal`。
 
 #### Breadth-First Tree Traversal
 
-Breadth-First Tree Traversal 也被稱作 Level Order Tree Traversal，利用廣度優先搜尋(Breadth-First Search，BFS)的方式來遍歷每個節點，概念非常容易理解，就是將每一層的節點由左至右依序取出。
+`Breadth-First Tree Traversal` 也被稱作 `Level Order Tree Traversal`，利用廣度優先搜尋(Breadth-First Search，BFS)的方式來遍歷每個節點，概念非常容易理解，就是將每一層的節點由左至右依序取出。
 
 #### 甚麼是廣度優先搜尋?
 
