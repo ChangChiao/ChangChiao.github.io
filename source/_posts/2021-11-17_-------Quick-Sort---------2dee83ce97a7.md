@@ -11,7 +11,7 @@ keywords: []
 
 ![](/img/1__NtPpL2tOkxZrMgr753b0FQ.jpeg)
 
-在了解快速排序法的概念之前要先理解 partition 演算法，不過單用文字敘述還是蠻抽象的，所以搭配示意圖來做說明，假如現在有個陣列 [2, 6, 3, 9, 1, 5]
+在了解快速排序法的概念之前要先理解 partition 演算法，不過單用文字敘述還是蠻抽象的，所以搭配示意圖來做說明，假如現在有個陣列 `[2, 6, 3, 9, 1, 5]`
 
 1. 取陣列的最後一個值 5 作為 pivot 基準值
 
@@ -61,8 +61,10 @@ keywords: []
 //快速排序法
 const partition = (arr, left, right) => {
   let pivot = arr[right];
+
   //用來計算有幾個數字小於pivot
   let i = left - 1;
+
   //從最左邊找到pivot的前一個停止
   for (let j = left; j <= right - 1; j++) {
     if (arr[j] <= pivot) {
@@ -127,6 +129,6 @@ quickSort2(arr);
 
 👍 在最差的情況下，時間複雜度是 O(n²)
 
-👎 在最佳的情況下，時間複雜度是**O(n log n)**
+👎 在最佳的情況下，時間複雜度是 O(n log n)
 
 🤚 在平均情況下，時間複雜度為 O(n)\*O(log n) = O(n log n)
