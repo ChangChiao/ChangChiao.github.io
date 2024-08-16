@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://codinghotpot.com/img/1__akJ1DgIjtqPKrXoR3BqdXw.png">
 <meta property="og:image" content="https://codinghotpot.com/img/1__DF__01JRsNRn7mClTKBqdTA.png">
 <meta property="article:published_time" content="2021-12-20T02:39:06.430Z">
-<meta property="article:modified_time" content="2024-08-12T03:41:30.499Z">
+<meta property="article:modified_time" content="2024-08-16T09:26:05.613Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="演算法">
 <meta name="twitter:card" content="summary">
@@ -211,7 +211,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-08-12 03:41:30" itemprop="dateModified" datetime="2024-08-12T03:41:30+00:00">2024-08-12</time>
+      <time title="修改時間：2024-08-16 09:26:05" itemprop="dateModified" datetime="2024-08-16T09:26:05+00:00">2024-08-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -246,12 +246,16 @@
 <li>先在陣列取一個中間數的 index，公式為 Math.floor((left+right)&#x2F;2)，0+7 除以 2 無條件捨去後拿到 3，這邊用 middle 標示為中間數。</li>
 </ol>
 <p><img src="/img/1__Hkz4aplHKJIHMLk7GBTZJQ.png"></p>
-<p>2. 這時拿目標數 79 去跟中間數 50 比較，目標數 79 比較大，代表中間數的左邊那堆數字都不可能是我們要找的答案(都太小了)，所以我們要調整一下搜尋範圍，將 left 指針移動到 middle+1 的位置。</p>
+<ol start="2">
+<li>這時拿目標數 79 去跟中間數 50 比較，目標數 79 比較大，代表中間數的左邊那堆數字都不可能是我們要找的答案(都太小了)，所以我們要調整一下搜尋範圍，將 left 指針移動到 middle+1 的位置。</li>
+</ol>
 <blockquote>
 <p>為甚麼要 middle+1?因為已經知道 middle 不是答案，搜尋範圍就可以排除 middle 了</p>
 </blockquote>
 <p><img src="/img/1__akJ1DgIjtqPKrXoR3BqdXw.png"></p>
-<p>3.重新計算中間數，(4+7)&#x2F;2 無條件捨去算出 5，而在 index 5 的數字 79 就是我們要找的數字。</p>
+<ol start="3">
+<li>重新計算中間數，(4+7)&#x2F;2 無條件捨去算出 5，而在 index 5 的數字 79 就是我們要找的數字。</li>
+</ol>
 <p><img src="/img/1__DF__01JRsNRn7mClTKBqdTA.png"></p>
 <p>用 js 實作二分搜尋法</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">binarySearch</span> = (<span class="params">arr, num</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> left = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> right = arr.<span class="property">length</span> - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">    <span class="keyword">let</span> middle = <span class="title class_">Math</span>.<span class="title function_">floor</span>((left + right) / <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span> (num === arr[middle]) <span class="keyword">return</span> middle;</span><br><span class="line">    <span class="keyword">if</span> (num &gt; arr[middle]) &#123;</span><br><span class="line">      left = middle + <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num &lt; arr[middle]) &#123;</span><br><span class="line">      right = middle - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title function_">binarySearch</span>([<span class="number">10</span>, <span class="number">21</span>, <span class="number">34</span>, <span class="number">50</span>, <span class="number">66</span>, <span class="number">79</span>, <span class="number">82</span>, <span class="number">97</span>], <span class="number">79</span>);</span><br></pre></td></tr></table></figure>

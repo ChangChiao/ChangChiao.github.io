@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://codinghotpot.com/img/1__KJEn3J7mgqHiu0sVC07__SA.jpeg">
 <meta property="og:image" content="https://codinghotpot.com/img/1__n7tGoyoo5A5HZj9jzHtnzw.png">
 <meta property="article:published_time" content="2021-12-15T07:32:53.104Z">
-<meta property="article:modified_time" content="2024-08-12T03:41:30.499Z">
+<meta property="article:modified_time" content="2024-08-16T09:26:05.613Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="演算法">
 <meta name="twitter:card" content="summary">
@@ -207,7 +207,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-08-12 03:41:30" itemprop="dateModified" datetime="2024-08-12T03:41:30+00:00">2024-08-12</time>
+      <time title="修改時間：2024-08-16 09:26:05" itemprop="dateModified" datetime="2024-08-16T09:26:05+00:00">2024-08-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -231,7 +231,7 @@
     
     <div class="post-body" itemprop="articleBody"><p><img src="/img/1__KJEn3J7mgqHiu0sVC07__SA.jpeg"></p>
 <p><strong>貪婪演算法</strong>（英語：greedy algorithm），又稱<strong>貪心演算法</strong>，是一種在每一步選擇中都採取在當前狀態下最好或最佳（即最有利）的選擇，從而希望導致結果是最好或最佳的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%AE%97%E6%B3%95" title="演算法">演算法</a>。(引用自 wikipedia)</p>
-<p>情境 1:小明有個已經養了三年的小豬撲滿裡面，某天他心血來潮把小豬宰了，想把裡面的零錢(一共 29580 元)全部拿去銀行換成鈔票，但是他的皮夾沒辦法放入太多的鈔票，希望銀行可以換給他最少數量的鈔票，因此在兌換的時候必須優先兌換面額最大的鈔票，因此最理想的狀況會是:</p>
+<p>情境 1:<br>小明有個已經養了三年的小豬撲滿裡面，某天他心血來潮把小豬宰了，想把裡面的零錢(一共 29580 元)全部拿去銀行換成鈔票，但是他的皮夾沒辦法放入太多的鈔票，希望銀行可以換給他最少數量的鈔票，因此在兌換的時候必須優先兌換面額最大的鈔票，因此最理想的狀況會是:</p>
 <ul>
 <li>1000 元 X 29</li>
 <li>500 元 X 1</li>
@@ -241,7 +241,7 @@
 <p>用 js 來實作:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">exchange</span> = (<span class="params">num</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> money = [<span class="number">1000</span>, <span class="number">500</span>, <span class="number">100</span>, <span class="number">50</span>, <span class="number">10</span>, <span class="number">5</span>, <span class="number">1</span>];</span><br><span class="line">  <span class="keyword">let</span> point = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">const</span> record = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>];</span><br><span class="line">  <span class="keyword">while</span> (num &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (num &gt;= money[point]) &#123;</span><br><span class="line">      num -= money[point];</span><br><span class="line">      record[point]++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      point++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> record;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title function_">exchange</span>(<span class="number">29580</span>);</span><br><span class="line"><span class="comment">//輸出[29, 1, 0, 1, 3, 0, 0]</span></span><br></pre></td></tr></table></figure>
 
-<p>情境 2:潛入珠寶店的小偷帶了一個後背包可以負重 20kg，因為空間有限，所以他只能挑選最有價值的寶石裝進背包，讓他可以最大化今晚的獲利，可以看到下表有所有的寶石的價格和庫存，在挑選寶石除了選最貴的之外還要考量到重量的問題，那麼，就開始來選擇要優先帶走那些寶石吧!</p>
+<p>情境 2:<br>潛入珠寶店的小偷帶了一個後背包可以負重 20kg，因為空間有限，所以他只能挑選最有價值的寶石裝進背包，讓他可以最大化今晚的獲利，可以看到下表有所有的寶石的價格和庫存，在挑選寶石除了選最貴的之外還要考量到重量的問題，那麼，就開始來選擇要優先帶走那些寶石吧!</p>
 <p><img src="/img/1__n7tGoyoo5A5HZj9jzHtnzw.png"></p>
 <ol>
 <li>先將最貴的一顆鑽石放進背包 (背包剩餘重量 14kg)</li>
