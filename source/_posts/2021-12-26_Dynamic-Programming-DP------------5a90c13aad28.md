@@ -11,7 +11,7 @@ keywords: []
 
 ![](/img/1__LFHGdDxa6__RkEEgsYIt4Lg.jpeg)
 
-Dynamic Programmin 的經典應用除了斐波那契數之外，還有背包問題、最短路徑問題、河內塔、LCS 等等，那麼我們就試著用 Dynamic Programming 來解 leetcode 的 1143 題 [longest common subsequence](https://leetcode.com/problems/longest-common-subsequence/) (LCS)吧!
+`Dynamic Programmin` 的經典應用除了斐波那契數之外，還有背包問題、最短路徑問題、河內塔、LCS 等等，那麼我們就試著用 Dynamic Programming 來解 leetcode 的 1143 題 [longest common subsequence](https://leetcode.com/problems/longest-common-subsequence/) (LCS)吧!
 
 #### 甚麼是 common subsequence?
 
@@ -79,11 +79,11 @@ findLCS("ANB", "AKB"); //2
 1.  空字串與任何單字比必定不相同，因此填入 0
 2.  若兩者的值不同，則比較上方和左方的格字數字大小
 
-- 上方比較大標記為 ↑
-- 左方比較大則標示為 ←
-- 上方與左方的數字大小相同則統一標記為 ↑
+- 上方比較大標記為 `↑`
+- 左方比較大則標示為 `←`
+- 上方與左方的數字大小相同則統一標記為 `↑`
 
-3\. 若兩者的值相同，則取左上方的值+1，並且標記為 ↖
+3. 若兩者的值相同，則取左上方的值+1，並且標記為 `↖`
 
 ![](/img/1____l4xPf9RUbIWY45xf1uCtA.png)
 
@@ -170,6 +170,6 @@ printLCS(str1.length, str2.length);
 console.log("result", result); //AB
 ```
 
-最後成功用 Dynamic Programming 解出 [longest common subsequence](https://leetcode.com/problems/longest-common-subsequence/) !，雖然執行時間和占用記憶體不盡理想…還有待優化
+最後成功用 Dynamic Programming 解出 [longest common subsequence](https://leetcode.com/problems/longest-common-subsequence/) !雖然執行時間和占用記憶體不盡理想…還有待優化
 
 ![](/img/1__NrykSzxaBGnI6PB0b1Htfg.png)

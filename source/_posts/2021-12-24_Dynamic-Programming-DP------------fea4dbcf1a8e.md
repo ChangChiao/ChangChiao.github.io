@@ -9,7 +9,7 @@ tag: 演算法
 
 ![](/img/1__Ul2zeneW3rRZEn18x41hNA.jpeg)
 
-在認識動態規劃之前先來理解 Divide and Conquer(分治法)吧!Divide and Conquer 是一種演算法，執行的步驟如下
+在認識動態規劃之前先來理解 `Divide and Conquer(分治法)`吧!Divide and Conquer 是一種演算法，執行的步驟如下
 
 1.  Divide:先將大問題不斷切割成小問題
 2.  Conquer:用遞迴的方式處理所有的子問題
@@ -23,7 +23,7 @@ tag: 演算法
 
 ![](/img/1__Ec020AFw__on4585Q7cHARA.png)
 
-ex. 89 = 55+34 (n11 = n10 + n9)
+ex. 89 = 55+34 `(n11 = n10 + n9)`
 
 下圖是斐波那契數列遞迴執行的流程圖，每個方格都是一個函式，觀察下圖就會發現有不少重複計算的現象，因此時間複雜度為 O(2ⁿ)。
 
@@ -50,9 +50,9 @@ fibonacci(5);
 
 ![](/img/1__llAWI0I__SdvpAB__40KlR__A.png)
 
-Bottom Up : 使用迴圈，執行順序是由下至上，又稱為 Tabulation，可以想成是從小的問題開始計算，逐步計算到最終要求的值，缺點是可能會計算到沒有用到的子問題。
+`Bottom Up` : 使用迴圈，執行順序是由下至上，又稱為 Tabulation，可以想成是從小的問題開始計算，逐步計算到最終要求的值，缺點是可能會計算到沒有用到的子問題。
 
-Top Down : 使用遞迴，執行順序是由上至下，計算過的結果會存起來不會重複計算，這個方法也被稱作 memoization，由於遞迴的執行效率相較於迴圈會來的差，因此這種方法會比 Bottom Up 還要慢，可能會有遞迴過深的問題。
+`Top Down` : 使用遞迴，執行順序是由上至下，計算過的結果會存起來不會重複計算，這個方法也被稱作 memoization，由於遞迴的執行效率相較於迴圈會來的差，因此這種方法會比 Bottom Up 還要慢，可能會有遞迴過深的問題。
 
 用 js 實作 Bottom Up
 
@@ -96,11 +96,13 @@ fibonacci(6); //輸出8
 
 #### 動態規劃適用的情境
 
-1.  最佳子結構 (Optimal Substructure):問題的最佳解可以從子問題的最佳解推算出來。
-2.  重疊子問題 (Overlapping Sub-problems):如斐波那契數列出現重複子問題的情形，動態規劃的優勢是可以儲存過計算過的結果，再次遇到相同子問題的時候直接取出儲存的結果，無需重複計算。
-3.  無後效性(no aftereffect):即子問題的解一旦確定，就不再改變，不受在這之後、包含它的更大的問題的求解決策影響。
+1.  最佳子結構 `(Optimal Substructure)`:問題的最佳解可以從子問題的最佳解推算出來。
+2.  重疊子問題 `(Overlapping Sub-problems)`:如斐波那契數列出現重複子問題的情形，動態規劃的優勢是可以儲存過計算過的結果，再次遇到相同子問題的時候直接取出儲存的結果，無需重複計算。
+3.  無後效性`(no aftereffect)`:即子問題的解一旦確定，就不再改變，不受在這之後、包含它的更大的問題的求解決策影響。
 
-參考資料:[dynamic-programming-laughlin-lunch-and-learn](https://www.slideshare.net/JasmineGriffiths/dynamic-programming-laughlin-lunch-and-learn)
+參考資料:
+
+[dynamic-programming-laughlin-lunch-and-learn](https://www.slideshare.net/JasmineGriffiths/dynamic-programming-laughlin-lunch-and-learn)
 
 [tabulation-vs-memoization](https://www.geeksforgeeks.org/tabulation-vs-memoization/)
 
