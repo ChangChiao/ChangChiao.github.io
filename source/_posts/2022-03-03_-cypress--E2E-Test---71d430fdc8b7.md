@@ -20,11 +20,15 @@ keywords: []
 
 **npm**
 
+```bash
 npm install cypress --save-dev
+```
 
 **yarn**
 
+```bash
 yarn add cypress --dev
+```
 
 安裝 cypress 之後，可以直接執行 npx cypress open，或是在 package.json 新增指令，看個人習慣
 
