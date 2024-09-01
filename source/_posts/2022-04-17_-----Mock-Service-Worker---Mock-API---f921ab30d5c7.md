@@ -83,9 +83,9 @@ rest 擁有 RESTful API 對應的 METHOD 方法，像是 rest.post()、rest.get(
 
 引入 setupWorker 來創建 worker 實例，並且將先前定義好的 handler 做為參數傳入
 
-畢竟只是要在開發環境測試 Mock API，因此寫了一個簡單的判斷，當開發環境是 dev 才讓 worker run 起來，因為我是用 vite 開發，所以判斷是否為 dev 環境是用 import.meta.env.DEV，用 webpack 的朋友請用 process.env.NODE_ENV 判斷
+畢竟只是要在開發環境測試 Mock API，因此寫了一個簡單的判斷，當開發環境是 dev 才讓 worker run 起來，因為我是用 vite 開發，所以判斷是否為 dev 環境是用 `import.meta.env.DEV`，用 webpack 的朋友請用 `process.env.NODE_ENV` 判斷
 
-msw 的前置作業已經大功告成，接下來將專案 run 起來，如果有在 console.log 看到 \[MSW\] Mocking enabled.，就代表 msw 已經成功啟動了
+msw 的前置作業已經大功告成，接下來將專案 run 起來，如果有在 console.log 看到 `[MSW] Mocking enabled.`，就代表 msw 已經成功啟動了
 
 ![](/img/1__YjSzyfD7WpycOeavFH3Piw.png)
 

@@ -13,7 +13,7 @@ keywords: []
 
 ![](/img/1__gDZGt0gkWF03rQjjWhqteg.png)
 
-初學 js 的時候應該都曾經遇過這樣的問題，上述這段程式碼如果單純用想的來推敲 console.log 的執行順序，大部分的人會說是 a、b、c，但正確答案卻是 a、 c、 b，明明 settimeout 是設定零秒後執行，照理來說應該要是先印出 b 怎麼會先印出 c 呢? 這其中牽涉到的觀念其實就是 event loop，在理解 event loop 之前我們需要先知道一件事
+初學 js 的時候應該都曾經遇過這樣的問題，上述這段程式碼如果單純用想的來推敲 console.log 的執行順序，大部分的人會說是 a、b、c，但正確答案卻是 a、 c、 b，明明 setTimeout 是設定零秒後執行，照理來說應該要是先印出 b 怎麼會先印出 c 呢? 這其中牽涉到的觀念其實就是 event loop，在理解 event loop 之前我們需要先知道一件事
 
 > js 是單執行緒（**single-threaded**），也就是一次只能做一件事
 
