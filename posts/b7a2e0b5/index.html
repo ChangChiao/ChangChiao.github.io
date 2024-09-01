@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://codinghotpot.com/img/1__aOoBsp9ATWVkT0QIApDIaw.png">
 <meta property="og:image" content="https://codinghotpot.com/img/1__24qQJ1bXSP70NuQZyTUKEg.png">
 <meta property="article:published_time" content="2022-04-17T04:39:55.703Z">
-<meta property="article:modified_time" content="2024-08-18T14:29:28.897Z">
+<meta property="article:modified_time" content="2024-09-01T10:30:13.261Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="MockAPI">
 <meta name="twitter:card" content="summary">
@@ -217,7 +217,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-08-18 14:29:28" itemprop="dateModified" datetime="2024-08-18T14:29:28+00:00">2024-08-18</time>
+      <time title="修改時間：2024-09-01 10:30:13" itemprop="dateModified" datetime="2024-09-01T10:30:13+00:00">2024-09-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -282,8 +282,8 @@
 <p>下一步，就是如何啟動這個 Service Worker 了！先在 src&#x2F;mocks 資料夾底下新增 browser.js</p>
 <p><img src="/img/1__BJ48i8JxFxGLhTDlHECJVw.png"></p>
 <p>引入 setupWorker 來創建 worker 實例，並且將先前定義好的 handler 做為參數傳入</p>
-<p>畢竟只是要在開發環境測試 Mock API，因此寫了一個簡單的判斷，當開發環境是 dev 才讓 worker run 起來，因為我是用 vite 開發，所以判斷是否為 dev 環境是用 import.meta.env.DEV，用 webpack 的朋友請用 process.env.NODE_ENV 判斷</p>
-<p>msw 的前置作業已經大功告成，接下來將專案 run 起來，如果有在 console.log 看到 [MSW] Mocking enabled.，就代表 msw 已經成功啟動了</p>
+<p>畢竟只是要在開發環境測試 Mock API，因此寫了一個簡單的判斷，當開發環境是 dev 才讓 worker run 起來，因為我是用 vite 開發，所以判斷是否為 dev 環境是用 <code>import.meta.env.DEV</code>，用 webpack 的朋友請用 <code>process.env.NODE_ENV</code> 判斷</p>
+<p>msw 的前置作業已經大功告成，接下來將專案 run 起來，如果有在 console.log 看到 <code>[MSW] Mocking enabled.</code>，就代表 msw 已經成功啟動了</p>
 <p><img src="/img/1__YjSzyfD7WpycOeavFH3Piw.png"></p>
 <p>為了模擬登入請求，寫了一個簡單的登入按鈕，點擊之後會呼叫登入 API，如果登入成功，就會接著請求 user 的資料</p>
 <p>當我們點擊了登入按鈕之後打開 f12 觀察，會發現 api 的 status code 後面多了(from service worker)的字眼，提醒你這隻 API 是由 Service worker 攔截請求的</p>
