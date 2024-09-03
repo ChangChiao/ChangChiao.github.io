@@ -22,7 +22,7 @@ _本次練習使用的技術為  —  前端：React，後端 ：Node.js + M
 1.  在 LINE App 的付款頁面，LINE Pay 用戶選擇付款方式並輸入密碼。
 2.  在選擇付款方式後，點擊付款按鈕啟用付款
 3.  LINE Pay 用戶在 LINE App 確認付款資訊。
-4.  在 PC 環境的等待付款頁面一旦收到用戶付款狀態成功，將會轉導至商家系統的“confirmUrl”。
+4.  在 PC 環境的等待付款頁面一旦收到用戶付款狀態成功，將會轉導至商家系統的 Confirm API。
 5.  商家系統透過呼叫 Confirm API 來完成交易。
 
 行動版的付款流程有些許差異，可以參考[這裡](https://pay.line.me/jp/developers/apis/onlineApis?locale=zh_TW)
@@ -47,7 +47,7 @@ _本次練習使用的技術為  —  前端：React，後端 ：Node.js + M
 
 #### 白名單設置
 
-為了提高安全性，必須將我們的後端 server IP 設為白名單，防範來路不明的請求(不過測試環境貌似可以不用設定，API 也能打得過
+為了提高安全性，必須將我們的後端 server IP 設為白名單，防範來路不明的請求，不過測試環境貌似可以不用設定，API 也能打得過
 
 ![](/img/1__cJMiMj1c4oWX8dmtHBNi7w.jpeg)
 
@@ -108,7 +108,7 @@ const hmacDigest = Base64.stringify(hmacSHA512(path + hashDigest, privateKey));
 
 不過為了安全性，我們必須再次詢問 LinePay 這筆訂單是否真的付款成功了，這裡的流程可以劃分成三個步驟：
 
-1.  根據剛剛 LinePay 帶在 url 上面的 transactionId，後端再用 POST 的方式呼叫 linePay 的確認訂單 api (${linePay}/payments/${transactionId}/confirm)，一樣必須帶上加密簽章
+1.  根據剛剛 LinePay 帶在 url 上面的 transactionId，後端再用 POST 的方式呼叫 linePay 的確認訂單 api (linePay/payments/${transactionId}/confirm)，一樣必須帶上加密簽章
 
 ![](/img/1__elR3YPHj5bi__4d7SZkCH9A.png)
 

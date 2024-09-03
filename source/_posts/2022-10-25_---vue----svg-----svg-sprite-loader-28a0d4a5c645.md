@@ -11,7 +11,7 @@ keywords: []
 
 ![](/img/1__XZRV__clX2gUqNkWozl5MHw.jpeg)
 
-在開發網站的時候，如果需要用到 icon 的話我們通常會使用 Font Awesome 這類的工具來滿足我們的需求，但更多時候我們需要使用客制化的 icon，因此 UIUX 設計師會提供 svg 的檔案給前端工程師來做使用，那麼此時會有幾種方式來使用這些 svg
+在開發網站的時候，如果需要用到 icon 的話我們通常會使用 Font Awesome 這類的工具來滿足我們的需求，但更多時候我們需要使用客制化的 icon，因此 UI/UX 設計師會提供 svg 的檔案給前端工程師來做使用，那麼此時會有幾種方式來使用這些 svg
 
 - 把 svg 轉換成 font 字型檔引用
 
