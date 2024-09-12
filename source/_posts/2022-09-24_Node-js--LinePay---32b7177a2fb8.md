@@ -55,9 +55,9 @@ _本次練習使用的技術為  —  前端：React，後端 ：Node.js + M
 
 ![](/img/1__ftS916Luao__gAnUQfCV1tw.png)
 
-點選購買的按鈕之後，前端會用 POST 的方式呼叫後端 /linepay 這支 API，後端收到請求後會先在資料庫建立一筆訂單，再呼叫 LinePay 的 API 請求付款網址
+點選購買的按鈕之後，前端會用 POST 的方式呼叫後端 `/linepay` 這支 API，後端收到請求後會先在資料庫建立一筆訂單，再呼叫 LinePay 的 API 請求付款網址
 
-LinePay 要求的訂單資訊如下(request body)
+LinePay 要求的訂單資訊如下 `request body`
 
 ![](/img/1__bKTY1__RS0dcf9wrLrUQuyQ.png)
 
@@ -69,7 +69,7 @@ LinePay 要求的訂單資訊如下(request body)
 
 ![](/img/1__53yzFV__H1YnFbXsT__M7vNQ.png)
 
-準備好了 request body 之後，接下來就是準備 request header 了，這裡會需要用加密的方式製做簽章(使用 crypto-js 套件)，將 LinePay 規定的資料組合在一起，加密這邊有個小陷阱，看 LinePay 官方的文件是這樣寫的
+準備好了 request body 之後，接下來就是準備 request header 了，這裡會需要用加密的方式製做簽章（使用 crypto-js 套件)，將 LinePay 規定的資料組合在一起，加密這邊有個小陷阱，看 LinePay 官方的文件是這樣寫的
 
 ![](/img/1__6LBLZ__uCuDyNpCxJTmKGcA.png)
 
@@ -101,7 +101,7 @@ const hmacDigest = Base64.stringify(hmacSHA512(path + hashDigest, privateKey));
 
 ![](/img/1____jNzBNjCuJzodXsqVHUR6Q.jpeg)
 
-成功付款之後，LinePay 就會轉址到後端 server 的 /linpPay/confirm，並且在 url 後面帶上 transactionId 和 orderId，通知後端使用者已經完成付款
+成功付款之後，LinePay 就會轉址到後端 server 的 /linePay/confirm，並且在 url 後面帶上 transactionId 和 orderId，通知後端使用者已經完成付款
 
 ![](/img/1__GueztyLHgjxQ__Juva8LJ6g.png)
 ![](/img/1__EWa__VengiWxPOVQEJyiSgw.png)

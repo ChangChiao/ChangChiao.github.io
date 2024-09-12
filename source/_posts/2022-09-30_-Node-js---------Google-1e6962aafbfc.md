@@ -74,8 +74,10 @@ _使用 Node.js + Passport 套件_
 
 假設我們直接把金鑰寫在程式碼裡面的話會有暴露的風險，所以我們習慣將這類的金鑰放在.env，.env 記得要加入.gitignore，不然 push 到 repository 還是一樣會被看光光 😅
 
-GOOGLE_CLIENT_ID=xxxxx  
+```bash
+GOOGLE_CLIENT_ID=xxxxx
 GOOGLE_CLIENT_SECRET=yyyyyy
+```
 
 #### Passport
 
@@ -85,7 +87,9 @@ GOOGLE_CLIENT_SECRET=yyyyyy
 
 安裝 Passport 套件
 
+```bash
 npm install --save passport passport-google-oauth20
+```
 
 安裝好 Passport 之後，建立一支設定 Passport 的檔案，檔名隨意，並且在 index.js 引入(如果主程式在 app.js 就是在 app.js 引入)，並且依照官網的說明，使用 GoogleStrategy 並且帶入 clientId 、 clientSecret 以及 google 授權成功後要打的網址，這部分稍後會有詳細的說明，(config.callback 為後端 server 的 url)
 
@@ -115,7 +119,7 @@ npm install --save passport passport-google-oauth20
 2.  取得 token 之後再去跟 google 請求完整的使用者資料\[GET\](https://www.googleapis.com/oauth2/v1/userinfo)
 3.  拿到資料後 Passport 就會執行我們自己定義的 signInByGoogle callback function
 
-我們可以在 req 參數裡面取得 google 回傳的資料(ex: email、 name、 picture)等等，假設是新用戶的話就新增資料到 DB，並且建立一組 token 給使用者，至於 token 要怎麼在轉址的時候傳給前端，目前想到的兩個方法是帶在轉址的 url 上，或是用後端用 res.cookie(‘token’, xxxx)的方式，把 token 存在瀏覽器的 cookie，如果有其他的做法，歡迎分享給我!
+我們可以在 req 參數裡面取得 google 回傳的資料(ex: email、 name、 picture)等等，假設是新用戶的話就新增資料到 DB，並且建立一組 token 給使用者，至於 token 要怎麼在轉址的時候傳給前端，目前想到的兩個方法是帶在轉址的 url 上，或是用後端用 res.cookie("token", xxxx)的方式，把 token 存在瀏覽器的 cookie，如果有其他的做法，歡迎分享給我!
 
 最後一步，後端用 res.redirect(前端網址)的方式跳轉到登入成功的畫面，就大功告成了!
 
