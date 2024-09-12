@@ -46,7 +46,7 @@
 <meta property="og:image" content="https://codinghotpot.com/img/1__5hNi4cbAGjWt88SFk72QPg.png">
 <meta property="og:image" content="https://codinghotpot.com/img/1__VUA1Cx0L4Elqp8jQdomP5w.png">
 <meta property="article:published_time" content="2022-09-24T02:56:13.898Z">
-<meta property="article:modified_time" content="2024-09-03T01:17:12.585Z">
+<meta property="article:modified_time" content="2024-09-12T12:18:35.665Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="LinePay NodeJs">
 <meta name="twitter:card" content="summary">
@@ -225,7 +225,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-09-03 01:17:12" itemprop="dateModified" datetime="2024-09-03T01:17:12+00:00">2024-09-03</time>
+      <time title="修改時間：2024-09-12 12:18:35" itemprop="dateModified" datetime="2024-09-12T12:18:35+00:00">2024-09-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -273,14 +273,14 @@
 <h4 id="白名單設置"><a href="#白名單設置" class="headerlink" title="白名單設置"></a>白名單設置</h4><p>為了提高安全性，必須將我們的後端 server IP 設為白名單，防範來路不明的請求，不過測試環境貌似可以不用設定，API 也能打得過</p>
 <p><img src="/img/1__cJMiMj1c4oWX8dmtHBNi7w.jpeg"></p>
 <h4 id="建立一筆新訂單"><a href="#建立一筆新訂單" class="headerlink" title="建立一筆新訂單"></a>建立一筆新訂單</h4><p><img src="/img/1__ftS916Luao__gAnUQfCV1tw.png"></p>
-<p>點選購買的按鈕之後，前端會用 POST 的方式呼叫後端 &#x2F;linepay 這支 API，後端收到請求後會先在資料庫建立一筆訂單，再呼叫 LinePay 的 API 請求付款網址</p>
-<p>LinePay 要求的訂單資訊如下(request body)</p>
+<p>點選購買的按鈕之後，前端會用 POST 的方式呼叫後端 <code>/linepay</code> 這支 API，後端收到請求後會先在資料庫建立一筆訂單，再呼叫 LinePay 的 API 請求付款網址</p>
+<p>LinePay 要求的訂單資訊如下 <code>request body</code></p>
 <p><img src="/img/1__bKTY1__RS0dcf9wrLrUQuyQ.png"></p>
 <p>本次的練習是模擬使用者購買訂閱 VIP 的服務，因此商品內容和價錢都會由後端這邊固定寫死，依照 LinePay 規定的格式建立的訂單物件如下</p>
 <p>不過除了 LinePay 本身要求的資料格式之外，還要滿足資料庫要求的必填欄位，像是訂單編號 MerchantOrderNo，購買者 user 等等…， （這部分就看個人的資料庫欄位設計），因此新增訂單到資料庫的時候， 除了原本的資料還會多加上這幾個 key</p>
 <p>但也正是因為多帶了這幾個 key 的資料，打 LinePay 的 API 會得到 2102 JSON 資料格式的錯誤， 因此新增完資料庫的訂單之後，必須記得將非 LinePay 要求的 key 刪除，不然打 API 永遠都會失敗，除了訂單資訊，還要帶上重新導向的 redirectUrls (confirmUrl &amp; cancelUrl)，目的是當訂單狀態變更為成功或失敗時，LinePay 可以呼叫這兩隻 API 來通知後端 (config.callback 為後端 server 的 url)</p>
 <p><img src="/img/1__53yzFV__H1YnFbXsT__M7vNQ.png"></p>
-<p>準備好了 request body 之後，接下來就是準備 request header 了，這裡會需要用加密的方式製做簽章(使用 crypto-js 套件)，將 LinePay 規定的資料組合在一起，加密這邊有個小陷阱，看 LinePay 官方的文件是這樣寫的</p>
+<p>準備好了 request body 之後，接下來就是準備 request header 了，這裡會需要用加密的方式製做簽章（使用 crypto-js 套件)，將 LinePay 規定的資料組合在一起，加密這邊有個小陷阱，看 LinePay 官方的文件是這樣寫的</p>
 <p><img src="/img/1__6LBLZ__uCuDyNpCxJTmKGcA.png"></p>
 <p>但 crypto-js 的文件是這樣寫的</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> hmacDigest = <span class="title class_">Base64</span>.<span class="title function_">stringify</span>(<span class="title function_">hmacSHA512</span>(path + hashDigest, privateKey));</span><br></pre></td></tr></table></figure>
@@ -294,7 +294,7 @@
 <p><img src="/img/1__6b2__j0avGMXiB7Vypgawww.png"></p>
 <h4 id="確認訂單狀態"><a href="#確認訂單狀態" class="headerlink" title="確認訂單狀態"></a>確認訂單狀態</h4><p>當使用者用 app 掃描畫面上的 qrcode，就會看到以下畫面，不會真的扣款，可以放心按下去</p>
 <p><img src="/img/1____jNzBNjCuJzodXsqVHUR6Q.jpeg"></p>
-<p>成功付款之後，LinePay 就會轉址到後端 server 的 &#x2F;linpPay&#x2F;confirm，並且在 url 後面帶上 transactionId 和 orderId，通知後端使用者已經完成付款</p>
+<p>成功付款之後，LinePay 就會轉址到後端 server 的 &#x2F;linePay&#x2F;confirm，並且在 url 後面帶上 transactionId 和 orderId，通知後端使用者已經完成付款</p>
 <p><img src="/img/1__GueztyLHgjxQ__Juva8LJ6g.png"><br><img src="/img/1__EWa__VengiWxPOVQEJyiSgw.png"></p>
 <p>不過為了安全性，我們必須再次詢問 LinePay 這筆訂單是否真的付款成功了，這裡的流程可以劃分成三個步驟：</p>
 <ol>
