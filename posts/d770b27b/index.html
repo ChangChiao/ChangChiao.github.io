@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"codinghotpot.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="最近因為工作需求而開始接觸gitlab cicd，要在既有的架構下疊加新的job上去，在毫無基礎的情況下，打開gitlab ci yml簡直就像在看無字天書一樣 😂，在跌跌撞撞、各種試錯之後，便決定寫一篇筆記整理cicd的知識點">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初探 Gitlab CI&#x2F;CD">
+<meta property="og:url" content="https://codinghotpot.com/posts/d770b27b/index.html">
+<meta property="og:site_name" content="Coding Hot Pot">
+<meta property="og:description" content="最近因為工作需求而開始接觸gitlab cicd，要在既有的架構下疊加新的job上去，在毫無基礎的情況下，打開gitlab ci yml簡直就像在看無字天書一樣 😂，在跌跌撞撞、各種試錯之後，便決定寫一篇筆記整理cicd的知識點">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__My542dYGAfrRwoFa__a5Vxw.jpeg">
+<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__k7aSbZajtn__ASOTCkVZc8Q.png">
+<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__IBxzjjZ0RFmk4bSiwePSEQ.png">
+<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__gHwKezpvwbxd3ScQtJJs5Q.png">
+<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__liz26ETlwi15n7zjBb7ceQ.png">
+<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__ZCa2Y3Q8e0SWZae2Y2rUpA.png">
+<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__VPV2J6r0RDPf3EZ4__1Kn3w.png">
+<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1____qqPcgHTg4WdI6u1pfp9VQ.png">
+<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__RRdEpwyzUgJonNBDrZJSqQ.png">
+<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__Q9__Mm6LdufoucuOFz6E__Gg.png">
+<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__nYkIaQX3kIqi6VewJ7Cjtg.png">
+<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__swR1Amjvy93Bi__U__ENMxQw.png">
+<meta property="article:published_time" content="2024-08-17T01:02:55.031Z">
+<meta property="article:modified_time" content="2024-09-24T08:52:48.840Z">
+<meta property="article:author" content="Joe Chang">
+<meta property="article:tag" content="frontend">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__My542dYGAfrRwoFa__a5Vxw.jpeg">
+
+
+<link rel="canonical" href="https://codinghotpot.com/posts/d770b27b/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://codinghotpot.com/posts/d770b27b/","path":"posts/d770b27b/","title":"初探 Gitlab CI/CD"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>初探 Gitlab CI/CD | Coding Hot Pot</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJM3X3RGKD"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-SJM3X3RGKD","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Coding Hot Pot</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">日新月異的前端技術...學不動了</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cicd%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">cicd是什麼？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%81%E7%BA%8C%E6%95%B4%E5%90%88"><span class="nav-number">2.</span> <span class="nav-text">持續整合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%81%E7%BA%8C%E9%83%A8%E7%BD%B2"><span class="nav-number">3.</span> <span class="nav-text">持續部署</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cicd%E7%9A%84%E4%B8%89%E5%80%8B%E9%97%9C%E9%8D%B5%E8%A6%81%E7%B4%A0%EF%BC%9Apipeline%E3%80%81stage%E3%80%81job"><span class="nav-number">4.</span> <span class="nav-text">cicd的三個關鍵要素：pipeline、stage、job</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8B%95%E6%89%8B%E5%AF%A6%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">動手實作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%87%8D%E6%96%B0%E5%9F%B7%E8%A1%8Cpipeline"><span class="nav-number">6.</span> <span class="nav-text">如何重新執行pipeline?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#allow-failure"><span class="nav-number">7.</span> <span class="nav-text">allow_failure</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#extend"><span class="nav-number">8.</span> <span class="nav-text">extend</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#job"><span class="nav-number">9.</span> <span class="nav-text">.job</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#variables"><span class="nav-number">10.</span> <span class="nav-text">variables</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Joe Chang"
+      src="/images/oldman.jpg">
+  <p class="site-author-name" itemprop="name">Joe Chang</p>
+  <div class="site-description" itemprop="description">唯有非常努力，才能看起來毫不費力</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">122</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://codinghotpot.com/posts/d770b27b/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/oldman.jpg">
+      <meta itemprop="name" content="Joe Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Hot Pot">
+      <meta itemprop="description" content="唯有非常努力，才能看起來毫不費力">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="初探 Gitlab CI/CD | Coding Hot Pot">
+      <meta itemprop="description" content="最近因為工作需求而開始接觸gitlab cicd，要在既有的架構下疊加新的job上去，在毫無基礎的情況下，打開gitlab ci yml簡直就像在看無字天書一樣 😂，在跌跌撞撞、各種試錯之後，便決定寫一篇筆記整理cicd的知識點">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          初探 Gitlab CI/CD
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2024-08-17 01:02:55" itemprop="dateCreated datePublished" datetime="2024-08-17T01:02:55+00:00">2024-08-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2024-09-24 08:52:48" itemprop="dateModified" datetime="2024-09-24T08:52:48+00:00">2024-09-24</time>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">最近因為工作需求而開始接觸gitlab cicd，要在既有的架構下疊加新的job上去，在毫無基礎的情況下，打開gitlab ci yml簡直就像在看無字天書一樣 😂，在跌跌撞撞、各種試錯之後，便決定寫一篇筆記整理cicd的知識點</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__My542dYGAfrRwoFa__a5Vxw.jpeg"></p>
+<p>最近因為工作需求而開始接觸gitlab cicd，要在既有的架構下疊加新的job上去，在毫無基礎的情況下，打開gitlab ci yml簡直就像在看無字天書一樣 <a target="_blank" rel="noopener" href="https://emojipedia.org/face-with-tears-of-joy">😂</a>，在跌跌撞撞、各種試錯之後，便決定寫一篇筆記整理cicd的知識點</p>
+<h4 id="cicd是什麼？"><a href="#cicd是什麼？" class="headerlink" title="cicd是什麼？"></a>cicd是什麼？</h4><blockquote>
+<p>持續整合和持續部署</p>
+</blockquote>
+<h4 id="持續整合"><a href="#持續整合" class="headerlink" title="持續整合"></a>持續整合</h4><p>在多人協作的情況下，ci的任務將是不斷地整合大家的程式碼，並且確保沒有人會對專案產生破壞性的影響，舉例來說，當每次有人發pull request要請reviewer做code review的時候，會先確認project是否可以build成功 ，如果build fail的話就沒有review的必要了，先請原作者做修正，當然這些作業都可以手動沒問題，但就會變得非常繁瑣，讓ci幫我們完成這些例行公事是再方便不過了</p>
+<h4 id="持續部署"><a href="#持續部署" class="headerlink" title="持續部署"></a>持續部署</h4><p>把持續整合build出來的成品自動部署到server上，可以根據不同的環境自動部署（dev&#x2F;staging&#x2F;production)，遙想很久以前我都是用土法煉鋼的方式，先手動build ，然後打開ftp丟檔案，再下ssh指令部署，一恍神就可能出錯，自動化部署絕對會比純手動來得可靠多了</p>
+<h4 id="cicd的三個關鍵要素：pipeline、stage、job"><a href="#cicd的三個關鍵要素：pipeline、stage、job" class="headerlink" title="cicd的三個關鍵要素：pipeline、stage、job"></a>cicd的三個關鍵要素：pipeline、stage、job</h4><p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__k7aSbZajtn__ASOTCkVZc8Q.png"></p>
+<p>gitlab的pipeline是由多個stage組成，然後每個stage裡面又可以設定多個job，聽起來好像有點抽象，用個生活化的方式舉例，pipeline可以理解為工廠的產線，每個stage就是部門，ex.生產部、品管部，然後job就好比是每個部門的員工，有各自的任務，生產部(build stage)產出成品再由品管部(testing stage)來檢驗品質，透過跨部門合作來完成產出</p>
+<h4 id="動手實作"><a href="#動手實作" class="headerlink" title="動手實作"></a>動手實作</h4><p>新增 .gitlab-ci.yml到專案根目錄，首先要先熟悉YAML如何撰寫，YAML的縮排是採用space*2，對於習慣按tab縮排的開發者來說，這點需要習慣一下</p>
+<p>一開始要先設定stage，定義每個stage要做的job，先來定義一個簡單的build job</p>
+<p>stages:<br>  - build  </p>
+<p>build:<br>  stage: build<br>  script:<br>    - echo “hello”<br>    - npm install<br>    - npm run build  </p>
+<ul>
+<li>script: 要執行的指令</li>
+<li>echo: 就像javaScript的console log可以印出想要關注的值</li>
+</ul>
+<p>這時候如果直接把這個yml push到gitlab上面，會自動觸發pipeline的執行，但結果是fail的，因為gitlab上面並沒有node的環境可以執行npm的指令，這時候需要docker image來幫我們建置環境</p>
+<blockquote>
+<p>docker是一種虛擬容器的技術，透過image可以生成container建立執行環境，因此我們可以使用docker在虛擬機器上建立需要的開發環境，</p>
+</blockquote>
+<blockquote>
+<p>假設Ａ專案用的是node 12、Ｂ專案用的是node 20，使用對應的node image的開發環境就能輕鬆地建立出來</p>
+</blockquote>
+<p>build<br>  image: node:latest<br>  script:<br>    - npm install<br>    - npm build</p>
+<p>因為是練習的緣故所以直接使用網路上現有的docker image，如果是公司專案通常會使用公司內部的docker image，因為使用別人提供的免費image的會有使用次數限制，超過上限的話job就不能跑了</p>
+<p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__IBxzjjZ0RFmk4bSiwePSEQ.png"></p>
+<p>考量到之後的每個job都有可能會用到這個image，於是新增default job，讓每個job都會繼承這邊的設定</p>
+<p>stages:<br>  - build  </p>
+<p>default:<br>  image: node:latest  </p>
+<p>build:<br>  stage: build<br>  script:<br>    - npm install<br>    - npm run build  </p>
+<p>當專案build成功之後，我們想要將產出物存放到gitlab的空間，以便之後給其他stage使用，就可以設定artifact，將指定路徑的資料夾或檔案存起來</p>
+<p>stages:<br>  - build  </p>
+<p>default:<br>  image: node:latest  </p>
+<p>build:<br>  stage: build<br>  script:<br>    - npm install<br>    - npm run build<br>  artifacts:<br>    paths:<br>      - .&#x2F;dist</p>
+<p>到這裡先告一段落，將這個yml push到gitlab上面，當gitlab偵測到 .gitlab-ci.yml的存在時，就會自動run pipeline如下圖</p>
+<p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__gHwKezpvwbxd3ScQtJJs5Q.png"></p>
+<p>點那個像是上弦月的藍色icon就可以看到pipeline的細節，在這裡面可以看到每個階段的執行job</p>
+<p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__liz26ETlwi15n7zjBb7ceQ.png"></p>
+<p>點進去每個job可以看到指令執行的細節，在右邊的側邊欄裡的job artifacts可以找到build成功的產出物，要下載或是預覽都可以</p>
+<p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__ZCa2Y3Q8e0SWZae2Y2rUpA.png"></p>
+<p>接下來讓我們優化這個job，大家都知道npm install其實很花時間，要下載所有的依賴項目，如果有cache機制的話可以保留先前下載過的depandency，這樣其他的job就可以重複使用了，能夠節省大量的時間，設定cache的時候會以CI_COMMIT_REF_SLUG來做為cache key，讓不同的分支擁有各自的cache</p>
+<p>build:<br>  stage: build<br>  cache:<br>    key: ${CI_COMMIT_REF_SLUG}<br>    paths:<br>      - node_modules&#x2F;</p>
+<p>考量到每個job都有cache的需求，把cache的設定提升到全域</p>
+<p>stages:<br>  - build<br>  - test  </p>
+<p>default:<br>  image: node:latest  </p>
+<p>cache:<br>  key: ${CI_COMMIT_REF_SLUG}<br>  paths:<br>    - node_modules&#x2F;  </p>
+<p>build:<br>  stage: build  </p>
+<p>  script:<br>    - echo $CI_COMMIT_SHORT_SHA<br>    - npm install<br>    - npm run build<br>  artifacts:<br>    paths:<br>      - .&#x2F;dist</p>
+<p>初次執行的時候，會出現抓不到cache的提示字樣，這時候會下載需要的依賴項目並且存到cache裏</p>
+<p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__VPV2J6r0RDPf3EZ4__1Kn3w.png"></p>
+<p>執行第二次的時候，就可以直接拿cache來用了！</p>
+<p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1____qqPcgHTg4WdI6u1pfp9VQ.png"></p>
+<p>如果想清掉cache的話可以按這裡，clear runner caches</p>
+<p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__RRdEpwyzUgJonNBDrZJSqQ.png"></p>
+<p>接下來新增unit test的job，在執行script之前先使用apt-get安裝jq這個工具（這個jq不是jQuery，而是一種解析json的工具</p>
+<p>testing:<br>  stage: test<br>  before_script:<br>    - apt-get update -y &amp;&amp; apt-get install -y jq<br>  script:<br>    - npm install<br>    - npm run report<br>    - data&#x3D;$(cat test-report.json)<br>    - success&#x3D;$(echo “$data” | jq -r ‘.success’)<br>    - if [ “$success” = “true” ]; then<br>        echo “test success”;<br>      else<br>        echo “test failed”;<br>        exit 1;<br>      fi</p>
+<ul>
+<li>執行test指令</li>
+<li>生成test report.json</li>
+<li>讀取report裡面 success的key</li>
+<li>如果是true代表測試通過，false代表測試失敗就執行exit 1讓job fail</li>
+</ul>
+<h4 id="如何重新執行pipeline"><a href="#如何重新執行pipeline" class="headerlink" title="如何重新執行pipeline?"></a>如何重新執行pipeline?</h4><p>當pipeline失敗的時候，想要重跑該怎麼辦？到pipeline列表，找到想要重跑的pipeline，按下右側的🔁按鈕來重跑ci</p>
+<p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__Q9__Mm6LdufoucuOFz6E__Gg.png"></p>
+<blockquote>
+<p>pipeline有時會因為不明原因fail，重跑就好了，不過如果是因為code寫爛了導致fail，那重跑幾次都還是會fail，因此pipeline fail的時候要先去找是哪個job fail了，分析失敗的原因，再做後續的處理</p>
+</blockquote>
+<p>或是點右上角的run pipeline，指定branch來重跑，這裡面也可以傳入變數，可根據自身需求來調整</p>
+<p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__nYkIaQX3kIqi6VewJ7Cjtg.png"></p>
+<p>接下來介紹幾個gitlab-ci.yml常用的語法</p>
+<p>限定該job只在特定branch才執行，或是僅在merge_requests的時候才執行</p>
+<p>build:<br>  stage: build<br>  only:<br>    - main<br>    - merge_requests</p>
+<h4 id="allow-failure"><a href="#allow-failure" class="headerlink" title="allow_failure"></a>allow_failure</h4><p>容許讓特定的job fail，即便該job失敗，也不會讓pipeline失敗</p>
+<p>build:<br>  stage: build<br>  script:<br>    - npm install<br>    - npm run build<br>  artifacts:<br>    paths:<br>      - .&#x2F;dist<br>  allow_failure: true</p>
+<p>舉例來說，下圖的這兩個pipeline的第二個job的執行結果都是failed，但一個狀態是warning另一個則是failed，差別在於上面那個status warning的是將job allow_failure設定為true，允許特定job失敗</p>
+<p>舉例來說，下圖的這兩個pipeline的第二個job的執行結果都是failed，但一個狀態是warning另一個則是failed，差別在於上面那個status warning的是將job allow_failure設定為true，允許特定job失敗</p>
+<h4 id="extend"><a href="#extend" class="headerlink" title="extend"></a>extend</h4><p>可以繼承特定的job，減少重複作業</p>
+<p>.common:<br>  script:<br>    - echo “common job”  </p>
+<p>test:<br>  extends: .common<br>  script:<br>    - echo “test job”  </p>
+<h4 id="job"><a href="#job" class="headerlink" title=".job"></a>.job</h4><p>假設在job前面多加一個.，則該job並不會執行，看到這裡大家應該會冒出一個疑問，為什麼要設定一個不會執行的job ? 通常.job的用途是提供給其他job extend使用，所以這個job不執行很合理</p>
+<p>.common:<br>  script:<br>    - echo “common job”</p>
+<h4 id="variables"><a href="#variables" class="headerlink" title="variables"></a>variables</h4><p>宣告變數，讓script可以使用</p>
+<p>test:<br>  script:<br>    - echo “version is ${VERSION}”<br>  variables:<br>    VERSION: “1.1.0”  </p>
+<p>關於gitlab的介紹到這邊告一段落，其實上面介紹的內容不過是冰山一角罷了，還有很多內容沒有提到，個人認為學習gitlab的最佳的方式就是先確認使用情境，釐清想要透過gitlab cicd解決什麼樣的問題，舉例來說常見的使用情境有以下幾種</p>
+<ul>
+<li>跑完test之後要deploy到特定的機器，需要執行特定腳本</li>
+<li>依據commit的msg的prefix，判斷這是breaking change或只是bug fix，自動加上(大、中、小)版號</li>
+<li>生成change log，讓其他人知道這次的版本改動了哪些東西</li>
+<li>上線發現有重大bug，需要執行rollback回到上一個版本</li>
+</ul>
+<p>確認好使用情境之後就可以開始動手做了，但不得不說cicd真的很讓人挫折，不像是一般的程式那麼好debug，真的需要強大的通靈能力 😂</p>
+<blockquote>
+<p>在撰寫gitlab-ci.yml的時候，要歷經多次失敗，才能夠讓pipeline能夠success</p>
+</blockquote>
+<p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__swR1Amjvy93Bi__U__ENMxQw.png"></p>
+<p>我個人推薦這本書 <a target="_blank" rel="noopener" href="https://www.books.com.tw/products/CN11859476">GitLab CI&#x2F;CD從入門到實戰</a>，先說這不是業配，之前在天攏書局看到這本書，覺得蠻不錯的，推薦給大家</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/dcca629e/" rel="prev" title="讓Angular reactive起來 — Signal">
+                  <i class="fa fa-angle-left"></i> 讓Angular reactive起來 — Signal
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/57f01018/" rel="next" title="第一屆Virtual Coffee Chat — 擔任mentor的心得">
+                  第一屆Virtual Coffee Chat — 擔任mentor的心得 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  
+  <div class="comments">
+  <script src="https://utteranc.es/client.js" repo="ChangChiao/ChangChiao.github.io" issue-term="pathname" theme="github-dark" crossorigin="anonymous" async></script>
+  </div>
+  
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Joe Chang</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ChangChiao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
