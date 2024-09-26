@@ -2,10 +2,8 @@
 title: 第一屆Virtual Coffee Chat — 擔任mentor的心得
 description: 什麼是Coffee Chat？
 date: "2024-09-08T13:16:58.968Z"
-categories: []
-keywords: []
-slug: >-
-  /@joe-chang/%E7%AC%AC%E4%B8%80%E5%B1%86virtual-coffee-chat-%E6%93%94%E4%BB%BBmentor%E7%9A%84%E5%BF%83%E5%BE%97-dcb0cbb61614
+categories: mentor
+keywords: mentor
 ---
 
 ![](/img/1__iZDZeP0__e3HWnK7ghU1QpQ.jpeg)
