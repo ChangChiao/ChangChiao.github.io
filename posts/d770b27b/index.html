@@ -26,24 +26,24 @@
 <meta property="og:site_name" content="Coding Hot Pot">
 <meta property="og:description" content="最近因為工作需求而開始接觸gitlab cicd，要在既有的架構下疊加新的job上去，在毫無基礎的情況下，打開gitlab ci yml簡直就像在看無字天書一樣 😂，在跌跌撞撞、各種試錯之後，便決定寫一篇筆記整理cicd的知識點">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__My542dYGAfrRwoFa__a5Vxw.jpeg">
-<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__k7aSbZajtn__ASOTCkVZc8Q.png">
-<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__IBxzjjZ0RFmk4bSiwePSEQ.png">
-<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__gHwKezpvwbxd3ScQtJJs5Q.png">
-<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__liz26ETlwi15n7zjBb7ceQ.png">
-<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__ZCa2Y3Q8e0SWZae2Y2rUpA.png">
-<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__VPV2J6r0RDPf3EZ4__1Kn3w.png">
-<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1____qqPcgHTg4WdI6u1pfp9VQ.png">
-<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__RRdEpwyzUgJonNBDrZJSqQ.png">
-<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__Q9__Mm6LdufoucuOFz6E__Gg.png">
-<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__nYkIaQX3kIqi6VewJ7Cjtg.png">
-<meta property="og:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__swR1Amjvy93Bi__U__ENMxQw.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__My542dYGAfrRwoFa__a5Vxw.jpeg">
+<meta property="og:image" content="https://codinghotpot.com/img/1__k7aSbZajtn__ASOTCkVZc8Q.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__IBxzjjZ0RFmk4bSiwePSEQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__gHwKezpvwbxd3ScQtJJs5Q.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__liz26ETlwi15n7zjBb7ceQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__ZCa2Y3Q8e0SWZae2Y2rUpA.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__VPV2J6r0RDPf3EZ4__1Kn3w.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1____qqPcgHTg4WdI6u1pfp9VQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__RRdEpwyzUgJonNBDrZJSqQ.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__Q9__Mm6LdufoucuOFz6E__Gg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__nYkIaQX3kIqi6VewJ7Cjtg.png">
+<meta property="og:image" content="https://codinghotpot.com/img/1__swR1Amjvy93Bi__U__ENMxQw.png">
 <meta property="article:published_time" content="2024-08-17T01:02:55.031Z">
-<meta property="article:modified_time" content="2024-09-24T08:52:48.840Z">
+<meta property="article:modified_time" content="2024-09-26T02:32:40.505Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="frontend">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://codinghotpot.com/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__My542dYGAfrRwoFa__a5Vxw.jpeg">
+<meta name="twitter:image" content="https://codinghotpot.com/img/1__My542dYGAfrRwoFa__a5Vxw.jpeg">
 
 
 <link rel="canonical" href="https://codinghotpot.com/posts/d770b27b/">
@@ -129,7 +129,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cicd%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">cicd是什麼？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%81%E7%BA%8C%E6%95%B4%E5%90%88"><span class="nav-number">2.</span> <span class="nav-text">持續整合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%81%E7%BA%8C%E9%83%A8%E7%BD%B2"><span class="nav-number">3.</span> <span class="nav-text">持續部署</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cicd%E7%9A%84%E4%B8%89%E5%80%8B%E9%97%9C%E9%8D%B5%E8%A6%81%E7%B4%A0%EF%BC%9Apipeline%E3%80%81stage%E3%80%81job"><span class="nav-number">4.</span> <span class="nav-text">cicd的三個關鍵要素：pipeline、stage、job</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8B%95%E6%89%8B%E5%AF%A6%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">動手實作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%87%8D%E6%96%B0%E5%9F%B7%E8%A1%8Cpipeline"><span class="nav-number">6.</span> <span class="nav-text">如何重新執行pipeline?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#allow-failure"><span class="nav-number">7.</span> <span class="nav-text">allow_failure</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#extend"><span class="nav-number">8.</span> <span class="nav-text">extend</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#job"><span class="nav-number">9.</span> <span class="nav-text">.job</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#variables"><span class="nav-number">10.</span> <span class="nav-text">variables</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cicd-%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">cicd 是什麼？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%81%E7%BA%8C%E6%95%B4%E5%90%88"><span class="nav-number">2.</span> <span class="nav-text">持續整合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%81%E7%BA%8C%E9%83%A8%E7%BD%B2"><span class="nav-number">3.</span> <span class="nav-text">持續部署</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cicd-%E7%9A%84%E4%B8%89%E5%80%8B%E9%97%9C%E9%8D%B5%E8%A6%81%E7%B4%A0%EF%BC%9Apipeline%E3%80%81stage%E3%80%81job"><span class="nav-number">4.</span> <span class="nav-text">cicd 的三個關鍵要素：pipeline、stage、job</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8B%95%E6%89%8B%E5%AF%A6%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">動手實作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%87%8D%E6%96%B0%E5%9F%B7%E8%A1%8C-pipeline"><span class="nav-number">6.</span> <span class="nav-text">如何重新執行 pipeline?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#allow-failure"><span class="nav-number">7.</span> <span class="nav-text">allow_failure</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#extend"><span class="nav-number">8.</span> <span class="nav-text">extend</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#job"><span class="nav-number">9.</span> <span class="nav-text">.job</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#variables"><span class="nav-number">10.</span> <span class="nav-text">variables</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -150,7 +150,7 @@
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">分類</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -218,7 +218,16 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-09-24 08:52:48" itemprop="dateModified" datetime="2024-09-24T08:52:48+00:00">2024-09-24</time>
+      <time title="修改時間：2024-09-26 02:32:40" itemprop="dateModified" datetime="2024-09-26T02:32:40+00:00">2024-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/CI-CD/" itemprop="url" rel="index"><span itemprop="name">CI/CD</span></a>
+        </span>
     </span>
 
   
@@ -231,103 +240,115 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__My542dYGAfrRwoFa__a5Vxw.jpeg"></p>
-<p>最近因為工作需求而開始接觸gitlab cicd，要在既有的架構下疊加新的job上去，在毫無基礎的情況下，打開gitlab ci yml簡直就像在看無字天書一樣 <a target="_blank" rel="noopener" href="https://emojipedia.org/face-with-tears-of-joy">😂</a>，在跌跌撞撞、各種試錯之後，便決定寫一篇筆記整理cicd的知識點</p>
-<h4 id="cicd是什麼？"><a href="#cicd是什麼？" class="headerlink" title="cicd是什麼？"></a>cicd是什麼？</h4><blockquote>
+    <div class="post-body" itemprop="articleBody"><p><img src="/img/1__My542dYGAfrRwoFa__a5Vxw.jpeg"></p>
+<p>最近因為工作需求而開始接觸 gitlab cicd，要在既有的架構下疊加新的 job 上去，在毫無基礎的情況下，打開 gitlab ci yml 簡直就像在看無字天書一樣 <a target="_blank" rel="noopener" href="https://emojipedia.org/face-with-tears-of-joy">😂</a>，在跌跌撞撞、各種試錯之後，便決定寫一篇筆記整理 cicd 的知識點</p>
+<h4 id="cicd-是什麼？"><a href="#cicd-是什麼？" class="headerlink" title="cicd 是什麼？"></a>cicd 是什麼？</h4><blockquote>
 <p>持續整合和持續部署</p>
 </blockquote>
-<h4 id="持續整合"><a href="#持續整合" class="headerlink" title="持續整合"></a>持續整合</h4><p>在多人協作的情況下，ci的任務將是不斷地整合大家的程式碼，並且確保沒有人會對專案產生破壞性的影響，舉例來說，當每次有人發pull request要請reviewer做code review的時候，會先確認project是否可以build成功 ，如果build fail的話就沒有review的必要了，先請原作者做修正，當然這些作業都可以手動沒問題，但就會變得非常繁瑣，讓ci幫我們完成這些例行公事是再方便不過了</p>
-<h4 id="持續部署"><a href="#持續部署" class="headerlink" title="持續部署"></a>持續部署</h4><p>把持續整合build出來的成品自動部署到server上，可以根據不同的環境自動部署（dev&#x2F;staging&#x2F;production)，遙想很久以前我都是用土法煉鋼的方式，先手動build ，然後打開ftp丟檔案，再下ssh指令部署，一恍神就可能出錯，自動化部署絕對會比純手動來得可靠多了</p>
-<h4 id="cicd的三個關鍵要素：pipeline、stage、job"><a href="#cicd的三個關鍵要素：pipeline、stage、job" class="headerlink" title="cicd的三個關鍵要素：pipeline、stage、job"></a>cicd的三個關鍵要素：pipeline、stage、job</h4><p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__k7aSbZajtn__ASOTCkVZc8Q.png"></p>
-<p>gitlab的pipeline是由多個stage組成，然後每個stage裡面又可以設定多個job，聽起來好像有點抽象，用個生活化的方式舉例，pipeline可以理解為工廠的產線，每個stage就是部門，ex.生產部、品管部，然後job就好比是每個部門的員工，有各自的任務，生產部(build stage)產出成品再由品管部(testing stage)來檢驗品質，透過跨部門合作來完成產出</p>
-<h4 id="動手實作"><a href="#動手實作" class="headerlink" title="動手實作"></a>動手實作</h4><p>新增 .gitlab-ci.yml到專案根目錄，首先要先熟悉YAML如何撰寫，YAML的縮排是採用space*2，對於習慣按tab縮排的開發者來說，這點需要習慣一下</p>
-<p>一開始要先設定stage，定義每個stage要做的job，先來定義一個簡單的build job</p>
-<p>stages:<br>  - build  </p>
-<p>build:<br>  stage: build<br>  script:<br>    - echo “hello”<br>    - npm install<br>    - npm run build  </p>
+<h4 id="持續整合"><a href="#持續整合" class="headerlink" title="持續整合"></a>持續整合</h4><p>在多人協作的情況下，ci 的任務將是不斷地整合大家的程式碼，並且確保沒有人會對專案產生破壞性的影響，舉例來說，當每次有人發 pull request 要請 reviewer 做 code review 的時候，會先確認 project 是否可以 build 成功 ，如果 build fail 的話就沒有 review 的必要了，先請原作者做修正，當然這些作業都可以手動沒問題，但就會變得非常繁瑣，讓 ci 幫我們完成這些例行公事是再方便不過了</p>
+<h4 id="持續部署"><a href="#持續部署" class="headerlink" title="持續部署"></a>持續部署</h4><p>把持續整合 build 出來的成品自動部署到 server 上，可以根據不同的環境自動部署（dev&#x2F;staging&#x2F;production)，遙想很久以前我都是用土法煉鋼的方式，先手動 build ，然後打開 ftp 丟檔案，再下 ssh 指令部署，一恍神就可能出錯，自動化部署絕對會比純手動來得可靠多了</p>
+<h4 id="cicd-的三個關鍵要素：pipeline、stage、job"><a href="#cicd-的三個關鍵要素：pipeline、stage、job" class="headerlink" title="cicd 的三個關鍵要素：pipeline、stage、job"></a>cicd 的三個關鍵要素：pipeline、stage、job</h4><p><img src="/img/1__k7aSbZajtn__ASOTCkVZc8Q.png"></p>
+<p>gitlab 的 pipeline 是由多個 stage 組成，然後每個 stage 裡面又可以設定多個 job，聽起來好像有點抽象，用個生活化的方式舉例，pipeline 可以理解為工廠的產線，每個 stage 就是部門，ex.生產部、品管部，然後 job 就好比是每個部門的員工，有各自的任務，生產部(build stage)產出成品再由品管部(testing stage)來檢驗品質，透過跨部門合作來完成產出</p>
+<h4 id="動手實作"><a href="#動手實作" class="headerlink" title="動手實作"></a>動手實作</h4><p>新增  .gitlab-ci.yml 到專案根目錄，首先要先熟悉 YAML 如何撰寫，YAML 的縮排是採用 space*2，對於習慣按 tab 縮排的開發者來說，這點需要習慣一下</p>
+<p>一開始要先設定 stage，定義每個 stage 要做的 job，先來定義一個簡單的 build job</p>
+<p>stages:<br> - build</p>
+<p>build:<br> stage: build<br> script:<br> - echo “hello”<br> - npm install<br> - npm run build</p>
 <ul>
 <li>script: 要執行的指令</li>
-<li>echo: 就像javaScript的console log可以印出想要關注的值</li>
+<li>echo: 就像 javaScript 的 console log 可以印出想要關注的值</li>
 </ul>
-<p>這時候如果直接把這個yml push到gitlab上面，會自動觸發pipeline的執行，但結果是fail的，因為gitlab上面並沒有node的環境可以執行npm的指令，這時候需要docker image來幫我們建置環境</p>
+<p>這時候如果直接把這個 yml push 到 gitlab 上面，會自動觸發 pipeline 的執行，但結果是 fail 的，因為 gitlab 上面並沒有 node 的環境可以執行 npm 的指令，這時候需要 docker image 來幫我們建置環境</p>
 <blockquote>
-<p>docker是一種虛擬容器的技術，透過image可以生成container建立執行環境，因此我們可以使用docker在虛擬機器上建立需要的開發環境，</p>
+<p>docker 是一種虛擬容器的技術，透過 image 可以生成 container 建立執行環境，因此我們可以使用 docker 在虛擬機器上建立需要的開發環境，</p>
 </blockquote>
 <blockquote>
-<p>假設Ａ專案用的是node 12、Ｂ專案用的是node 20，使用對應的node image的開發環境就能輕鬆地建立出來</p>
+<p>假設Ａ專案用的是 node 12、Ｂ專案用的是 node 20，使用對應的 node image 的開發環境就能輕鬆地建立出來</p>
 </blockquote>
-<p>build<br>  image: node:latest<br>  script:<br>    - npm install<br>    - npm build</p>
-<p>因為是練習的緣故所以直接使用網路上現有的docker image，如果是公司專案通常會使用公司內部的docker image，因為使用別人提供的免費image的會有使用次數限制，超過上限的話job就不能跑了</p>
-<p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__IBxzjjZ0RFmk4bSiwePSEQ.png"></p>
-<p>考量到之後的每個job都有可能會用到這個image，於是新增default job，讓每個job都會繼承這邊的設定</p>
-<p>stages:<br>  - build  </p>
-<p>default:<br>  image: node:latest  </p>
-<p>build:<br>  stage: build<br>  script:<br>    - npm install<br>    - npm run build  </p>
-<p>當專案build成功之後，我們想要將產出物存放到gitlab的空間，以便之後給其他stage使用，就可以設定artifact，將指定路徑的資料夾或檔案存起來</p>
-<p>stages:<br>  - build  </p>
-<p>default:<br>  image: node:latest  </p>
-<p>build:<br>  stage: build<br>  script:<br>    - npm install<br>    - npm run build<br>  artifacts:<br>    paths:<br>      - .&#x2F;dist</p>
-<p>到這裡先告一段落，將這個yml push到gitlab上面，當gitlab偵測到 .gitlab-ci.yml的存在時，就會自動run pipeline如下圖</p>
-<p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__gHwKezpvwbxd3ScQtJJs5Q.png"></p>
-<p>點那個像是上弦月的藍色icon就可以看到pipeline的細節，在這裡面可以看到每個階段的執行job</p>
-<p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__liz26ETlwi15n7zjBb7ceQ.png"></p>
-<p>點進去每個job可以看到指令執行的細節，在右邊的側邊欄裡的job artifacts可以找到build成功的產出物，要下載或是預覽都可以</p>
-<p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__ZCa2Y3Q8e0SWZae2Y2rUpA.png"></p>
-<p>接下來讓我們優化這個job，大家都知道npm install其實很花時間，要下載所有的依賴項目，如果有cache機制的話可以保留先前下載過的depandency，這樣其他的job就可以重複使用了，能夠節省大量的時間，設定cache的時候會以CI_COMMIT_REF_SLUG來做為cache key，讓不同的分支擁有各自的cache</p>
-<p>build:<br>  stage: build<br>  cache:<br>    key: ${CI_COMMIT_REF_SLUG}<br>    paths:<br>      - node_modules&#x2F;</p>
-<p>考量到每個job都有cache的需求，把cache的設定提升到全域</p>
-<p>stages:<br>  - build<br>  - test  </p>
-<p>default:<br>  image: node:latest  </p>
-<p>cache:<br>  key: ${CI_COMMIT_REF_SLUG}<br>  paths:<br>    - node_modules&#x2F;  </p>
-<p>build:<br>  stage: build  </p>
-<p>  script:<br>    - echo $CI_COMMIT_SHORT_SHA<br>    - npm install<br>    - npm run build<br>  artifacts:<br>    paths:<br>      - .&#x2F;dist</p>
-<p>初次執行的時候，會出現抓不到cache的提示字樣，這時候會下載需要的依賴項目並且存到cache裏</p>
-<p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__VPV2J6r0RDPf3EZ4__1Kn3w.png"></p>
-<p>執行第二次的時候，就可以直接拿cache來用了！</p>
-<p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1____qqPcgHTg4WdI6u1pfp9VQ.png"></p>
-<p>如果想清掉cache的話可以按這裡，clear runner caches</p>
-<p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__RRdEpwyzUgJonNBDrZJSqQ.png"></p>
-<p>接下來新增unit test的job，在執行script之前先使用apt-get安裝jq這個工具（這個jq不是jQuery，而是一種解析json的工具</p>
-<p>testing:<br>  stage: test<br>  before_script:<br>    - apt-get update -y &amp;&amp; apt-get install -y jq<br>  script:<br>    - npm install<br>    - npm run report<br>    - data&#x3D;$(cat test-report.json)<br>    - success&#x3D;$(echo “$data” | jq -r ‘.success’)<br>    - if [ “$success” = “true” ]; then<br>        echo “test success”;<br>      else<br>        echo “test failed”;<br>        exit 1;<br>      fi</p>
+<p>build<br> image: node:latest<br> script:<br> - npm install<br> - npm build</p>
+<p>因為是練習的緣故所以直接使用網路上現有的 docker image，如果是公司專案通常會使用公司內部的 docker image，因為使用別人提供的免費 image 的會有使用次數限制，超過上限的話 job 就不能跑了</p>
+<p><img src="/img/1__IBxzjjZ0RFmk4bSiwePSEQ.png"></p>
+<p>考量到之後的每個 job 都有可能會用到這個 image，於是新增 default job，讓每個 job 都會繼承這邊的設定</p>
+<p>stages:<br> - build</p>
+<p>default:<br> image: node:latest</p>
+<p>build:<br> stage: build<br> script:<br> - npm install<br> - npm run build</p>
+<p>當專案 build 成功之後，我們想要將產出物存放到 gitlab 的空間，以便之後給其他 stage 使用，就可以設定 artifact，將指定路徑的資料夾或檔案存起來</p>
+<p>stages:<br> - build</p>
+<p>default:<br> image: node:latest</p>
+<p>build:<br> stage: build<br> script:<br> - npm install<br> - npm run build<br> artifacts:<br> paths:<br> - .&#x2F;dist</p>
+<p>到這裡先告一段落，將這個 yml push 到 gitlab 上面，當 gitlab 偵測到  .gitlab-ci.yml 的存在時，就會自動 run pipeline 如下圖</p>
+<p><img src="/img/1__gHwKezpvwbxd3ScQtJJs5Q.png"></p>
+<p>點那個像是上弦月的藍色 icon 就可以看到 pipeline 的細節，在這裡面可以看到每個階段的執行 job</p>
+<p><img src="/img/1__liz26ETlwi15n7zjBb7ceQ.png"></p>
+<p>點進去每個 job 可以看到指令執行的細節，在右邊的側邊欄裡的 job artifacts 可以找到 build 成功的產出物，要下載或是預覽都可以</p>
+<p><img src="/img/1__ZCa2Y3Q8e0SWZae2Y2rUpA.png"></p>
+<p>接下來讓我們優化這個 job，大家都知道 npm install 其實很花時間，要下載所有的依賴項目，如果有 cache 機制的話可以保留先前下載過的 depandency，這樣其他的 job 就可以重複使用了，能夠節省大量的時間，設定 cache 的時候會以 CI_COMMIT_REF_SLUG 來做為 cache key，讓不同的分支擁有各自的 cache</p>
+<p>build:<br> stage: build<br> cache:<br> key: ${CI_COMMIT_REF_SLUG}<br> paths:<br> - node_modules&#x2F;</p>
+<p>考量到每個 job 都有 cache 的需求，把 cache 的設定提升到全域</p>
+<p>stages:<br> - build<br> - test</p>
+<p>default:<br> image: node:latest</p>
+<p>cache:<br> key: ${CI_COMMIT_REF_SLUG}<br> paths:<br> - node_modules&#x2F;</p>
+<p>build:<br> stage: build</p>
+<p>script:<br> - echo $CI_COMMIT_SHORT_SHA<br> - npm install<br> - npm run build<br> artifacts:<br> paths:<br> - .&#x2F;dist</p>
+<p>初次執行的時候，會出現抓不到 cache 的提示字樣，這時候會下載需要的依賴項目並且存到 cache 裏</p>
+<p><img src="/img/1__VPV2J6r0RDPf3EZ4__1Kn3w.png"></p>
+<p>執行第二次的時候，就可以直接拿 cache 來用了！</p>
+<p><img src="/img/1____qqPcgHTg4WdI6u1pfp9VQ.png"></p>
+<p>如果想清掉 cache 的話可以按這裡，clear runner caches</p>
+<p><img src="/img/1__RRdEpwyzUgJonNBDrZJSqQ.png"></p>
+<p>接下來新增 unit test 的 job，在執行 script 之前先使用 apt-get 安裝 jq 這個工具（這個 jq 不是 jQuery，而是一種解析 json 的工具</p>
+<p>testing:<br> stage: test<br> before_script:<br> - apt-get update -y &amp;&amp; apt-get install -y jq<br> script:<br> - npm install<br> - npm run report<br> - data&#x3D;$(cat test-report.json)<br>    - success&#x3D;$(echo “$data” | jq -r ‘.success’)<br>    - if [ “$success” = “true” ]; then<br> echo “test success”;<br> else<br> echo “test failed”;<br> exit 1;<br> fi</p>
 <ul>
-<li>執行test指令</li>
-<li>生成test report.json</li>
-<li>讀取report裡面 success的key</li>
-<li>如果是true代表測試通過，false代表測試失敗就執行exit 1讓job fail</li>
+<li>執行 test 指令</li>
+<li>生成 test report.json</li>
+<li>讀取 report 裡面 success 的 key</li>
+<li>如果是 true 代表測試通過，false 代表測試失敗就執行 exit 1 讓 job fail</li>
 </ul>
-<h4 id="如何重新執行pipeline"><a href="#如何重新執行pipeline" class="headerlink" title="如何重新執行pipeline?"></a>如何重新執行pipeline?</h4><p>當pipeline失敗的時候，想要重跑該怎麼辦？到pipeline列表，找到想要重跑的pipeline，按下右側的🔁按鈕來重跑ci</p>
-<p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__Q9__Mm6LdufoucuOFz6E__Gg.png"></p>
+<h4 id="如何重新執行-pipeline"><a href="#如何重新執行-pipeline" class="headerlink" title="如何重新執行 pipeline?"></a>如何重新執行 pipeline?</h4><p>當 pipeline 失敗的時候，想要重跑該怎麼辦？到 pipeline 列表，找到想要重跑的 pipeline，按下右側的 🔁 按鈕來重跑 ci</p>
+<p><img src="/img/1__Q9__Mm6LdufoucuOFz6E__Gg.png"></p>
 <blockquote>
-<p>pipeline有時會因為不明原因fail，重跑就好了，不過如果是因為code寫爛了導致fail，那重跑幾次都還是會fail，因此pipeline fail的時候要先去找是哪個job fail了，分析失敗的原因，再做後續的處理</p>
+<p>pipeline 有時會因為不明原因 fail，重跑就好了，不過如果是因為 code 寫爛了導致 fail，那重跑幾次都還是會 fail，因此 pipeline fail 的時候要先去找是哪個 job fail 了，分析失敗的原因，再做後續的處理</p>
 </blockquote>
-<p>或是點右上角的run pipeline，指定branch來重跑，這裡面也可以傳入變數，可根據自身需求來調整</p>
-<p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__nYkIaQX3kIqi6VewJ7Cjtg.png"></p>
-<p>接下來介紹幾個gitlab-ci.yml常用的語法</p>
-<p>限定該job只在特定branch才執行，或是僅在merge_requests的時候才執行</p>
-<p>build:<br>  stage: build<br>  only:<br>    - main<br>    - merge_requests</p>
-<h4 id="allow-failure"><a href="#allow-failure" class="headerlink" title="allow_failure"></a>allow_failure</h4><p>容許讓特定的job fail，即便該job失敗，也不會讓pipeline失敗</p>
-<p>build:<br>  stage: build<br>  script:<br>    - npm install<br>    - npm run build<br>  artifacts:<br>    paths:<br>      - .&#x2F;dist<br>  allow_failure: true</p>
-<p>舉例來說，下圖的這兩個pipeline的第二個job的執行結果都是failed，但一個狀態是warning另一個則是failed，差別在於上面那個status warning的是將job allow_failure設定為true，允許特定job失敗</p>
-<p>舉例來說，下圖的這兩個pipeline的第二個job的執行結果都是failed，但一個狀態是warning另一個則是failed，差別在於上面那個status warning的是將job allow_failure設定為true，允許特定job失敗</p>
-<h4 id="extend"><a href="#extend" class="headerlink" title="extend"></a>extend</h4><p>可以繼承特定的job，減少重複作業</p>
-<p>.common:<br>  script:<br>    - echo “common job”  </p>
-<p>test:<br>  extends: .common<br>  script:<br>    - echo “test job”  </p>
-<h4 id="job"><a href="#job" class="headerlink" title=".job"></a>.job</h4><p>假設在job前面多加一個.，則該job並不會執行，看到這裡大家應該會冒出一個疑問，為什麼要設定一個不會執行的job ? 通常.job的用途是提供給其他job extend使用，所以這個job不執行很合理</p>
-<p>.common:<br>  script:<br>    - echo “common job”</p>
-<h4 id="variables"><a href="#variables" class="headerlink" title="variables"></a>variables</h4><p>宣告變數，讓script可以使用</p>
-<p>test:<br>  script:<br>    - echo “version is ${VERSION}”<br>  variables:<br>    VERSION: “1.1.0”  </p>
-<p>關於gitlab的介紹到這邊告一段落，其實上面介紹的內容不過是冰山一角罷了，還有很多內容沒有提到，個人認為學習gitlab的最佳的方式就是先確認使用情境，釐清想要透過gitlab cicd解決什麼樣的問題，舉例來說常見的使用情境有以下幾種</p>
+<p>或是點右上角的 run pipeline，指定 branch 來重跑，這裡面也可以傳入變數，可根據自身需求來調整</p>
+<p><img src="/img/1__nYkIaQX3kIqi6VewJ7Cjtg.png"></p>
+<p>接下來介紹幾個 gitlab-ci.yml 常用的語法</p>
+<p>限定該 job 只在特定 branch 才執行，或是僅在 merge_requests 的時候才執行</p>
+<p>build:<br> stage: build<br> only:<br> - main<br> - merge_requests</p>
+<h4 id="allow-failure"><a href="#allow-failure" class="headerlink" title="allow_failure"></a>allow_failure</h4><p>容許讓特定的 job fail，即便該 job 失敗，也不會讓 pipeline 失敗</p>
+<p>build:<br> stage: build<br> script:<br> - npm install<br> - npm run build<br> artifacts:<br> paths:<br> - .&#x2F;dist<br> allow_failure: true</p>
+<p>舉例來說，下圖的這兩個 pipeline 的第二個 job 的執行結果都是 failed，但一個狀態是 warning 另一個則是 failed，差別在於上面那個 status warning 的是將 job allow_failure 設定為 true，允許特定 job 失敗</p>
+<p>舉例來說，下圖的這兩個 pipeline 的第二個 job 的執行結果都是 failed，但一個狀態是 warning 另一個則是 failed，差別在於上面那個 status warning 的是將 job allow_failure 設定為 true，允許特定 job 失敗</p>
+<h4 id="extend"><a href="#extend" class="headerlink" title="extend"></a>extend</h4><p>可以繼承特定的 job，減少重複作業</p>
+<p>.common:<br> script:</p>
 <ul>
-<li>跑完test之後要deploy到特定的機器，需要執行特定腳本</li>
-<li>依據commit的msg的prefix，判斷這是breaking change或只是bug fix，自動加上(大、中、小)版號</li>
-<li>生成change log，讓其他人知道這次的版本改動了哪些東西</li>
-<li>上線發現有重大bug，需要執行rollback回到上一個版本</li>
+<li>echo “common job”</li>
 </ul>
-<p>確認好使用情境之後就可以開始動手做了，但不得不說cicd真的很讓人挫折，不像是一般的程式那麼好debug，真的需要強大的通靈能力 😂</p>
+<p>test:<br> extends: .common<br> script:</p>
+<ul>
+<li>echo “test job”</li>
+</ul>
+<h4 id="job"><a href="#job" class="headerlink" title=".job"></a>.job</h4><p>假設在 job 前面多加一個.，則該 job 並不會執行，看到這裡大家應該會冒出一個疑問，為什麼要設定一個不會執行的 job ? 通常.job 的用途是提供給其他 job extend 使用，所以這個 job 不執行很合理</p>
+<p>.common:<br> script:</p>
+<ul>
+<li>echo “common job”</li>
+</ul>
+<h4 id="variables"><a href="#variables" class="headerlink" title="variables"></a>variables</h4><p>宣告變數，讓 script 可以使用</p>
+<p>test:<br> script:</p>
+<ul>
+<li>echo “version is ${VERSION}”<br>variables:<br>VERSION: “1.1.0”</li>
+</ul>
+<p>關於 gitlab 的介紹到這邊告一段落，其實上面介紹的內容不過是冰山一角罷了，還有很多內容沒有提到，個人認為學習 gitlab 的最佳的方式就是先確認使用情境，釐清想要透過 gitlab cicd 解決什麼樣的問題，舉例來說常見的使用情境有以下幾種</p>
+<ul>
+<li>跑完 test 之後要 deploy 到特定的機器，需要執行特定腳本</li>
+<li>依據 commit 的 msg 的 prefix，判斷這是 breaking change 或只是 bug fix，自動加上(大、中、小)版號</li>
+<li>生成 change log，讓其他人知道這次的版本改動了哪些東西</li>
+<li>上線發現有重大 bug，需要執行 rollback 回到上一個版本</li>
+</ul>
+<p>確認好使用情境之後就可以開始動手做了，但不得不說 cicd 真的很讓人挫折，不像是一般的程式那麼好 debug，真的需要強大的通靈能力 😂</p>
 <blockquote>
-<p>在撰寫gitlab-ci.yml的時候，要歷經多次失敗，才能夠讓pipeline能夠success</p>
+<p>在撰寫 gitlab-ci.yml 的時候，要歷經多次失敗，才能夠讓 pipeline 能夠 success</p>
 </blockquote>
-<p><img src="/Users/joectchang_mac/Downloads/medium-export-a/posts/md_1727167782549/img/1__swR1Amjvy93Bi__U__ENMxQw.png"></p>
-<p>我個人推薦這本書 <a target="_blank" rel="noopener" href="https://www.books.com.tw/products/CN11859476">GitLab CI&#x2F;CD從入門到實戰</a>，先說這不是業配，之前在天攏書局看到這本書，覺得蠻不錯的，推薦給大家</p>
+<p><img src="/img/1__swR1Amjvy93Bi__U__ENMxQw.png"></p>
+<p>我個人推薦這本書 <a target="_blank" rel="noopener" href="https://www.books.com.tw/products/CN11859476">GitLab CI&#x2F;CD 從入門到實戰</a>，先說這不是業配，之前在天攏書局看到這本書，覺得蠻不錯的，推薦給大家</p>
 
     </div>
 
