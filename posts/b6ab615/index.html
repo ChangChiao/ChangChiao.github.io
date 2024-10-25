@@ -17,40 +17,40 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"codinghotpot.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"changchiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="在vue組件中想必大家已經很習慣用props、emit 來進行組件之間的溝通，…">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用vue EventBus來進行組件溝通吧！">
-<meta property="og:url" content="https://codinghotpot.com/posts/b6ab615/index.html">
+<meta property="og:url" content="https://changchiao.github.io/posts/b6ab615/index.html">
 <meta property="og:site_name" content="Coding Hot Pot">
 <meta property="og:description" content="在vue組件中想必大家已經很習慣用props、emit 來進行組件之間的溝通，…">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://codinghotpot.com/img/1__OUawfdv5VtESR4wMJ0L__0A.jpeg">
-<meta property="og:image" content="https://codinghotpot.com/img/1__3bvAOxBFb34kJSUujqQ2gg.png">
-<meta property="og:image" content="https://codinghotpot.com/img/1__YdJwiQTfQFfn2MTOyf3__Zg.png">
-<meta property="og:image" content="https://codinghotpot.com/img/1__RyRd4rIMmpawpuIqBHEFjA.png">
-<meta property="og:image" content="https://codinghotpot.com/img/1__jwMKlBgLO8TwcqmACfiOog.png">
-<meta property="og:image" content="https://codinghotpot.com/img/1__ftAMk71szeHQAyWxXldXoQ.png">
-<meta property="og:image" content="https://codinghotpot.com/img/1__7M50izSGdq4qvyc5wRqsHQ.png">
-<meta property="og:image" content="https://codinghotpot.com/img/1__Wuy008W6n4TOAfXticPRoA.png">
-<meta property="og:image" content="https://codinghotpot.com/img/1__pQz__WK2eDf4U2i25Cg7wvQ.png">
-<meta property="og:image" content="https://codinghotpot.com/img/1__TVPC49umZM7FSsOpwloj1A.png">
-<meta property="og:image" content="https://codinghotpot.com/img/1__gsQBE6JSfcmAi3m4ySmOtg.png">
-<meta property="og:image" content="https://codinghotpot.com/img/1__wLBObkl3dqo__2TBBygQ18w.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__OUawfdv5VtESR4wMJ0L__0A.jpeg">
+<meta property="og:image" content="https://changchiao.github.io/img/1__3bvAOxBFb34kJSUujqQ2gg.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__YdJwiQTfQFfn2MTOyf3__Zg.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__RyRd4rIMmpawpuIqBHEFjA.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__jwMKlBgLO8TwcqmACfiOog.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__ftAMk71szeHQAyWxXldXoQ.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__7M50izSGdq4qvyc5wRqsHQ.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__Wuy008W6n4TOAfXticPRoA.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__pQz__WK2eDf4U2i25Cg7wvQ.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__TVPC49umZM7FSsOpwloj1A.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__gsQBE6JSfcmAi3m4ySmOtg.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__wLBObkl3dqo__2TBBygQ18w.png">
 <meta property="article:published_time" content="2020-06-15T12:54:48.931Z">
-<meta property="article:modified_time" content="2024-09-28T11:39:30.268Z">
+<meta property="article:modified_time" content="2024-10-25T13:37:28.394Z">
 <meta property="article:author" content="Joe Chang">
 <meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://codinghotpot.com/img/1__OUawfdv5VtESR4wMJ0L__0A.jpeg">
+<meta name="twitter:image" content="https://changchiao.github.io/img/1__OUawfdv5VtESR4wMJ0L__0A.jpeg">
 
 
-<link rel="canonical" href="https://codinghotpot.com/posts/b6ab615/">
+<link rel="canonical" href="https://changchiao.github.io/posts/b6ab615/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://codinghotpot.com/posts/b6ab615/","path":"posts/b6ab615/","title":"用vue EventBus來進行組件溝通吧！"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://changchiao.github.io/posts/b6ab615/","path":"posts/b6ab615/","title":"用vue EventBus來進行組件溝通吧！"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>用vue EventBus來進行組件溝通吧！ | Coding Hot Pot</title>
@@ -181,7 +181,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://codinghotpot.com/posts/b6ab615/">
+    <link itemprop="mainEntityOfPage" href="https://changchiao.github.io/posts/b6ab615/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/oldman.jpg">
@@ -217,7 +217,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2024-09-28 11:39:30" itemprop="dateModified" datetime="2024-09-28T11:39:30+00:00">2024-09-28</time>
+      <time title="修改時間：2024-10-25 13:37:28" itemprop="dateModified" datetime="2024-10-25T13:37:28+00:00">2024-10-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
