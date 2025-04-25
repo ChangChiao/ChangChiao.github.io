@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha256-HtsXJanqjKTc8vVQjO4YMhiqFoXkfBsjBWcX91T1jr8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"changchiao.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"style":null,"show_result":false},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="不曉得大家是否遇過這樣的情況：接手一個新專案時，卻發現沒有 API 文件，導致無法全面了解 API 的結構，包括 URI、請求 (payload) 及回應 (response)。這種情況下，唯一的解法往往是透過操作網頁，打開開發者工具 DevTools 來觀察 Network…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用mitmproxy2swagger來實現api逆向工程">
+<meta property="og:url" content="https://changchiao.github.io/posts/7dc1b9fe/index.html">
+<meta property="og:site_name" content="Coding Hot Pot">
+<meta property="og:description" content="不曉得大家是否遇過這樣的情況：接手一個新專案時，卻發現沒有 API 文件，導致無法全面了解 API 的結構，包括 URI、請求 (payload) 及回應 (response)。這種情況下，唯一的解法往往是透過操作網頁，打開開發者工具 DevTools 來觀察 Network…">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://changchiao.github.io/img/1__Y7ec4CcZh0i8hmU1dFvqng.jpeg">
+<meta property="og:image" content="https://changchiao.github.io/img/1__23VvDLZL7bnqXA____SqM__xA.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__xclU9A1SglTX6fP7cwRoyw.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__kAX9N2XBDbkFRAMjlS7XqQ.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__gI5O8C0KVOlx7DFOYYCXYQ.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__xULjLWIyPw__VLUgCE2y5vg.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__z07x1Ug42O3iXThzYMnefg.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__bCtpbWjVyEgmvkC7oWgQBQ.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__ZyI7XQSKBdfIzzshaEU01Q.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__HXtfNkR6Xc1SbnXNmwlTbA.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__6lLg1dmd__O__0MLiiLtH8Kg.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__qCJ7kmonDYKB2kB8xZsFuQ.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__MdzwOIqtLdmyw4RvoXapDw.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__d__rXRTrAYEDrmlM2CgLDWQ.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1__V6ZpS0yL2e__65JP1kCp3Ig.png">
+<meta property="og:image" content="https://changchiao.github.io/img/1________S67dklZIAtaVbYMKZAg.png">
+<meta property="article:published_time" content="2025-03-07T01:28:37.336Z">
+<meta property="article:modified_time" content="2025-04-25T07:55:53.542Z">
+<meta property="article:author" content="Joe Chang">
+<meta property="article:tag" content="frontend">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://changchiao.github.io/img/1__Y7ec4CcZh0i8hmU1dFvqng.jpeg">
+
+
+<link rel="canonical" href="https://changchiao.github.io/posts/7dc1b9fe/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"https://changchiao.github.io/posts/7dc1b9fe/","path":"posts/7dc1b9fe/","title":"用mitmproxy2swagger來實現api逆向工程"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>用mitmproxy2swagger來實現api逆向工程 | Coding Hot Pot</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJM3X3RGKD"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-SJM3X3RGKD","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Coding Hot Pot</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">日新月異的前端技術...學不動了</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜尋" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B5%90%E8%AA%9E"><span class="nav-number">1.</span> <span class="nav-text">結語</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Joe Chang"
+      src="/images/oldman.jpg">
+  <p class="site-author-name" itemprop="name">Joe Chang</p>
+  <div class="site-description" itemprop="description">唯有非常努力，才能看起來毫不費力</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">124</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://changchiao.github.io/posts/7dc1b9fe/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/oldman.jpg">
+      <meta itemprop="name" content="Joe Chang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Hot Pot">
+      <meta itemprop="description" content="唯有非常努力，才能看起來毫不費力">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="用mitmproxy2swagger來實現api逆向工程 | Coding Hot Pot">
+      <meta itemprop="description" content="不曉得大家是否遇過這樣的情況：接手一個新專案時，卻發現沒有 API 文件，導致無法全面了解 API 的結構，包括 URI、請求 (payload) 及回應 (response)。這種情況下，唯一的解法往往是透過操作網頁，打開開發者工具 DevTools 來觀察 Network…">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          用mitmproxy2swagger來實現api逆向工程
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2025-03-07 01:28:37" itemprop="dateCreated datePublished" datetime="2025-03-07T01:28:37+00:00">2025-03-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2025-04-25 07:55:53" itemprop="dateModified" datetime="2025-04-25T07:55:53+00:00">2025-04-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分類於</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/proxy/" itemprop="url" rel="index"><span itemprop="name">proxy</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">不曉得大家是否遇過這樣的情況：接手一個新專案時，卻發現沒有 API 文件，導致無法全面了解 API 的結構，包括 URI、請求 (payload) 及回應 (response)。這種情況下，唯一的解法往往是透過操作網頁，打開開發者工具 DevTools 來觀察 Network…</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="/img/1__Y7ec4CcZh0i8hmU1dFvqng.jpeg"></p>
+<p>不曉得大家是否遇過這樣的情況：接手一個新專案時，卻發現沒有 API 文件，導致無法全面了解 API 的結構，包括 URI、請求 (payload) 及回應 (response)。這種情況下，唯一的解法往往是透過操作網頁，打開開發者工具 DevTools 來觀察 Network 請求來了解 api 的全貌，但無論對前端還是後端工程師來說，這都會是一件相當痛苦的事。</p>
+<p>此時，我們可以利用 mitmproxy 和<strong>mitmproxy2swagger</strong> 來實現 API 逆向工程。mitmproxy 作為代理伺服器，透過操作網頁就能自動捕捉網路封包，偵測所有被觸發的 API 並且生成 flow 檔案，包含請求的 api url、payload、response 等等，省去手動分析的麻煩。而 mitmproxy2swagger 則是將 flow 檔案轉換成 open api YAML，生成 API 文件</p>
+<p><img src="/img/1__23VvDLZL7bnqXA____SqM__xA.png"></p>
+<p>作者用 mac 開發，所以會使用 brew 來安裝 mitmproxy</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install mitmproxy</span><br></pre></td></tr></table></figure>
+
+<p>安裝好之後可以選擇用 command line 的方式或是 web GUI 的方式來操作<strong>mitmproxy</strong>，為了更直觀的展示 mitmproxy 的功能，這裡選擇用 web GUI 的方式，執行以下指令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mitmweb</span><br></pre></td></tr></table></figure>
+
+<p>執行成功後，網頁會自動打開 127.0.0.1:8081</p>
+<p><img src="/img/1__xclU9A1SglTX6fP7cwRoyw.png"></p>
+<p>在 capture 的頁籤裡建議可以設定 local applications，因為 proxy 會攔截的網路封包不僅僅只是網頁的而已，還包含電腦上其他應用程式，ex. line、outlook、discord，任何在電腦上會連上網的應用程式的網路封包都會被追蹤，因此在查看 log 會有雜訊過多的問題，因此建議設定為要監看的目標即可 ，作者的目的是要監看網頁的封包，因此設定為 google chrome</p>
+<p><img src="/img/1__kAX9N2XBDbkFRAMjlS7XqQ.png"></p>
+<p>在 MAC 系統設定裡開啟代理伺服器的設定，打開 http 和 https 的 proxy，並且將伺服器和連接埠設定為 mitmproxy 預設的 127.0.0.1 和 8080</p>
+<p><img src="/img/1__gI5O8C0KVOlx7DFOYYCXYQ.png"></p>
+<p>這個時候會發現所有的網頁都變成不安全連線了，</p>
+<p><img src="/img/1__xULjLWIyPw__VLUgCE2y5vg.png"></p>
+<p>以往在沒有代理伺服器的情況下，瀏覽器會和 web server 建立 SSL&#x2F;TLS 安全連線(https)，但現在因為我們開啟了代理伺服器，瀏覽器和 server 之間多了一個中介者，瀏覽器認為代理伺服器沒有安全憑證所以認定為不安全連線，所以我們需要在自己的電腦上安裝 proxy 的憑證</p>
+<p><img src="/img/1__z07x1Ug42O3iXThzYMnefg.png"></p>
+<p>在網址列輸入 mitm.it 會看到以下畫面，再根據不同的平台下載對應的憑證</p>
+<p><img src="/img/1__bCtpbWjVyEgmvkC7oWgQBQ.png"></p>
+<p>下載 mitmproxy 的憑證之後，點兩下就會自動安裝，憑證預設為不受信任</p>
+<p><img src="/img/1__ZyI7XQSKBdfIzzshaEU01Q.png"></p>
+<p>需要手動將憑證改為永遠信任</p>
+<p><img src="/img/1__HXtfNkR6Xc1SbnXNmwlTbA.png"></p>
+<p>安裝完 mitmproxy 憑證後，就可以正常瀏覽網頁了</p>
+<p>以政府的公開 api 平台為例<a target="_blank" rel="noopener" href="https://data.gov.tw/">https://data.gov.tw/</a>，進到網頁後任意地點選幾個頁面再回到 127.0.0.1:8081 查看，會發現剛剛所有瀏覽的紀錄都會被記錄起來</p>
+<p><img src="/img/1__6lLg1dmd__O__0MLiiLtH8Kg.png"></p>
+<p>為了確保資料來源正確，我們可以用 search 的功能來篩選指定網域的內容</p>
+<p><img src="/img/1__qCJ7kmonDYKB2kB8xZsFuQ.png"></p>
+<p>按下 save filtered 就會針對剛剛篩選的內容，自動下載 flow 檔</p>
+<p><img src="/img/1__MdzwOIqtLdmyw4RvoXapDw.png"></p>
+<p>接下來換 mitmproxy2swagger 接手，先安裝 mitmproxy2swagger，若不想安裝 python，也可以使用官方提供 docker image 來建立虛擬環境，省去安裝 python 的麻煩</p>
+<p>#python3 執行 pip3 指令，若版本低於 python3 則執行 pip 指令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install mitmproxy2swagger</span><br></pre></td></tr></table></figure>
+
+<p>接著執行指令將剛剛的 flows 檔案輸出為 api.yml，-i 後面帶輸入的 flow 檔名，-o 後面帶要輸出的檔名，-p 可以設定 api 的 url</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mitmproxy2swagger -i flows -o api.yaml -p https://data.gov.tw/api</span><br></pre></td></tr></table></figure>
+
+<p>假如有看到彩虹進度條就代表生成成功了！</p>
+<p><img src="/img/1__d__rXRTrAYEDrmlM2CgLDWQ.png"></p>
+<p>但其實我第一次執行指令會發生 TypeError: ‘int’ object is not subscriptable 的錯誤</p>
+<p><img src="/img/1__V6ZpS0yL2e__65JP1kCp3Ig.png"></p>
+<p>爬了一下 github 的 issue 討論區，找到了<a target="_blank" rel="noopener" href="https://github.com/alufers/mitmproxy2swagger/issues/95">相關的討論</a>，將指令改為以下就成功了，但不確定原因為何</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mitmproxy2swagger -i flows -o api.yaml -p https://data.gov.tw/api -f flow</span><br></pre></td></tr></table></figure>
+
+<p>打開剛剛生成的 yml，會發現已經有了初版的架構</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">openapi:</span> <span class="number">3.0</span><span class="number">.0</span></span><br><span class="line"><span class="attr">info:</span></span><br><span class="line"> <span class="attr">title:</span> <span class="string">flows</span> <span class="string">Mitmproxy2Swagger</span></span><br><span class="line"> <span class="attr">version:</span> <span class="number">1.0</span><span class="number">.0</span></span><br><span class="line"><span class="attr">servers:</span></span><br><span class="line"><span class="string">\-</span> <span class="attr">url:</span> <span class="string">https://data.gov.tw/api</span></span><br><span class="line"> <span class="attr">description:</span> <span class="string">The</span> <span class="string">default</span> <span class="string">server</span></span><br><span class="line"><span class="attr">paths:</span> &#123;&#125;</span><br><span class="line"><span class="attr">x-path-templates:</span></span><br><span class="line"><span class="string">\#</span> <span class="attr">Remove the ignore:</span> <span class="string">prefix</span> <span class="string">to</span> <span class="string">generate</span> <span class="string">an</span> <span class="string">endpoint</span> <span class="string">with</span> <span class="string">its</span> <span class="string">URL</span></span><br><span class="line"><span class="string">\#</span> <span class="string">Lines</span> <span class="string">that</span> <span class="string">are</span> <span class="string">closer</span> <span class="string">to</span> <span class="string">the</span> <span class="string">top</span> <span class="string">take</span> <span class="string">precedence,</span> <span class="string">the</span> <span class="string">matching</span> <span class="string">is</span> <span class="string">greedy</span></span><br><span class="line"><span class="string">\-</span> <span class="string">ignore:/front/comment/detail</span></span><br><span class="line"><span class="string">\-</span> <span class="string">ignore:/front/dataset/changed/list</span></span><br><span class="line"><span class="string">\-</span> <span class="string">ignore:/front/dataset/list</span></span><br><span class="line"><span class="string">\-</span> <span class="string">ignore:/front/dataset/options-list</span></span><br><span class="line"><span class="string">\-</span> <span class="string">ignore:/front/taxonomy/popular-keywords/list</span></span><br><span class="line"></span><br><span class="line"><span class="string">這時可以篩選哪些</span> <span class="string">api</span> <span class="string">uri</span> <span class="string">要生成</span> <span class="string">yml，哪些不用，假設要生成</span> <span class="string">yml，可以把對應的</span> <span class="string">api</span> <span class="string">前面的「ignore：」移除</span></span><br><span class="line"></span><br><span class="line"><span class="attr">openapi:</span> <span class="number">3.0</span><span class="number">.0</span></span><br><span class="line"><span class="attr">info:</span></span><br><span class="line"> <span class="attr">title:</span> <span class="string">flows</span> <span class="string">Mitmproxy2Swagger</span></span><br><span class="line"> <span class="attr">version:</span> <span class="number">1.0</span><span class="number">.0</span></span><br><span class="line"><span class="attr">servers:</span></span><br><span class="line"> <span class="string">\-</span> <span class="attr">url:</span> <span class="string">https://data.gov.tw/api</span></span><br><span class="line"> <span class="attr">description:</span> <span class="string">The</span> <span class="string">default</span> <span class="string">server</span></span><br><span class="line"><span class="attr">paths:</span> &#123;&#125;</span><br><span class="line"><span class="attr">x-path-templates:</span></span><br><span class="line"> <span class="string">\#</span> <span class="attr">Remove the ignore:</span> <span class="string">prefix</span> <span class="string">to</span> <span class="string">generate</span> <span class="string">an</span> <span class="string">endpoint</span> <span class="string">with</span> <span class="string">its</span> <span class="string">URL</span></span><br><span class="line"> <span class="string">\#</span> <span class="string">Lines</span> <span class="string">that</span> <span class="string">are</span> <span class="string">closer</span> <span class="string">to</span> <span class="string">the</span> <span class="string">top</span> <span class="string">take</span> <span class="string">precedence,</span> <span class="string">the</span> <span class="string">matching</span> <span class="string">is</span> <span class="string">greedy</span></span><br><span class="line"> <span class="string">\-</span> <span class="string">/front/comment/detail</span></span><br><span class="line"> <span class="string">\-</span> <span class="string">/front/dataset/changed/list</span></span><br><span class="line"> <span class="string">\-</span> <span class="string">/front/dataset/list</span></span><br><span class="line"> <span class="string">\-</span> <span class="string">/front/dataset/options-list</span></span><br><span class="line"> <span class="string">\-</span> <span class="string">/front/taxonomy/popular-keywords/list</span></span><br></pre></td></tr></table></figure>
+
+<p>再執行一次剛剛的指令</p>
+<p>mitmproxy2swagger -i flows -o api.yaml -p <a target="_blank" rel="noopener" href="https://data.gov.tw/api">https://data.gov.tw/api</a></p>
+<p>就能夠生成完整的 api yml，以下只擷取片段內容</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">openapi:</span> <span class="number">3.0</span><span class="number">.0</span></span><br><span class="line"><span class="attr">info:</span></span><br><span class="line"> <span class="attr">title:</span> <span class="string">flows</span> <span class="string">Mitmproxy2Swagger</span></span><br><span class="line"> <span class="attr">version:</span> <span class="number">1.0</span><span class="number">.0</span></span><br><span class="line"><span class="attr">servers:</span></span><br><span class="line"><span class="string">\-</span> <span class="attr">url:</span> <span class="string">https://data.gov.tw/api</span></span><br><span class="line"> <span class="attr">description:</span> <span class="string">The</span> <span class="string">default</span> <span class="string">server</span></span><br><span class="line"><span class="attr">paths:</span></span><br><span class="line"> <span class="string">/front/comment/detail:</span></span><br><span class="line"> <span class="attr">post:</span></span><br><span class="line"> <span class="attr">summary:</span> <span class="string">POST</span> <span class="string">detail</span></span><br><span class="line"> <span class="attr">responses:</span></span><br><span class="line"> <span class="attr">&#x27;200&#x27;:</span></span><br><span class="line"> <span class="attr">description:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"> <span class="attr">content:</span></span><br><span class="line"> <span class="attr">application/json:</span></span><br><span class="line"> <span class="attr">schema:</span></span><br><span class="line"> <span class="attr">type:</span> <span class="string">object</span></span><br><span class="line"> <span class="attr">properties:</span></span><br><span class="line"> <span class="attr">success:</span></span><br><span class="line"> <span class="attr">type:</span> <span class="string">boolean</span></span><br><span class="line"> <span class="attr">code:</span></span><br><span class="line"> <span class="attr">type:</span> <span class="string">number</span></span><br><span class="line"> <span class="attr">message:</span></span><br><span class="line"> <span class="attr">type:</span> <span class="string">string</span></span><br><span class="line"> <span class="attr">payload:</span></span><br><span class="line"> <span class="attr">type:</span> <span class="string">object</span></span><br><span class="line"> <span class="attr">properties:</span></span><br><span class="line"> <span class="attr">results:</span></span><br><span class="line"> <span class="attr">type:</span> <span class="string">array</span></span><br><span class="line"> <span class="attr">items:</span> &#123;&#125;</span><br><span class="line"> <span class="attr">requestBody:</span></span><br><span class="line"> <span class="attr">content:</span></span><br><span class="line"> <span class="attr">application/json:</span></span><br><span class="line"> <span class="attr">schema:</span></span><br><span class="line"> <span class="attr">type:</span> <span class="string">object</span></span><br><span class="line"> <span class="attr">properties:</span></span><br><span class="line"> <span class="attr">nid:</span></span><br><span class="line"> <span class="attr">type:</span> <span class="string">string</span></span><br></pre></td></tr></table></figure>
+
+<p>把這份 yml 貼到 <a target="_blank" rel="noopener" href="https://editor.swagger.io/">swagger editor</a>，讓我們可以更直觀的閱讀，api 的文件就大功告成啦！</p>
+<p><img src="/img/1________S67dklZIAtaVbYMKZAg.png"></p>
+<h4 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h4><p>個人認為 api 逆向工程僅適用於一開始就沒有寫 api 文件的專案，偏向補救用途，畢竟自動生成的 api 文件還是會有以下缺點</p>
+<ol>
+<li>仰賴使用者操作網頁來生成，如果有些流程沒有操作到，則對應的 api 並不會生成，導致文件不完整</li>
+<li>API 文件通常依據返回的資料類型進行推斷，例如數值 <code>0、1、2</code> 可能會被判定為數字類型。然而，在實際應用中，這類資料可能是枚舉值（例如：<code>0 = 未開始，1 = 處理中，2 = 已完成</code>）。這類型別資訊無法僅依賴工具推斷，而需要開發者自行定義</li>
+<li>若後端自訂義了多種錯誤回應，這些錯誤訊息無法在自動生成的文件中展現，使得 API 使用者無法事先掌握可能的錯誤狀況。</li>
+</ol>
+<p>因此，是否使用 API 逆向工程應視專案需求而定，並非所有情境都適合。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/50bbafd0/" rel="prev" title="複雜運算就交給web worker吧！">
+                  <i class="fa fa-angle-left"></i> 複雜運算就交給web worker吧！
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  
+  <div class="comments">
+  <script src="https://utteranc.es/client.js" repo="ChangChiao/ChangChiao.github.io" issue-term="pathname" theme="github-dark" crossorigin="anonymous" async></script>
+  </div>
+  
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Joe Chang</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/ChangChiao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
